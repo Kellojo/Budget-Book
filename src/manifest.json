@@ -1,0 +1,46 @@
+{
+
+    "sap.ui5": {
+
+        "models": {
+            "device": {
+                "type": "sap.ui.model.json.JSONModel"
+            }
+        },
+        
+        "rootView": {
+            "viewName": "com.budgetBook.view.app",
+            "type": "XML",
+            "async": true
+        },
+
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "com.budgetBook.view",
+                "viewType": "XML",
+                "async": true,
+                "transition": "slide",
+                "controlId": "idApp",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": ""
+                }
+            },
+
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "overview",
+                    "target": "overview"
+                }
+            ],
+
+            "targets": {
+                "overview": {
+                    "viewName": "overview"
+                }
+            }
+        }
+    }
+}
