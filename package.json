@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Kellojo/Budget-Book#readme",
   "devDependencies": {
     "electron": "^8.1.1"
+  },
+  "dependencies": {
+    "jsstore": "^3.7.6"
   }
 }
