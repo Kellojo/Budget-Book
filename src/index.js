@@ -1,13 +1,34 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+const fs = require("fs")
+const Store = require("electron-store")
+const windowStateKeeper = require('electron-window-state')
+
 
 function createWindow () {
+    // Load the previous state with fallback to defaults
+    let mainWindowState = windowStateKeeper({
+        defaultWidth: 1000,
+        defaultHeight: 800
+    });
+
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height,
+
+    webPreferences: {
+        contextIsolation: true,     // protect against prototype pollution
+        enableRemoteModule: false,  // turn off remote
+        preload: path.resolve(__dirname, 'preload.js')  // use a preload script
+    }
   });
+
+  mainWindowState.manage(mainWindow);
 
   // and load the index.html of the app.
   mainWindow.loadFile('src/index.html');
@@ -36,3 +57,13 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+const store = new Store();
+ipcMain.on("writeData", (event, aArguments) => {
+    console.log("Writing " + aArguments[0] + " ->" + aArguments[1]);
+    store.set(aArguments[0], aArguments[1]);
+});
+ipcMain.on("readData", (event, sKey) => {
+    console.log("Reading " + sKey);
+    event.reply("readDataComplete", store.get(sKey));
+});
