@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (ManagedObject, Log, JSONModel) {
     "use strict";
 
-    var oSchema = ManagedObject.extend("com.budgetBook.schema.Database", {}),
+    var oSchema = ManagedObject.extend("com.budgetBook.model.Database", {}),
         SchemaProto = oSchema.prototype;
 
     
