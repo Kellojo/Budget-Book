@@ -1,9 +1,9 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
-const fs = require("fs")
 const Store = require("electron-store")
 const windowStateKeeper = require('electron-window-state')
+const { dialog } = require('electron')
 
 
 function createWindow () {
@@ -59,11 +59,15 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 
 const store = new Store();
-ipcMain.on("writeData", (event, aArguments) => {
-    console.log("Writing " + aArguments[0] + " ->" + aArguments[1]);
-    store.set(aArguments[0], aArguments[1]);
+ipcMain.on("saveData", (event, oData) => {
+    console.log("Writing " + oData);
+    store.set("Database", oData);
 });
-ipcMain.on("readData", (event, sKey) => {
-    console.log("Reading " + sKey);
-    event.reply("readDataComplete", store.get(sKey));
+ipcMain.on("loadData", (event) => {
+    var oData = store.get("Database");
+    if (!oData) {
+        oData = {};
+    }
+
+    event.reply("loadDataComplete", oData);
 });

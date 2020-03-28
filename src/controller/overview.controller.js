@@ -1,6 +1,7 @@
 sap.ui.define([
-    "./ControllerBase"
-], function (Controller) {
+    "com/budgetBook/controller/ControllerBase",
+    "sap/m/Dialog"
+], function (Controller, Dialog) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.overview", {}),
@@ -8,7 +9,24 @@ sap.ui.define([
 
     
     ControllerProto.onInit = function() {
-        this.getOwnerComponent().notifyPageLoaded();
+        
+    };
+
+    ControllerProto.onAddButtonPress = function() {
+        /*this.getOwnerComponent().getTransactionsManager().insertTransaction({
+            title: "Einkauf EDEKA",
+            amount: 52.00,
+            relatedTo: "Peter",
+
+            occurredOn: new Date(),
+            createdOn: new Date()
+        });*/
+
+        this.getOwnerComponent().openDialog("AddTransactionDialog", {
+            title: "addTransactionDialogTitle",
+            submitButton: true
+        });
+
     };
 
     return Controller;

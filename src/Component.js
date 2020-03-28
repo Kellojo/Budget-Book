@@ -6,7 +6,12 @@ sap.ui.define([
     "sap/ui/Device",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/resource/ResourceModel",
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel) {
+
+    "com/budgetBook/Config",
+
+    "com/budgetBook/manager/TransactionsManager",
+    "com/budgetBook/schema/Database",
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, Config) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
@@ -24,23 +29,14 @@ sap.ui.define([
         oRouter.initialize();
 
         //init beans
-        /*Config.Beans.forEach(function(sBean) {
-            var oBean = com.app.manager[sBean];
-            if (!oBean) {
-                jQuery.sap.log.error("Could not initialize missing bean '" + sBean + "'");
-            } else {
-                jQuery.sap.log.info("Creating Bean '" + sBean + "'");
+        for (var sType in Config.Beans) {
+            Config.Beans[sType].forEach((sBean) => {
+                this.createBean(sType, sBean);
+            });
+        }
 
-                oBean = new oBean({});
-                oBean.setOwnerComponent(this);
-                oBean.onInit();
-                this["get" + sBean] = function() {
-                    return this;
-                }.bind(oBean);
-            }
-        }.bind(this));
-
-        //create shared dialogs
+        
+        // create shared dialogs
         this.m_oDialogs = {};
         for (var key in Config.SHARED_DIALOGS) {
             jQuery.sap.log.info("Creating Dialog '" + key + "'");
@@ -49,20 +45,44 @@ sap.ui.define([
                     return sap.ui.xmlview(sView);
                 }.bind(this, Config.SHARED_DIALOGS[key].view))
             };
-        }*/
+        }
 
         //set device & i18n model
         this.setModel(new JSONModel(Device), "device");
-        this.m_oI18nModel = new ResourceModel({
-            bundleName: "com.app.i18n.i18n"
+        this.m_oResourceBundle = new ResourceModel({
+            bundleName: "com.budgetBook.i18n.i18n"
          })
-        this.setModel(this.m_oI18nModel, "i18n");
+        this.setModel(this.m_oResourceBundle, "i18n");
 
         //init app header model
         this.setModel(new JSONModel({
             visible: true
         }), "appHeader");
         this.m_oAppHeaderModel = this.getModel("appHeader");
+    };
+
+    /**
+     * Creates a bean
+     * @param {string} sPrefix
+     * @param {string} sBean
+     */
+    ComponentProto.createBean = function(sPrefix, sBean) {
+        var oBean = com.budgetBook[sPrefix][sBean];
+        if (!oBean) {
+            jQuery.sap.log.error("Could not initialize missing bean '" + sPrefix + "." + sBean + "'");
+        } else {
+            jQuery.sap.log.info("Creating Bean '" + sPrefix + "." + sBean + "'");
+
+            oBean = new oBean({});
+            oBean.setOwnerComponent(this);
+
+            if (typeof oBean.onInit === "function") {
+                oBean.onInit();
+            }
+            this["get" + sBean] = function() {
+                return this;
+            }.bind(oBean);
+        }
     };
 
 
@@ -122,30 +142,19 @@ sap.ui.define([
 
     ComponentProto.openDialog = function (sDialog, oSettings) {
         var oView = this.m_oDialogs[sDialog].view,
-            oController = oView.getController();
+            oController = oView.getController(),
+            oResourceBundle = this.getResourceBundle();
         oController
 
         var oDialog = new sap.m.Dialog({
-            title: this.getResourceBundle().getText(oSettings.title)
-        }).addStyleClass("glossary-dialog");
-        oDialog.setModel(this.m_oI18nModel, "i18n");
+            title: oResourceBundle.getText(oSettings.title)
+        }).addStyleClass("kellojoMDialog");
+        oDialog.setModel(this.m_oResourceBundle, "i18n");
 
-        var oCloseButton = new sap.m.Button({
-            text: "Close",
-            type: "Transparent",
-            press: function () {
-                if (oController.onCloseInDialog) {
-                    oController.onCloseInDialog();
-                }
-                oDialog.close();
-            }
-        });
-        oDialog.setEndButton(oCloseButton);
-
-        //Submit Button
+        // Submit Button
         if (oSettings.submitButton) {
             var oSubmitButton = new sap.m.Button({
-                text: oSettings.submitText || "Submit",
+                text: oSettings.submitText || oResourceBundle.getText("dialogSubmit"),
                 type: "Emphasized",
                 press: function () {
 
@@ -166,8 +175,21 @@ sap.ui.define([
                     }
                 }
             });
-            oDialog.setBeginButton(oSubmitButton);
+            oDialog.setEndButton(oSubmitButton);
         }
+
+        // Close Button
+        var oCloseButton = new sap.m.Button({
+            text: oResourceBundle.getText("dialogClose"),
+            type: "Transparent",
+            press: function () {
+                if (oController.onCloseInDialog) {
+                    oController.onCloseInDialog();
+                }
+                oDialog.close();
+            }
+        });
+        oDialog.setBeginButton(oCloseButton);
 
         oDialog.addContent(this.m_oDialogs[sDialog].view);
         oDialog.open();
@@ -234,7 +256,7 @@ sap.ui.define([
      * @public
      */
     ComponentProto.getResourceBundle = function() {
-        return this.m_oI18nModel.getResourceBundle();
+        return this.m_oResourceBundle.getResourceBundle();
     };
 
     //

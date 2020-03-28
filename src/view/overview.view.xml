@@ -3,14 +3,38 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
     height="100%"
     width="100%"
     id="idAppView">
 
-    <Page showHeader="true">
+    <Page showHeader="true" class="budgetBookPage">
             
         <content>
-            <Button text="Hello World!"></Button>
+            <Button press="onAddButtonPress" text="Add a Transaction"></Button>
+            <Table items="{Database>/transactions}" mode="MultiSelect">
+                <columns>
+                    <Column>
+                        <Label text="Transaction" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Label text="Amount" />
+                    </Column>
+                    <Column>
+                        <Label text="Category" />
+                    </Column>
+                </columns>
+
+                <ColumnListItem>
+                    <VBox>
+                        <Text text="{Database>title}"/>
+                        <Label text="{Database>occurredOn}"/>
+                    </VBox>
+                    
+                    <u:Currency value="{Database>amount}" currency="EUR" maxPrecision="2" useSymbol="true"/>
+                    <Label text="{Database>category}"/>
+                </ColumnListItem>
+            </Table>
         </content>
 
     </Page>
