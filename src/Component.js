@@ -10,7 +10,7 @@ sap.ui.define([
     "com/budgetBook/Config",
 
     "com/budgetBook/manager/TransactionsManager",
-    "com/budgetBook/model/Database",
+    "com/budgetBook/manager/Database",
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, Config) {
     "use strict";
 
@@ -34,7 +34,6 @@ sap.ui.define([
                 this.createBean(sType, sBean);
             });
         }
-
         
         // create shared dialogs
         this.m_oDialogs = {};

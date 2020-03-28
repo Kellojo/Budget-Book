@@ -4,9 +4,7 @@ sap.ui.define([], function () {
     return {
         Beans: {
             manager: [
-                "TransactionsManager"
-            ],
-            schema: [
+                "TransactionsManager",
                 "Database"
             ]
         },
