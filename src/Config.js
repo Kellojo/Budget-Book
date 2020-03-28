@@ -5,7 +5,8 @@ sap.ui.define([], function () {
         Beans: {
             manager: [
                 "TransactionsManager",
-                "Database"
+                "Database",
+                "Formatter"
             ]
         },
 

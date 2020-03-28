@@ -12,9 +12,30 @@
     <Page showHeader="true" class="budgetBookPage">
             
         <content>
-            <Button press="onAddButtonPress" text="Add a Transaction"></Button>
-            <kM:TableActions />
-            <Table items="{Database>/transactions}" mode="MultiSelect">
+            <kM:TableActions>
+                <MenuButton type="Transparent" text="2020">
+                    <Menu items="{
+							path: 'Database>/transactions',
+							formatter: '.formatAvailableYears'
+						}">
+                        <MenuItem text="{>}" />
+                    </Menu>
+                </MenuButton>
+
+                <kM:right>
+                    <Button press="onAddButtonPress" text="Add a Transaction"></Button>
+                </kM:right>
+            </kM:TableActions>
+
+            <Table items="{ 
+                path: 'Database>/transactions',
+                groupHeaderFactory: '.getGroupHeader',
+                sorter : {
+                    path : 'occurredOn',
+                    comparator: '.sortByDate',
+                    group: '.groupTransactions'
+                }
+            }" mode="MultiSelect">
                 <columns>
                     <Column>
                         <Label text="Transaction" />
@@ -30,7 +51,7 @@
                 <ColumnListItem>
                     <VBox>
                         <Text text="{Database>title}"/>
-                        <Label text="{Database>occurredOn}"/>
+                        <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}"/>
                     </VBox>
                     
                     <u:Currency value="{Database>amount}" currency="EUR" maxPrecision="2" useSymbol="true"/>

@@ -1,5 +1,30 @@
-
-
 .budgetBookPage > section {
-    padding: 2rem;
+  padding: 2rem;
+}
+.sapMList {
+  border: 1px solid #e5e5e5;
+}
+.sapMList .sapMListShowSeparatorsAll .sapMLIBShowSeparator:first-child > td {
+  border-top: none;
+}
+.sapMList .sapMListShowSeparatorsAll .sapMLIBShowSeparator:last-child > td {
+  border-bottom: none;
+}
+.sapMList .sapMListTblHeader .sapMListTblHeaderCell {
+  position: sticky;
+  top: var(--kellojoM-page-header-height);
+  z-index: 10;
+}
+.sapMList .sapMListTblSelCol {
+  padding-left: 0.5rem;
+}
+.sapMList .sapMListItems .sapMListTblCell {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+.sapMList .sapMListItems .sapMListTblRow:not(.sapMLIBActive) .kellojoM-lightLabel {
+  color: #6a6d70;
+}
+.sapMList .sapMLIBSelected {
+  box-shadow: none !important;
 }

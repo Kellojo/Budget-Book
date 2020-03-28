@@ -11,6 +11,7 @@ sap.ui.define([
 
     "com/budgetBook/manager/TransactionsManager",
     "com/budgetBook/manager/Database",
+    "com/budgetBook/manager/Formatter"
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, Config) {
     "use strict";
 

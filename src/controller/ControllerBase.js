@@ -1,10 +1,11 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], function (Controller) {
+    "sap/ui/core/mvc/Controller",
+    "com/budgetBook/manager/Formatter"
+], function (Controller, Formatter) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.ControllerBase", {
-        
+        formatter: Formatter
     }),
         ControllerProto = Controller.prototype;
 
