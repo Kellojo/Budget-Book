@@ -16,9 +16,6 @@
 * {
   outline: none !important;
 }
-.budgetBookPage > section {
-  padding: 2rem;
-}
 .sapMList {
   border: 1px solid #e5e5e5;
 }
@@ -28,7 +25,7 @@
 .sapMList .sapMListShowSeparatorsAll .sapMLIBShowSeparator:last-child > td {
   border-bottom: none;
 }
-.sapMList .sapMListTblHeader .sapMListTblHeaderCell {
+.sapMList .sapMListTblHeader .sapMTableTH {
   position: sticky;
   top: var(--kellojoM-page-header-height);
   z-index: 10;

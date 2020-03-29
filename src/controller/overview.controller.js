@@ -1,7 +1,9 @@
 sap.ui.define([
     "com/budgetBook/controller/ControllerBase",
     "sap/m/GroupHeaderListItem",
-], function (Controller, GroupHeaderListItem) {
+    "com/budgetBook/Config",
+    "com/budgetBook/manager/Formatter",
+], function (Controller, GroupHeaderListItem, Config, Formatter) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.overview", {}),
@@ -93,7 +95,6 @@ sap.ui.define([
      * @public
      */
     ControllerProto.formatAvailableYears = function(aTransactions) {
-        console.log(aTransactions);
         
         if (!aTransactions) {
             return [];
@@ -117,6 +118,30 @@ sap.ui.define([
 
         return aYears;
     }
+
+    /**
+     * Formats the page subtitle
+     * @param {array} aTransactions
+     * @returns {string} 
+     * @public
+     */
+    ControllerProto.formatPageSubtitle = function(aTransactions) {
+        if (!aTransactions) {
+            return "";
+        }
+
+        var iTransactionCount = aTransactions.length,
+            iTransactionVolume = 0,
+            sTransactionVolume = "",
+            oComponent = this.getOwnerComponent();
+
+        aTransactions.forEach((oTransaction) => {
+            iTransactionVolume += oTransaction.amount;
+        });
+
+        sTransactionVolume = Formatter.formatCurrency(iTransactionVolume, Config.DEFAULT_CURRENCY);
+        return oComponent.getResourceBundle().getText("overviewPageSubtitle", [iTransactionCount, sTransactionVolume]);
+    };
 
     return Controller;
 });

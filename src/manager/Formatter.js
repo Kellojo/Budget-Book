@@ -1,6 +1,7 @@
 sap.ui.define([
     "com/budgetBook/manager/BeanBase",
-], function (BeanBase) {
+    "sap/ui/core/format/NumberFormat",
+], function (BeanBase, NumberFormat) {
     "use strict";
 
     var Formatter = BeanBase.extend("com.budgetBook.manager.Formatter", {});
@@ -18,6 +19,18 @@ sap.ui.define([
 
         return moment(oDate).fromNow();
     };
+
+    /**
+     * Formats a currency value
+     * @param {number} iValue
+     * @param {string} sCurrency
+     * @returns {string} 
+     */
+    Formatter.formatCurrency = function(iValue, sCurrency) {
+        return NumberFormat.getCurrencyInstance({
+            currencyCode: false
+        }).format(iValue, sCurrency);
+    }
 
     return Formatter;
 });

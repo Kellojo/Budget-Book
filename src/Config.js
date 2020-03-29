@@ -14,7 +14,10 @@ sap.ui.define([], function () {
             AddTransactionDialog: {
                 view: "com.budgetBook.view.dialog.AddTransactionDialog"
             }
-        }
+        },
+
+
+        DEFAULT_CURRENCY: "EUR"
 
     };
 });

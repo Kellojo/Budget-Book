@@ -9,9 +9,13 @@
     width="100%"
     id="idAppView">
 
-    <Page showHeader="true" class="budgetBookPage">
+    <kM:Page class="budgetBookPage" title="{i18n>overviewPageTitle}" 
+    subTitle="{
+        path: 'Database>/transactions',
+        formatter: '.formatPageSubtitle'
+    }">
             
-        <content>
+        <kM:content>
             <kM:TableActions>
                 <MenuButton type="Transparent" text="2020">
                     <Menu items="{
@@ -60,8 +64,8 @@
                     <Label text="{Database>category}"/>
                 </ColumnListItem>
             </Table>
-        </content>
+        </kM:content>
 
-    </Page>
+    </kM:Page>
 
 </mvc:View>
