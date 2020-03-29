@@ -14,6 +14,17 @@
         path: 'Database>/transactions',
         formatter: '.formatPageSubtitle'
     }">
+
+        <kM:actions>
+            <OverflowToolbar width="100%">
+                <ToolbarSpacer />
+                <Button press="onAddButtonPress" text="{i18n>addTransaction}"/>
+            </OverflowToolbar>
+        </kM:actions>
+
+        <kM:mainAction>
+            <SearchField width="250px" liveChange="onSearch"/>
+        </kM:mainAction>
             
         <kM:content>
             <kM:TableActions>
@@ -25,13 +36,9 @@
                         <MenuItem text="{>}" />
                     </Menu>
                 </MenuButton>
-
-                <kM:right>
-                    <Button press="onAddButtonPress" text="Add a Transaction"></Button>
-                </kM:right>
             </kM:TableActions>
 
-            <Table items="{ 
+            <Table id="idTable" items="{ 
                 path: 'Database>/transactions',
                 groupHeaderFactory: '.getGroupHeader',
                 sorter : {

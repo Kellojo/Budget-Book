@@ -3,7 +3,9 @@ sap.ui.define([
     "sap/m/GroupHeaderListItem",
     "com/budgetBook/Config",
     "com/budgetBook/manager/Formatter",
-], function (Controller, GroupHeaderListItem, Config, Formatter) {
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
+], function (Controller, GroupHeaderListItem, Config, Formatter, Filter, FilterOperator) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.overview", {}),
@@ -37,6 +39,19 @@ sap.ui.define([
                 this.getOwnerComponent().getTransactionsManager().updateTransaction(sPath, oTransaction);
             }.bind(this)
         });
+    }
+
+    ControllerProto.onSearch = function(oEvent) {
+        var aFilter = [],
+            sQuery = oEvent.getParameter("newValue");
+
+        if (sQuery) {
+            aFilter.push(new Filter("title", FilterOperator.Contains, sQuery));
+        }
+
+        var oList = this.byId("idTable");
+        var oBinding = oList.getBinding("items");
+        oBinding.filter(aFilter);
     }
 
 

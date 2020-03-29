@@ -16,6 +16,9 @@
 * {
   outline: none !important;
 }
+.sapMSFF::before {
+  border: none !important;
+}
 .sapMList {
   border: 1px solid #e5e5e5;
 }
