@@ -46,3 +46,6 @@
 .sapMList .sapMLIBSelected {
   box-shadow: none !important;
 }
+.budgetBookTable-lightLabel {
+  color: #6a6d70 !important;
+}
