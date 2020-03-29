@@ -157,10 +157,6 @@ sap.ui.define([
                 text: oSettings.submitText || oResourceBundle.getText("dialogSubmit"),
                 type: "Emphasized",
                 press: function () {
-
-                    if (oSettings.fnOnSubmit) {
-                        oSettings.fnOnSubmit(oDialog);
-                    }
                     var bSubmitValid = true;
 
                     if (oController.onSubmitButtonPress) {

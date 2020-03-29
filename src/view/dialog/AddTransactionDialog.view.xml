@@ -4,14 +4,47 @@
 	xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns:u="sap.ui.unified"
+    xmlns:kM="kellojo.m"
     height="100%"
     width="100%">
 
-    <VBox>
-        <Input placeholder="{i18n>addTransactionDialogInputTitlePlaceholder}"/>
-        <Input />
-        <ComboBox />
-        <DatePicker />
+    <VBox class="budgetBookDialog">
+        
+        <kM:Wrapper class="budgetBookDialog-FormInputContainer">
+            <Label text="{i18n>addTransactionDialogInputTitle}" labelFor="idTitleInput"/>
+            <Input 
+                id="idTitleInput"
+                placeholder="{i18n>addTransactionDialogInputTitlePlaceholder}"
+                value="{/transaction/title}"
+                valueLiveUpdate="true"
+                required="true"
+            />
+        </kM:Wrapper>
+
+        <kM:Wrapper class="budgetBookDialog-FormInputContainer">
+            <Label text="{i18n>addTransactionDialogInputAmount}" labelFor="idAmountInput"/>
+            <Input 
+                id="idAmountInput"
+                value="{ parts: [{path: '/transaction/amount'}, {path: '/transaction/currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false } }"
+                valueLiveUpdate="true"
+                required="true"
+            />
+        </kM:Wrapper>
+
+        <kM:Wrapper class="budgetBookDialog-FormInputContainer">
+            <Label text="{i18n>addTransactionDialogInputCategory}" labelFor="idCategoryInput"/>
+            <ComboBox
+                id="idCategoryInput"
+                value="{/transaction/category}"
+                placeholder="{i18n>addTransactionDialogInputCategoryPlaceholder}"
+                width="100%"/>
+        </kM:Wrapper>
+
+        <kM:Wrapper class="budgetBookDialog-FormInputContainer">
+            <Label text="{i18n>addTransactionDialogInputOccurredOn}" labelFor="idDateInput"/>
+            <DatePicker id="idDateInput" dateValue="{/transaction/occurredOn}"/>
+        </kM:Wrapper>
+
     </VBox>
 
 </mvc:View>

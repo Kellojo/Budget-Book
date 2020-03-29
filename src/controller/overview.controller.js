@@ -13,20 +13,13 @@ sap.ui.define([
     };
 
     ControllerProto.onAddButtonPress = function() {
-       /*this.getOwnerComponent().getTransactionsManager().insertTransaction({
-            title: "Einkauf EDEKA",
-            amount: 52.00,
-            relatedTo: "Peter",
-
-            occurredOn: new Date(),
-            createdOn: new Date()
-        });*/
-
         this.getOwnerComponent().openDialog("AddTransactionDialog", {
             title: "addTransactionDialogTitle",
-            submitButton: true
+            submitButton: true,
+            fnOnSubmit: (oTransaction) => {
+                this.getOwnerComponent().getTransactionsManager().insertTransaction(oTransaction);
+            }
         });
-
     };
 
 
