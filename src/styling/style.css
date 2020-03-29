@@ -1,3 +1,21 @@
+.budgetBookDialog {
+  padding: 1rem;
+}
+.budgetBookDialog .sapMInputBaseContentWrapper {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  transition: border-color 0.2s;
+}
+.budgetBookDialog-FormInputContainer {
+  padding-bottom: 0.75rem;
+}
+.sapMFocus .sapMInputBaseContentWrapper {
+  outline: none !important;
+}
+* {
+  outline: none !important;
+}
 .budgetBookPage > section {
   padding: 2rem;
 }
