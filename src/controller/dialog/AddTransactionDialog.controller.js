@@ -22,13 +22,24 @@ sap.ui.define([
     ControllerProto.onOpenInDialog = function(oSettings) {
         this.m_oSettings = oSettings;
 
+        // Setup transaction
+        var oTransaction = {
+            title: "",
+            amount: 0,
+            occurredOn: new Date(),
+            currency: "EUR"
+        };
+
+        // Get transaction from settings, if this is the edit mode
+        if (oSettings.hasOwnProperty("transaction")) {
+            oTransaction = jQuery.extend(true, {}, oSettings.transaction);
+            oTransaction.occurredOn = new Date(oTransaction.occurredOn);
+        }
+
+        // Update view model
         this.m_oViewModel.setData({
-            transaction: {
-                title: "",
-                amount: 0,
-                occurredOn: new Date(),
-                currency: "EUR"
-            }
+            transaction: oTransaction,
+            categories: this.getOwnerComponent().getTransactionsManager().getAllCategories()
         });
 
         this.m_oViewModel.refresh(true);

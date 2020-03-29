@@ -35,7 +35,9 @@
                     comparator: '.sortByDate',
                     group: '.groupTransactions'
                 }
-            }" mode="MultiSelect">
+            }" 
+            mode="MultiSelect"
+            itemPress="onTransactionPress">
                 <columns>
                     <Column>
                         <Label text="Transaction" />
@@ -48,7 +50,7 @@
                     </Column>
                 </columns>
 
-                <ColumnListItem>
+                <ColumnListItem type="Active">
                     <VBox>
                         <Text text="{Database>title}"/>
                         <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}"/>

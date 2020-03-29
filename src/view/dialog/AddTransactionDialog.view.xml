@@ -37,7 +37,10 @@
                 id="idCategoryInput"
                 value="{/transaction/category}"
                 placeholder="{i18n>addTransactionDialogInputCategoryPlaceholder}"
-                width="100%"/>
+                items="{/categories}"
+                width="100%">
+                    <core:Item key="{}" text="{}" />
+                </ComboBox>
         </kM:Wrapper>
 
         <kM:Wrapper class="budgetBookDialog-FormInputContainer">

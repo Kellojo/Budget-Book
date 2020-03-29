@@ -40,6 +40,10 @@ sap.ui.define([
         return this.m_oDatabaseModel.getData();
     }
 
+    SchemaProto.setModelProperty = function(sPath, oValue) {
+        this.m_oDatabaseModel.setProperty(sPath, oValue);
+    }
+
     SchemaProto.refresh = function() {
         this.m_oDatabaseModel.refresh(true);
         this.saveData();

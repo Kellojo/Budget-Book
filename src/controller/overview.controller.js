@@ -22,6 +22,21 @@ sap.ui.define([
         });
     };
 
+    ControllerProto.onTransactionPress = function(oEvent) {
+        var oBindingContext = oEvent.getParameter("listItem").getBindingContext("Database"),
+            oTransaction = oBindingContext.getObject(),
+            sPath = oBindingContext.getPath();
+            
+        this.getOwnerComponent().openDialog("AddTransactionDialog", {
+            title: "addTransactionDialogTitleEditMode",
+            submitButton: true,
+            transaction: oTransaction,
+            fnOnSubmit: function(oTransaction) {
+                this.getOwnerComponent().getTransactionsManager().updateTransaction(sPath, oTransaction);
+            }.bind(this)
+        });
+    }
+
 
 
     /**
