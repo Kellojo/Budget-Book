@@ -22,10 +22,14 @@ sap.ui.define([
     ControllerProto.onOpenInDialog = function(oSettings) {
         this.m_oSettings = oSettings;
 
+        // reset combobox...
+        this.byId("idCategoryInput").setSelectedKey("");
+
         // Setup transaction
         var oTransaction = {
             title: "",
             amount: 0,
+            category: "",
             occurredOn: new Date(),
             currency: "EUR"
         };
