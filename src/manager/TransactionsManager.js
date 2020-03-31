@@ -68,5 +68,52 @@ sap.ui.define([
         return aCategories;
     };
 
+    /**
+     * Get's all distinct years and the correpsonding months from a set of transactions
+     * @param {array} aTransactions
+     * @returns {object} 
+     * @public
+     */
+    ManagerProto.getAllMonths = function() {
+        let oDatabase = this.getOwnerComponent().getDatabase(),
+            oData = oDatabase.getData(),
+            aTransactions = oData.transactions,
+            oResourceBundle = this.getOwnerComponent().getResourceBundle();
+
+        if (!aTransactions) {
+            return [];
+        }
+
+        var oTime = {};
+
+        // create our distinct time object
+        aTransactions.forEach((oTransaction) => {
+            var oDate = oTransaction.occurredOn;
+            if (typeof oTransaction.occurredOn === "number" || typeof oTransaction.occurredOn === "string") {
+                oDate = new Date(oTransaction.occurredOn);
+            }
+            var iYear = oDate.getFullYear(),
+                iMonth = oDate.getMonth(),
+                sUniqueKey = iMonth + "_" + iYear;
+
+            if (!oTime.hasOwnProperty(iYear.toString()) || !oTime[iYear].hasOwnProperty(iMonth.toString())) {
+                if (!oTime.hasOwnProperty(iYear.toString())) {
+                    oTime[iYear] = {};
+                }
+
+                oTime[iYear][iMonth] = {
+                    year: iYear,
+                    monthIndex: iMonth,
+                    text: oResourceBundle.getText("monthWithIndex_" + iMonth),
+                    transactionCount: 1
+                };
+            } else {
+                oTime[iYear][iMonth].transactionCount++;
+            }
+        });
+
+        return oTime;
+    }
+
     return oManager;
 });

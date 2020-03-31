@@ -5,7 +5,13 @@ sap.ui.define([
 ], function (ManagedObject, Log, JSONModel) {
     "use strict";
 
-    var oSchema = ManagedObject.extend("com.budgetBook.manager.Database", {}),
+    var oSchema = ManagedObject.extend("com.budgetBook.manager.Database", {
+        metadata: {
+            events: {
+                update: {}
+            }
+        }
+    }),
         SchemaProto = oSchema.prototype;
 
     
@@ -28,6 +34,8 @@ sap.ui.define([
         this.m_oDatabaseModel = new JSONModel(oData);
         this.getOwnerComponent().setModel(this.m_oDatabaseModel, "Database");
         this.getOwnerComponent().notifyPageLoaded();
+
+        this.fireUpdate();
     };
 
 
@@ -42,10 +50,12 @@ sap.ui.define([
 
     SchemaProto.setModelProperty = function(sPath, oValue) {
         this.m_oDatabaseModel.setProperty(sPath, oValue);
+        this.refresh();
     }
 
     SchemaProto.refresh = function() {
         this.m_oDatabaseModel.refresh(true);
+        this.fireUpdate();
         this.saveData();
     }
 

@@ -1,0 +1,23 @@
+
+
+.sapUiMnuItm[data-iscurrentmonth="true"] {
+    color: @currentDateColor !important;
+
+    &:active {
+        color: @activeFontColor !important;
+    }
+}
+
+.sapUiMnuItm[data-isyear="true"] {
+    background-color: @backgroundGrey;
+}
+
+.sapUiMnuItm[data-isyear="false"] {
+    margin-left: @tinyPadding;
+}
+
+.budgetBookOverview-currency {
+    .sapUiUfdCurrencyCurrency {
+        width: unset;
+    }
+ }

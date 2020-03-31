@@ -19,6 +19,22 @@
 .sapMSFF::before {
   border: none !important;
 }
+.sapUiMnuItm[data-iscurrentmonth="true"] {
+  color: #c0399f !important;
+}
+.sapUiMnuItm[data-iscurrentmonth="true"]:active {
+  color: white !important;
+}
+.sapUiMnuItm[data-isyear="true"] {
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #d9d9d9;
+}
+.sapUiMnuItm[data-isyear="false"] {
+  margin-left: 0.25rem;
+}
+.budgetBookOverview-currency .sapUiUfdCurrencyCurrency {
+  width: unset;
+}
 .sapMList {
   border: 1px solid #e5e5e5;
 }

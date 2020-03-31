@@ -11,7 +11,7 @@
 
     <kM:Page class="budgetBookPage" title="{i18n>overviewPageTitle}" 
     subTitle="{
-        path: 'Database>/transactions',
+        parts: ['Database>/transactions', '/currentTab'],
         formatter: '.formatPageSubtitle'
     }">
 
@@ -27,24 +27,26 @@
         </kM:mainAction>
             
         <kM:content>
+
             <kM:TableActions>
-                <MenuButton type="Transparent" text="2020">
-                    <Menu items="{
-							path: 'Database>/transactions',
-							formatter: '.formatAvailableYears'
-						}">
-                        <MenuItem text="{>}" />
+                <MenuButton id="idMonthTabButton" type="Transparent" text="{ path: '/currentTab', formatter: '.formatCurrentTab'}">
+                    <Menu items="{/months}" itemSelected="onTabChanged">
+                        <MenuItem text="{text}" startsSection="{isYear}">
+                            <customData>
+                                <core:CustomData key="time" value="{key}"></core:CustomData>
+                                <core:CustomData key="isCurrentMonth" value="{isCurrentString}" writeToDom="true"></core:CustomData>
+                                <core:CustomData key="isYear" value="{isYearString}" writeToDom="true"></core:CustomData>
+                            </customData>
+                        </MenuItem>
                     </Menu>
                 </MenuButton>
             </kM:TableActions>
 
             <Table id="idTable" items="{ 
                 path: 'Database>/transactions',
-                groupHeaderFactory: '.getGroupHeader',
                 sorter : {
                     path : 'occurredOn',
-                    comparator: '.sortByDate',
-                    group: '.groupTransactions'
+                    comparator: '.sortByDate'
                 }
             }" 
             mode="MultiSelect"
@@ -67,7 +69,7 @@
                         <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
                     </VBox>
                     
-                    <u:Currency value="{Database>amount}" currency="EUR" maxPrecision="2" useSymbol="true"/>
+                    <u:Currency value="{Database>amount}" currency="EUR" maxPrecision="2" useSymbol="true" class="budgetBookOverview-currency"/>
                     <Label text="{Database>category}"/>
                 </ColumnListItem>
             </Table>

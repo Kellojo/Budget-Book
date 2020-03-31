@@ -10,10 +10,17 @@ sap.ui.define([
     }),
         ControllerProto = Controller.prototype;
 
+    ControllerProto.onInit = function() {
+        this.getOwnerComponent().getRouter().attachRouteMatched(this.onRouteMatched, this);
+    };
 
-    ControllerProto.handleRouteMatched = function (event) {
+    ControllerProto.onExit = function () {
+        this.getOwnerComponent().getRouter().detachRouteMatched(this.onRouteMatched, this);
+    }
+
+    ControllerProto.onRouteMatched = function (event) {
         //Check whether this page is matched.
-        if (event.getParameter("name") !== this.name) {
+        if (event.getParameter("name") !== this.ROUTE_NAME) {
             return;
         }
 
