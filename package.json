@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build-styles": "./src/styling/build-less.sh"
+    "build-styles": "./src/styling/build-less.sh",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -18,11 +20,20 @@
     "url": "https://github.com/Kellojo/Budget-Book/issues"
   },
   "homepage": "https://github.com/Kellojo/Budget-Book#readme",
+  "build": {
+    "appId": "com.budgetP",
+    "mac": {
+      "category": "public.app-category.finance",
+      "publish": ["github"]
+    }
+  },
   "devDependencies": {
-    "electron": "^8.1.1"
+    "electron": "^8.1.1",
+    "electron-builder": "^22.4.1"
   },
   "dependencies": {
     "electron-store": "^5.1.1",
+    "electron-updater": "^4.3.0",
     "electron-window-state": "^5.0.3",
     "jsstore": "^3.7.6"
   }
