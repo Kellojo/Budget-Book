@@ -21,9 +21,9 @@ cache:
 script:
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      npm run build && xvfb-run npm run test && npm run release
+      xvfb-run npm run test && npm run release
     else
-      npm run build && npm run release
+      npm run release
     fi
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
