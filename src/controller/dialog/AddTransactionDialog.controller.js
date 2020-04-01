@@ -53,6 +53,10 @@ sap.ui.define([
     ControllerProto.onSubmitButtonPress = function() {
         var bIsValid = this.validateControls();
         if (bIsValid) {
+            var oTransaction = this.m_oViewModel.getProperty("/transaction");
+            oTransaction.occurredOn = oTransaction.occurredOn.toISOString();
+            oTransaction.createdOn = new Date().toISOString();
+
             this.m_oSettings.fnOnSubmit(this.m_oViewModel.getProperty("/transaction"));
         }
 
