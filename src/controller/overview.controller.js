@@ -5,7 +5,8 @@ sap.ui.define([
 	"sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel",
-], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel) {
+    "sap/ui/model/FilterType",
+], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType) {
     "use strict";
 
     var Controller = ControllerBase.extend("com.budgetBook.controller.overview", {}),
@@ -75,30 +76,39 @@ sap.ui.define([
      * @private 
      */
     ControllerProto.updateListFilters = function(oCurrentTab) {
-        var aFilter = [],   
+        var oSearchFilter = null,  
+            oTabFilter = null,
             oList = this.byId("idTable"),
             oBinding = oList.getBinding("items"),
             sSearchQuery = this.m_oViewModel.getProperty("/searchQuery"),
             oTab = oCurrentTab || this.m_oViewModel.getProperty("/currentTab");
 
         // Search filter
-        if (sSearchQuery) {
-            aFilter.push(new Filter("title", FilterOperator.Contains, sSearchQuery));
-        }
+        var aSearchFilter = [];
+        aSearchFilter.push(new Filter({
+            path: "title",
+            operator: FilterOperator.Contains,
+            value1: sSearchQuery
+        }));
+        aSearchFilter.push(new Filter({
+            path: "category",
+            operator: FilterOperator.Contains,
+            value1: sSearchQuery
+        }));
+
+        oSearchFilter = new Filter(aSearchFilter, false);
 
         // tab filter
-        if (oTab) {
-            aFilter.push(new Filter({
-                path: "occurredOn",
-                test: function(sDate) {
-                    var oDate = new Date(sDate);
-                    return oDate.getFullYear() == oTab.year &&
-                    (!oTab.hasOwnProperty("month") || oDate.getMonth() == oTab.month);
-                }.bind(this)
-            }));
-        }
+        oTabFilter = new Filter({
+            path: "occurredOn",
+            test: function(sDate) {
+                var oDate = new Date(sDate);
+                return oDate.getFullYear() == oTab.year &&
+                (!oTab.hasOwnProperty("month") || oDate.getMonth() == oTab.month);
+            }.bind(this)
+        });
 
-        oBinding.filter(aFilter);
+        oBinding.filter(new Filter([oTabFilter, oSearchFilter], true), FilterType.Application);
     };
 
 
