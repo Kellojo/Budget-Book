@@ -3,7 +3,7 @@ const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const Store = require("electron-store")
 const windowStateKeeper = require('electron-window-state')
-const { dialog } = require('electron')
+const { autoUpdater } = require("electron-updater")
 
 
 function createWindow () {
@@ -29,6 +29,7 @@ function createWindow () {
   });
 
   mainWindowState.manage(mainWindow);
+  autoUpdater.checkForUpdatesAndNotify();
 
   // and load the index.html of the app.
   mainWindow.loadFile('src/index.html');
