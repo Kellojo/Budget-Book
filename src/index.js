@@ -38,6 +38,8 @@ function createWindow () {
   mainWindow.webContents.openDevTools()
 }
 
+console.log(app.getVersion());
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -71,4 +73,11 @@ ipcMain.on("loadData", (event) => {
     }
 
     event.reply("loadDataComplete", oData);
+});
+ipcMain.on("loadAppInfo", (event) => {
+    var oAppInfo = {
+        version: app.getVersion()
+    }
+
+    event.reply("loadAppInfoComplete", oAppInfo);
 });

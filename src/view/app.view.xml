@@ -12,12 +12,14 @@
         <customHeader>
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
-                    <kellojoM:Wrapper class="budgetBookApp-TitleContainer">
-                        <Title text="{i18n>appTitle}" class="budgetBookApp-Page-Title"/>
-                        <kellojoM:Wrapper class="budgetBookApp-BrandBar"/>
-                    </kellojoM:Wrapper>
+                    <kellojoM:Wrapper class="budgetBookApp-Container">
+                        <kellojoM:Wrapper class="budgetBookApp-TitleContainer">
+                            <Title text="{i18n>appTitle}" class="budgetBookApp-Page-Title"/>
+                            <kellojoM:Wrapper class="budgetBookApp-BrandBar"/>
+                        </kellojoM:Wrapper>
 
-                    <Label text="{appInfo>version}"/>  
+                        <Label text="{AppInfo>/version}" class="budgedBook-Page-VersionLabel"/>  
+                    </kellojoM:Wrapper>
                 </contentLeft>
 
                 <contentRight>

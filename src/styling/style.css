@@ -18,6 +18,11 @@
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
+.budgetBookApp-Container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
 .budgetBookApp-TitleContainer {
   display: flex;
   flex-direction: column;
@@ -28,6 +33,11 @@
 .budgetBookApp-Page-Title {
   color: white !important;
   user-select: none;
+}
+.budgedBook-Page-VersionLabel {
+  color: #ccc !important;
+  font-size: 0.625rem !important;
+  margin-left: 0.25rem;
 }
 .budgetBookApp-BrandBar {
   height: 1px;

@@ -13,6 +13,10 @@ contextBridge.exposeInMainWorld(
         loadData: (fnCallback) => {
             ipcRenderer.once("loadDataComplete", fnCallback);
             ipcRenderer.send("loadData");
+        },
+        loadAppInfo: (fnCallback) => {
+            ipcRenderer.once("loadAppInfoComplete", fnCallback);
+            ipcRenderer.send("loadAppInfo");
         }
     }
 );

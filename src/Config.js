@@ -6,7 +6,8 @@ sap.ui.define([], function () {
             manager: [
                 "TransactionsManager",
                 "Database",
-                "Formatter"
+                "Formatter",
+                "AppManager",
             ]
         },
 

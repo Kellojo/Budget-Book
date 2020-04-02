@@ -8,6 +8,9 @@
             },
             "Database": {
                 "type": "sap.ui.model.json.JSONModel"
+            },
+            "AppInfo": {
+                "type": "sap.ui.model.json.JSONModel"
             }
         },
         
