@@ -6,7 +6,8 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/FilterType",
-], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType) {
+    "sap/m/MessageBox",
+], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType, MessageBox) {
     "use strict";
 
     var Controller = ControllerBase.extend("com.budgetBook.controller.overview", {}),
@@ -26,11 +27,11 @@ sap.ui.define([
         this.getView().setModel(this.m_oViewModel);
 
         this.getOwnerComponent().getDatabase().attachUpdate(this.updateTabs.bind(this))
-    };
+    }
 
     ControllerProto.onPageEnter = function() {
         this.updateTabs();
-    };
+    }
 
     ControllerProto.onAddButtonPress = function() {
         this.getOwnerComponent().openDialog("AddTransactionDialog", {
@@ -40,7 +41,7 @@ sap.ui.define([
                 this.getOwnerComponent().getTransactionsManager().insertTransaction(oTransaction);
             }
         });
-    };
+    }
 
     ControllerProto.onTransactionPress = function(oEvent) {
         var oBindingContext = oEvent.getParameter("listItem").getBindingContext("Database"),
@@ -53,6 +54,27 @@ sap.ui.define([
             transaction: oTransaction,
             fnOnSubmit: function(oTransaction) {
                 this.getOwnerComponent().getTransactionsManager().updateTransaction(sPath, oTransaction);
+            }.bind(this)
+        });
+    }
+
+    ControllerProto.onDeleteTransactionPress = function(oEvent) {
+        var oBindingContext = oEvent.getSource().getBindingContext("Database"),
+            oTransaction = oBindingContext.getObject(),
+            oComponent = this.getOwnerComponent(),
+            oResourceBundle = oComponent.getResourceBundle(),
+            sDeleteAction = oResourceBundle.getText("dialogDelete");
+
+        MessageBox.warning(oResourceBundle.getText("deleteTransactionWarning"), {
+            emphasizedAction: sDeleteAction,
+            actions: [
+                oResourceBundle.getText("dialogCancel"),
+                sDeleteAction
+            ],
+            onClose: function(sAction) {
+                if (sAction === sDeleteAction) {
+                    oComponent.getTransactionsManager().deleteTransaction(oTransaction);
+                }
             }.bind(this)
         });
     }
@@ -225,7 +247,12 @@ sap.ui.define([
             oComponent = this.getOwnerComponent();
 
         aItems.forEach((oItem) => {
-            iTransactionVolume += oItem.getBindingContext("Database").getObject().amount;;
+            var oTransaction = oItem.getBindingContext("Database").getObject();
+
+            // can be undefined, in case of a deleted transaction
+            if (!!oTransaction) {
+                iTransactionVolume += oItem.getBindingContext("Database").getObject().amount;
+            }
         });
 
         sTransactionVolume = Formatter.formatCurrency(iTransactionVolume, Config.DEFAULT_CURRENCY);

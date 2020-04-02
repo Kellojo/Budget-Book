@@ -1,10 +1,8 @@
-
-
 .sapUiMnuItm[data-iscurrentmonth="true"] {
-    color: @currentDateColor !important;
+    color: @currentDateColor  !important;
 
     &:active {
-        color: @activeFontColor !important;
+        color: @activeFontColor  !important;
     }
 }
 
@@ -13,11 +11,30 @@
 }
 
 .sapUiMnuItm[data-isyear="false"] {
-    margin-left: @tinyPadding;
+    padding-left: @tinyPadding;
 }
 
 .budgetBookOverview-currency {
     .sapUiUfdCurrencyCurrency {
         width: unset;
     }
- }
+}
+
+.budgetBookOverview-transactionItem {
+    &:hover {
+        .budgetBookOverview-deleteIcon .sapMBtnIcon {
+            color: @error;
+        }
+    }
+}
+
+.budgetBookOverview-deleteIcon {
+    background-color: transparent;
+    border: none;
+
+    .sapMBtnIcon {
+        cursor: pointer;
+        color: transparent;
+        transition: color 0.2s ease-out;
+    }
+}

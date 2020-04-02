@@ -34,12 +34,29 @@ sap.ui.define([
      * @public
      */
     ManagerProto.updateTransaction = function(sPath, oTransaction) {
-        assert(typeof sPath === "string", "Path for transaction not defined");
+        assert(typeof oTransaction === "string", "Path for transaction not defined");
         assert(!!oTransaction, "Transaction not defined");
 
         var oDatabase = this.getOwnerComponent().getDatabase();
         oDatabase.setModelProperty(sPath, oTransaction);
     };
+
+    /**
+     * Deletes the transaction at the given path
+     * @param {object} oTransaction - the tansaction to delete
+     */
+    ManagerProto.deleteTransaction = function(oTransaction) {
+        assert(!!oTransaction, "Transaction not defined");
+
+        var oDatabase = this.getOwnerComponent().getDatabase(),
+            aTransactions = oDatabase.getData().transactions,
+            iIndex = aTransactions.indexOf(oTransaction);
+
+        assert(iIndex >= 0, "The transaction to delete could not be found in the database");    
+        aTransactions.splice(iIndex, 1);
+
+        oDatabase.refresh();
+    }
 
     /**
      * Get all distincs categories
