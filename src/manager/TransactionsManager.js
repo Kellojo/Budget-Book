@@ -34,7 +34,7 @@ sap.ui.define([
      * @public
      */
     ManagerProto.updateTransaction = function(sPath, oTransaction) {
-        assert(typeof oTransaction === "string", "Path for transaction not defined");
+        assert(typeof sPath === "string", "Path for transaction not defined");
         assert(!!oTransaction, "Transaction not defined");
 
         var oDatabase = this.getOwnerComponent().getDatabase();

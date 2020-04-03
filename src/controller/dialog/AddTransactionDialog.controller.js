@@ -56,11 +56,12 @@ sap.ui.define([
             var oTransaction = this.m_oViewModel.getProperty("/transaction");
             oTransaction.occurredOn = oTransaction.occurredOn.toISOString();
             oTransaction.createdOn = new Date().toISOString();
-
-            this.m_oSettings.fnOnSubmit(this.m_oViewModel.getProperty("/transaction"));
+            this.m_oSettings.fnOnSubmit(oTransaction);
+            this.m_oViewModel.setData(null);
+            this.m_oSettings = null;
         }
 
-        return this.validateControls();
+        return bIsValid;
     };
 
     
