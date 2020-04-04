@@ -1,0 +1,71 @@
+
+
+.budgetBookWelcome-contentWrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.budgetBookWelcome-title {
+    font-size: 2rem !important;
+    margin-bottom: 2rem;
+
+    background-image: linear-gradient(to left, @budgetBookApp-BrandColor, @budgetBookApp-BrandColorSecondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.budgetBookWelcome-getStarted {
+    margin-top: 2.5rem;
+}
+
+
+
+// Get Started Screen Styles
+
+.budgetBookWelcome-decisionContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.budgetBookWelcome-decision {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: @defaultPadding * 2;
+}
+
+.budgetBookWelcome-divider {
+    width: 1px;
+    height: calc(~"100%" - @defaultPadding * 2);
+    box-sizing: border-box;
+    margin: @defaultPadding;
+    background-color: @borderGrey;
+}
+
+.budgetBookWelcome-decisionHelperIcon {
+    font-size: @brandingFontSize;
+    margin-bottom: 1.5rem;
+
+    background-image: linear-gradient(to left, @budgetBookApp-BrandColor, @budgetBookApp-BrandColorSecondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.budgetBookWelcome-decisionAction {
+    margin-top: @defaultPadding !important;
+
+    .sapMBtnInner {
+        transition: all 0.25s ease-out;
+        box-shadow: none;
+    
+        &:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+    }
+}

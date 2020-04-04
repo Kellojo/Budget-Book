@@ -75,9 +75,13 @@ ipcMain.on("loadData", (event) => {
     event.reply("loadDataComplete", oData);
 });
 ipcMain.on("loadAppInfo", (event) => {
+    
     var oAppInfo = {
-        version: app.getVersion()
-    }
+        version: app.getVersion(),
+        isFirstStartUp: true//!!store.get("isFirstStartUp", true)
+    };
+
+    store.set("isFirstStartUp", false);
 
     event.reply("loadAppInfoComplete", oAppInfo);
 });

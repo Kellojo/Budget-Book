@@ -26,10 +26,11 @@ sap.ui.define([
         });
         this.getView().setModel(this.m_oViewModel);
 
-        this.getOwnerComponent().getDatabase().attachUpdate(this.updateTabs.bind(this))
+        this.getOwnerComponent().getDatabase().attachUpdate(this.updateTabs.bind(this));
     }
 
     ControllerProto.onPageEnter = function() {
+        this.getOwnerComponent().getAppManager().setShowAppHeader(true);
         this.updateTabs();
     }
 

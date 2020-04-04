@@ -11,6 +11,9 @@
             },
             "AppInfo": {
                 "type": "sap.ui.model.json.JSONModel"
+            },
+            "AppHeader": {
+                "type": "sap.ui.model.json.JSONModel"
             }
         },
         
@@ -39,12 +42,20 @@
                     "pattern": "",
                     "name": "overview",
                     "target": "overview"
+                },
+                {
+                    "pattern": "welcome",
+                    "name": "welcome",
+                    "target": "welcome"
                 }
             ],
 
             "targets": {
                 "overview": {
                     "viewName": "overview"
+                },
+                "welcome": {
+                    "viewName": "welcome"
                 }
             }
         }

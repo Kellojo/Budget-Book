@@ -5,11 +5,23 @@ sap.ui.define([
 ], function (ManagedObject, Log, JSONModel) {
     "use strict";
 
-    var oSchema = ManagedObject.extend("com.budgetBook.manager.AppManager", {}),
+    var oSchema = ManagedObject.extend("com.budgetBook.manager.AppManager", {
+        metadata: {
+            properties: {
+                showAppHeader: {type: "boolean", defaultValue: false}
+            }
+        }
+    }),
         SchemaProto = oSchema.prototype;
 
     
-    SchemaProto.init = function() {
+    SchemaProto.onInit = function() {
+
+        // Init app header model
+        this.m_oAppHeaderModel = new JSONModel({
+            isAppHeaderVisible : this.getShowAppHeader()
+        });
+        this.getOwnerComponent().setModel(this.m_oAppHeaderModel, "AppHeader");
 
         // Init AppInfo model
         this.m_oAppInfoModel = null;
@@ -27,7 +39,22 @@ sap.ui.define([
 
         this.m_oAppInfoModel = new JSONModel(oData);
         this.getOwnerComponent().setModel(this.m_oAppInfoModel, "AppInfo");
+        this.getOwnerComponent().notifyAppInfoReady();
     };
+
+
+    // ----------------------------
+    // Getter & Setter
+    // ----------------------------
+
+    SchemaProto.getAppInfo = function() {
+        return this.m_oAppInfoModel.getData();
+    }
+
+    SchemaProto.setShowAppHeader = function(bVisible) {
+        this.m_oAppHeaderModel.setProperty("/isAppHeaderVisible", !!bVisible);
+    }
+
 
     return oSchema;
 });

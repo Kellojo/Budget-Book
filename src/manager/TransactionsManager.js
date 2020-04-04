@@ -7,7 +7,7 @@ sap.ui.define([
     var oManager = ManagedObject.extend("com.budgetBook.manager.TransactionsManager", {}),
         ManagerProto = oManager.prototype;
     
-    ManagerProto.init = function() {
+    ManagerProto.onInit = function() {
 
     };
 

@@ -74,8 +74,9 @@ sap.ui.define([
         } else {
             jQuery.sap.log.info("Creating Bean '" + sPrefix + "." + sBean + "'");
 
-            oBean = new oBean({});
-            oBean.setOwnerComponent(this);
+            oBean = new oBean({
+                ownerComponent: this
+            });
 
             if (typeof oBean.onInit === "function") {
                 oBean.onInit();
@@ -92,11 +93,11 @@ sap.ui.define([
     // Navigation
     // -------------------------------------
 
-    ComponentProto.toLogin = function () {
-        this.getRouter().navTo("login", {});
+    ComponentProto.toOverview = function () {
+        this.getRouter().navTo("overview", {});
     };
-    ComponentProto.toUserManagement = function () {
-        this.getRouter().navTo("userManagement", {});
+    ComponentProto.toWelcomeScreen = function () {
+        this.getRouter().navTo("welcome", {});
     };
 
     ComponentProto.openUserManagementDialog = function (oSettings) {
@@ -124,12 +125,33 @@ sap.ui.define([
     // Utility
     // -------------------------------------
 
-    ComponentProto.notifyPageLoaded = () => {
-        var oLoadingScreenElement = jQuery("#idLoadingScreen");
-        oLoadingScreenElement.fadeOut(300, () => {
-            oLoadingScreenElement.remove();
-        });
-    };
+    ComponentProto.notifyDatabaseReady = function() {
+        this.m_bDatabaseLoaded = true;
+        this._checkAppReady();
+    }
+
+    ComponentProto.notifyAppInfoReady = function() {
+        this.m_bAppInfoLoaded = true;
+        this._checkAppReady();
+    }
+
+    ComponentProto._checkAppReady = function() {
+        if (this.m_bAppInfoLoaded && this.m_bDatabaseLoaded) {
+
+            // navigate to correct view
+            if (this.getAppManager().getAppInfo().isFirstStartUp) {
+                this.toWelcomeScreen();
+            } else {
+                this.toOverview();
+            }
+
+            // Remove the loading screen
+            var oLoadingScreenElement = jQuery("#idLoadingScreen");
+            oLoadingScreenElement.fadeOut(300, () => {
+                oLoadingScreenElement.remove();
+            });
+        }
+    }
 
     ComponentProto.showErrorMessage = function (sErrorMessage) {
         var oMessageStrip = new MessageStrip({

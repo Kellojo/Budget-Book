@@ -15,7 +15,7 @@ sap.ui.define([
         SchemaProto = oSchema.prototype;
 
     
-    SchemaProto.init = function() {
+    SchemaProto.onInit = function() {
 
         // Init Database model
         this.m_oDatabaseModel = null;
@@ -33,7 +33,7 @@ sap.ui.define([
 
         this.m_oDatabaseModel = new JSONModel(oData);
         this.getOwnerComponent().setModel(this.m_oDatabaseModel, "Database");
-        this.getOwnerComponent().notifyPageLoaded();
+        this.getOwnerComponent().notifyDatabaseReady();
 
         this.fireUpdate();
     };

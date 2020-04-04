@@ -1,0 +1,57 @@
+<mvc:View
+	controllerName="com.budgetBook.controller.welcome"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:kM="kellojo.m"
+    height="100%"
+    width="100%"
+    id="idAppView">
+
+
+        <NavContainer id="idNavContainer">
+
+            <Page id="idWelcomePage" showHeader="false">
+                <content>
+
+                    <kM:Wrapper class="budgetBookWelcome-contentWrapper">
+                        <Text text="Welcome to BudgetP!" class="budgetBookWelcome-title"/>
+                        <Text text="BudgetP enables you to easily track your monthly income and spendings." class="kellojoM-lineSpacing"/>
+                        <Text text="Staying on top of your financial situation is it's mission." class="kellojoM-lineSpacing"/>
+
+                        <Link text="Get Started" class="budgetBookWelcome-getStarted" press="onGetStartedPress"/>
+                    </kM:Wrapper>
+                    
+                </content>
+            </Page>
+
+            <Page id="idGetStartedPage" showHeader="false">
+                <content>
+
+                    <kM:Wrapper class="budgetBookWelcome-contentWrapper">
+                        <Text text="How would you like to continue?" class="budgetBookWelcome-title"/>
+
+                        <kM:Wrapper class="budgetBookWelcome-decisionContainer">
+                            <kM:Wrapper class="budgetBookWelcome-decision">
+                                <core:Icon src="sap-icon://download" class="budgetBookWelcome-decisionHelperIcon"/>
+                                <Text text="I want to import a BudgetP save file." class="kellojoM-lineSpacing"/>
+                                <Button text="Import a file" type="Transparent" class="budgetBookWelcome-decisionAction"/>
+                            </kM:Wrapper>
+
+                            <kM:Wrapper class="budgetBookWelcome-divider"/>
+
+                            <kM:Wrapper class="budgetBookWelcome-decision">
+                                <core:Icon src="sap-icon://paper-plane" class="budgetBookWelcome-decisionHelperIcon"/>
+                                <Text text="I do not want to import a save file." class="kellojoM-lineSpacing"/>
+                                <Button text="Let's start fresh" type="Transparent" class="budgetBookWelcome-decisionAction"/>
+                            </kM:Wrapper>
+                        </kM:Wrapper>
+                    </kM:Wrapper>
+                    
+                </content>
+            </Page>
+
+        </NavContainer>
+
+
+</mvc:View>

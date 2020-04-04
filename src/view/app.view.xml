@@ -8,7 +8,7 @@
     width="100%"
     id="idAppView">
 
-    <Page showHeader="true" class="budgetBookApp-Page">
+    <Page showHeader="{AppHeader>/isAppHeaderVisible}" class="budgetBookApp-Page">
         <customHeader>
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
