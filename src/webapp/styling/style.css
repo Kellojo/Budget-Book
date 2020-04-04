@@ -81,6 +81,10 @@
 .sapMSFF::before {
   border: none !important;
 }
+.sapMMessageToast {
+  background: linear-gradient(to left, #005575, #514a9d) !important;
+  color: white !important;
+}
 .sapUiMnuItm[data-iscurrentmonth="true"] {
   color: #c0399f !important;
 }
