@@ -23,7 +23,7 @@
                 </contentLeft>
 
                 <contentRight>
-                    <core:Icon tooltip="{i18n>appHeaderExportTooltip}" src="sap-icon://upload" class="budgetBookApp-Page-Button"/>
+                    <core:Icon tooltip="{i18n>appHeaderExportTooltip}" src="sap-icon://upload" press="onExportPress" class="budgetBookApp-Page-Button"/>
                     <core:Icon src="sap-icon://sys-help" class="budgetBookApp-Page-Button"/>
                 </contentRight>
             </Bar>

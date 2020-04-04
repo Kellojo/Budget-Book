@@ -1,6 +1,7 @@
 sap.ui.define([
-    "com/budgetBook/controller/ControllerBase"
-], function (Controller) {
+    "com/budgetBook/controller/ControllerBase",
+    "sap/m/MessageToast",
+], function (Controller, MessageToast) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.app", {}),
@@ -13,6 +14,15 @@ sap.ui.define([
         var oComponent = this.getOwnerComponent();
         oComponent.m_oErrorMessageContainer = this.m_oErrorMessageContainer;
     };
+
+
+    ControllerProto.onExportPress = function() {
+        this.getOwnerComponent().getDatabase().exportData({
+            success: () => {MessageToast.show(
+                this.getOwnerComponent().getResourceBundle().getText("exportDataSuccess")
+            )}
+        });
+    }
 
     return Controller;
 });

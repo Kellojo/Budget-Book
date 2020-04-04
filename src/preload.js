@@ -14,6 +14,14 @@ contextBridge.exposeInMainWorld(
             ipcRenderer.once("loadDataComplete", fnCallback);
             ipcRenderer.send("loadData");
         },
+        exportData: (oParam) => {
+            ipcRenderer.once("exportDataComplete", oParam.success);
+            if (oParam.error) {
+                ipcRenderer.once("exportDataError", oParam.error);
+            }
+            
+            ipcRenderer.send("exportData", oParam);
+        },
         loadAppInfo: (fnCallback) => {
             ipcRenderer.once("loadAppInfoComplete", fnCallback);
             ipcRenderer.send("loadAppInfo");

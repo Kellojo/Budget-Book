@@ -4,6 +4,7 @@ const path = require('path')
 const Store = require("electron-store")
 const windowStateKeeper = require('electron-window-state')
 const { autoUpdater } = require("electron-updater")
+const IOManager = require("./electron/IoManager")
 
 
 function createWindow () {
@@ -38,8 +39,6 @@ function createWindow () {
   mainWindow.webContents.openDevTools()
 }
 
-console.log(app.getVersion());
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -62,6 +61,7 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 
 const store = new Store();
+const ioManager = new IOManager();
 ipcMain.on("saveData", (event, oData) => {
     console.log("Writing " + oData);
     store.set("Database", oData);
@@ -74,11 +74,21 @@ ipcMain.on("loadData", (event) => {
 
     event.reply("loadDataComplete", oData);
 });
+ipcMain.on("exportData", (event, oParam) => {
+    ioManager.saveJSONToDisk({
+        title: oParam.title,
+        fileName: oParam.fileName,
+        saveLabel: oParam.saveLabel,
+        success: () => { event.reply("exportDataComplete") },
+        error: () => { event.reply("exportDataError") },
+        fileContent: oParam.data
+    });
+});
 ipcMain.on("loadAppInfo", (event) => {
     
     var oAppInfo = {
         version: app.getVersion(),
-        isFirstStartUp: true//!!store.get("isFirstStartUp", true)
+        isFirstStartUp: false//!!store.get("isFirstStartUp", true)
     };
 
     store.set("isFirstStartUp", false);

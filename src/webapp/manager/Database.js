@@ -38,10 +38,29 @@ sap.ui.define([
         this.fireUpdate();
     };
 
-
     SchemaProto.saveData = function() {
         api.saveData(this.m_oDatabaseModel.getData());
     };
+
+    /**
+     * Exports the data to an external file
+     * @public
+     */
+    SchemaProto.exportData = function(oParam) {
+        Log.info("Exporting Database...");
+
+        var oResourceBundle = this.getOwnerComponent().getResourceBundle();
+        api.exportData({
+            title: oResourceBundle.getText("exportDialogTitle"),
+            fileName: "BudgetP Save File.json",
+            saveLabel: oResourceBundle.getText("exportDialogSaveLabel"),
+            success: oParam.success,
+            error: oParam.error,
+            data: this.getData()
+        });
+    }
+
+
 
 
     SchemaProto.getData = function() {
