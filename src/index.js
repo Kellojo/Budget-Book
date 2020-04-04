@@ -32,7 +32,7 @@ function createWindow () {
   autoUpdater.checkForUpdatesAndNotify();
 
   // and load the index.html of the app.
-  mainWindow.loadFile('src/index.html');
+  mainWindow.loadFile('src/webapp/index.html');
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
