@@ -147,9 +147,11 @@ sap.ui.define([
 
             // Remove the loading screen
             var oLoadingScreenElement = jQuery("#idLoadingScreen");
-            oLoadingScreenElement.fadeOut(300, () => {
-                oLoadingScreenElement.remove();
-            });
+            setTimeout(() => {
+                oLoadingScreenElement.fadeOut(300, () => {
+                    oLoadingScreenElement.remove();
+                });
+            }, 1000);
         }
     }
 

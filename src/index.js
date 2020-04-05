@@ -98,7 +98,7 @@ ipcMain.on("loadAppInfo", (event) => {
     
     var oAppInfo = {
         version: app.getVersion(),
-        isFirstStartUp: true//!!store.get("isFirstStartUp", true)
+        isFirstStartUp: !!store.get("isFirstStartUp", true)
     };
 
     store.set("isFirstStartUp", false);
