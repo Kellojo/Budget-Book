@@ -1,0 +1,76 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 128,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "TaskCircle.less",
+			"size": 218,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "VerticalProgressIndicator.less",
+			"size": 361,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 116,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 65496,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 957,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 989,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 989,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 957,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 1194,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 349,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "shared.less",
+			"size": 53,
+			"designtime": true,
+			"theme": "sap_hcb"
+		}
+	]
+}

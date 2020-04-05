@@ -1,0 +1,64 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 137,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 822,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 93104,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 3466,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 278,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 3168,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 3162,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.css",
+			"size": 3460,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.less",
+			"size": 579,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.source.less",
+			"size": 359,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "shared.less",
+			"size": 0,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		}
+	]
+}

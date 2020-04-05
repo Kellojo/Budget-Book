@@ -1,0 +1,200 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 64,
+			"theme": "base"
+		},
+		{
+			"name": "Calendar.less",
+			"size": 21649,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CalendarLegend.less",
+			"size": 3011,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CalendarRow.less",
+			"size": 9647,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ColorPicker.less",
+			"size": 20674,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ContentSwitcher.less",
+			"size": 4682,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Currency.less",
+			"size": 959,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FileUploader.less",
+			"size": 5422,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Menu.less",
+			"size": 11865,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ShellHeader.less",
+			"size": 14691,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ShellLayout.less",
+			"size": 3979,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ShellOverlay.less",
+			"size": 9353,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SplitContainer.less",
+			"size": 1945,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 5567,
+			"theme": "base"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 82736,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/Alphaslider_BG.png",
+			"size": 81,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/ColorBar.png",
+			"size": 528,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/GradientBox.png",
+			"size": 160482,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/PickingCursor-Default.png",
+			"size": 1113,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/Swatch_BG.png",
+			"size": 876,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/Unified_Swatch_BG.png",
+			"size": 128,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/create.txt",
+			"size": 0,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/Alphaslider_BG.png",
+			"size": 2936,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/ColorBar.png",
+			"size": 559,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/GradientBox.png",
+			"size": 56106,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/PickingCursor-Default.png",
+			"size": 483,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/Swatch_BG.png",
+			"size": 954,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/Unified_Swatch_BG.png",
+			"size": 1064,
+			"theme": "base"
+		},
+		{
+			"name": "img/create.txt",
+			"size": 0,
+			"theme": "base"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 88237,
+			"theme": "base"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2289,
+			"theme": "base"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 100087,
+			"theme": "base"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 100006,
+			"theme": "base"
+		},
+		{
+			"name": "library.css",
+			"size": 88156,
+			"theme": "base"
+		},
+		{
+			"name": "library.less",
+			"size": 109085,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library.source.less",
+			"size": 609,
+			"designtime": true,
+			"theme": "base"
+		}
+	]
+}

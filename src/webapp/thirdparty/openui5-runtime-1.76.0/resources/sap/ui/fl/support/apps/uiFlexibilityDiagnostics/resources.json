@@ -1,0 +1,44 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"size": 376,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"size": 328
+		},
+		{
+			"name": "controller/Root-dbg.controller.js",
+			"size": 7091,
+			"isDebug": true
+		},
+		{
+			"name": "controller/Root.controller.js",
+			"size": 3869
+		},
+		{
+			"name": "helper/Extractor-dbg.js",
+			"size": 6161,
+			"isDebug": true
+		},
+		{
+			"name": "helper/Extractor.js",
+			"size": 3268
+		},
+		{
+			"name": "index.html",
+			"size": 731
+		},
+		{
+			"name": "manifest.json",
+			"size": 845
+		},
+		{
+			"name": "view/Root.view.xml",
+			"size": 2681
+		}
+	]
+}

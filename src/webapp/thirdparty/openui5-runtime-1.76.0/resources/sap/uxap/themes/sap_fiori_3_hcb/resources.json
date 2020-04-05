@@ -1,0 +1,112 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 94,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "AnchorBar.less",
+			"size": 8227,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "BreadCrumbs.less",
+			"size": 617,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "HierarchicalSelect.less",
+			"size": 3691,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "IconTabBar.less",
+			"size": 388,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "ObjectPageHeader.less",
+			"size": 1435,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "ObjectPageHeaderContent.less",
+			"size": 1236,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "ObjectPageLayout.less",
+			"size": 1352,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "ObjectPageSection.less",
+			"size": 1395,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "ObjectPageSubSection.less",
+			"size": 614,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 161,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 75806,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 70740,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 73000,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 72992,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 70732,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 20112,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 622,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		}
+	]
+}

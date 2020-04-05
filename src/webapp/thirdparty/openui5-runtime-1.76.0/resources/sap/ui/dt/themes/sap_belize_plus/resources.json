@@ -1,0 +1,58 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 611,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 1152,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 77739,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 4603,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 411,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 4276,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 4270,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library.css",
+			"size": 4597,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library.less",
+			"size": 531,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library.source.less",
+			"size": 340,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		}
+	]
+}

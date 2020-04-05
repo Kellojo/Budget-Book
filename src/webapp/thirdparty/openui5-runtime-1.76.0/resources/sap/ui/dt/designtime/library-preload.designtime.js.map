@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ui/dt/designtime/library-preload.designtime.js",
+"sourceroot":".",
+"sources":["notAdaptable-dbg.designtime.js","notAdaptableTree-dbg.designtime.js","notAdaptableVisibility-dbg.designtime.js"],
+"names":["oManagedObject","sNotAdaptable","oReturnDesignTime","oAggregationDT","oAggregations","oDesignTime","sAggregation"],
+"mappings":";;;;;;AAOA,gBAAa,gDAAC,GAAI,UAAW,CAC5B,aAEA,MAAO,CACN,QAAS,eACV,EACD;ACNA,gBAAa,oDAAC,GAAI,UAAW,CAC5B,aAEA,OAAO,SAASA,CAAc,CAAE,CAC/B,IAAIC,CAAc,CAAE,gBACpB,IAAIC,CAAkB,CAAE,CACvB,aAAc,GACd,QAASD,CACV,EACA,IAAIE,CAAe,CAAE,CACpB,kBAAmB,UAAW,CAC7B,MAAO,CACN,QAASF,CACV,EACD,EACA,QAASA,CACV,EACA,IAAIG,CAAc,CAAEJ,CAAc,oCAElC,YAAYI,CAAa,kBAAkBC,CAAW,CAAEC,CAAY,CAAE,CACrED,CAAW,cAAcC,CAAY,CAAE,CAAEH,CAAc,CACvD,OAAOE,CAAW,CACnB,EAAGH,CAAiB,EAEpB,OAAOA,CAAiB,CACzB,EACD;AC1BA,gBAAa,0DAAC,GAAI,UAAW,CAC5B,aAEA,MAAO,CACN,QAAS,CACR,OAAQ,KACR,OAAQ,IACT,CACD,EACD;",
+"x_com_sap_openui5_sections":[65,343,343,708,708,855]
+}

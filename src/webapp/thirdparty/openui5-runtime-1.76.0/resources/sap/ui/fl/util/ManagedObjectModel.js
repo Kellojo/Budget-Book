@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/core/Element","sap/ui/model/base/ManagedObjectModel"],function(E,M){"use strict";function c(n){return n.charAt(0).toUpperCase()+n.slice(1);}var a=E.extend("sap.ui.fl.util.ManagedObjectModel",{metadata:{library:"sap.ui.fl",properties:{data:{type:"object"},name:{type:"string",defaultValue:"$sap.ui.fl.ManagedObjectModel"}},associations:{object:{type:"sap.ui.core.Element"}}},constructor:function(){E.apply(this,arguments);this._oManagedObjectModel=new M(sap.ui.getCore().byId(this.getObject()),this.getData());["data","name","object"].forEach(function(n){this["set"+c(n)]=function(){throw new Error("sap.ui.fl.util.ManagedObjectModel: Can't change the value of `"+n+"` after the object is initialized. Please recreate the object with correct values in the constructor.");};},this);}});a.prototype.setParent=function(n){var o=this.getParent();if(o){o.setModel(null,this.getName());}if(n){n.setModel(this._oManagedObjectModel,this.getName());}E.prototype.setParent.apply(this,arguments);};a.prototype.exit=function(){this._oManagedObjectModel.destroy();};return a;},true);

@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(function(){"use strict";var O={apiVersion:2};O.render=function(r,c){var t,T,a=sap.ui.getCore().getConfiguration().getAccessibility(),l=c.getAggregation("ariaLabelledBy");if(!c.getVisible()||!c._getInternalVisible()){return;}t=c._getTitle();T=c._isTitleVisible();r.openStart("section",c).class("sapUxAPObjectPageSection");if(!T){r.class("sapUxAPObjectPageSectionNoTitle");}r.attr("role","region");if(a&&l){r.attr("aria-labelledby",l.getId());}r.openEnd();r.openStart("div",c.getId()+"-header").attr("role","heading").attr("aria-level",c._getARIALevel()).class("sapUxAPObjectPageSectionHeader").class(T?"":"sapUxAPObjectPageSectionHeaderHidden").openEnd();r.openStart("div",c.getId()+"-title").class("sapUxAPObjectPageSectionTitle");if(c.getTitleUppercase()){r.class("sapUxAPObjectPageSectionTitleUppercase");}r.openEnd();r.text(t);r.close("div");if(T){r.renderControl(c._getShowHideAllButton());r.renderControl(c._getShowHideButton());}r.close("div");r.openStart("div").class("sapUxAPObjectPageSectionContainer");if(c._isHidden){r.style("display","none");}r.openEnd();c.getSubSections().forEach(r.renderControl,r);r.close("div");r.close("section");};return O;},true);

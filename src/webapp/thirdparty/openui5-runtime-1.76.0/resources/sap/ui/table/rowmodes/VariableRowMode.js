@@ -1,0 +1,6 @@
+/*
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["../library","./RowMode"],function(l,R){"use strict";var V=R.extend("sap.ui.table.rowmodes.VariableRowMode",{metadata:{library:"sap.ui.table",properties:{tableHeight:{type:"sap.ui.core.CSSSize",defaultValue:"100%",group:"Dimension"}}},constructor:function(i){Object.defineProperty(this,"bLegacy",{value:typeof i==="boolean"?i:false});if(this.bLegacy){R.call(this);}else{R.apply(this,arguments);}}});V.prototype.getComputedRowCounts=function(){var t=this.getTotalRowCountOfTable();var r=this.getHideEmptyRows()?Math.min(this.getRowCount(),t):this.getRowCount();return{count:r,fixedTopCount:this.getFixedTopRowCount(),fixedBottomCount:this.getFixedBottomRowCount()};};V.prototype.getComputedRowCounts=function(){var t=this.getTotalRowCountOfTable();var r=this.getHideEmptyRows()?Math.min(this.getRowCount(),t):this.getRowCount();return{count:r,fixedTopCount:this.getFixedTopRowCount(),fixedBottomCount:this.getFixedBottomRowCount()};};V.prototype.getTableHeight=function(){return{height:this.getTableHeight()};};V.prototype.getRowContainerHeight=function(){return{height:this.getComputedRowCounts().count*this.getBaseRowHeightOfTable()};};return V;});

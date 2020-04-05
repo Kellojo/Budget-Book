@@ -1,0 +1,13 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ *//*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */.sapCEd[data-sap-ui-syntaxhints='false'] .ace_gutter-cell{background-image:none !important}.sapCEd[data-sap-ui-syntaxhints='false'] .ace_tooltip{display:none !important}.ace_text-input{position:absolute !important}.sapContrastPlus.sapCEd[data-sap-ui-syntaxhints='false'] .ace_gutter-cell,.sapContrastPlus .sapCEd[data-sap-ui-syntaxhints='false'] .ace_gutter-cell{background-image:none !important;}
+
+
+/* Inline theming parameters */
+#sap-ui-theme-sap\.ui\.codeeditor{background-image:url('data:text/plain;utf-8,%7B%22default%22%3A%7B%7D%2C%22scopes%22%3A%7B%22sapContrastPlus%22%3A%7B%7D%7D%7D')}

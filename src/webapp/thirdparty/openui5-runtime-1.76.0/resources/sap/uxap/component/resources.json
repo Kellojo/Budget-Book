@@ -1,0 +1,36 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"size": 3836,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"size": 1768
+		},
+		{
+			"name": "ObjectPageComponentContainer-dbg.js",
+			"size": 2686,
+			"isDebug": true
+		},
+		{
+			"name": "ObjectPageComponentContainer.js",
+			"size": 1286
+		},
+		{
+			"name": "ObjectPageLayoutUXDrivenFactory-dbg.controller.js",
+			"size": 4233,
+			"isDebug": true
+		},
+		{
+			"name": "ObjectPageLayoutUXDrivenFactory.controller.js",
+			"size": 1696
+		},
+		{
+			"name": "ObjectPageLayoutUXDrivenFactory.view.xml",
+			"size": 2714
+		}
+	]
+}

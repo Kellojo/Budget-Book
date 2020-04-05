@@ -1,0 +1,159 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theme",
+			"size": 661,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": ".theming",
+			"size": 94,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "BrowserScrollbar.less",
+			"size": 1171,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "LocalBusyIndicator.less",
+			"size": 567,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "Shadow.less",
+			"size": 201,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "base.less",
+			"size": 54868,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 141718,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 155743,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold-full.woff",
+			"size": 67468,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold-full.woff2",
+			"size": 51012,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold.woff",
+			"size": 37584,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold.woff2",
+			"size": 26732,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light-full.woff",
+			"size": 75168,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light-full.woff2",
+			"size": 66220,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light.woff",
+			"size": 36172,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light.woff2",
+			"size": 31756,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular-full.woff",
+			"size": 70572,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular-full.woff2",
+			"size": 53376,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular.woff",
+			"size": 38944,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular.woff2",
+			"size": 27844,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "global.less",
+			"size": 47932,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 90493,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 51384,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 22704,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 22691,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 90479,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 5432,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 350,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "shared.less",
+			"size": 2814,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		}
+	]
+}

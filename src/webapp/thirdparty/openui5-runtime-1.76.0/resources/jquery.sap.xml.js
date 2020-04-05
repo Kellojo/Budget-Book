@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(['jquery.sap.global','sap/ui/util/XMLHelper'],function(q,X){"use strict";q.sap.parseXML=X.parse;q.sap.serializeXML=function(x){var s="";if(window.ActiveXObject){s=x.xml;if(s){return s;}}if(window.XMLSerializer){return X.serialize(x);}return s;};q.sap.isEqualNode=function(n,N){if(n===N){return true;}if(!n||!N){return false;}if(n.isEqualNode){return n.isEqualNode(N);}if(n.nodeType!=N.nodeType){return false;}if(n.nodeValue!=N.nodeValue){return false;}if(n.baseName!=N.baseName){return false;}if(n.nodeName!=N.nodeName){return false;}if(n.nameSpaceURI!=N.nameSpaceURI){return false;}if(n.prefix!=N.prefix){return false;}if(n.nodeType!=1){return true;}if(n.attributes.length!=N.attributes.length){return false;}for(var i=0;i<n.attributes.length;i++){if(!q.sap.isEqualNode(n.attributes[i],N.attributes[i])){return false;}}if(n.childNodes.length!=N.childNodes.length){return false;}for(var i=0;i<n.childNodes.length;i++){if(!q.sap.isEqualNode(n.childNodes[i],N.childNodes[i])){return false;}}return true;};q.sap.getParseError=X.getParseError;return q;});

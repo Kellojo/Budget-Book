@@ -1,0 +1,353 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".library",
+			"size": 1254
+		},
+		{
+			"name": ".theming",
+			"size": 78
+		},
+		{
+			"name": "QuickViewUtils-dbg.js",
+			"module": "sap/ui/suite/QuickViewUtils.js",
+			"size": 6288,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/Element.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "QuickViewUtils.js",
+			"module": "sap/ui/suite/QuickViewUtils.js",
+			"size": 3889,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/Element.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "TaskCircle-dbg.js",
+			"module": "sap/ui/suite/TaskCircle.js",
+			"size": 3342,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/EnabledPropagator.js",
+				"sap/ui/suite/TaskCircleRenderer.js",
+				"sap/ui/suite/library.js"
+			]
+		},
+		{
+			"name": "TaskCircle.control",
+			"size": 2340,
+			"designtime": true
+		},
+		{
+			"name": "TaskCircle.js",
+			"module": "sap/ui/suite/TaskCircle.js",
+			"size": 1065,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/EnabledPropagator.js",
+				"sap/ui/suite/TaskCircleRenderer.js",
+				"sap/ui/suite/library.js"
+			]
+		},
+		{
+			"name": "TaskCircleColor.type",
+			"size": 685,
+			"designtime": true
+		},
+		{
+			"name": "TaskCircleRenderer-dbg.js",
+			"module": "sap/ui/suite/TaskCircleRenderer.js",
+			"size": 3556,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/Core.js",
+				"sap/ui/suite/library.js"
+			]
+		},
+		{
+			"name": "TaskCircleRenderer.js",
+			"module": "sap/ui/suite/TaskCircleRenderer.js",
+			"size": 1665,
+			"required": [
+				"sap/ui/core/Core.js",
+				"sap/ui/suite/library.js"
+			]
+		},
+		{
+			"name": "VerticalProgressIndicator-dbg.js",
+			"module": "sap/ui/suite/VerticalProgressIndicator.js",
+			"size": 4494,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/EnabledPropagator.js",
+				"sap/ui/suite/VerticalProgressIndicatorRenderer.js",
+				"sap/ui/suite/library.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "VerticalProgressIndicator.control",
+			"size": 1809,
+			"designtime": true
+		},
+		{
+			"name": "VerticalProgressIndicator.js",
+			"module": "sap/ui/suite/VerticalProgressIndicator.js",
+			"size": 1350,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/EnabledPropagator.js",
+				"sap/ui/suite/VerticalProgressIndicatorRenderer.js",
+				"sap/ui/suite/library.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "VerticalProgressIndicatorRenderer-dbg.js",
+			"module": "sap/ui/suite/VerticalProgressIndicatorRenderer.js",
+			"size": 2488,
+			"isDebug": true
+		},
+		{
+			"name": "VerticalProgressIndicatorRenderer.js",
+			"module": "sap/ui/suite/VerticalProgressIndicatorRenderer.js",
+			"size": 1142
+		},
+		{
+			"name": "library-dbg.js",
+			"module": "sap/ui/suite/library.js",
+			"size": 1437,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/Core.js",
+				"sap/ui/core/library.js"
+			]
+		},
+		{
+			"name": "library-h2-preload.js",
+			"module": "sap/ui/suite/library-h2-preload.js",
+			"size": 2144,
+			"merged": true,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/Core.js",
+				"sap/ui/core/Element.js",
+				"sap/ui/core/EnabledPropagator.js",
+				"sap/ui/core/library.js",
+				"sap/ui/thirdparty/jquery.js"
+			],
+			"included": [
+				"sap/ui/suite/library.js",
+				"sap/ui/suite/manifest.json",
+				"sap/ui/suite/QuickViewUtils.js",
+				"sap/ui/suite/TaskCircle.js",
+				"sap/ui/suite/TaskCircleRenderer.js",
+				"sap/ui/suite/VerticalProgressIndicator.js",
+				"sap/ui/suite/VerticalProgressIndicatorRenderer.js"
+			]
+		},
+		{
+			"name": "library-h2-preload.js.map",
+			"size": 542,
+			"isDebug": true
+		},
+		{
+			"name": "library-preload.js",
+			"module": "sap/ui/suite/library-preload.js",
+			"size": 10022,
+			"merged": true,
+			"required": [
+				"sap/ui/core/Control.js",
+				"sap/ui/core/Core.js",
+				"sap/ui/core/Element.js",
+				"sap/ui/core/EnabledPropagator.js",
+				"sap/ui/core/library.js",
+				"sap/ui/thirdparty/jquery.js"
+			],
+			"included": [
+				"sap/ui/suite/QuickViewUtils.js",
+				"sap/ui/suite/TaskCircle.js",
+				"sap/ui/suite/TaskCircleRenderer.js",
+				"sap/ui/suite/VerticalProgressIndicator.js",
+				"sap/ui/suite/VerticalProgressIndicatorRenderer.js",
+				"sap/ui/suite/library.js",
+				"sap/ui/suite/manifest.json"
+			]
+		},
+		{
+			"name": "library-preload.js.map",
+			"size": 10170,
+			"isDebug": true
+		},
+		{
+			"name": "library.js",
+			"module": "sap/ui/suite/library.js",
+			"size": 578,
+			"required": [
+				"sap/ui/core/Core.js",
+				"sap/ui/core/library.js"
+			]
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ui/suite/manifest.json",
+			"size": 972
+		},
+		{
+			"name": "resources.json",
+			"size": 2520
+		},
+		{
+			"name": "themes/base/.theming",
+			"size": 64,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/TaskCircle.less",
+			"size": 355,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/VerticalProgressIndicator.less",
+			"size": 457,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/css-variables.css",
+			"size": 116,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/css-variables.source.less",
+			"size": 74237,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/library-RTL.css",
+			"size": 634,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/library-parameters.json",
+			"size": 2,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/library-skeleton-RTL.css",
+			"size": 604,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/library-skeleton.css",
+			"size": 604,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/library.css",
+			"size": 634,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/library.less",
+			"size": 1546,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/library.source.less",
+			"size": 367,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "themes/base/shared.less",
+			"size": 65,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "themes/sap_hcb/.theming",
+			"size": 128,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/TaskCircle.less",
+			"size": 218,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/VerticalProgressIndicator.less",
+			"size": 361,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/css-variables.css",
+			"size": 116,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/css-variables.source.less",
+			"size": 65496,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/library-RTL.css",
+			"size": 957,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/library-parameters.json",
+			"size": 2,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/library-skeleton-RTL.css",
+			"size": 989,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/library-skeleton.css",
+			"size": 989,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/library.css",
+			"size": 957,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/library.less",
+			"size": 1194,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/library.source.less",
+			"size": 349,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "themes/sap_hcb/shared.less",
+			"size": 53,
+			"designtime": true,
+			"theme": "sap_hcb"
+		}
+	]
+}

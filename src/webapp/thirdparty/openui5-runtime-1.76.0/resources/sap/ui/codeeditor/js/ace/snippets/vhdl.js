@@ -1,0 +1,1 @@
+ace.define("ace/snippets/vhdl",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="vhdl";});(function(){ace.require(["ace/snippets/vhdl"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

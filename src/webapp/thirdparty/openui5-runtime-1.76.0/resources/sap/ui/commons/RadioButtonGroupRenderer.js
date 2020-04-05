@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/core/library"],function(a){"use strict";var V=a.ValueState;var R={};R.render=function(r,o){if(!o.aRBs){return;}var C=o.getColumns();var e=o.getEnabled();if(e){var I=o.getItems();e=false;for(var i=0;i<I.length;i++){if(I[i].getEnabled()){e=true;break;}}}r.write("<div");r.writeControlData(o);r.addClass("sapUiRbG");if(C>1){if(C==o.aRBs.length){r.addClass("sapUiRbG1Row");}else{r.addClass("sapUiRbGTab");if(o.getWidth()&&o.getWidth()!=''){r.addClass("sapUiRbGTabFlex");}}}if(o.getWidth()&&o.getWidth()!=''){r.addStyle("width",o.getWidth());}if(o.getTooltip_AsString()){r.writeAttributeEscaped("title",o.getTooltip_AsString());}if(e){r.writeAttribute('tabindex','0');}else{r.writeAttribute('tabindex','-1');}r.writeAccessibilityState(o,{role:"radiogroup",invalid:o.getValueState()==V.Error,disabled:!o.getEditable()});r.writeClasses();r.writeStyles();r.write(">");for(var c=0;c<C;c++){if(C>1&&C!=o.aRBs.length){r.write("<div");r.addClass("sapUiRbGCol");r.writeClasses();r.write(">");}for(var i=c;i<o.aRBs.length;i=i+C){r.renderControl(o.aRBs[i]);}if(C>1&&C!=o.aRBs.length){r.write("</div>");}}if(C>1&&C!=o.aRBs.length){r.write('<div class="sapUiRbGDummy"> </DIV>');}r.write("</div>");};return R;},true);

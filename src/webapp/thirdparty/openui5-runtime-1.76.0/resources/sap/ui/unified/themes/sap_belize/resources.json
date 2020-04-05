@@ -1,0 +1,122 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 650,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "Calendar.less",
+			"size": 15585,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "CalendarLegend.less",
+			"size": 5071,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "CalendarRow.less",
+			"size": 11216,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "ColorPicker.less",
+			"size": 594,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "ColorPicker/Alphaslider_BG.png",
+			"size": 2936,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "ColorPicker/Swatch_BG.png",
+			"size": 954,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "FileUploader.less",
+			"size": 1715,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "Menu.less",
+			"size": 482,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "ShellHeader.less",
+			"size": 880,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "ShellLayout.less",
+			"size": 1338,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "ShellOverlay.less",
+			"size": 663,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 31485,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 103530,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 247252,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 13851,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 256545,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 256335,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library.css",
+			"size": 247042,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library.less",
+			"size": 38603,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library.source.less",
+			"size": 572,
+			"designtime": true,
+			"theme": "sap_belize"
+		}
+	]
+}

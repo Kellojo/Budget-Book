@@ -1,0 +1,106 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 90,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "Card.less",
+			"size": 316,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "DynamicPage.less",
+			"size": 3327,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "DynamicPageHeader.less",
+			"size": 605,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "DynamicPageTitle.less",
+			"size": 2174,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "FlexibleColumnLayout.less",
+			"size": 488,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "GridListItem.less",
+			"size": 353,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ProductSwitchItem.less",
+			"size": 0,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ShellBar.less",
+			"size": 8483,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 2035,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 79552,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 73182,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 772,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 74662,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 74667,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.css",
+			"size": 73187,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.less",
+			"size": 16343,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.source.less",
+			"size": 507,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		}
+	]
+}

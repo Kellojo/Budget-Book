@@ -1,0 +1,1 @@
+ace.define("ace/snippets/lucene",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="lucene";});(function(){ace.require(["ace/snippets/lucene"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

@@ -1,0 +1,106 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 94,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "Cell.less",
+			"size": 206,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "DragDrop.less",
+			"size": 246,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "Grouping.less",
+			"size": 211,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "Row.less",
+			"size": 225,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "RowHighlight.less",
+			"size": 225,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "RowSelection.less",
+			"size": 235,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "Scrolling.less",
+			"size": 360,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "Table.less",
+			"size": 598,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 16611,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 95294,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 112291,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 6786,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 115021,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 115128,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library.css",
+			"size": 112396,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library.less",
+			"size": 3357,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library.source.less",
+			"size": 615,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		}
+	]
+}

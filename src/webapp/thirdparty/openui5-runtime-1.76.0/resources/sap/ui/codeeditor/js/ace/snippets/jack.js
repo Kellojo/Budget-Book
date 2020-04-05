@@ -1,0 +1,1 @@
+ace.define("ace/snippets/jack",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="jack";});(function(){ace.require(["ace/snippets/jack"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

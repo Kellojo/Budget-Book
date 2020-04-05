@@ -1,0 +1,99 @@
+/* NOTE: This file was generated as an optimized version of "library.source.less" for the Theme Designer. */
+
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+
+@import "../base/library.less";
+@import "../../../../../sap/ui/core/themes/sap_hcb/global.less";
+
+/* shared local library less parameters */
+@_sap_ui_table_FocusOutlineWidth: 2px;
+
+/* START "Table.less" */
+/* =================================== */
+/* CSS for control sap.ui.table/Table  */
+/* High Contrast Black theme           */
+/* =================================== */
+
+@_sap_ui_table_Table_FocusOutlineOffset: -3px;
+@_sap_ui_table_Table_TableHeaderBorderWidth: 3px;
+
+._sap_ui_table_Table_Header() {
+	border-bottom: 3px solid @sapUiListHeaderBorderColor;
+}
+
+._sap_ui_table_Table_Extension() {
+	border-bottom: @_sap_ui_table_BaseBorderWidth solid @sapUiListHeaderBorderColor;
+	padding: 0.125rem;
+}
+
+._sap_ui_table_Table_Table() {
+	border: @_sap_ui_table_BaseBorderWidth solid @sapUiListBorderColor;
+}
+/* END "Table.less" */
+
+/* START "Row.less" */
+/* ================================= */
+/* CSS for control sap.ui.table/Row  */
+/* High Contrast Black theme         */
+/* ================================= */
+
+@_sap_ui_table_Row_ColorHovered: @sapUiContentContrastTextColor;
+/* END "Row.less" */
+
+/* START "RowHighlight.less" */
+/* ================================== */
+/* CSS for sap.ui.table/RowHighlight  */
+/* High Contrast Black theme          */
+/* ================================== */
+
+@_sap_ui_table_RowHighlight_InformationColor: @sapUiAccent6;
+/* END "RowHighlight.less" */
+
+/* START "RowSelection.less" */
+/* ================================== */
+/* CSS for sap.ui.table/RowSelection  */
+/* High Contrast Black theme          */
+/* ================================== */
+
+@_sap_ui_table_RowSelection_CheckBoxIconColor: @sapUiContentIconColor;
+/* END "RowSelection.less" */
+
+/* START "Scrolling.less" */
+/* =============================== */
+/* CSS for sap.ui.table/Scrolling  */
+/* High Contrast Black theme       */
+/* =============================== */
+
+._sap_ui_table_Scrolling_NativeScrollbarCommon() {
+	&::-webkit-scrollbar {
+		border: none !important;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border: none !important;
+		box-shadow: none !important;
+	}
+}
+/* END "Scrolling.less" */
+
+/* START "DragDrop.less" */
+/* ============================== */
+/* CSS for sap.ui.table/DragDrop  */
+/* High Contrast Black theme      */
+/* ============================== */
+
+@_sap_ui_table_DragDrop_ColumnDnDHighlightColor: @sapUiContentHelpColor;
+/* END "DragDrop.less" */
+
+/* START "Grouping.less" */
+/* ============================== */
+/* CSS for sap.ui.table/Grouping  */
+/* High Contrast Black theme      */
+/* ============================== */
+
+@_sap_ui_table_Grouping_GroupIconBorderWidth: 3px;
+/* END "Grouping.less" */

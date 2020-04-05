@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css">
+	<link rel="icon"
+		  type="image/png"
+		  href="images/favicon.ico">
+	<title>OpenUI5</title>
+
+	<style>
+		/*******************************************************************************
+		Theme Styles
+		*******************************************************************************/
+
+		body {
+		  -webkit-font-smoothing: antialiased;
+		  box-sizing: border-box;
+		  color: black;
+		  font-family: Arial, sans-serif;
+		  font-size: 16px;
+		  line-height: 1.5;
+		  margin: 0;
+		  background: #e0f2f4; /* Old browsers */
+		  background: -moz-linear-gradient(top,  #e0f2f4 0, #dcecf0 50%, #dde4ec 100%); /* FF3.6+ */
+		  background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#e0f2f4), color-stop(50%,#dcecf0), color-stop(100%,#dde4ec)); /* Chrome,Safari4+ */
+		  background: -webkit-linear-gradient(top,  #e0f2f4 0,#dcecf0 50%,#dde4ec 100%); /* Chrome10+,Safari5.1+ */
+		  background: -o-linear-gradient(top,  #e0f2f4 0,#dcecf0 50%,#dde4ec 100%); /* Opera 11.10+ */
+		  background: -ms-linear-gradient(top,  #e0f2f4 0,#dcecf0 50%,#dde4ec 100%); /* IE10+ */
+		  background: linear-gradient(to bottom,  #e0f2f4 0,#dcecf0 50%,#dde4ec 100%); /* W3C */
+		  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0f2f4', endColorstr='#dde4ec',GradientType=0 ); /* IE6-9 */
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+		  color: #666;
+		  font-weight: normal;
+		  margin: 10px 0;
+		}
+
+		h1 {
+		  font-size: 36px;
+		  font-weight: 700;
+		  line-height: normal;
+		}
+
+		h2 {
+		  font-family: "Arial Narrow", HelveticaNeue-CondensedBold, Arial, sans-serif;
+		  font-size: 32px;
+		  font-stretch: condensed;
+		  font-weight: normal;
+		  padding-top: 16px; 
+		}
+
+		p {
+		  margin: 12px 0 16px 0;
+		}
+
+		a {
+		  text-decoration: none;
+		  color: #009de0;
+		}
+
+		a:hover {
+		  text-decoration: underline;
+		}
+
+		pre {
+		  width: 100%;
+		  color: #222;
+		  background-color: #f2f2f2;
+		  box-shadow: none;
+		  display: block;
+
+		  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+		  font-size: 14px;
+
+		  -moz-border-radius: 2px;
+		  -webkit-border-radius: 2px;
+		  border-radius: 2px;
+
+		  overflow: auto;
+		  padding: 10px;
+		  width: 100%;
+		}
+
+
+		/*******************************************************************************
+		Full-Width Styles
+		*******************************************************************************/
+
+		.outer {
+		  width: 100%;
+		}
+
+		#main_content_wrap {
+		  background: #ffffff;
+		}
+
+		.inner {
+		  position: relative;
+		  max-width: 1000px;
+		  padding: 20px 10px;
+		  margin: 0 auto;
+		}
+
+		#header_wrap .inner {
+		  padding: 20px 10px 10px 10px;
+		}
+
+		#project_title {
+		  color: #666;
+		  font-size: 46px;
+		  font-family: "Arial Narrow", HelveticaNeue-CondensedBold, Arial, sans-serif;
+		  font-stretch: condensed;
+		  font-weight: normal;
+		}
+
+		.openui5_title {
+		  font-size: 52px;
+		  font-weight: normal;
+		  color: #8f8f8f;
+		}
+
+		.openui5_title_blue {
+		  color: #009DDF;
+		}
+
+		#main_content {
+		  padding: 12px 10px 80px 10px;
+		}
+
+	</style>
+</head>
+<body>
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+	<div class="wrap_ie9">
+		<div class="inner">
+			<h1 class="openui5_title">Open<span class="openui5_title_blue">UI5</span></h1>
+			<h1 id="project_title">
+				<span class="header_headline">Code once.</span><br>
+				<span class="header_headline">Run on any device.</span>
+			</h1>
+		</div>
+	</div>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+
+	<!-- OpenUI5 Intro-->
+	<div id="main_content" class="inner">
+		<h2>What is it?</h2>
+		<p>
+			<a href="http://openui5.org">OpenUI5</a> is an open source JavaScript UI library, maintained by <a href="https://en.wikipedia.org/wiki/SAP_SE">SAP</a> and available under the Apache 2.0 license. OpenUI5 lets you build enterprise-ready web applications, responsive to all devices, running on almost any browser of your choice. It&rsquo;s based on JavaScript, using jQuery as its foundation, and follows web standards. It eases your development with a client-side HTML5 rendering library including a rich set of controls, and supports data binding to different models (JSON, XML and OData).
+		</p>
+
+		<h2>Get started!</h2>
+		<p>Extract the archive containing this index.html file to a web server. OpenUI5 is then ready to be used.<br> 
+		Try it right away!
+		Create a simple OpenUI5 Hello World app: just paste the code below into a new HTML file, make sure the URL pointing to the <code>sap-ui-core.js</code> file (line 8) matches the actual file location on your server, and open the HTML file in a browser.
+		
+		<pre>
+<span style="color:#004a43; ">&lt;!DOCTYPE html&gt;</span>  
+<span style="color:#a65700; ">&lt;</span><span style="color:#800000; font-weight:bold; ">html</span><span style="color:#a65700; ">&gt;</span>
+   <span style="color:#a65700; ">&lt;</span><span style="color:#800000; font-weight:bold; ">head</span><span style="color:#a65700; ">&gt;</span>  
+      <span style="color:#a65700; ">&lt;</span><span style="color:#800000; font-weight:bold; ">meta</span><span style="color:#274796; "> </span><span style="color:#074726; ">http-equiv</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'X-UA-Compatible'</span><span style="color:#274796; "> </span><span style="color:#074726; ">content</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'IE=edge'</span><span style="color:#274796; "> </span><span style="color:#a65700; ">/&gt;</span>  
+      <span style="color:#a65700; ">&lt;</span><span style="color:#800000; font-weight:bold; ">title</span><span style="color:#a65700; ">&gt;</span>Hello World<span style="color:#a65700; ">&lt;/</span><span style="color:#800000; font-weight:bold; ">title</span><span style="color:#a65700; ">&gt;</span>  
+  
+      <span style="color:#a65700; ">&lt;</span><span style="color:#800000; font-weight:bold; ">script</span><span style="color:#274796; "> </span><span style="color:#074726; ">id</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'sap-ui-bootstrap'</span><span style="color:#274796; "> </span>
+   <span style="color:#274796; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#074726; ">src</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'<span style='color: #ff0000'>[INSTALLATION LOCATION]</span>/resources/sap-ui-core.js'</span><span style="color:#274796; ">  </span>
+   <span style="color:#274796; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#074726; ">data</span><span style="color:#274796; ">-sap-ui-theme</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'sap_belize'</span><span style="color:#274796; ">  </span>
+   <span style="color:#274796; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#074726; ">data</span><span style="color:#274796; ">-sap-ui-libs</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'sap.m'</span><span style="color:#a65700; ">&gt;</span><span style="color:#a65700; ">&lt;/</span><span style="color:#800000; font-weight:bold; ">script</span><span style="color:#a65700; ">&gt;</span>   
+  
+      <span style="color:#a65700; ">&lt;</span><span style="color:#800000; font-weight:bold; ">script</span><span style="color:#a65700; ">&gt;</span>  
+         <span style="color:#800000; font-weight:bold; ">var</span> btn <span style="color:#808030; ">=</span> <span style="color:#800000; font-weight:bold; ">new</span> sap<span style="color:#808030; ">.</span>m<span style="color:#808030; ">.</span>Button<span style="color:#808030; ">(</span><span style="color:#800080; ">{</span>  
+            text<span style="color:#800080; ">:</span><span style="color:#800000; ">'</span><span style="color:#0000e6; ">Hello World</span><span style="color:#800000; ">'</span><span style="color:#808030; ">,</span>  
+            press<span style="color:#800080; ">:</span><span style="color:#800000; font-weight:bold; ">function</span><span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#800080; ">{</span><span style="color:#800000; font-weight:bold; ">alert</span><span style="color:#808030; ">(</span><span style="color:#800000; ">'</span><span style="color:#0000e6; ">Hello!</span><span style="color:#800000; ">'</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;}</span>  
+         <span style="color:#800080; ">}</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>  
+         btn<span style="color:#808030; ">.</span>placeAt<span style="color:#808030; ">(</span><span style="color:#800000; ">'</span><span style="color:#0000e6; ">content</span><span style="color:#800000; ">'</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>  
+      <span style="color:#a65700; ">&lt;/</span><span style="color:#800000; font-weight:bold; ">script</span><span style="color:#a65700; ">&gt;</span>
+
+   <span style="color:#a65700; ">&lt;/</span><span style="color:#800000; font-weight:bold; ">head</span><span style="color:#a65700; ">&gt;</span>
+   <span style="color:#a65700; ">&lt;</span><span style="color:#800000; font-weight:bold; ">body</span><span style="color:#274796; "> </span><span style="color:#074726; ">id</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'content'</span><span style="color:#274796; "> </span><span style="color:#074726; ">class</span><span style="color:#808030; ">=</span><span style="color:#0000e6; ">'sapUiBody'</span><span style="color:#a65700; ">&gt;</span>
+   <span style="color:#a65700; ">&lt;/</span><span style="color:#800000; font-weight:bold; ">body</span><span style="color:#a65700; ">&gt;</span>
+<span style="color:#a65700; ">&lt;/</span><span style="color:#800000; font-weight:bold; ">html</span><span style="color:#a65700; ">&gt;</span>
+</pre>
+
+		You should then see a button that opens an alert box when clicked. Did it work? Congratulations! You have just installed your own copy of OpenUI5 and successfully created a simple OpenUI5 app!
+		</p>
+
+		<h2>Dig deeper!</h2>
+		<p>Read the <a href="https://openui5.hana.ondemand.com/#docs/guide/Documentation.html">Developer Guide</a> &mdash; in particular the <a href="https://openui5.hana.ondemand.com/#docs/guide/3da5f4be63264db99f2e5b04c5e853db.html">Walkthrough</a> and the other tutorials &mdash; and refer to the
+			<a href="https://openui5.hana.ondemand.com/#docs/api/symbols/sap.ui.html">API Reference</a>. Check out <a href="http://stackoverflow.com/questions/tagged/sapui5">stackoverflow.com</a> to discuss code-related problems and questions. You can use both tags, &quot;<a href="http://stackoverflow.com/questions/tagged/sapui5">sapui5</a>&quot; and &quot;<a href="http://stackoverflow.com/questions/tagged/openui5">openui5</a>&quot;. Or join the lively discussion forum in the <a href="https://www.sap.com/community/tag.html?id=500983881501772639608291559920477">SAP Community Network</a>. You can also get an invitation to the <a href="http://slackui5invite.herokuapp.com/">unofficial OpenUI5 Slack channel</a> created by the community.
+		</p>
+
+		<h2>Contribute!</h2>
+		<p>You can help make UI5 better by <a href="https://github.com/SAP/openui5/blob/master/CONTRIBUTING.md#report-an-issue">reporting</a> or analyzing bugs or by <a href="https://github.com/SAP/openui5/blob/master/CONTRIBUTING.md#contribute-code">contributing bug fixes or new features</a>.
+		</p>
+	</div>
+
+</div>
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+	<div class="wrap_ie9">
+		<div class="inner">
+			<p class="copyright">&copy; SAP SE, made available under Apache License 2.0</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

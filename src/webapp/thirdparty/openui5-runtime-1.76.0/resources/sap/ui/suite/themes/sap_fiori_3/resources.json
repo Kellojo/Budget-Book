@@ -1,0 +1,70 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 90,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "TaskCircle.less",
+			"size": 713,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "VerticalProgressIndicator.less",
+			"size": 337,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 116,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 77276,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 1138,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 1371,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 1371,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.css",
+			"size": 1138,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.less",
+			"size": 1714,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.source.less",
+			"size": 396,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		}
+	]
+}

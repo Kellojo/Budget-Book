@@ -1,0 +1,38 @@
+{
+  "_version": "1.9.0",
+  "sap.app": {
+    "id": "sap.ui.testrecorder",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.76.0"
+    },
+    "title": "UI5 library: sap.ui.testrecorder",
+    "description": "UI5 library: sap.ui.testrecorder",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": []
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.76",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.76.0"
+        }
+      }
+    },
+    "library": {
+      "i18n": false,
+      "css": false,
+      "content": {
+        "controls": [],
+        "elements": [],
+        "interfaces": []
+      }
+    }
+  }
+}

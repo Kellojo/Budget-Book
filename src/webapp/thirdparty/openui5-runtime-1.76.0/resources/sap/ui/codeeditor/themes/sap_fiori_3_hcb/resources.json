@@ -1,0 +1,58 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 94,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 121,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 75676,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 635,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 514,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 514,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 635,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 526,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 335,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		}
+	]
+}

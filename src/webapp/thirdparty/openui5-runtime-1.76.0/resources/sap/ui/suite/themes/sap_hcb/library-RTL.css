@@ -1,0 +1,11 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ *//*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */.sapUiTaskCircle{font-weight:bold;text-align:center;border:2px solid #fff;box-shadow:0 2px 2px rgba(0,0,0,0.5);background-color:#000;color:#fff}.sapUiVerticalProgressOuterContainer{border:2px solid #fff;width:31px;height:58px;box-shadow:0 2px 3px rgba(0,0,0,0.5);background-color:#000}.sapUiVerticalProgressInnerContainer{position:relative;background-color:#000}.sapUiTaskCircle{box-shadow:0 0 0 #000}.sapUiVerticalProgressOuterContainer{box-shadow:0 0 0 #000;background-color:#000}.sapUiVerticalProgressInnerContainer{background-color:#fff}
+/* Inline theming parameters */
+#sap-ui-theme-sap\.ui\.suite{background-image:url('data:text/plain;utf-8,%7B%7D')}

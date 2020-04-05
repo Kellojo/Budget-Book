@@ -1,0 +1,1 @@
+ace.define("ace/snippets/fortran",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="fortran";});(function(){ace.require(["ace/snippets/fortran"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

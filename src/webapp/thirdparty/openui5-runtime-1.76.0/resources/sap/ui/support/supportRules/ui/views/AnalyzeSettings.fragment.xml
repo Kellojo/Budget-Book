@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<Popover
+		title="{/executionScopeTitle}"
+		contentMinWidth="250px"
+		class="sapUiContentPadding"
+		beforeOpen="onBeforePopoverOpen"
+		placement="Bottom">
+		<content>
+			<VBox>
+				<RadioButton groupName="analyzeContext"
+							 text="{/executionScopes/global/displayName}"
+							 select="onContextSelect"
+							 selected="{= ${/analyzeContext/key} === 'global'}"
+							 tooltip="{/executionScopes/global/description}">
+					<customData>
+						<core:CustomData key="analyzeContext" value="global" />
+					</customData>
+				</RadioButton>
+				<RadioButton groupName="analyzeContext"
+							 text="{/executionScopes/subtree/displayName}"
+							 select="onContextSelect"
+							 selected="{= ${/analyzeContext/key} === 'subtree'}"
+							 tooltip="{/executionScopes/subtree/description}">
+					<customData>
+						<core:CustomData key="analyzeContext" value="subtree" />
+					</customData>
+				</RadioButton>
+				<l:VerticalLayout
+					class="sapUiSupportToolSettingsPopoverPadding">
+					<Input
+						placeholder="Input sub-root ID"
+						enabled="{= ${/analyzeContext/key} === 'subtree'}"
+						value="{/subtreeExecutionContextId}"
+						width="300px"
+						liveChange="onExecutionContextChange"/>
+				</l:VerticalLayout>
+				<RadioButton groupName="analyzeContext"
+							 text="{/executionScopes/components/displayName}"
+							 select="onContextSelect"
+							 selected="{= ${/analyzeContext/key} === 'components'}"
+							 tooltip="{/executionScopes/components/description}">
+					<customData>
+						<core:CustomData key="analyzeContext" value="components" />
+					</customData>
+				</RadioButton>
+				<l:VerticalLayout
+					id="componentsSelectionContainer"
+					content="{/executionScopeComponents}"
+					class="sapUiSupportToolSettingsPopoverPadding">
+					<CheckBox text="{text}"
+							  enabled="{= ${/analyzeContext/key} === 'components'}"
+							  select="onScopeComponentSelect"
+							  selected="{selected}"
+					/>
+				</l:VerticalLayout>
+			</VBox>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

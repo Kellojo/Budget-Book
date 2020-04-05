@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(['sap/ui/core/Popup'],function(P){"use strict";var M={};M.render=function(r,c){var i=c.getId();r.write('<div draggable="true"');r.writeControlData(c);r.addClass("sapUiMsgBar");if(this.oDropPosition){r.addClass("sapUiMsgBarMoved");}r.writeClasses();r.write(">");r.write('<div id="'+i+'__sums" class="sapUiMsgBarSums">');r.write('<div id="'+i+'__arrowImg" class="sapUiMsgBarToggle"></div>');r.write('<div id="'+i+'__ErrorImg" class="sapUiMsgIcon sapUiMsgIconError sapUiMsgBarZeroCount"></div>');r.write('<span id="'+i+'__ErrorCount" class="sapUiMsgTxt sapUiMsgBarZeroCount">(0)</span>');r.write('<div id="'+i+'__WarningImg" class="sapUiMsgIcon sapUiMsgIconWarning sapUiMsgBarZeroCount"></div>');r.write('<span id="'+i+'__WarningCount" class="sapUiMsgTxt sapUiMsgBarZeroCount">(0)</span>');r.write('<div id="'+i+'__SuccessImg" class="sapUiMsgIcon sapUiMsgIconSuccess sapUiMsgBarZeroCount"></div>');r.write('<span id="'+i+'__SuccessCount" class="sapUiMsgTxt sapUiMsgBarZeroCount">(0)</span>');r.write("</div>");r.write('<div class="sapUiMsgBarHome"></div>');r.write("</div>");};return M;},true);

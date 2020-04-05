@@ -1,0 +1,76 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 650,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "TaskCircle.less",
+			"size": 713,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "VerticalProgressIndicator.less",
+			"size": 337,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 189,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 76987,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 2277,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 42,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 2778,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 2778,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library.css",
+			"size": 2277,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library.less",
+			"size": 1816,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "library.source.less",
+			"size": 417,
+			"designtime": true,
+			"theme": "sap_belize"
+		},
+		{
+			"name": "shared.less",
+			"size": 53,
+			"designtime": true,
+			"theme": "sap_belize"
+		}
+	]
+}

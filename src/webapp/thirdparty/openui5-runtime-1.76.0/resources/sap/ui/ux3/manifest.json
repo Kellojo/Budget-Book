@@ -1,0 +1,93 @@
+{
+  "_version": "1.9.0",
+  "sap.app": {
+    "id": "sap.ui.ux3",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.76.0"
+    },
+    "title": "Controls that implement the SAP User Experience (UX) Guidelines 3.0",
+    "description": "Controls that implement the SAP User Experience (UX) Guidelines 3.0",
+    "ach": "CA-UI5-CTR",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base",
+      "sap_hcb"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.76",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.76.0"
+        },
+        "sap.ui.commons": {
+          "minVersion": "1.76.0"
+        },
+        "sap.ui.unified": {
+          "minVersion": "1.76.0",
+          "lazy": true
+        }
+      }
+    },
+    "library": {
+      "i18n": "messagebundle.properties",
+      "content": {
+        "controls": [
+          "sap.ui.ux3.ActionBar",
+          "sap.ui.ux3.CollectionInspector",
+          "sap.ui.ux3.DataSet",
+          "sap.ui.ux3.DataSetSimpleView",
+          "sap.ui.ux3.Exact",
+          "sap.ui.ux3.ExactArea",
+          "sap.ui.ux3.ExactBrowser",
+          "sap.ui.ux3.ExactList",
+          "sap.ui.ux3.FacetFilter",
+          "sap.ui.ux3.FacetFilterList",
+          "sap.ui.ux3.Feed",
+          "sap.ui.ux3.FeedChunk",
+          "sap.ui.ux3.Feeder",
+          "sap.ui.ux3.NavigationBar",
+          "sap.ui.ux3.NotificationBar",
+          "sap.ui.ux3.Overlay",
+          "sap.ui.ux3.OverlayContainer",
+          "sap.ui.ux3.OverlayDialog",
+          "sap.ui.ux3.QuickView",
+          "sap.ui.ux3.Shell",
+          "sap.ui.ux3.ThingInspector",
+          "sap.ui.ux3.ThingViewer",
+          "sap.ui.ux3.ToolPopup"
+        ],
+        "elements": [
+          "sap.ui.ux3.Collection",
+          "sap.ui.ux3.DataSetItem",
+          "sap.ui.ux3.ExactAttribute",
+          "sap.ui.ux3.NavigationItem",
+          "sap.ui.ux3.Notifier",
+          "sap.ui.ux3.ThingAction",
+          "sap.ui.ux3.ThingGroup"
+        ],
+        "types": [
+          "sap.ui.ux3.ActionBarSocialActions",
+          "sap.ui.ux3.ExactOrder",
+          "sap.ui.ux3.FeederType",
+          "sap.ui.ux3.FollowActionState",
+          "sap.ui.ux3.NotificationBarStatus",
+          "sap.ui.ux3.ShellDesignType",
+          "sap.ui.ux3.ShellHeaderType",
+          "sap.ui.ux3.ThingViewerHeaderType",
+          "sap.ui.ux3.VisibleItemCountMode"
+        ],
+        "interfaces": [
+          "sap.ui.ux3.DataSetView"
+        ]
+      }
+    }
+  }
+}

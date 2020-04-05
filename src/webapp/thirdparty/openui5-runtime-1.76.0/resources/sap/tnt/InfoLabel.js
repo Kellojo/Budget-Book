@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["./library","sap/ui/core/Control","sap/ui/core/library","./InfoLabelRenderer","sap/base/Log","sap/ui/core/IconPool"],function(l,C,a,I,L,b){"use strict";var R=l.RenderMode;var T=a.TextDirection;var c=C.extend("sap.tnt.InfoLabel",{metadata:{interfaces:["sap.ui.core.IFormContent"],library:"sap.tnt",properties:{text:{type:"string",defaultValue:"",bindable:"bindable"},renderMode:{type:"sap.tnt.RenderMode",defaultValue:R.Loose,group:"Appearance"},colorScheme:{type:"int",group:"Misc",defaultValue:7},width:{type:"sap.ui.core.CSSSize",group:"Dimension",defaultValue:null},displayOnly:{type:"boolean",group:"Appearance",defaultValue:false},textDirection:{type:"sap.ui.core.TextDirection",group:"Appearance",defaultValue:T.Inherit},icon:{type:"sap.ui.core.URI",group:"Appearance",defaultValue:""}}}});c.prototype.init=function(){if(sap.ui.getCore().getConfiguration().getAccessibility()&&!I._sAriaText){I._sAriaText=sap.ui.getCore().getLibraryResourceBundle('sap.tnt').getText("INFOLABEL_DEFAULT");I._sAriaTextEmpty=sap.ui.getCore().getLibraryResourceBundle('sap.tnt').getText("INFOLABEL_EMPTY");}};c.prototype.getFormDoNotAdjustWidth=function(){return true;};return c;});

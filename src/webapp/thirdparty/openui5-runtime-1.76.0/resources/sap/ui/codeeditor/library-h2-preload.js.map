@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ui/codeeditor/library-h2-preload.js",
+"sourceroot":".",
+"sources":["library-dbg.js","manifest.json"],
+"names":["Core"],
+"mappings":";;;;;;AASA,gBAAa,6BAAC,oBAAqB,uBAClC,SAASA,CAAI,CAAE,CACf,aAcA,8BACC,IAAK,CAAE,oBACP,YAAa,CAAE,gBACf,MAAO,GACP,WAAY,GACZ,SAAU,CACT,8BACD,EACA,SAAU,GACV,aAAc,MACd,QAAS,QACV,GAGA,OAAO,kBAER;;;;;;;;;",
+"x_com_sap_openui5_sections":[54,546,606,1230]
+}

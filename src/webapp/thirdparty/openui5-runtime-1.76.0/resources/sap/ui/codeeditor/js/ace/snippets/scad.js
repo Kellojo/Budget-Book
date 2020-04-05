@@ -1,0 +1,1 @@
+ace.define("ace/snippets/scad",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="scad";});(function(){ace.require(["ace/snippets/scad"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

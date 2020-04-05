@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/rta/command/BaseCommand","sap/ui/core/util/reflection/JsControlTreeModifier","sap/ui/fl/Utils"],function(B,J,f){"use strict";var C=B.extend("sap.ui.rta.command.ControlVariantSwitch",{metadata:{library:"sap.ui.rta",properties:{targetVariantReference:{type:"string"},sourceVariantReference:{type:"string"}},associations:{},events:{}}});C.prototype._getAppComponent=function(){var e=this.getElement();return e?f.getAppComponentForControl(e):this.getSelector().appComponent;};C.prototype.execute=function(){var e=this.getElement();var a=this._getAppComponent();var n=this.getTargetVariantReference();this.oModel=a.getModel(f.VARIANT_MODEL_NAME);this.sVariantManagementReference=J.getSelector(e,a).id;return this._updateModelVariant(n,a);};C.prototype.undo=function(){var o=this.getSourceVariantReference();var a=this._getAppComponent();return this._updateModelVariant(o,a);};C.prototype._updateModelVariant=function(v,a){if(this.getTargetVariantReference()!==this.getSourceVariantReference()){return Promise.resolve(this.oModel.updateCurrentVariant(this.sVariantManagementReference,v,a));}return Promise.resolve();};return C;});

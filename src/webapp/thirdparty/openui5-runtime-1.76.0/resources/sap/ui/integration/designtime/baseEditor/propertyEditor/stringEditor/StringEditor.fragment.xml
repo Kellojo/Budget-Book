@@ -1,0 +1,10 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+	<Input
+		value="{value}"
+		enabled="{config/enabled}"
+		liveChange="_onLiveChange"
+	/>
+</core:FragmentDefinition>

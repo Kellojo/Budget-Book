@@ -1,0 +1,56 @@
+{
+  "_version": "1.9.0",
+  "sap.app": {
+    "id": "sap.ui.rta",
+    "type": "library",
+    "embeds": [
+      "appVariant/manageApps/webapp"
+    ],
+    "applicationVersion": {
+      "version": "1.76.0"
+    },
+    "title": "SAPUI5 library with RTA controls.",
+    "description": "SAPUI5 library with RTA controls.",
+    "ach": "CA-UI5-FL-RTA",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base",
+      "sap_hcb"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.76",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.76.0"
+        },
+        "sap.ui.layout": {
+          "minVersion": "1.76.0"
+        },
+        "sap.m": {
+          "minVersion": "1.76.0"
+        },
+        "sap.ui.fl": {
+          "minVersion": "1.76.0"
+        },
+        "sap.ui.dt": {
+          "minVersion": "1.76.0"
+        }
+      }
+    },
+    "library": {
+      "i18n": "messagebundle.properties",
+      "content": {
+        "controls": [],
+        "elements": [],
+        "types": [],
+        "interfaces": []
+      }
+    }
+  }
+}

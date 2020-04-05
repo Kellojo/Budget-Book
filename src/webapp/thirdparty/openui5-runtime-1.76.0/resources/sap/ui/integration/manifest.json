@@ -1,0 +1,80 @@
+{
+  "_version": "1.9.0",
+  "sap.app": {
+    "id": "sap.ui.integration",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.76.0"
+    },
+    "title": "SAPUI5 library with integration-related controls.",
+    "description": "SAPUI5 library with integration-related controls.",
+    "ach": "CA-UI5-CTR",
+    "resources": "resources.json",
+    "offline": true,
+    "openSourceComponents": [
+      {
+        "name": "webcomponentsjs",
+        "packagedWithMySelf": true,
+        "version": "0.0.0"
+      },
+      {
+        "name": "custom-event-polyfill",
+        "packagedWithMySelf": true,
+        "version": "0.0.0"
+      },
+      {
+        "name": "adaptive-cards",
+        "packagedWithMySelf": true,
+        "version": "0.0.0"
+      },
+      {
+        "name": "ui5-web-components",
+        "packagedWithMySelf": true,
+        "version": "0.0.0"
+      },
+      {
+        "name": "ajv",
+        "packagedWithMySelf": true,
+        "version": "0.0.0"
+      }
+    ]
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.76",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.76.0"
+        },
+        "sap.f": {
+          "minVersion": "1.76.0"
+        }
+      }
+    },
+    "library": {
+      "i18n": "messagebundle.properties",
+      "content": {
+        "controls": [
+          "sap.ui.integration.widgets.Card",
+          "sap.ui.integration.Widget",
+          "sap.ui.integration.host.HostConfiguration"
+        ],
+        "elements": [
+          "sap.ui.integration.Host",
+          "sap.ui.integration.Extension"
+        ],
+        "types": [
+          "sap.ui.integration.CardActionType",
+          "sap.ui.integration.CardDataMode"
+        ]
+      }
+    }
+  }
+}

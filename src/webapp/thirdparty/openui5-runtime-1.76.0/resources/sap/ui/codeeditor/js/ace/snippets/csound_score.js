@@ -1,0 +1,1 @@
+ace.define("ace/snippets/csound_score",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="csound_score";});(function(){ace.require(["ace/snippets/csound_score"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

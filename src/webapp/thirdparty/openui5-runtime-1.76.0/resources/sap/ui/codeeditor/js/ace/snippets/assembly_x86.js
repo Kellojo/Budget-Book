@@ -1,0 +1,1 @@
+ace.define("ace/snippets/assembly_x86",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="assembly_x86";});(function(){ace.require(["ace/snippets/assembly_x86"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

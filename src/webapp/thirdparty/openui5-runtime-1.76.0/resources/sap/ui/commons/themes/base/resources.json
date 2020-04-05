@@ -1,0 +1,1166 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 64,
+			"theme": "base"
+		},
+		{
+			"name": "AbsoluteLayout.less",
+			"size": 785,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Accordion.less",
+			"size": 426,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "AccordionSection.less",
+			"size": 3451,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ApplicationHeader.less",
+			"size": 891,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "AutoComplete.less",
+			"size": 282,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "BorderLayout.less",
+			"size": 551,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Button.less",
+			"size": 6420,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Callout.less",
+			"size": 207,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CalloutBase.less",
+			"size": 437,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Carousel.less",
+			"size": 1384,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CheckBox.less",
+			"size": 1200,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ComboBox.less",
+			"size": 1001,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ControlsInUITable.less",
+			"size": 2796,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "DatePicker.less",
+			"size": 1933,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Dialog.less",
+			"size": 3205,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FileUploader.less",
+			"size": 173,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Form.less",
+			"size": 157,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FormLayout.less",
+			"size": 167,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FormattedTextView.less",
+			"size": 1103,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "GridLayout.less",
+			"size": 182,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "HorizontalDivider.less",
+			"size": 815,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "HorizontalLayout.less",
+			"size": 185,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Image.less",
+			"size": 142,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "InPlaceEdit.less",
+			"size": 3067,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Label.less",
+			"size": 4082,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Link.less",
+			"size": 760,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ListBox.less",
+			"size": 2626,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MenuBar.less",
+			"size": 765,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MenuButton.less",
+			"size": 306,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Message.less",
+			"size": 1557,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageBar.less",
+			"size": 3020,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageBox.less",
+			"size": 886,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageList.less",
+			"size": 661,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageToast.less",
+			"size": 1564,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Paginator.less",
+			"size": 1384,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Panel.less",
+			"size": 3799,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ProgressIndicator.less",
+			"size": 2358,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RadioButton.less",
+			"size": 1402,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RadioButtonGroup.less",
+			"size": 1379,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RatingIndicator.less",
+			"size": 934,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ResponsiveContainer.less",
+			"size": 1,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ResponsiveFlowLayout.less",
+			"size": 218,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ResponsiveLayout.less",
+			"size": 200,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RichTooltip.less",
+			"size": 1249,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RoadMap.less",
+			"size": 3730,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RowRepeater.less",
+			"size": 3008,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SearchField.less",
+			"size": 3325,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SegmentedButton.less",
+			"size": 868,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SimpleForm.less",
+			"size": 182,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Slider.less",
+			"size": 1541,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Splitter.less",
+			"size": 2419,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TabStrip.less",
+			"size": 2408,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TextArea.less",
+			"size": 355,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TextField.less",
+			"size": 2587,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TextView.less",
+			"size": 2527,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ToggleButton.less",
+			"size": 466,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Toolbar.less",
+			"size": 3527,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Tree.less",
+			"size": 3369,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TriStateCheckBox.less",
+			"size": 2271,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ValueHelpField.less",
+			"size": 666,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 1574,
+			"theme": "base"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 76441,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/Alphaslider_BG.png",
+			"size": 81,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/ColorBar.png",
+			"size": 528,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/ColorPicker/GradientBox.png",
+			"size": 160482,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/TriStateCheckBox.png",
+			"size": 439,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/accordion/collapsed.gif",
+			"size": 67,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/accordion/expanded.gif",
+			"size": 80,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/applicationheader/SAPLogo.png",
+			"size": 1176,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/datepicker/icon_cal.png",
+			"size": 311,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/datepicker/icon_cal_disabled.png",
+			"size": 253,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/datepicker/v_add.gif",
+			"size": 60,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/datepicker/v_add_dsbl.gif",
+			"size": 60,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/datepicker/v_remove.gif",
+			"size": 60,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/datepicker/v_remove_dsbl.gif",
+			"size": 60,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_flat_0_aaaaaa_40x100.png",
+			"size": 149,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_flat_75_ffffff_40x100.png",
+			"size": 146,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_glass_55_fbf9ee_1x400.png",
+			"size": 117,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_glass_65_ffffff_1x400.png",
+			"size": 95,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_glass_75_dadada_1x400.png",
+			"size": 133,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_glass_75_e6e6e6_1x400.png",
+			"size": 120,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_glass_95_fef1ec_1x400.png",
+			"size": 122,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-bg_highlight-soft_75_cccccc_1x100.png",
+			"size": 141,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-icons_222222_256x240.png",
+			"size": 6127,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-icons_2e83ff_256x240.png",
+			"size": 6127,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-icons_454545_256x240.png",
+			"size": 6127,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-icons_888888_256x240.png",
+			"size": 6127,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/jQuery/ui-icons_cd0a0a_256x240.png",
+			"size": 6127,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/layout/separationLarge.gif",
+			"size": 46,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/layout/separationMedium.gif",
+			"size": 45,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/layout/separationSmall.gif",
+			"size": 44,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/menu/menuitem-sub-dis.gif",
+			"size": 64,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/menu/menuitem-sub-hov.gif",
+			"size": 846,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/menu/menuitem-sub.gif",
+			"size": 846,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/collapsed.gif",
+			"size": 108,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/collapsedRTL.gif",
+			"size": 67,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/expanded.gif",
+			"size": 107,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/float_backgr.gif",
+			"size": 825,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/iconError.gif",
+			"size": 142,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/iconSuccess.gif",
+			"size": 111,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/iconWarning.gif",
+			"size": 141,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/re-dock.gif",
+			"size": 56,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/re-dockRTL.gif",
+			"size": 834,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/toastarrow_Error.gif",
+			"size": 123,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/toastarrow_Success.gif",
+			"size": 123,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/toastarrow_Warning.gif",
+			"size": 119,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebar/toastarrow_multi.gif",
+			"size": 121,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebox/critical.gif",
+			"size": 293,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebox/error.gif",
+			"size": 271,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebox/information.gif",
+			"size": 226,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebox/question.gif",
+			"size": 522,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebox/success.gif",
+			"size": 233,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/messagebox/warning.gif",
+			"size": 273,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/paginator/arrow_first.gif",
+			"size": 851,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/paginator/arrow_last.gif",
+			"size": 852,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/paginator/arrow_next.gif",
+			"size": 62,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/paginator/arrow_previous.gif",
+			"size": 62,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/panel/collapsed.gif",
+			"size": 108,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/panel/expanded.gif",
+			"size": 107,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/rating/star_hover.png",
+			"size": 79,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/rating/star_selected.png",
+			"size": 76,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/rating/star_unselected.png",
+			"size": 77,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/richtooltip/ValueState_Error.png",
+			"size": 94,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/richtooltip/ValueState_Success.png",
+			"size": 409,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/richtooltip/ValueState_Warning.png",
+			"size": 167,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/search/search.png",
+			"size": 909,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/splitter/checkerboard.png",
+			"size": 71,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/splitter/resize_horizontal.png",
+			"size": 146,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/splitter/resize_vertical.png",
+			"size": 145,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/splitter/splitter_horiz_grip.gif",
+			"size": 121,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/splitter/splitter_vert_grip.gif",
+			"size": 863,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/toolbar/overflow.png",
+			"size": 93,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/valuehelpfield/F4-Help_icon_dsbl.png",
+			"size": 122,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/valuehelpfield/F4-Help_icon_hover.png",
+			"size": 114,
+			"theme": "base"
+		},
+		{
+			"name": "img-RTL/valuehelpfield/F4-Help_icon_regular.png",
+			"size": 123,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/Alphaslider_BG.png",
+			"size": 2936,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/ColorBar.png",
+			"size": 559,
+			"theme": "base"
+		},
+		{
+			"name": "img/ColorPicker/GradientBox.png",
+			"size": 56106,
+			"theme": "base"
+		},
+		{
+			"name": "img/TriStateCheckBox.png",
+			"size": 439,
+			"theme": "base"
+		},
+		{
+			"name": "img/accordion/collapsed.gif",
+			"size": 80,
+			"theme": "base"
+		},
+		{
+			"name": "img/accordion/expanded.gif",
+			"size": 80,
+			"theme": "base"
+		},
+		{
+			"name": "img/applicationheader/SAPLogo.png",
+			"size": 1310,
+			"theme": "base"
+		},
+		{
+			"name": "img/datepicker/icon_cal.png",
+			"size": 311,
+			"theme": "base"
+		},
+		{
+			"name": "img/datepicker/icon_cal_disabled.png",
+			"size": 253,
+			"theme": "base"
+		},
+		{
+			"name": "img/datepicker/v_add.gif",
+			"size": 60,
+			"theme": "base"
+		},
+		{
+			"name": "img/datepicker/v_add_dsbl.gif",
+			"size": 60,
+			"theme": "base"
+		},
+		{
+			"name": "img/datepicker/v_remove.gif",
+			"size": 61,
+			"theme": "base"
+		},
+		{
+			"name": "img/datepicker/v_remove_dsbl.gif",
+			"size": 61,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_flat_0_aaaaaa_40x100.png",
+			"size": 180,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_flat_75_ffffff_40x100.png",
+			"size": 178,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_glass_55_fbf9ee_1x400.png",
+			"size": 120,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_glass_65_ffffff_1x400.png",
+			"size": 105,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_glass_75_dadada_1x400.png",
+			"size": 111,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_glass_75_e6e6e6_1x400.png",
+			"size": 110,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_glass_95_fef1ec_1x400.png",
+			"size": 119,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-bg_highlight-soft_75_cccccc_1x100.png",
+			"size": 101,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-icons_222222_256x240.png",
+			"size": 4369,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-icons_2e83ff_256x240.png",
+			"size": 4369,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-icons_454545_256x240.png",
+			"size": 4369,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-icons_888888_256x240.png",
+			"size": 4369,
+			"theme": "base"
+		},
+		{
+			"name": "img/jQuery/ui-icons_cd0a0a_256x240.png",
+			"size": 4369,
+			"theme": "base"
+		},
+		{
+			"name": "img/layout/separationLarge.gif",
+			"size": 46,
+			"theme": "base"
+		},
+		{
+			"name": "img/layout/separationMedium.gif",
+			"size": 45,
+			"theme": "base"
+		},
+		{
+			"name": "img/layout/separationSmall.gif",
+			"size": 44,
+			"theme": "base"
+		},
+		{
+			"name": "img/menu/menuitem-sub-dis.gif",
+			"size": 64,
+			"theme": "base"
+		},
+		{
+			"name": "img/menu/menuitem-sub-hov.gif",
+			"size": 1613,
+			"theme": "base"
+		},
+		{
+			"name": "img/menu/menuitem-sub.gif",
+			"size": 1613,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/collapsed.gif",
+			"size": 80,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/collapsedRTL.gif",
+			"size": 67,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/expanded.gif",
+			"size": 80,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/float_backgr.gif",
+			"size": 150,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/iconError.gif",
+			"size": 118,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/iconSuccess.gif",
+			"size": 111,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/iconWarning.gif",
+			"size": 117,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/re-dock.gif",
+			"size": 56,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/re-dockRTL.gif",
+			"size": 832,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/toastarrow_Error.gif",
+			"size": 120,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/toastarrow_Success.gif",
+			"size": 120,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/toastarrow_Warning.gif",
+			"size": 119,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebar/toastarrow_multi.gif",
+			"size": 119,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebox/critical.gif",
+			"size": 293,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebox/error.gif",
+			"size": 234,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebox/information.gif",
+			"size": 226,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebox/question.gif",
+			"size": 522,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebox/success.gif",
+			"size": 233,
+			"theme": "base"
+		},
+		{
+			"name": "img/messagebox/warning.gif",
+			"size": 242,
+			"theme": "base"
+		},
+		{
+			"name": "img/paginator/arrow_first.gif",
+			"size": 847,
+			"theme": "base"
+		},
+		{
+			"name": "img/paginator/arrow_last.gif",
+			"size": 851,
+			"theme": "base"
+		},
+		{
+			"name": "img/paginator/arrow_next.gif",
+			"size": 1112,
+			"theme": "base"
+		},
+		{
+			"name": "img/paginator/arrow_previous.gif",
+			"size": 1113,
+			"theme": "base"
+		},
+		{
+			"name": "img/panel/collapsed.gif",
+			"size": 80,
+			"theme": "base"
+		},
+		{
+			"name": "img/panel/expanded.gif",
+			"size": 80,
+			"theme": "base"
+		},
+		{
+			"name": "img/rating/star_hover.png",
+			"size": 137,
+			"theme": "base"
+		},
+		{
+			"name": "img/rating/star_selected.png",
+			"size": 137,
+			"theme": "base"
+		},
+		{
+			"name": "img/rating/star_unselected.png",
+			"size": 133,
+			"theme": "base"
+		},
+		{
+			"name": "img/richtooltip/ValueState_Error.png",
+			"size": 154,
+			"theme": "base"
+		},
+		{
+			"name": "img/richtooltip/ValueState_Success.png",
+			"size": 584,
+			"theme": "base"
+		},
+		{
+			"name": "img/richtooltip/ValueState_Warning.png",
+			"size": 236,
+			"theme": "base"
+		},
+		{
+			"name": "img/search/search.png",
+			"size": 1410,
+			"theme": "base"
+		},
+		{
+			"name": "img/splitter/checkerboard.png",
+			"size": 182,
+			"theme": "base"
+		},
+		{
+			"name": "img/splitter/resize_horizontal.png",
+			"size": 192,
+			"theme": "base"
+		},
+		{
+			"name": "img/splitter/resize_vertical.png",
+			"size": 181,
+			"theme": "base"
+		},
+		{
+			"name": "img/splitter/splitter_horiz_grip.gif",
+			"size": 120,
+			"theme": "base"
+		},
+		{
+			"name": "img/splitter/splitter_vert_grip.gif",
+			"size": 176,
+			"theme": "base"
+		},
+		{
+			"name": "img/toolbar/overflow.png",
+			"size": 211,
+			"theme": "base"
+		},
+		{
+			"name": "img/valuehelpfield/F4-Help_icon_dsbl.png",
+			"size": 2865,
+			"theme": "base"
+		},
+		{
+			"name": "img/valuehelpfield/F4-Help_icon_hover.png",
+			"size": 1050,
+			"theme": "base"
+		},
+		{
+			"name": "img/valuehelpfield/F4-Help_icon_regular.png",
+			"size": 1075,
+			"theme": "base"
+		},
+		{
+			"name": "jQueryUiBase.less",
+			"size": 18382,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "jQueryUiDatepicker.less",
+			"size": 4371,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "layout.less",
+			"size": 2046,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 77743,
+			"theme": "base"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 523,
+			"theme": "base"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 84140,
+			"theme": "base"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 83892,
+			"theme": "base"
+		},
+		{
+			"name": "library.css",
+			"size": 77495,
+			"theme": "base"
+		},
+		{
+			"name": "library.less",
+			"size": 122496,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library.source.less",
+			"size": 2021,
+			"designtime": true,
+			"theme": "base"
+		}
+	]
+}

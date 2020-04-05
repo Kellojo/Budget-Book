@@ -1,0 +1,100 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 94,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "AvatarGroup.less",
+			"size": 446,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "Card.less",
+			"size": 484,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "CardLoading.less",
+			"size": 559,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "DynamicPage.less",
+			"size": 2026,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "DynamicPageTitle.less",
+			"size": 1855,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "FlexibleColumnLayout.less",
+			"size": 1288,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "ShellBar.less",
+			"size": 959,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 2037,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 78072,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 62661,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 777,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 65044,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 65047,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library.css",
+			"size": 62664,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library.less",
+			"size": 8577,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		},
+		{
+			"name": "library.source.less",
+			"size": 530,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcw"
+		}
+	]
+}

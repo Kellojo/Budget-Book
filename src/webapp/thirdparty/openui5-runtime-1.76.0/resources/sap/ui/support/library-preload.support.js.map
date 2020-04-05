@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ui/support/library-preload.support.js",
+"sourceroot":".",
+"sources":["jQuery.sap-dbg.support.js"],
+"names":[],
+"mappings":";AACA;;;;GAIG;AACH;AACA,gBAAa,qCAAC;AACd;AACA;AACA;AACA;AACA;AACA;AACA;;;;;;;;;;;;;;;;;;;;;;;KAuBK;AACL;AACA;AACA;;;;;;;;;;;;;;;;;;;;MAoBM;AACN;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;;;;MAMM;AACN;AACA;AACA;AACA;AACA;;;;;;;MAOM;AACN;AACA;AACA;AACA;AACA;;;;;;;;MAQM;AACN;AACA;AACA;AACA;AACA;;;;;;;;;MASM;AACN;AACA;AACA;AACA;AACA;AACA;AACA;",
+"x_com_sap_openui5_sections":[56,5191]
+}

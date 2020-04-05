@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(['sap/ui/core/Renderer','./InputBaseRenderer','sap/ui/core/library'],function(R,I,c){"use strict";var V=c.ValueState;var T=R.extend(I);T.apiVersion=2;T.CSS_CLASS="sapMTimePicker";T.addOuterClasses=function(r,C){r.class(T.CSS_CLASS);};T.writeDecorations=function(r,C){var o=C._oResourceBundle,t=o.getText("TIMEPICKER_SCREENREADER_TAG");r.openStart("span",C.getId()+"-descr");r.style("visibility","hidden");r.style("display","none");r.openEnd();r.text(t);r.close("span");};T.writeInnerValue=function(r,C){r.attr("value",C._formatValue(C.getDateValue()));};T.getAriaRole=function(){return"combobox";};T.getLabelledByAnnouncement=function(C){return C._getPlaceholder()||"";};T.getAccessibilityState=function(C){var a=this.getAriaLabelledBy(C),A=this.getAriaDescribedBy(C),m=C.getAccessibilityInfo();if(C.getValueState()===V.Error){m.invalid=true;}if(a){m.labelledby={value:a.trim(),append:true};}if(A){m.describedby={value:A.trim(),append:true};}return m;};T.getAriaDescribedBy=function(C){var o=C.getId()+"-descr ";if(this.getDescribedByAnnouncement(C)){o+=C.getId()+"-describedby";}return o;};return T;},true);

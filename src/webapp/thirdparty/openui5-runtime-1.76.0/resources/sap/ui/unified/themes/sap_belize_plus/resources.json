@@ -1,0 +1,76 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 611,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "Calendar.less",
+			"size": 2476,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "CalendarLegend.less",
+			"size": 2256,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "CalendarRow.less",
+			"size": 3993,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 31493,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 103530,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 251937,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 13855,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 261210,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 261000,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library.css",
+			"size": 251727,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library.less",
+			"size": 9443,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		},
+		{
+			"name": "library.source.less",
+			"size": 425,
+			"designtime": true,
+			"theme": "sap_belize_plus"
+		}
+	]
+}

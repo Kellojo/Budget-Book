@@ -1,0 +1,111 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 137,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "AnchorBar.less",
+			"size": 5820,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "HierarchicalSelect.less",
+			"size": 3181,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "IconTabBar.less",
+			"size": 204,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ObjectPageHeader.less",
+			"size": 4577,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ObjectPageHeaderContent.less",
+			"size": 1539,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ObjectPageLayout.less",
+			"size": 2835,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ObjectPageSection.less",
+			"size": 579,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ObjectPageSubSection.less",
+			"size": 642,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 282,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 92860,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "darkBackground.png",
+			"size": 40059,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 70052,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 73418,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 73410,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.css",
+			"size": 70044,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.less",
+			"size": 20471,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.source.less",
+			"size": 593,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		}
+	]
+}

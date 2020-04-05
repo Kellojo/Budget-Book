@@ -1,0 +1,122 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 93,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "Calendar.less",
+			"size": 14460,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "CalendarLegend.less",
+			"size": 3483,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "CalendarRow.less",
+			"size": 5337,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "ColorPicker.less",
+			"size": 567,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "Currency.less",
+			"size": 188,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "Menu.less",
+			"size": 893,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "ShellHeader.less",
+			"size": 4418,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "ShellLayout.less",
+			"size": 369,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "ShellOverlay.less",
+			"size": 1370,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 5941,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 84979,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "img-RTL/PickingCursor-HCW.png",
+			"size": 1171,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "img/PickingCursor-HCW.png",
+			"size": 499,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 134118,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2343,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 149899,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 149784,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "library.css",
+			"size": 134003,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "library.less",
+			"size": 32148,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		},
+		{
+			"name": "library.source.less",
+			"size": 576,
+			"designtime": true,
+			"theme": "sap_belize_hcw"
+		}
+	]
+}

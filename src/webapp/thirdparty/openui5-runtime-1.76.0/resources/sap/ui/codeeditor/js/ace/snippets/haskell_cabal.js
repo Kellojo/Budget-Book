@@ -1,0 +1,1 @@
+ace.define("ace/snippets/haskell_cabal",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="haskell_cabal";});(function(){ace.require(["ace/snippets/haskell_cabal"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

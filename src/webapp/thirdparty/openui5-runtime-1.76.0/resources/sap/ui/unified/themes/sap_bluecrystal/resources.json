@@ -1,0 +1,112 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 137,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "Calendar.less",
+			"size": 11292,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "CalendarLegend.less",
+			"size": 2827,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "CalendarRow.less",
+			"size": 8783,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ColorPicker.less",
+			"size": 620,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "FileUploader.less",
+			"size": 1717,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "Menu.less",
+			"size": 482,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ShellHeader.less",
+			"size": 880,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ShellLayout.less",
+			"size": 2502,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ShellOverlay.less",
+			"size": 1664,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 6861,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 102944,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 128877,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2785,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 143526,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 143402,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.css",
+			"size": 128753,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.less",
+			"size": 31841,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.source.less",
+			"size": 582,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		}
+	]
+}

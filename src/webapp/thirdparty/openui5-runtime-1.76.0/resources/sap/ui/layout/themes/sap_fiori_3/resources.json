@@ -1,0 +1,112 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 90,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "BlockLayout.less",
+			"size": 12937,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ColumnLayout.less",
+			"size": 386,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "FormLayout.less",
+			"size": 1293,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "GridLayout.less",
+			"size": 826,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ResponsiveGridLayout.less",
+			"size": 643,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ResponsiveLayout.less",
+			"size": 749,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ResponsiveSplitter.less",
+			"size": 2931,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "SimpleForm.less",
+			"size": 316,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "Splitter.less",
+			"size": 1285,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 15085,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 96800,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 248251,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 6768,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 242626,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 242166,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.css",
+			"size": 247791,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.less",
+			"size": 22470,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.source.less",
+			"size": 595,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		}
+	]
+}

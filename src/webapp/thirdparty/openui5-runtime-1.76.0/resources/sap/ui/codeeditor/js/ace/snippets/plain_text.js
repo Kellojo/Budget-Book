@@ -1,0 +1,1 @@
+ace.define("ace/snippets/plain_text",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="plain_text";});(function(){ace.require(["ace/snippets/plain_text"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

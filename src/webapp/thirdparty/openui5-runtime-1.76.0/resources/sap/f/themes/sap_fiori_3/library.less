@@ -1,0 +1,625 @@
+/* NOTE: This file was generated as an optimized version of "library.source.less" for the Theme Designer. */
+
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+
+@import "../base/library.less";
+@import "../../../../../Base/baseLib/sap_fiori_3/base.less"; /* ORIGINAL IMPORT PATH: "../../../../sap/ui/core/themes/sap_fiori_3/base.less" */
+
+@import "../../../../sap/ui/core/themes/sap_fiori_3/global.less";
+
+/* START "DynamicPage.less" */
+/* ================================== */
+/* CSS for control sap.f/DynamicPage  */
+/* Fiori 3 theme                      */
+/* ================================== */
+
+.sapFDynamicPage {
+	.sapFDynamicPageContentWrapperSolid>.sapFDynamicPageContent {
+		background: @sapUiShellBackground;
+	}
+
+	// DynamicPageTitle and Toggle Header Visual Indicator hover state
+	&.sapFDynamicPageTitleClickEnabled {
+		&.sapFDynamicPageTitleForceHovered .sapFDynamicPageTitle {
+			.title-hover(@sapUiObjectHeaderBackground);
+		}
+
+		&.sapFDynamicPageTitleForceHovered .sapFDynamicPageTitleTranslucent {
+			.title-hover(@sapUiObjectHeaderBackground);
+		}
+
+		&.sapFDynamicPageTitleForceHovered .sapFDynamicPageTitleTransparent {
+			.title-hover(transparent);
+		}
+
+	}
+}
+
+.sapFDynamicPageToggleHeaderIndicator,
+.sapFDynamicPage:not(.sapFDynamicPageTitleClickEnabled) .sapFDynamicPageHeaderPinButton {
+	margin-left: -0.75rem;
+}
+
+.sapFDynamicPageHeaderPinnable .sapFDynamicPageToggleHeaderIndicator {
+	margin-left: -1.75rem;
+}
+
+.sapFDynamicPageToggleHeaderIndicator,
+.sapFDynamicPageHeaderPinButton {
+	width: 1.5rem;
+	height: 2rem;
+	bottom: -0.95rem; // needs refactoring in the base file
+
+	.sapMBtnInner {
+		min-width: 1.5rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		bottom: 0.25rem;
+
+		.sapMBtnIcon {
+			width: 100%;
+			padding: 0;
+			line-height: 1.5rem;
+		}
+	}
+
+	overflow: visible; // enforcement needed for IE11
+
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		width: 4rem;
+		top: 50%; // enforcement needed for IE11
+		height: 0.0625rem;
+	}
+
+	&:before {
+		background-image: linear-gradient(to left, @sapUiHighlight, fade(@sapUiHighlight, 0));
+		right: 100%;
+	}
+
+	&:after {
+		background-image: linear-gradient(to right, @sapUiHighlight, fade(@sapUiHighlight, 0));
+		left: 100%;
+	}
+}
+
+// when we have both pin and toggle header indicator, pseudo-elements overlap siblings on EDGE
+html[data-sap-ui-browser^="ed"] .sapFDynamicPageToggleHeaderIndicator ~ .sapFDynamicPageHeaderPinButton:before {
+  	display: none;
+}
+
+html[data-sap-ui-browser^="cr"] .sapFDynamicPageToggleHeaderIndicator,
+html[data-sap-ui-browser^="cr"] .sapFDynamicPageHeaderPinButton {
+	.sapMBtnInner .sapMBtnIcon {
+		line-height: 1.375rem; // in Chrome we need to subtract the border bottom and top (total 2px) from original line-height
+	}
+}
+
+/* Compact */
+.sapUiSizeCompact {
+	.sapFDynamicPageToggleHeaderIndicator,
+	.sapFDynamicPageHeaderPinButton {
+		bottom: -0.95rem; // needs refactoring in the base file
+
+		.sapMBtnInner {
+			bottom: 0.25rem;
+		}
+	}
+}
+
+// Note:
+// The footer selector can`t be nested in the sapFDynamicPage less structure,
+// because the contrast container would not work, as the theme generates css like ".sapContrast.sapFDynamicPageFooter"
+// and will never match ".sapFDynamicPage .sapFDynamicPageFooter"
+.sapFDynamicPageFooter .sapFDynamicPageActualFooterControl {
+	background: @sapUiPageFooterBackground;
+	color: @sapUiPageFooterTextColor;
+	box-shadow: @sapUiShadowLevel1;
+	border: none;
+}
+
+.title-hover(@backgroundColor) {
+	background-color: darken(@backgroundColor, 4);
+}
+
+/* Vertically align items in the table-like view with the items in the sap.m.Carousel control.
+To be used in Comparison pattern scenario. */
+.sapUiComparisonContainer .sapFDynamicPageTitleSnapped + .sapFDynamicPageContentWrapper .sapUiComparisonContent  {
+	margin-right: 0;
+}
+/* END "DynamicPage.less" */
+
+/* START "DynamicPageHeader.less" */
+/* ======================================== */
+/* CSS for control sap.f/DynamicPageHeader  */
+/* Fiori 3 theme                            */
+/* ======================================== */
+
+
+.sapFDynamicPageHeader.sapFDynamicPageHeaderTranslucent {
+	background: @sapUiObjectHeaderBackground;
+}
+
+.sapFDynamicPageHeader.sapFDynamicPageHeaderTransparent {
+	background: transparent;
+}
+
+.sapFDynamicPageToggleHeaderIndicator:not(.sapUiHidden) + .sapFDynamicPageHeaderPinButton:before {
+	display: none;
+}
+
+.sapFDynamicPageNavigation .sapFDynamicPageHeader.sapFDynamicPageHeaderWithContent {
+	box-shadow: none;
+}
+
+/* END "DynamicPageHeader.less" */
+
+/* START "DynamicPageTitle.less" */
+/* ======================================= */
+/* CSS for control sap.f/DynamicPageTitle  */
+/* Fiori 3 theme                           */
+/* ======================================= */
+
+
+.sapFDynamicPageTitle {
+	padding: 0.5rem 3rem;
+	word-wrap: break-word;
+}
+
+.sapFDynamicPage-Std-Tablet {
+	.sapFDynamicPageTitle,
+	.sapFDynamicPageTitleWrapper.sapFDynamicPageTitleSnapped > .sapFDynamicPageTitle {
+		padding: 0.5rem 2rem;
+	}
+
+	// Needed because on some high-end phones in landscape mode,
+	// the width of the viewport is bigger than 600 (Tablet breakpoint).
+	.sapFDynamicPageTitleWrapper.sapFDynamicPageTitleSnappedTitleOnMobile > .sapFDynamicPageTitle {
+		padding: 0 2rem;
+	}
+}
+
+.sapFDynamicPage-Std-Phone {
+	.sapFDynamicPageTitle,
+	.sapFDynamicPageTitleWrapper.sapFDynamicPageTitleOnly > .sapFDynamicPageTitle,
+	.sapFDynamicPageTitleWrapper.sapFDynamicPageTitleSnapped > .sapFDynamicPageTitle {
+		padding: 0.5rem 1rem;
+	}
+
+	.sapFDynamicPageTitleWrapper.sapFDynamicPageTitleSnappedTitleOnMobile > .sapFDynamicPageTitle {
+		padding: 0 1rem;
+	}
+}
+
+.sapFDynamicPageTitle.sapFDynamicPageTitleTranslucent {
+	background: @sapUiObjectHeaderBackground;
+}
+
+.sapFDynamicPageTitle.sapFDynamicPageTitleTransparent {
+	background: transparent;
+}
+
+.sapFDynamicPageTitleWrapper.sapFDynamicPageTitleSnappedTitleOnMobile > .sapFDynamicPageTitle {
+	box-shadow: @sapUiShadowHeader;
+}
+
+.sapFDynamicPageNavigation .sapFDynamicPageTitleWrapper {
+	&.sapFDynamicPageTitleSnapped,
+	&.sapFDynamicPageTitleOnly {
+		& > .sapFDynamicPageTitle {
+			box-shadow: none;
+		}
+	}
+}
+
+.sapFDynamicPageTitle .sapMTB {
+	background: transparent;
+	padding: 0;
+}
+
+.sapFDynamicPageTitleMainNavigationArea > .sapMTBSeparator {
+	margin: 0 0.5rem;
+}
+
+.sapFDynamicPageTitleMain > .sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner {
+	margin-top: 0.6875rem;
+}
+
+.sapUiSizeCompact .sapFDynamicPageTitleMain > .sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner {
+	margin-top: 0.3125rem;
+}
+
+.sapUxAPObjectPageLayoutNoHeaderContent.sapUxAPObjectPageLayoutNoAnchorBar .sapFDynamicPageTitle {
+		box-shadow: @sapUiShadowHeader;
+}
+/* END "DynamicPageTitle.less" */
+
+/* START "FlexibleColumnLayout.less" */
+/* =========================================== */
+/* CSS for control sap.f/FlexibleColumnLayout  */
+/* Fiori 3 theme                               */
+/* =========================================== */
+
+.sapFFCL {
+	&.sapFFCLBackgroundDesignSolid {
+		background: @sapUiShellBackground;
+	}
+	&.sapFFCLBackgroundDesignTranslucent {
+		background: @sapUiGroupContentBackground;
+	}
+}
+.sapFFCLNavigationButton,
+.sapUiSizeCompact .sapFFCLNavigationButton {
+	.sapMBtnInner {
+		height: 1.625rem;
+	}
+}
+
+/* END "FlexibleColumnLayout.less" */
+
+/* START "GridListItem.less" */
+/* =================================== */
+/* CSS for control sap.f/GridListItem  */
+/* Fiori 3 theme                       */
+/* =================================== */
+
+@_sap_f_GridListItem_Header_BoxShadow: 0 0 0.25rem 0 fade(@sapUiContentShadowColor, 15), inset 0 -0.0625rem 0 0 @sapUiPageHeaderBorderColor;
+@_sap_f_GridListItem_HeaderHeight: 2.75rem;
+/* END "GridListItem.less" */
+
+/* START "ShellBar.less" */
+
+
+.alwaysCozyOverrideByParent(~"sapFShellBar");
+
+.alwaysDarkModeOverrideByParent(~"sapFShellBar");
+
+.sapFShellBar {
+	background: @sapUiShellColor;
+	height: 2.75rem;
+	.sapFShellBarOTB {
+		height: 2.75rem;
+	}
+	.CPImage {
+		.color1 {
+			stop-color: #C0D9F2;
+		}
+		.color2 {
+			stop-color: #FFFFFF;
+		}
+		&:focus {
+			outline-color: @sapUiContentContrastFocusColor;
+		}
+		html[data-sap-ui-browser^="ie"] &:focus:before {
+			border-color: @sapUiContentContrastFocusColor;
+		}
+	}
+	.sapFShellBarHomeIcon:focus {
+		outline-color: @sapUiContentContrastFocusColor;
+	}
+
+	.sapFShellBarSearch {
+		max-width: 27.5rem; // max width of searchField + button width
+	}
+	&.sapMPageHeader .sapMIBar,
+	.sapMIBar {
+		height: 2.75rem;
+	}
+	.sapMBtn:hover > .sapMBtnHoverable.sapMToggleBtnPressed:not(.sapMBtnActive) {
+		border-color: @sapUiShellHoverBackground;
+	}
+	.sapMToggleBtnPressed:not(.sapMBtnDisabled),
+	.sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed:not(.sapMBtnDisabled) {
+		background-color: @sapUiShellActiveBackground;
+		border-color: @sapUiShellActiveBackground;
+	}
+}
+
+// Resets of sizes for "Compact" mode - controls should remain in cozy mode
+.alwaysCozyOverrideByParent(@controlClass) {
+	.sapUiSizeCompact {
+		.@{controlClass} {
+			height: 2.75rem;
+
+			&.sapMPageHeader .sapMIBar,
+			.sapMIBar {
+				height: 2.75rem;
+			}
+
+		// sap.m.Button
+			.sapMBtn {
+				height: 2.75rem;
+				padding: 0.250rem 0;
+			}
+
+			.sapMBtnInner,
+			.sapFShellBarProfile .sapMBtnInner {
+				height: 2.25rem;
+				min-width: 2.25rem;
+			}
+
+			.sapMBtnInner.sapMBtnText {
+				padding-left: 0.5625rem;
+				padding-right: 0.5625rem;
+			}
+			.sapMBtnInner.sapMBtnText.sapMBtnIconFirst,
+			.sapMBtnInner.sapMBtnText.sapMBtnBack {
+				padding-left: 2.375rem;
+			}
+			.sapMBtnInner.sapMBtnText.sapMBtnBack.sapMBtnIconFirst {
+				padding-left: 4.750rem;
+			}
+			.sapMBtnInner.sapMBtnText.sapMBtnIconLast {
+				padding-right: 2.375rem;
+			}
+
+			.sapMBtnContent {
+				line-height: 2.125rem;
+			}
+
+			.sapMBtnIcon {
+				width: 2.125rem;
+				font-size: 1rem;
+				line-height: 2.125rem;
+				max-height: 2.375rem;
+				margin: 0;
+				padding: 0;
+			}
+			.sapMBtnIconLeft + .sapMBtnIconLeft {
+				left: 0;
+			}
+			.sapMBtnText {
+				.sapMBtnIconLeft + .sapMBtnIconLeft {
+					left: 2.375rem;
+				}
+			}
+			.sapMBtnInner > img {
+				width: 2.500rem;
+				margin-top: 0.2rem;
+				margin-left: 0.2rem;
+			}
+
+			.sapMBtn:not(.sapMBtnDisabled):hover > .sapMBtnInner:not(.sapMToggleBtnPressed):not(.sapMBtnEmphasized):not(.sapMBtnAccept):not(.sapMBtnReject):not(.sapMBtnActive):not(.sapMBtnGhost):not(.sapMBtnCritical):not(.sapMBtnNegative):not(.sapMBtnNeutral):not(.sapMBtnSuccess) {
+				border-color: transparent;
+		 	}
+
+		  	html.sap-desktop & .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed, .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed:not(.sapMBtnDisabled) {
+				background-color: @sapUiShellActiveBackground;
+			}
+
+			// sap.m.MenuButton
+			.sapMMenuBtn.sapMMenuBtnRegular .sapMBtnInner::after {
+				height: 38px; //ie does not accept rem for height in pseudo elements, but it works with px when you zoom
+				line-height: 2.2rem;
+				padding-right: 0.75rem;
+				padding-left: 0.5625rem;
+			}
+			.sapMMenuBtn.sapMMenuBtnRegular .sapMBtnInner:not(.sapMBtnText) {
+				padding-right: 1.25rem;
+			}
+			.sapMMenuBtn.sapMMenuBtnRegular .sapMBtnInner {
+				padding-right: 2rem;
+			}
+			.sapMMenuBtn .sapMBtnIconFirst .sapMBtnIcon {
+				padding-right: 0.75rem;
+			}
+
+			// sap.m.SearchField
+			.sapMSF {
+				min-width: 7rem;
+				height: 2.75rem;
+				padding: 0.25rem 0;
+				.sapMSFI {
+					height: 2.125rem
+				}
+				.sapMSFF {
+					height: 2.25rem;
+					line-height: 2.125rem;
+					padding-left: 0.625rem;
+					padding-right: 4.75rem;
+				}
+				.sapMSFR:not(.sapMSFNS) {
+					right: 2.375rem;
+				}
+				.sapMSFB {
+					width: 2.125rem;
+					height: 2.125rem;
+					line-height: 2.125rem;
+					font-size: 1rem;
+					text-align: center;
+					margin: 0;
+					padding: 0;
+					right: 0;
+					top: 0;
+				}
+			}
+			// sap.m.Select
+			.sapMSlt {
+				height: 2.5rem;
+				.sapMSltArrow {
+					line-height: 2.5rem;
+					width: 2.5rem;
+				}
+				.sapMSltLabel {
+					line-height: 2.375rem;
+					padding: 0 3rem 0 0.625rem;
+				}
+				.sapMSelectListItem {
+					line-height: 2.5rem;
+				}
+				.sapMSelectListItemBase {
+					height: 2.5rem;
+				}
+			}
+		}
+	}
+}
+
+// Resets all the styles of controls to align with the dark fiori 3 theme
+.alwaysDarkModeOverrideByParent(@controlClass) {
+	.@{controlClass} {
+
+		// sap.m.Button
+		.sapMTB-Transparent-CTX .sapFShellBarItem.sapMBtn,
+		.sapMTB-Transparent-CTX .sapFShellBarItem>.sapMBtn {
+			&:focus .sapMBtnInner {
+				outline-color: contrast(@sapShellColor, @sapUiContentFocusColor, @sapUiContentContrastFocusColor, @sapContent_ContrastTextThreshold);
+			}
+			&:focus .sapMBtnFocusDiv {
+				border-color: contrast(@sapShellColor, @sapUiContentFocusColor, @sapUiContentContrastFocusColor, @sapContent_ContrastTextThreshold);
+			}
+			.sapMBtnInner::after,
+			.sapMBtnIcon {
+				background: transparent;
+				color: @sapUiShellInteractiveTextColor;
+			}
+			.sapMBtnContent
+			{
+				background: transparent;
+				color: @sapUiShellTextColor;
+			}
+			&:not(.sapMBtnDisabled) > span.sapMBtnInner.sapMBtnTransparent.sapMBtnActive {
+				background: @sapUiShellActiveBackground;
+				border-color: @sapUiShellActiveBackground;
+			}
+			&:hover:not(.sapMBtnDisabled) {
+				>span.sapMBtnInner.sapMBtnHoverable.sapMBtnTransparent:not(.sapMToggleBtnPressed) {
+					&:not(.sapMBtnActive) {
+						background: @sapUiShellHoverBackground;
+						border-color: @sapUiShellHoverBackground;
+					}
+					&.sapMBtnActive {
+						background: @sapUiShellActiveBackground;
+						border-color: @sapUiShellActiveBackground;
+						color: @sapUiShellTextColor;
+					}
+					&:after,
+					>.sapMBtnIcon {
+						color: @sapUiShellInteractiveTextColor;
+					}
+					>.sapMBtnContent,
+					>.sapMBtnContent bdi
+					{
+						color: @sapUiShellTextColor;
+					}
+
+				}
+				&.sapMToggleBtnPressed {
+					background: @sapUiShellActiveBackground;
+					border-color: @sapUiShellActiveBackground;
+				}
+				&:active {
+					>.sapMBtnContent,
+					>.sapMBtnInner,
+					>.sapMBtnIcon {
+						color: @sapUiShellTextColor;
+					}
+				}
+			}
+
+			&:disabled {
+				opacity: 0.4;
+			}
+		}
+
+		.sapMBtnBase.sapMBtn.sapFShellBarItem.sapMBarChild:hover {
+			.sapMBtnInner.sapMBtnHoverable.sapMFocusable.sapMBtnIconFirst{
+				background: @sapUiShellHoverBackground;
+			}
+		}
+
+		//sap.m.Label
+		.sapMLabel.sapMLabelTBHeader {
+			color: @sapUiShellTextColor;
+		}
+
+		//sap.m.SearchField
+		.sapMSF {
+			.sapMSFF {
+				background: transparent;
+				border-color: lighten(@sapUiShellBorderColor, 30);
+				&:hover {
+					background: @sapUiShellHoverBackground;
+				}
+				.sapMSFI {
+					color: @sapUiShellTextColor;
+					&::placeholder{
+						color: @sapUiShellInteractiveTextColor;
+					}
+				}
+				.sapMSFB {
+					color: @sapUiShellInteractiveTextColor;
+					&:hover {
+						background: @sapUiShellHoverBackground;
+						color: @sapUiShellInteractiveTextColor;
+					}
+					&:active {
+						background: @sapUiShellActiveBackground;
+						color: @sapUiShellActiveTextColor;
+					}
+				}
+			}
+
+			&.sapMSFDisabled {
+				opacity: 0.4;
+			}
+
+			&.sapMFocus > .sapMSFF::before ,
+			html[data-sap-ui-browser^="ie"] &.sapMFocus .sapMSFF::before{
+				border-color: @sapUiContentContrastFocusColor;
+			}
+
+		}
+
+		// sap.m.Select
+		.sapMSlt {
+			background-color: transparent;
+			border-color: lighten(@sapUiShellBorderColor,  30);
+			color: @sapUiShellTextColor;
+			&.sapMSltHoverable:not(.sapMSltState):not(.sapMSltIconOnly):hover {
+				background-color: transparent;
+				border-color: lighten(@sapUiShellBorderColor,  30);
+				color: @sapUiShellTextColor;
+				.sapMSltArrow {
+					background-color: transparent;
+					&:hover {
+						background: @sapUiShellHoverBackground;
+					}
+				}
+			}
+			&.sapMSltPressed:not(.sapMSltDisabled):not(.sapMSltState) {
+				border-color:lighten(@sapUiShellBorderColor,  30);
+			}
+			.sapMSltLabel {
+				color: @sapUiShellTextColor;
+				&:hover {
+					background-color: @sapUiShellHoverBackground;
+					&>.sapMSltArrow {
+						background: @sapUiShellHoverBackground;
+					}
+				}
+			}
+			.sapMSltArrow {
+				background-color: transparent;
+				color: @sapUiShellInteractiveTextColor;
+				&:hover {
+					background: @sapUiShellHoverBackground;
+				}
+				&:active {
+					background: @sapUiShellActiveBackground;
+					color: @sapUiShellActiveTextColor;
+				}
+			}
+			&.sapMSltDisabled {
+				opacity: 0.4;
+			}
+		}
+	}
+}
+/* END "ShellBar.less" */

@@ -1,0 +1,94 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 90,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "InfoLabel.less",
+			"size": 2154,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "NavigationList.less",
+			"size": 287,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "SideNavigation.less",
+			"size": 606,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ToolHeader.less",
+			"size": 19411,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "ToolPage.less",
+			"size": 259,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 4605,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 82683,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "global.less",
+			"size": 1319,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 38672,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2378,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 41324,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 41317,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.css",
+			"size": 38665,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.less",
+			"size": 24903,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		},
+		{
+			"name": "library.source.less",
+			"size": 484,
+			"designtime": true,
+			"theme": "sap_fiori_3"
+		}
+	]
+}

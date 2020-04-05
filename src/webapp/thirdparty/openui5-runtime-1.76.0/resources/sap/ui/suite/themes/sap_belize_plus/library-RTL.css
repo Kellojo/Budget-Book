@@ -1,0 +1,13 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ *//*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */.sapUiTaskCircle{font-weight:bold;text-align:center;border:2px solid #000;box-shadow:0 2px 2px rgba(0,0,0,0.5);background-color:#fafafa;color:#333}.sapUiVerticalProgressOuterContainer{border:2px solid #000;width:31px;height:58px;box-shadow:0 2px 3px rgba(0,0,0,0.5);background-color:#808080}.sapUiVerticalProgressInnerContainer{position:relative;background-color:#a9a9a9}.sapUiTaskCircle{border:2px solid #fff}.sapUiTaskCircleColorRed{background-color:#e00;color:#fff}.sapUiTaskCircleColorYellow{background-color:#f9a429;color:#fff}.sapUiTaskCircleColorGreen{background-color:#38a238;color:#fff}.sapUiTaskCircleColorGray{background-color:#e5e5e5;color:#333}.sapUiVerticalProgressOuterContainer{border:2px solid #fff}.sapContrastPlus.sapUiTaskCircle,.sapContrastPlus .sapUiTaskCircle{border:2px solid #000;background-color:#3f5161;color:#fafafa;}.sapContrastPlus.sapUiVerticalProgressOuterContainer,.sapContrastPlus .sapUiVerticalProgressOuterContainer{border:2px solid #000;background-color:#808080;}.sapContrastPlus.sapUiVerticalProgressInnerContainer,.sapContrastPlus .sapUiVerticalProgressInnerContainer{background-color:#a9a9a9;}.sapContrastPlus.sapUiTaskCircle,.sapContrastPlus .sapUiTaskCircle{border:2px solid #3f5161;}.sapContrastPlus.sapUiTaskCircleColorRed,.sapContrastPlus .sapUiTaskCircleColorRed{background-color:#f88;color:#2f3c48;}.sapContrastPlus.sapUiTaskCircleColorYellow,.sapContrastPlus .sapUiTaskCircleColorYellow{background-color:#fabd64;color:#2f3c48;}.sapContrastPlus.sapUiTaskCircleColorGreen,.sapContrastPlus .sapUiTaskCircleColorGreen{background-color:#abe2ab;color:#2f3c48;}.sapContrastPlus.sapUiTaskCircleColorGray,.sapContrastPlus .sapUiTaskCircleColorGray{background-color:#4d6377;color:#fafafa;}.sapContrastPlus.sapUiVerticalProgressOuterContainer,.sapContrastPlus .sapUiVerticalProgressOuterContainer{border:2px solid #3f5161;}
+
+
+/* Inline theming parameters */
+#sap-ui-theme-sap\.ui\.suite{background-image:url('data:text/plain;utf-8,%7B%22default%22%3A%7B%7D%2C%22scopes%22%3A%7B%22sapContrastPlus%22%3A%7B%7D%7D%7D')}

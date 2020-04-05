@@ -1,0 +1,70 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 93,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "ContextMenu.less",
+			"size": 669,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "Overlay.less",
+			"size": 449,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 994,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 76466,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 3949,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 364,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 3565,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 3559,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 3943,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 1757,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 385,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		}
+	]
+}

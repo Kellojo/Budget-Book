@@ -1,0 +1,106 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 128,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "AnchorBar.less",
+			"size": 4755,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "BreadCrumbs.less",
+			"size": 428,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "HierarchicalSelect.less",
+			"size": 2108,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "IconTabBar.less",
+			"size": 203,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ObjectPageHeader.less",
+			"size": 625,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ObjectPageLayout.less",
+			"size": 828,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ObjectPageSection.less",
+			"size": 761,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ObjectPageSubSection.less",
+			"size": 627,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 161,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 65626,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 60331,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 62044,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 62032,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 60319,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 11243,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 504,
+			"designtime": true,
+			"theme": "sap_hcb"
+		}
+	]
+}

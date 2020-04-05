@@ -1,0 +1,117 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"size": 2038,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"size": 1308
+		},
+		{
+			"name": "controller/ContentDetails-dbg.controller.js",
+			"size": 9742,
+			"isDebug": true
+		},
+		{
+			"name": "controller/ContentDetails.controller.js",
+			"size": 4014
+		},
+		{
+			"name": "controller/ContentDetailsEdit-dbg.controller.js",
+			"size": 8187,
+			"isDebug": true
+		},
+		{
+			"name": "controller/ContentDetailsEdit.controller.js",
+			"size": 3330
+		},
+		{
+			"name": "controller/LayerContentMaster-dbg.controller.js",
+			"size": 6583,
+			"isDebug": true
+		},
+		{
+			"name": "controller/LayerContentMaster.controller.js",
+			"size": 2802
+		},
+		{
+			"name": "controller/Layers-dbg.controller.js",
+			"size": 1395,
+			"isDebug": true
+		},
+		{
+			"name": "controller/Layers.controller.js",
+			"size": 702
+		},
+		{
+			"name": "i18n/i18n.properties",
+			"size": 1356
+		},
+		{
+			"name": "index.html",
+			"size": 744
+		},
+		{
+			"name": "lrepConnector/LRepConnector-dbg.js",
+			"size": 11435,
+			"isDebug": true
+		},
+		{
+			"name": "lrepConnector/LRepConnector.js",
+			"size": 3088
+		},
+		{
+			"name": "manifest.json",
+			"size": 2876
+		},
+		{
+			"name": "style.css",
+			"size": 101
+		},
+		{
+			"name": "utils/DataUtils-dbg.js",
+			"size": 4409,
+			"isDebug": true
+		},
+		{
+			"name": "utils/DataUtils.js",
+			"size": 1377
+		},
+		{
+			"name": "utils/ErrorUtils-dbg.js",
+			"size": 2377,
+			"isDebug": true
+		},
+		{
+			"name": "utils/ErrorUtils.js",
+			"size": 1056
+		},
+		{
+			"name": "view/ContentDetails.view.xml",
+			"size": 1552
+		},
+		{
+			"name": "view/ContentDetailsEdit.view.xml",
+			"size": 841
+		},
+		{
+			"name": "view/EmptyDetails.view.xml",
+			"size": 151
+		},
+		{
+			"name": "view/LayerContentMaster.view.xml",
+			"size": 1221
+		},
+		{
+			"name": "view/Layers.view.xml",
+			"size": 707
+		},
+		{
+			"name": "view/MainView.view.xml",
+			"size": 164
+		}
+	]
+}

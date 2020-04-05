@@ -1,0 +1,100 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 137,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "BlockLayout.less",
+			"size": 4060,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "FormLayout.less",
+			"size": 681,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "GridLayout.less",
+			"size": 727,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ResponsiveGridLayout.less",
+			"size": 668,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "ResponsiveLayout.less",
+			"size": 721,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "SimpleForm.less",
+			"size": 316,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "Splitter.less",
+			"size": 603,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 5221,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 98606,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 175025,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2279,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 174476,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 174016,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.css",
+			"size": 174565,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.less",
+			"size": 8752,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		},
+		{
+			"name": "library.source.less",
+			"size": 539,
+			"designtime": true,
+			"theme": "sap_bluecrystal"
+		}
+	]
+}

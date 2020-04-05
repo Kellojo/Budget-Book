@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/base/ManagedObject","sap/ui/dt/ElementUtil","sap/ui/dt/Util","sap/base/util/isEmptyObject"],function(M,E,U,i){"use strict";var O={};var S='sap.ui.dt.ElementOverlay';var a='sap.ui.dt.AggregationOverlay';var o={};var A={};O.getOverlay=function(e){var I=(typeof e==="string"?e:E.getElementInstance(e)&&E.getElementInstance(e).getId());return o[I]||A[I];};O.getOverlays=function(){return U.objectValues(o);};O.register=function(c){if(!b(c)){var l='sap.ui.dt.OverlayRegistry#register';var e=new Error(l+' / Attempt to register illegal overlay');e.name=l;throw e;}o[c.getId()]=c;if(c.getMetadata().getName()===S){A[c.getAssociation('element')]=c;}};O.deregister=function(c){if(!b(c)){var l='sap.ui.dt.OverlayRegistry#deregister';var e=new Error(l+' / Attempt to deregister illegal overlay');e.name=l;throw e;}delete o[c.getId()];if(c.getMetadata().getName()===S){delete A[c.getAssociation('element')];}};O.hasOverlays=function(){return!i(o);};function b(c){return(c instanceof M&&[S,a].indexOf(c.getMetadata().getName())>-1);}return O;},true);

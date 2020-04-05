@@ -1,0 +1,122 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 128,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "Calendar.less",
+			"size": 14178,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "CalendarLegend.less",
+			"size": 3313,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "CalendarRow.less",
+			"size": 5059,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ColorPicker.less",
+			"size": 1362,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "Currency.less",
+			"size": 188,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "Menu.less",
+			"size": 576,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ShellHeader.less",
+			"size": 4418,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ShellLayout.less",
+			"size": 369,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "ShellOverlay.less",
+			"size": 1370,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 5980,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 74971,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "img-RTL/create.txt",
+			"size": 0,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "img/create.txt",
+			"size": 0,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 133990,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2343,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 149725,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 149609,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 133874,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 31732,
+			"designtime": true,
+			"theme": "sap_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 499,
+			"designtime": true,
+			"theme": "sap_hcb"
+		}
+	]
+}

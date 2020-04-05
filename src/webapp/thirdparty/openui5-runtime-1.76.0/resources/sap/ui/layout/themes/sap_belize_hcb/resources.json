@@ -1,0 +1,106 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 93,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "BlockLayoutCell.less",
+			"size": 281,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "FormLayout.less",
+			"size": 268,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "GridLayout.less",
+			"size": 263,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "ResponsiveGridLayout.less",
+			"size": 317,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "ResponsiveLayout.less",
+			"size": 300,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "ResponsiveSplitter.less",
+			"size": 1612,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "SimpleForm.less",
+			"size": 268,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "Splitter.less",
+			"size": 1521,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "css-variables.css",
+			"size": 5086,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "css-variables.source.less",
+			"size": 81527,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 165522,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2256,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-skeleton-RTL.css",
+			"size": 164899,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library-skeleton.css",
+			"size": 164438,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 165061,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 5887,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 576,
+			"designtime": true,
+			"theme": "sap_belize_hcb"
+		}
+	]
+}
