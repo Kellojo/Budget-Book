@@ -27,16 +27,21 @@ sap.ui.define([
     }
 
     ControllerProto.onImportFilePress = function() {
-        this.getOwnerComponent().getDatabase().importData({
-            success: (oData) => {
-                console.log(oData);
-                MessageToast.show(JSON.stringify(oData));
-            },
-            error: (sErrorKey, sErrorDetail) => {
-                var oResourceBundle = this.getOwnerComponent().getResourceBundle();
+        var oComponent = this.getOwnerComponent(),
+            oResourceBundle = oComponent.getResourceBundle();
+        oComponent.getDatabase().importData({
+            success: function() {
+                MessageToast.show(oResourceBundle.getText("importSuccess"));
+                oComponent.toOverview();
+            }.bind(this),
+            error: function(sErrorKey, sErrorDetail) {
                 MessageToast.show(oResourceBundle.getText(sErrorKey, [sErrorDetail]));
-            }
+            }.bind(this)
         });
+    }
+
+    ControllerProto.onStartFreshPress = function() {
+        this.getOwnerComponent().toOverview();
     }
 
     return Controller;

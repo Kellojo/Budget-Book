@@ -43,7 +43,7 @@
                             <kM:Wrapper class="budgetBookWelcome-decision">
                                 <core:Icon src="sap-icon://paper-plane" class="budgetBookWelcome-decisionHelperIcon"/>
                                 <Text text="I do not want to import a save file." class="kellojoM-lineSpacing"/>
-                                <Button text="Let's start fresh" type="Transparent" class="budgetBookWelcome-decisionAction"/>
+                                <Button text="Let's start fresh" type="Transparent" press="onStartFreshPress" class="budgetBookWelcome-decisionAction"/>
                             </kM:Wrapper>
                         </kM:Wrapper>
                     </kM:Wrapper>

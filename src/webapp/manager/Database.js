@@ -71,7 +71,15 @@ sap.ui.define([
         api.importData({
             title: oResourceBundle.getText("importDialogTitle"),
             buttonLabel: oResourceBundle.getText("importDialogButtonLabel"),
-            success: oParam.success,
+            success: function(oData) {
+                if (!!oData.transactions && typeof Array.isArray(oData.transactions)) {
+                    this.m_oDatabaseModel.setData(oData);
+                    this.refresh();
+                    oParam.success();
+                } else {
+                    oParam.error("importErrorParseException", "");
+                }
+            }.bind(this),
             error: oParam.error
         });
     }
