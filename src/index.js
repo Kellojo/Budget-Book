@@ -6,6 +6,8 @@ const windowStateKeeper = require('electron-window-state')
 const { autoUpdater } = require("electron-updater")
 const IOManager = require("./electron/IoManager")
 
+let mainWindow = null;
+
 
 function createWindow () {
     // Load the previous state with fallback to defaults
@@ -15,8 +17,8 @@ function createWindow () {
     });
 
 
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
+    // Create the browser window.
+    mainWindow = new BrowserWindow({
     x: mainWindowState.x,
     y: mainWindowState.y,
     width: mainWindowState.width,
@@ -82,13 +84,21 @@ ipcMain.on("exportData", (event, oParam) => {
         success: () => { event.reply("exportDataComplete") },
         error: () => { event.reply("exportDataError") },
         fileContent: oParam.data
-    });
+    }, mainWindow);
+});
+ipcMain.on("importData", (event, oParam) => {
+    ioManager.loadJSONFromDisk({
+        title: oParam.title,
+        buttonLabel: oParam.buttonLabel,
+        success: (oData) => { event.reply("importDataComplete", oData) },
+        error: (sErrorMessage, sErrorDetail) => { event.reply("importDataError", sErrorMessage, sErrorDetail) }
+    }, mainWindow);
 });
 ipcMain.on("loadAppInfo", (event) => {
     
     var oAppInfo = {
         version: app.getVersion(),
-        isFirstStartUp: false//!!store.get("isFirstStartUp", true)
+        isFirstStartUp: true//!!store.get("isFirstStartUp", true)
     };
 
     store.set("isFirstStartUp", false);

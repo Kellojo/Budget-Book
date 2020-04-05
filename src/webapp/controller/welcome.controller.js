@@ -1,6 +1,7 @@
 sap.ui.define([
-    "com/budgetBook/controller/ControllerBase"
-], function (ControllerBase) {
+    "com/budgetBook/controller/ControllerBase",
+    "sap/m/MessageToast",
+], function (ControllerBase, MessageToast) {
     "use strict";
 
     var Controller = ControllerBase.extend("com.budgetBook.controller.welcome", {}),
@@ -23,6 +24,19 @@ sap.ui.define([
 
     ControllerProto.onGetStartedPress = function() {
         this.m_oNavContainer.to(this.byId("idGetStartedPage"));
+    }
+
+    ControllerProto.onImportFilePress = function() {
+        this.getOwnerComponent().getDatabase().importData({
+            success: (oData) => {
+                console.log(oData);
+                MessageToast.show(JSON.stringify(oData));
+            },
+            error: (sErrorKey, sErrorDetail) => {
+                var oResourceBundle = this.getOwnerComponent().getResourceBundle();
+                MessageToast.show(oResourceBundle.getText(sErrorKey, [sErrorDetail]));
+            }
+        });
     }
 
     return Controller;

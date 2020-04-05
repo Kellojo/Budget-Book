@@ -60,6 +60,22 @@ sap.ui.define([
         });
     }
 
+    /**
+     * Exports the data to an external file
+     * @public
+     */
+    SchemaProto.importData = function(oParam) {
+        Log.info("Importing Database...");
+
+        var oResourceBundle = this.getOwnerComponent().getResourceBundle();
+        api.importData({
+            title: oResourceBundle.getText("importDialogTitle"),
+            buttonLabel: oResourceBundle.getText("importDialogButtonLabel"),
+            success: oParam.success,
+            error: oParam.error
+        });
+    }
+
 
 
 

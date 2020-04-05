@@ -35,7 +35,7 @@
                             <kM:Wrapper class="budgetBookWelcome-decision">
                                 <core:Icon src="sap-icon://download" class="budgetBookWelcome-decisionHelperIcon"/>
                                 <Text text="I want to import a BudgetP save file." class="kellojoM-lineSpacing"/>
-                                <Button text="Import a file" type="Transparent" class="budgetBookWelcome-decisionAction"/>
+                                <Button text="Import a file" type="Transparent" press="onImportFilePress" class="budgetBookWelcome-decisionAction"/>
                             </kM:Wrapper>
 
                             <kM:Wrapper class="budgetBookWelcome-divider"/>

@@ -22,6 +22,18 @@ contextBridge.exposeInMainWorld(
             
             ipcRenderer.send("exportData", oParam);
         },
+        importData: (oParam) => {
+            ipcRenderer.once("importDataComplete", (oEvent, oData) => {
+                oParam.success(oData);
+            });
+            if (oParam.error) {
+                ipcRenderer.once("importDataError", (oEvent, sErrorMessage, sErrorDetail) => {
+                   oParam.error(sErrorMessage, sErrorDetail);
+                });
+            }
+            
+            ipcRenderer.send("importData", oParam);
+        },
         loadAppInfo: (fnCallback) => {
             ipcRenderer.once("loadAppInfoComplete", fnCallback);
             ipcRenderer.send("loadAppInfo");
