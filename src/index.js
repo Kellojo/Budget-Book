@@ -23,6 +23,8 @@ function createWindow () {
     y: mainWindowState.y,
     width: mainWindowState.width,
     height: mainWindowState.height,
+    titleBarStyle: 'hidden',
+    autoHideMenuBar: true,
 
     webPreferences: {
         contextIsolation: true,     // protect against prototype pollution
