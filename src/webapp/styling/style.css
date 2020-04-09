@@ -5,6 +5,7 @@
 .budgetBookApp-Page-Header {
   height: 3.5rem !important;
   background: linear-gradient(to left, #005575, #514a9d) !important;
+  -webkit-app-region: drag;
 }
 .budgetBookApp-Page-Header > .sapMBarLeft {
   height: 3.5rem !important;
