@@ -286,5 +286,121 @@ sap.ui.define([
         return oResourceBundle.getText("monthWithIndex_" + oTab.month) + " " + oTab.year; 
     }
 
+    /**
+     * formats the APexcharts chart data for the current timespan (i.e. month/year)
+     */
+    ControllerProto.formatMonthChartData = function(aTransactions) {
+        var oCurrentTab = this.m_oViewModel.getProperty("/currentTab"),
+            oComponent = this.getOwnerComponent(),
+            oResourceBundle = oComponent.getResourceBundle();
+
+        if (!oCurrentTab) {
+            return;
+        }
+
+        // Create Data Points
+        var oSeries = {
+            name: oResourceBundle.getText("chartTransactionVolume"),
+            data: []
+        };
+
+        // Create data points for the current month or a full year
+        var iTransactionVolumePrevMonth = 0,
+            bIsYear = !!oCurrentTab.year && !oCurrentTab.month;
+        if (!bIsYear) {
+            oSeries.data = this._createDataPointsForMonth(
+                oCurrentTab.year,
+                oCurrentTab.month,
+                iTransactionVolumePrevMonth
+            ).dataPoints;
+        } else if (bIsYear) {
+            for (var i = 0; i < 12; i++) {
+                var oMonthInfo = this._createDataPointsForMonth(oCurrentTab.year, i, iTransactionVolumePrevMonth);
+                iTransactionVolumePrevMonth = oMonthInfo.transactionVolume;
+                oSeries.data = oSeries.data.concat(oMonthInfo.dataPoints);
+            }
+        }
+        
+
+        return {
+            series: [oSeries],
+            annotations: {
+                yaxis: [
+                    {
+                        y: 80,
+                        borderColor: '#00E396',
+                        label: {
+                          borderColor: '#00E396',
+                          style: {
+                            color: '#fff',
+                            background: '#00E396',
+                          },
+                          text: bIsYear ? oResourceBundle.getText("chartPreviousYear") : oResourceBundle.getText("chartPreviousMonth"),
+                        }
+                    }
+                ],
+                xaxis: [{
+                    x: new Date().getTime(),
+                    strokeDashArray: 0,
+                    borderColor: '#c0399f',
+                    label: {
+                        borderColor: '#c0399f',
+                        style: {
+                            color: '#fff',
+                            background: '#c0399f',
+                        },
+                    }
+                }]
+            }
+        };
+    }
+
+    /**
+     * Creates the data points for the given month
+     * @param {string} sYear
+     * @param {string} sMonth
+     * @param {number} iStartTransactionVolume
+     * @returns {object}
+     * @private
+     */
+    ControllerProto._createDataPointsForMonth = function(sYear, sMonth, iStartTransactionVolume) {
+        var iDaysInCurrentMonth =  new Date(sYear, sMonth, 0).getDate(),
+            iTransactionVolume = iStartTransactionVolume,
+            aDataPoints = [],
+            oComponent = this.getOwnerComponent();
+
+        for (var i = 1; i <= iDaysInCurrentMonth; i++) {
+            var oCurrentDate = new Date();
+            oCurrentDate.setFullYear(sYear);
+            oCurrentDate.setMonth(sMonth);
+            oCurrentDate.setDate(i);
+
+            var isPastCurrentDay = oCurrentDate.getTime() > new Date().getTime(),
+                oPoint = {
+                    x: oCurrentDate.getTime(),
+                    y: null
+                };
+
+
+            if (!isPastCurrentDay) {
+                var aTransactionsOnDate = oComponent.getTransactionsManager().getAllTransactionsOnDate(oCurrentDate);
+
+                // Get transaction volume
+                aTransactionsOnDate.forEach((oTransaction) => {
+                    iTransactionVolume += oTransaction.amount;
+                });
+                iTransactionVolume = Math.floor(iTransactionVolume * 100) / 100;
+                oPoint.y = iTransactionVolume;
+            }
+
+            aDataPoints.push(oPoint);
+        }
+
+        return {
+            dataPoints: aDataPoints,
+            transactionVolume: iTransactionVolume
+        };
+    }
+
     return Controller;
 });

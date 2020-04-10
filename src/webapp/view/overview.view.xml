@@ -28,6 +28,8 @@
             
         <kM:content>
 
+            <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}"/>
+
             <kM:TableActions>
                 <MenuButton id="idMonthTabButton" type="Transparent" text="{ path: '/currentTab', formatter: '.formatCurrentTab'}">
                     <Menu items="{/months}" itemSelected="onTabChanged">

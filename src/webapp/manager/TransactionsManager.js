@@ -132,5 +132,32 @@ sap.ui.define([
         return oTime;
     }
 
+    /**
+     * Get's all transactions on a given day
+     * @param {Date} oDate
+     * @returns {array}
+     * @public
+     */
+    ManagerProto.getAllTransactionsOnDate = function(oDate) {
+        let oDatabase = this.getOwnerComponent().getDatabase(),
+            oData = oDatabase.getData(),
+            aTransactions = oData.transactions,
+            aResult = [];
+
+        if (!oDate || !aTransactions) {
+            return aResult;
+        }
+
+
+        aResult = aTransactions.filter((oTransaction) => {
+            var oTransactionDate = new Date(oTransaction.occurredOn);
+            return oTransactionDate.getFullYear() == oDate.getFullYear() &&
+                   oTransactionDate.getMonth() == oDate.getMonth() &&
+                   oTransactionDate.getDate() == oDate.getDate();
+        });
+
+        return jQuery.extend(true, [], aResult);
+    }
+
     return oManager;
 });
