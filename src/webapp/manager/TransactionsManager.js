@@ -159,5 +159,50 @@ sap.ui.define([
         return jQuery.extend(true, [], aResult);
     }
 
+    /**
+     * Get's all transactions in the given month and or year
+     * @param {string} sYear
+     * @param {string} sMonth
+     * @return {array}
+     * @public
+     */
+    ManagerProto.getAllTransactionsIn = function(sYear, sMonth) {
+        let oDatabase = this.getOwnerComponent().getDatabase(),
+            oData = oDatabase.getData(),
+            aTransactions = oData.transactions,
+            aResult = [];
+
+        if (!aTransactions) {
+            return aResult;
+        }
+
+        aTransactions = jQuery.extend(true, [], oData.transactions);
+        aResult = aTransactions.filter(function(oTransaction) {
+            var oTransactionDate = new Date(oTransaction.occurredOn);
+            return oTransactionDate.getFullYear() == sYear && 
+                ((!sMonth && sMonth != 0) || oTransactionDate.getMonth() == sMonth)
+        }.bind(this));
+
+        return aResult;
+    }
+
+    /**
+     * Get's the transaction volume of a given month / year
+     * @param {string} sYear
+     * @param {string} sMonth
+     * @returns {number}
+     * @public
+     */
+    ManagerProto.getTransactionVolumeIn = function(sYear, sMonth) {
+        var aTransactions = this.getAllTransactionsIn(sYear, sMonth),
+            iVolume = 0;
+
+        aTransactions.forEach((oTransaction) => {
+            iVolume += oTransaction.amount;
+        });
+
+        return Math.floor(iVolume * 100) / 100;
+    }
+
     return oManager;
 });

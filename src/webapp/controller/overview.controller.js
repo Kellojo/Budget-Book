@@ -292,7 +292,9 @@ sap.ui.define([
     ControllerProto.formatMonthChartData = function(aTransactions) {
         var oCurrentTab = this.m_oViewModel.getProperty("/currentTab"),
             oComponent = this.getOwnerComponent(),
-            oResourceBundle = oComponent.getResourceBundle();
+            oTransactionsManager = oComponent.getTransactionsManager(),
+            oResourceBundle = oComponent.getResourceBundle(),
+            aYAxisAnnotations = [];
 
         if (!oCurrentTab) {
             return;
@@ -305,52 +307,59 @@ sap.ui.define([
         };
 
         // Create data points for the current month or a full year
-        var iTransactionVolumePrevMonth = 0,
+        var iTransactionVolume = 0,
             bIsYear = !!oCurrentTab.year && !oCurrentTab.month;
         if (!bIsYear) {
             oSeries.data = this._createDataPointsForMonth(
                 oCurrentTab.year,
                 oCurrentTab.month,
-                iTransactionVolumePrevMonth
+                iTransactionVolume
             ).dataPoints;
         } else if (bIsYear) {
             for (var i = 0; i < 12; i++) {
-                var oMonthInfo = this._createDataPointsForMonth(oCurrentTab.year, i, iTransactionVolumePrevMonth);
-                iTransactionVolumePrevMonth = oMonthInfo.transactionVolume;
+                var oMonthInfo = this._createDataPointsForMonth(oCurrentTab.year, i, iTransactionVolume);
+                iTransactionVolume = oMonthInfo.transactionVolume;
                 oSeries.data = oSeries.data.concat(oMonthInfo.dataPoints);
             }
+        }
+
+        // Calculate previous month/year transaction volume
+        var iPrevTransactionVolume = 0,
+            oPrevDate = new Date();
+        oPrevDate.setFullYear(oCurrentTab.year);
+
+        if (bIsYear) {
+            iPrevTransactionVolume = oTransactionsManager.getTransactionVolumeIn(oPrevDate.getFullYear() - 1);
+        } else {
+            oPrevDate.setMonth(oCurrentTab.month);
+            oPrevDate.setMonth(oPrevDate.getMonth() - 1);
+            iPrevTransactionVolume = oTransactionsManager.getTransactionVolumeIn(
+                oPrevDate.getFullYear(),
+                oPrevDate.getMonth()
+            );
+        }
+
+        if (iPrevTransactionVolume > 0) {
+            aYAxisAnnotations.push({
+                y: iPrevTransactionVolume,
+                borderColor: '#00E396',
+                label: {
+                  borderColor: '#00E396',
+                  style: {
+                    color: '#fff',
+                    background: '#00E396',
+                  },
+                  text: bIsYear ? oResourceBundle.getText("chartPreviousYear") : oResourceBundle.getText("chartPreviousMonth"),
+                }
+            });
         }
         
 
         return {
             series: [oSeries],
             annotations: {
-                yaxis: [
-                    {
-                        y: 80,
-                        borderColor: '#00E396',
-                        label: {
-                          borderColor: '#00E396',
-                          style: {
-                            color: '#fff',
-                            background: '#00E396',
-                          },
-                          text: bIsYear ? oResourceBundle.getText("chartPreviousYear") : oResourceBundle.getText("chartPreviousMonth"),
-                        }
-                    }
-                ],
-                xaxis: [{
-                    x: new Date().getTime(),
-                    strokeDashArray: 0,
-                    borderColor: '#c0399f',
-                    label: {
-                        borderColor: '#c0399f',
-                        style: {
-                            color: '#fff',
-                            background: '#c0399f',
-                        },
-                    }
-                }]
+                yaxis: aYAxisAnnotations,
+                xaxis: [],
             }
         };
     }
