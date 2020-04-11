@@ -1,6 +1,6 @@
 {
   "name": "budget-book",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple little app designed to help tracking your income and expenses.",
   "main": "src/index.js",
   "scripts": {
@@ -25,7 +25,9 @@
     "appId": "com.budgetP",
     "mac": {
       "category": "public.app-category.finance",
-      "publish": ["github"]
+      "publish": [
+        "github"
+      ]
     }
   },
   "devDependencies": {
