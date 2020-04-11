@@ -18,6 +18,12 @@
         <kM:actions>
             <OverflowToolbar width="100%">
                 <ToolbarSpacer />
+                <SegmentedButton selectedKey="{/currentChartType}">
+					<items>
+						<SegmentedButtonItem icon="sap-icon://donut-chart" tooltip="{i18n>chartTypeByCategory}" key="byCategory" />
+						<SegmentedButtonItem icon="sap-icon://line-chart-time-axis" tooltip="{i18n>chartTypeOverTime}" key="overTime"/>
+					</items>
+				</SegmentedButton>
                 <Button press="onAddButtonPress" text="{i18n>addTransaction}"/>
             </OverflowToolbar>
         </kM:actions>
@@ -28,7 +34,8 @@
             
         <kM:content>
 
-            <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}"/>
+            <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${/currentChartType} === 'overTime'}"/>
+            <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${/currentChartType} === 'byCategory'}"/>
 
             <kM:TableActions>
                 <MenuButton id="idMonthTabButton" type="Transparent" text="{ path: '/currentTab', formatter: '.formatCurrentTab'}">

@@ -14,6 +14,8 @@ sap.ui.define([
         ControllerProto = Controller.prototype;
 
     ControllerProto.ROUTE_NAME = "overview";
+    ControllerProto.CHART_TYPE_OVER_TIME = "overTime";
+    ControllerProto.CHART_TYPE_BY_CATEGORY = "byCategory";
 
     
     ControllerProto.onInit = function() {
@@ -23,6 +25,7 @@ sap.ui.define([
             months: [],
             currentTab: null,
             searchQuery: "",
+            currentChartType: this.CHART_TYPE_OVER_TIME
         });
         this.getView().setModel(this.m_oViewModel);
 
