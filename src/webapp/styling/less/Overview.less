@@ -18,7 +18,15 @@
     .sapUiUfdCurrencyCurrency {
         width: unset;
     }
+
+    &[data-type="expense"] {
+       color: @error;
+    }
+    &[data-type="income"] {
+        color: @success;
+     }
 }
+
 
 .budgetBookOverview-transactionItem {
     &:hover {

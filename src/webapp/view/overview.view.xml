@@ -79,7 +79,11 @@
                         <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
                     </VBox>
                     
-                    <u:Currency value="{Database>amount}" currency="EUR" maxPrecision="2" useSymbol="true" class="budgetBookOverview-currency"/>
+                    <u:Currency value="{Database>amount}" currency="EUR" maxPrecision="2" useSymbol="true" class="budgetBookOverview-currency">
+                        <u:customData>
+                            <core:CustomData key="type" value="{Database>type}" writeToDom="true" />
+                        </u:customData>
+                    </u:Currency>
                     <Label text="{Database>category}"/>
                     
                     <Button icon="sap-icon://delete" press="onDeleteTransactionPress" type="Unstyled" class="budgetBookOverview-deleteIcon"/>
