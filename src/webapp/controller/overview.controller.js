@@ -339,7 +339,7 @@ sap.ui.define([
             );
         }
 
-        if (iPrevTransactionVolume > 0) {
+        if (iPrevTransactionVolume != 0) {
             aYAxisAnnotations.push({
                 y: iPrevTransactionVolume,
                 borderColor: '#00E396',
@@ -396,7 +396,11 @@ sap.ui.define([
 
                 // Get transaction volume
                 aTransactionsOnDate.forEach((oTransaction) => {
-                    iTransactionVolume += oTransaction.amount;
+                    if (oTransaction.type === Config.TRANSACTION_TYPE_EXPENSE) {
+                        iTransactionVolume -= oTransaction.amount;
+                    } else {
+                        iTransactionVolume += oTransaction.amount;
+                    }                
                 });
                 iTransactionVolume = Math.floor(iTransactionVolume * 100) / 100;
                 oPoint.y = iTransactionVolume;

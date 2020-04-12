@@ -1,7 +1,8 @@
 sap.ui.define([
     "com/budgetBook/manager/BeanBase",
-    "sap/base/Log"
-], function (ManagedObject, Log) {
+    "sap/base/Log",
+    "com/budgetBook/Config",
+], function (ManagedObject, Log, Config) {
     "use strict";
 
     var oManager = ManagedObject.extend("com.budgetBook.manager.TransactionsManager", {}),
@@ -199,8 +200,13 @@ sap.ui.define([
             iVolume = 0;
 
         aTransactions.forEach((oTransaction) => {
-            if ((sCategory == null || sCategory == undefined) || sCategory == oTransaction.category)
-            iVolume += oTransaction.amount;
+            if ((sCategory == null || sCategory == undefined) || sCategory == oTransaction.category) {
+                if (oTransaction.type === Config.TRANSACTION_TYPE_EXPENSE) {
+                    iVolume -= oTransaction.amount;
+                } else {
+                    iVolume += oTransaction.amount;
+                }
+            } 
         });
 
         return Math.floor(iVolume * 100) / 100;
@@ -221,7 +227,7 @@ sap.ui.define([
         aCategories.forEach(function(sCategory) {
             var iVolume = this.getTransactionVolumeIn(sYear, sMonth, sCategory);
 
-            if (!bExcludeZero || iVolume > 0 ) {
+            if (!bExcludeZero || iVolume != 0 ) {
                 oResult[sCategory] = iVolume;
             }
         }.bind(this));
