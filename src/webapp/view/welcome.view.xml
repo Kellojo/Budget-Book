@@ -15,11 +15,11 @@
                 <content>
 
                     <kM:Wrapper class="budgetBookWelcome-contentWrapper">
-                        <Text text="Welcome to BudgetP!" class="budgetBookWelcome-title"/>
-                        <Text text="BudgetP enables you to easily track your monthly income and spendings." class="kellojoM-lineSpacing"/>
-                        <Text text="Staying on top of your financial situation is it's mission." class="kellojoM-lineSpacing"/>
+                        <Text text="{i18n>welcomeMessage}" class="budgetBookWelcome-title"/>
+                        <Text text="{i18n>welcomeAppDescription}" class="kellojoM-lineSpacing"/>
+                        <Text text="{i18n>welcomeAppMission}" class="kellojoM-lineSpacing"/>
 
-                        <Link text="Get Started" class="budgetBookWelcome-getStarted" press="onGetStartedPress"/>
+                        <Link text="{i18n>welcomeGetStarted}" class="budgetBookWelcome-getStarted" press="onGetStartedPress"/>
                     </kM:Wrapper>
                     
                 </content>
@@ -29,21 +29,21 @@
                 <content>
 
                     <kM:Wrapper class="budgetBookWelcome-contentWrapper">
-                        <Text text="How would you like to continue?" class="budgetBookWelcome-title"/>
+                        <Text text="{i18n>welcomeGetStartedCHoice}" class="budgetBookWelcome-title"/>
 
                         <kM:Wrapper class="budgetBookWelcome-decisionContainer">
                             <kM:Wrapper class="budgetBookWelcome-decision">
                                 <core:Icon src="sap-icon://download" class="budgetBookWelcome-decisionHelperIcon"/>
-                                <Text text="I want to import a BudgetP save file." class="kellojoM-lineSpacing"/>
-                                <Button text="Import a file" type="Transparent" press="onImportFilePress" class="budgetBookWelcome-decisionAction"/>
+                                <Text text="{i18n>welcomeGetStartedChoiceImport}" class="kellojoM-lineSpacing"/>
+                                <Button text="{i18n>welcomeGetStartedChoiceImportAction}" type="Transparent" press="onImportFilePress" class="budgetBookWelcome-decisionAction"/>
                             </kM:Wrapper>
 
                             <kM:Wrapper class="budgetBookWelcome-divider"/>
 
                             <kM:Wrapper class="budgetBookWelcome-decision">
                                 <core:Icon src="sap-icon://paper-plane" class="budgetBookWelcome-decisionHelperIcon"/>
-                                <Text text="I do not want to import a save file." class="kellojoM-lineSpacing"/>
-                                <Button text="Let's start fresh" type="Transparent" press="onStartFreshPress" class="budgetBookWelcome-decisionAction"/>
+                                <Text text="{i18n>welcomeGetStartedChoiceStartFresh}" class="kellojoM-lineSpacing"/>
+                                <Button text="{i18n>welcomeGetStartedChoiceStartFreshAction}" type="Transparent" press="onStartFreshPress" class="budgetBookWelcome-decisionAction"/>
                             </kM:Wrapper>
                         </kM:Wrapper>
                     </kM:Wrapper>
