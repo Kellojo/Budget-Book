@@ -6,7 +6,10 @@ A simple little app designed to help tracking your income and expenses.
 
 
 
-## Download
+### Download
+Download the latest version from [here](https://github.com/Kellojo/Budget-Book/releases/latest).
+Currently only macOS and Windows are supported.
 
-
-## Details 
+### Details 
+The app helps in several ways to track and manage your income and expenses.
+This begins with the initial setup:
