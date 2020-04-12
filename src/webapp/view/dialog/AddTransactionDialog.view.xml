@@ -8,8 +8,17 @@
     height="100%"
     width="100%">
 
+    <kM:Wrapper class="budgetBookDialog-Toolbar">
+        <SegmentedButton selectedKey="{/transaction/type}" width="100%">
+			<items>
+				<SegmentedButtonItem text="{i18n>addTransactionDialogExpenses}" key="expense"/>
+				<SegmentedButtonItem text="{i18n>addTransactionDialogIncome}" key="income"/>
+			</items>
+		</SegmentedButton>
+    </kM:Wrapper>
+
     <VBox class="budgetBookDialog">
-        
+
         <kM:Wrapper class="budgetBookDialog-FormInputContainer">
             <Label text="{i18n>addTransactionDialogInputTitle}" labelFor="idTitleInput"/>
             <Input 

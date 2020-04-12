@@ -1,7 +1,8 @@
 sap.ui.define([
     "com/budgetBook/controller/ControllerBase",
-    "sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "com/budgetBook/Config"
+], function (Controller, JSONModel, Config) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.dialog.AddTransactionDialog", {}),
@@ -31,7 +32,8 @@ sap.ui.define([
             amount: 0,
             category: "",
             occurredOn: new Date(),
-            currency: "EUR"
+            type: Config.TRANSACTION_TYPE_EXPENSE,
+            currency: Config.DEFAULT_CURRENCY
         };
 
         // Get transaction from settings, if this is the edit mode

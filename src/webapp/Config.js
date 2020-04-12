@@ -20,8 +20,12 @@ sap.ui.define([], function () {
 
         DEFAULT_CURRENCY: "EUR",
 
+        DEFAULT_OVERVIEW_CHART_TYPE: "overTime",
 
-        DEFAULT_OVERVIEW_CHART_TYPE: "overTime"
+
+        TRANSACTION_TYPE_EXPENSE: "expense",
+        TRANSACTION_TYPE_INCOME: "income",
+
 
     };
 });

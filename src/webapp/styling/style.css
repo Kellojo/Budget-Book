@@ -6,7 +6,6 @@
   height: 3.5rem !important;
   background: linear-gradient(to left, #005575, #514a9d) !important;
   -webkit-app-region: drag;
-  width: 100%;
 }
 .budgetBookApp-Page-Header > .sapMBarLeft {
   height: 3.5rem !important;
@@ -71,6 +70,10 @@
   border-top: none;
   transition: border-color 0.2s;
 }
+.budgetBookDialog-Toolbar {
+  padding: 0.25rem 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
 .budgetBookDialog-FormInputContainer {
   padding-bottom: 0.75rem;
 }
@@ -101,6 +104,12 @@
 }
 .budgetBookOverview-currency .sapUiUfdCurrencyCurrency {
   width: unset;
+}
+.budgetBookOverview-currency[data-type="expense"] {
+  color: #bb0000;
+}
+.budgetBookOverview-currency[data-type="income"] {
+  color: #14B341;
 }
 .budgetBookOverview-transactionItem:hover .budgetBookOverview-deleteIcon .sapMBtnIcon {
   color: #bb0000;
