@@ -9,7 +9,7 @@
     width="100%"
     id="idAppView">
 
-    <kM:Page class="budgetBookPage" title="{i18n>overviewPageTitle}" 
+    <kM:Page class="budgetBookPage" id="idPage" title="{i18n>overviewPageTitle}" 
     subTitle="{
         parts: ['Database>/transactions', '/currentTab'],
         formatter: '.formatPageSubtitle'

@@ -132,6 +132,9 @@ sap.ui.define([
         });
 
         oBinding.filter(new Filter([oTabFilter, oSearchFilter], true), FilterType.Application);
+
+        // manually update page subtitle
+        this.byId("idPage").setSubTitle(this.formatPageSubtitle());
     };
 
 
@@ -252,7 +255,11 @@ sap.ui.define([
 
             // can be undefined, in case of a deleted transaction
             if (!!oTransaction) {
-                iTransactionVolume += oItem.getBindingContext("Database").getObject().amount;
+                if (oTransaction.type == Config.TRANSACTION_TYPE_EXPENSE) {
+                    iTransactionVolume -= oTransaction.amount;
+                } else {
+                    iTransactionVolume += oTransaction.amount;
+                }
             }
         });
 
