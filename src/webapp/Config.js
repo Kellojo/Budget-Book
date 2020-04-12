@@ -18,7 +18,10 @@ sap.ui.define([], function () {
         },
 
 
-        DEFAULT_CURRENCY: "EUR"
+        DEFAULT_CURRENCY: "EUR",
+
+
+        DEFAULT_OVERVIEW_CHART_TYPE: "overTime"
 
     };
 });

@@ -14,8 +14,6 @@ sap.ui.define([
         ControllerProto = Controller.prototype;
 
     ControllerProto.ROUTE_NAME = "overview";
-    ControllerProto.CHART_TYPE_OVER_TIME = "overTime";
-    ControllerProto.CHART_TYPE_BY_CATEGORY = "byCategory";
 
     
     ControllerProto.onInit = function() {
@@ -25,7 +23,6 @@ sap.ui.define([
             months: [],
             currentTab: null,
             searchQuery: "",
-            currentChartType: this.CHART_TYPE_OVER_TIME
         });
         this.getView().setModel(this.m_oViewModel);
 
@@ -412,6 +409,41 @@ sap.ui.define([
             dataPoints: aDataPoints,
             transactionVolume: iTransactionVolume
         };
+    }
+
+    /**
+     * Creates the data points for the category chart for a given month
+     * @returns {number} iStartTransactionVolume
+     * @public
+     */
+    ControllerProto.formatCategoryChartData = function() {
+        var oCurrentTab = this.m_oViewModel.getProperty("/currentTab"),
+            oComponent = this.getOwnerComponent(),
+            oTransactionsManager = oComponent.getTransactionsManager(),
+            oResourceBundle = oComponent.getResourceBundle(),
+            oSeries = { 
+                name: oResourceBundle.getText("chartTransactionVolume"),
+                data: []
+            };
+
+        if (!oCurrentTab) {
+            return;
+        }
+        
+
+        var oResult = oTransactionsManager.getTransactionVolumeForAllCategoriesIn(oCurrentTab.year, oCurrentTab.month, true),
+            aCategories = Object.keys(oResult);
+        aCategories.forEach((sCategory) => {
+            oSeries.data.push(oResult[sCategory]);
+        });
+
+        
+        return {
+            series: [oSeries],
+            xaxis: {
+                categories: aCategories
+            }
+        }
     }
 
     return Controller;

@@ -187,21 +187,46 @@ sap.ui.define([
     }
 
     /**
-     * Get's the transaction volume of a given month / year
-     * @param {string} sYear
-     * @param {string} sMonth
+     * Get's the transaction volume of a given month / year / category
+     * @param {string} sYear - the year to get the volume for
+     * @param {string} sMonth - the optional month to filter by
+     * @param {string} sCategory - the optional category to filter by
      * @returns {number}
      * @public
      */
-    ManagerProto.getTransactionVolumeIn = function(sYear, sMonth) {
+    ManagerProto.getTransactionVolumeIn = function(sYear, sMonth, sCategory) {
         var aTransactions = this.getAllTransactionsIn(sYear, sMonth),
             iVolume = 0;
 
         aTransactions.forEach((oTransaction) => {
+            if ((sCategory == null || sCategory == undefined) || sCategory == oTransaction.category)
             iVolume += oTransaction.amount;
         });
 
         return Math.floor(iVolume * 100) / 100;
+    }
+
+    /**
+     * Get's the transaction volume of a given month / year for all existing categories
+     * @param {string} sYear - the year to get the volume for
+     * @param {string} sMonth - the optional month to filter by
+     * @param {boolean} bExcludeZero - should categories with zero volume be filtered out?
+     * @returns {object} - a map of categories & the corresponding transaction volume
+     * @public
+     */
+    ManagerProto.getTransactionVolumeForAllCategoriesIn = function(sYear, sMonth, bExcludeZero) {
+        var aCategories = this.getAllCategories(),
+            oResult = {};
+
+        aCategories.forEach(function(sCategory) {
+            var iVolume = this.getTransactionVolumeIn(sYear, sMonth, sCategory);
+
+            if (!bExcludeZero || iVolume > 0 ) {
+                oResult[sCategory] = iVolume;
+            }
+        }.bind(this));
+
+        return oResult;
     }
 
     return oManager;

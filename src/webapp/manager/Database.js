@@ -1,8 +1,10 @@
 sap.ui.define([
     "com/budgetBook/manager/BeanBase",
     "sap/base/Log",
-    "sap/ui/model/json/JSONModel"
-], function (ManagedObject, Log, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "com/budgetBook/Config",
+    "sap/ui/model/ChangeReason",
+], function (ManagedObject, Log, JSONModel, Config, ChangeReason) {
     "use strict";
 
     var oSchema = ManagedObject.extend("com.budgetBook.manager.Database", {
@@ -31,16 +33,47 @@ sap.ui.define([
     SchemaProto.onDataLoaded = function(oEvent, oData) {
         Log.info("Database loaded");
 
+        this._injectPotentiallyMissingPropertiesIntoDB(oData);
         this.m_oDatabaseModel = new JSONModel(oData);
+        this.m_oDatabaseModel.attachPropertyChange(this._onPropertyChange.bind(this));
         this.getOwnerComponent().setModel(this.m_oDatabaseModel, "Database");
         this.getOwnerComponent().notifyDatabaseReady();
 
         this.fireUpdate();
     };
 
+    /**
+     * Injects any new properties into the database, which might be missing initially
+     * @private
+     */
+    SchemaProto._injectPotentiallyMissingPropertiesIntoDB = function(oData) {
+        
+        // Preferences
+        if (!oData.preferences) {
+            oData.preferences = {};
+        }
+        if (!oData.preferences.currentOverviewChartType) {
+            oData.preferences.currentOverviewChartType = Config.DEFAULT_OVERVIEW_CHART_TYPE;
+        }
+
+    };
+
     SchemaProto.saveData = function() {
         api.saveData(this.m_oDatabaseModel.getData());
     };
+
+    /**
+     * Handles the two way binding property changes of the database model
+     * @param {	sap.ui.base.Event} oEvent
+     * @private
+     */
+    SchemaProto._onPropertyChange = function(oEvent) {
+        var sReason = oEvent.getParameter("reason");
+
+        if (sReason == ChangeReason.Binding) {
+            this.saveData();
+        }
+    }
 
     /**
      * Exports the data to an external file
