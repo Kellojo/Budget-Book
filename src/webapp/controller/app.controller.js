@@ -24,5 +24,9 @@ sap.ui.define([
         });
     }
 
+    ControllerProto.onHelpPress = function() {
+        this.getOwnerComponent().getAppManager().openHelpPage();
+    }
+
     return Controller;
 });

@@ -56,5 +56,10 @@ sap.ui.define([
     }
 
 
+    SchemaProto.openHelpPage = function() {
+        api.openHelpPage();
+    }
+
+
     return oSchema;
 });

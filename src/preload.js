@@ -37,6 +37,9 @@ contextBridge.exposeInMainWorld(
         loadAppInfo: (fnCallback) => {
             ipcRenderer.once("loadAppInfoComplete", fnCallback);
             ipcRenderer.send("loadAppInfo");
+        },
+        openHelpPage: () => {
+            ipcRenderer.send("openHelpPage");
         }
     }
 );

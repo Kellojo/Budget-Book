@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app, BrowserWindow, ipcMain, shell} = require('electron')
 const path = require('path')
 const Store = require("electron-store")
 const windowStateKeeper = require('electron-window-state')
@@ -106,4 +106,7 @@ ipcMain.on("loadAppInfo", (event) => {
     store.set("isFirstStartUp", false);
 
     event.reply("loadAppInfoComplete", oAppInfo);
+});
+ipcMain.on("openHelpPage", (event) => {
+    shell.openExternal("https://kellojo.github.io/Budget-Book/");
 });
