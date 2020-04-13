@@ -18,7 +18,7 @@
         <kM:actions>
             <OverflowToolbar width="100%">
                 <ToolbarSpacer />
-                <SegmentedButton selectedKey="{Database>/preferences/currentOverviewChartType}">
+                <SegmentedButton selectedKey="{Database>/preferences/currentOverviewChartType}" visible="{= !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}">
 					<items>
 						<SegmentedButtonItem icon="sap-icon://donut-chart" tooltip="{i18n>chartTypeByCategory}" key="byCategory" />
 						<SegmentedButtonItem icon="sap-icon://line-chart-time-axis" tooltip="{i18n>chartTypeOverTime}" key="overTime"/>
@@ -34,8 +34,8 @@
             
         <kM:content>
 
-            <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'overTime'}"/>
-            <kM:ColumnChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatCategoryChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'byCategory'}"/>
+            <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'overTime' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
+            <kM:ColumnChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatCategoryChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'byCategory' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
 
             <kM:TableActions>
                 <MenuButton id="idMonthTabButton" type="Transparent" text="{ path: '/currentTab', formatter: '.formatCurrentTab'}">
@@ -59,7 +59,8 @@
                 }
             }" 
             mode="MultiSelect"
-            itemPress="onTransactionPress">
+            itemPress="onTransactionPress"
+            noDataText="{i18n>overviewPageNoTransactionsYet}">
                 <columns>
                     <Column>
                         <Label text="Transaction" />
