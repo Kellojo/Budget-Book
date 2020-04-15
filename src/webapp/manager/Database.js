@@ -56,6 +56,15 @@ sap.ui.define([
             oData.preferences.currentOverviewChartType = Config.DEFAULT_OVERVIEW_CHART_TYPE;
         }
 
+        // Inject isComplete flag into transactions
+        if (oData.transactions) {
+            oData.transactions.forEach((oTransaction) => {
+                if (!oTransaction.hasOwnProperty("isCompleted")) {
+                    oTransaction.isCompleted = Config.DEFAULT_IS_TRANSACTION_COMPLETED;
+                }
+            });
+        }
+
     };
 
     SchemaProto.saveData = function() {

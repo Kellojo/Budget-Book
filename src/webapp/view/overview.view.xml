@@ -58,9 +58,9 @@
                     comparator: '.sortByDate'
                 }
             }" 
-            mode="MultiSelect"
             itemPress="onTransactionPress">
                 <columns>
+                    <Column width="48px"/>
                     <Column>
                         <Label text="Transaction" />
                     </Column>
@@ -74,6 +74,7 @@
                 </columns>
 
                 <ColumnListItem type="Active" class="budgetBookOverview-transactionItem">
+                    <CheckBox class="budgetBook-CheckBox" selected="{Database>isCompleted}"/>
                     <VBox>
                         <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
                         <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>

@@ -17,7 +17,7 @@
 		</SegmentedButton>
     </kM:Wrapper>
 
-    <VBox class="budgetBookDialog">
+    <kM:Wrapper class="budgetBookDialog">
 
         <kM:Wrapper class="budgetBookDialog-FormInputContainer">
             <Label text="{i18n>addTransactionDialogInputTitle}" labelFor="idTitleInput"/>
@@ -57,6 +57,11 @@
             <DatePicker id="idDateInput" dateValue="{/transaction/occurredOn}"/>
         </kM:Wrapper>
 
-    </VBox>
+        <kM:Wrapper class="budgetBookDialog-FormInputContainer budgetBookDialog-FormInputContainer-Checkbox">
+            <CheckBox id="idIsPaidCheckBox" selected="{/transaction/isCompleted}" text="{i18n>addTransactionDialogInputIsCompleted}"
+                tooltip="{i18n>addTransactionDialogInputIsCompletedTooltip}"/>
+        </kM:Wrapper>
+
+    </kM:Wrapper>
 
 </mvc:View>

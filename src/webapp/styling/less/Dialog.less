@@ -2,6 +2,8 @@
 
 .budgetBookDialog {
     padding: @defaultPadding;
+    display: flex;
+    flex-direction: column;
 
     .sapMInputBaseContentWrapper {
         border-left: none;
@@ -16,8 +18,13 @@
     border-bottom: 1px solid @borderGrey;
 }
 
-.budgetBookDialog-FormInputContainer {
+.budgetBookDialog-FormInputContainer:not(:last-child) {
     padding-bottom: @smallerPadding;
+}
+
+.budgetBookDialog-FormInputContainer-Checkbox {
+    display: flex;
+    align-items: center;
 }
 
 .sapMFocus .sapMInputBaseContentWrapper {

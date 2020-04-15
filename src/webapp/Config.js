@@ -19,6 +19,7 @@ sap.ui.define([], function () {
 
 
         DEFAULT_CURRENCY: "EUR",
+        DEFAULT_IS_TRANSACTION_COMPLETED: true,
 
         DEFAULT_OVERVIEW_CHART_TYPE: "overTime",
 

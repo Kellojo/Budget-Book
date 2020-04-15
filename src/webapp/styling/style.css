@@ -61,8 +61,41 @@
 .sapMBtnInner {
   transition: background-color 0.1s ease-out;
 }
+.budgetBook-CheckBox .sapMCbBg {
+  border-radius: 90% !important;
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+  line-height: 1.25rem !important;
+  top: calc((2rem - 1.25rem) / 2) !important;
+  left: calc((2rem - 1.25rem) / 2) !important;
+  transition: border-color, background-color 0.2s ease-out;
+}
+.budgetBook-CheckBox .sapMCbHoverable:hover {
+  border-color: #14B341 !important;
+}
+.budgetBook-CheckBox .sapMCbMark:not(.sapMCbMarkChecked) {
+  border-color: #bb0000 !important;
+  background-color: #bb0000 !important;
+}
+.budgetBook-CheckBox .sapMCbMark:not(.sapMCbMarkChecked):before {
+  color: white !important;
+  font-size: 12px;
+  content: "\e03e";
+  font-family: "SAP-icons";
+  display: inline-block;
+}
+.budgetBook-CheckBox .sapMCbMarkChecked {
+  background-color: #14B341 !important;
+  border-color: #14B341 !important;
+}
+.budgetBook-CheckBox .sapMCbMarkChecked:before {
+  color: white !important;
+  font-size: 12px;
+}
 .budgetBookDialog {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 .budgetBookDialog .sapMInputBaseContentWrapper {
   border-left: none;
@@ -74,8 +107,12 @@
   padding: 0.25rem 1rem;
   border-bottom: 1px solid #e5e5e5;
 }
-.budgetBookDialog-FormInputContainer {
+.budgetBookDialog-FormInputContainer:not(:last-child) {
   padding-bottom: 0.75rem;
+}
+.budgetBookDialog-FormInputContainer-Checkbox {
+  display: flex;
+  align-items: center;
 }
 .sapMFocus .sapMInputBaseContentWrapper {
   outline: none !important;
@@ -83,7 +120,8 @@
 * {
   outline: none !important;
 }
-.sapMSFF::before {
+.sapMSFF::before,
+.sapMCbHasLabel:focus:before {
   border: none !important;
 }
 .sapMMessageToast {
