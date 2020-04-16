@@ -185,6 +185,9 @@
 .sapMList .sapMListItems .sapMListTblRow:not(.sapMLIBActive) .kellojoM-lightLabel {
   color: #6a6d70;
 }
+.sapMList .sapMLIB {
+  transition: background-color 0.2s ease-out;
+}
 .sapMList .sapMLIBSelected {
   box-shadow: none !important;
 }
