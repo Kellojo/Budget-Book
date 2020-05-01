@@ -32,9 +32,9 @@
 
         <kM:Wrapper class="budgetBookDialog-FormInputContainer">
             <Label text="{i18n>addTransactionDialogInputAmount}" labelFor="idAmountInput"/>
-            <Input 
+            <kM:CurrencyInput 
                 id="idAmountInput"
-                value="{ parts: [{path: '/transaction/amount'}, {path: '/transaction/currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false } }"
+                numericValue="{/transaction/amount}"
                 valueLiveUpdate="true"
                 required="true"
             />
