@@ -80,8 +80,20 @@ sap.ui.define([
         });
     }
 
+    /**
+     * Triggered by the searhc, when the search term changes.
+     * Also called internally, to filter the list, when acategory in the chart is pressed
+     * @param {sap.ui.core.Event || string} oEvent
+     * @public
+     */
     ControllerProto.onSearch = function(oEvent) {
-        var sQuery = oEvent.getParameter("newValue");
+        if (typeof oEvent === "string") {
+            var sQuery = oEvent;
+            
+        } else {
+            var sQuery = oEvent.getParameter("newValue");
+        }
+
         this.m_oViewModel.setProperty("/searchQuery", sQuery);
         this.updateListFilters();
     }
@@ -91,6 +103,11 @@ sap.ui.define([
             oTime = oItem.data("time");         
         this.updateListFilters(oTime);
         this.m_oViewModel.setProperty("/currentTab", oTime);
+    }
+
+    ControllerProto.onCategoryColumnPress = function(oEvent) {
+        var sCategory = oEvent.getParameter("category");
+        this.onSearch(sCategory);
     }
 
     /**

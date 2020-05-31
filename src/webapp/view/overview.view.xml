@@ -29,13 +29,13 @@
         </kM:actions>
 
         <kM:mainAction>
-            <SearchField width="250px" liveChange="onSearch"/>
+            <SearchField width="250px" value="{/searchQuery}" liveChange="onSearch"/>
         </kM:mainAction>
             
         <kM:content>
 
             <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'overTime' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
-            <kM:ColumnChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatCategoryChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'byCategory' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
+            <kM:ColumnChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatCategoryChartData'}" columnPress="onCategoryColumnPress" visible="{= ${Database>/preferences/currentOverviewChartType} === 'byCategory' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
 
             <kM:TableActions>
                 <MenuButton id="idMonthTabButton" type="Transparent" text="{ path: '/currentTab', formatter: '.formatCurrentTab'}">
