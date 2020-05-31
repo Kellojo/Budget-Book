@@ -350,13 +350,14 @@ sap.ui.define([
         // Calculate previous month/year transaction volume
         var iPrevTransactionVolume = 0,
             oPrevDate = new Date();
+        oPrevDate.setDate(0);
         oPrevDate.setFullYear(oCurrentTab.year);
 
         if (bIsYear) {
-            iPrevTransactionVolume = oTransactionsManager.getTransactionVolumeIn(oPrevDate.getFullYear() - 1);
+            oPrevDate.setFullYear(oPrevDate.getFullYear() - 1)
+            iPrevTransactionVolume = oTransactionsManager.getTransactionVolumeIn(oPrevDate.getFullYear());
         } else {
-            oPrevDate.setMonth(oCurrentTab.month);
-            oPrevDate.setMonth(oPrevDate.getMonth() - 1);
+            oPrevDate.setMonth(oCurrentTab.month - 1);
             iPrevTransactionVolume = oTransactionsManager.getTransactionVolumeIn(
                 oPrevDate.getFullYear(),
                 oPrevDate.getMonth()
@@ -373,7 +374,9 @@ sap.ui.define([
                     color: '#fff',
                     background: '#00E396',
                   },
-                  text: bIsYear ? oResourceBundle.getText("chartPreviousYear") : oResourceBundle.getText("chartPreviousMonth"),
+                  text: bIsYear ? 
+                    oResourceBundle.getText("chartPreviousYear", [oPrevDate.getFullYear()]) : 
+                    oResourceBundle.getText("chartPreviousMonth", [oResourceBundle.getText("monthWithIndex_" + oPrevDate.getMonth())]),
                 }
             });
         }
