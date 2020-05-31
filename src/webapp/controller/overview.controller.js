@@ -407,9 +407,7 @@ sap.ui.define([
 
         for (var i = 1; i <= iDaysInCurrentMonth; i++) {
             var oCurrentDate = new Date();
-            oCurrentDate.setFullYear(sYear);
-            oCurrentDate.setMonth(sMonth);
-            oCurrentDate.setDate(i);
+            oCurrentDate.setFullYear(sYear, sMonth, i);
 
             var isPastCurrentDay = oCurrentDate.getTime() > new Date().getTime(),
                 oPoint = {
@@ -422,7 +420,7 @@ sap.ui.define([
                 var aTransactionsOnDate = oComponent.getTransactionsManager().getAllTransactionsOnDate(oCurrentDate);
 
                 // Get transaction volume
-                aTransactionsOnDate.forEach((oTransaction) => {
+                aTransactionsOnDate.forEach((oTransaction) => { 
                     if (oTransaction.type === Config.TRANSACTION_TYPE_EXPENSE) {
                         iTransactionVolume -= oTransaction.amount;
                     } else {
