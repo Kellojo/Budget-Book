@@ -24,7 +24,12 @@
 						<SegmentedButtonItem icon="sap-icon://line-chart-time-axis" tooltip="{i18n>chartTypeOverTime}" key="overTime"/>
 					</items>
 				</SegmentedButton>
-                <Button press="onAddButtonPress" text="{i18n>addTransaction}"/>
+                <MenuButton text="{i18n>addTransaction}">
+                    <Menu>
+                        <MenuItem text="{i18n>synchronizeTransactions}" press="onSynchronizeTransactionButtonPress"/>
+                        <MenuItem text="{i18n>addTransactionManually}" press="onAddButtonPress"/>
+                    </Menu>
+                </MenuButton>
             </OverflowToolbar>
         </kM:actions>
 

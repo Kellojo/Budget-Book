@@ -1,0 +1,26 @@
+ <mvc:View
+	controllerName="com.budgetBook.controller.dialog.SyncWithAppDialog"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:kM="kellojo.m"
+    core:require="{ formatMessage: 'sap/base/strings/formatMessage' }"
+    height="450px"
+    width="350px">
+
+        <NavContainer id="idNavContainer">
+            <kM:Login id="idLogin" signIn="onSignIn" signUp="onSignUp" passwordForgotten="" customErrorMessage="{/customErrorMessage}" busy="{/isLoginBusy}"/>
+            <Page id="idSyncPage" showHeader="false">
+                <kM:Wrapper class="budgetBook-SyncWithAppDialog-Sync">
+                    <Label text="{i18n>SyncWithAppDialogSyncPageTitle}" class="budgetBook-SyncWithAppDialog-title"/>
+                    <Label text="{ parts: ['i18n>SyncWithAppDialogSyncDescription', 'User>/user/email'], formatter: 'formatMessage'}"/>
+                    <Label text="{ parts: ['i18n>SyncWithAppDialogSyncStatus', '/transactionsCount'], formatter: 'formatMessage'}" class="budgetBook-SyncWithAppDialog-status"/>
+                    <Button text="{i18n>SyncWithAppDialogSyncPageAction}" enabled="{= ${/transactions}.length > 0}" type="Emphasized" press="onSynchronizeButtonPress" />
+                    <Link text="{i18n>SyncWithAppDialogSignOut}" class="budgetBook-SyncWithAppDialog-signOutLink" press="onSignOutPress"/>
+                </kM:Wrapper>
+                
+            </Page>
+        </NavContainer>
+
+</mvc:View>

@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "type": "npm",
+            "script": "build-styles",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: build-styles",
+            "detail": "./src/styling/build-less.sh"
+        }
+    ]
+}

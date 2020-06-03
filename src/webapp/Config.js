@@ -8,12 +8,16 @@ sap.ui.define([], function () {
                 "Database",
                 "Formatter",
                 "AppManager",
+                "FirebaseManager",
             ]
         },
 
         SHARED_DIALOGS: {
             AddTransactionDialog: {
                 view: "com.budgetBook.view.dialog.AddTransactionDialog"
+            },
+            SyncWithAppDialog: {
+                view: "com.budgetBook.view.dialog.SyncWithAppDialog"
             }
         },
 
@@ -26,6 +30,17 @@ sap.ui.define([], function () {
 
         TRANSACTION_TYPE_EXPENSE: "expense",
         TRANSACTION_TYPE_INCOME: "income",
+
+
+        FIREBASE: {
+            apiKey: "AIzaSyDF4H6-j5wCSPt5HLPLakVLQrea5WOLNwQ",
+            authDomain: "budget-book-7ebd4.firebaseapp.com",
+            databaseURL: "https://budget-book-7ebd4.firebaseio.com",
+            projectId: "budget-book-7ebd4",
+            storageBucket: "budget-book-7ebd4.appspot.com",
+            messagingSenderId: "243765855914",
+            appId: "1:243765855914:web:94ddd61389b9883a6a32d3"
+        }
 
 
     };

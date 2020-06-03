@@ -14,6 +14,9 @@ sap.ui.define([
 
     ManagerProto.insertTransaction = function(oTransaction) {
         assert(!!oTransaction, "Transaction not defined");
+        assert(!!oTransaction.title, "Transaction doesn't have a title");
+        assert(!!oTransaction.occurredOn, "Transaction doesn't have a date");
+        assert(!!oTransaction.amount, "Transaction doesn't have an amount");
 
         var oDatabase = this.getOwnerComponent().getDatabase(),
             oData = oDatabase.getData();
@@ -233,6 +236,51 @@ sap.ui.define([
         }.bind(this));
 
         return oResult;
+    }
+
+
+
+    ManagerProto.listenForSynchronizeableTransactions = function(fnChange) {
+        this.getOwnerComponent().getFirebaseManager().getFireStore().collection("transactions").doc(firebase.auth().currentUser.uid).collection("synchronizable")//.where("state", "==", "CA")
+        .onSnapshot(function(querySnapshot) {
+            var aTransactions = [];
+            querySnapshot.docs.forEach((oDoc) => aTransactions.push(oDoc));
+            fnChange(aTransactions);
+        }.bind(this));
+    }
+
+    /**
+     * Synchronizes all transactions from the firestore
+     * @public
+     */
+    ManagerProto.synchronizeTransactions = async function(oParams) {
+        var iSuccessfullCount = 0,
+            oSyncCollection = this.getOwnerComponent().getFirebaseManager().getFireStore()
+        .collection("transactions")
+        .doc(firebase.auth().currentUser.uid)
+        .collection("synchronizable");
+        
+        var oQuerySnapShot = await oSyncCollection.get(),
+            aTransactions = oQuerySnapShot.docs;
+
+        for (var i = 0; i < aTransactions.length; i++) {
+            var oDoc = aTransactions[i];
+
+            var sDocId = oDoc.id,
+            oTransaciton = oDoc.data();
+            oTransaciton.occurredOn = new Date(oTransaciton.occurredOn.seconds * 1000).toISOString();
+
+            // delete document
+            var oResult = await oSyncCollection.doc(sDocId).delete();
+
+            // add transaction to the localy stored ones
+            this.insertTransaction(oTransaciton);
+            iSuccessfullCount ++;
+        }
+
+        oParams.complete({
+            successfullSyncs: iSuccessfullCount
+        });
     }
 
     return oManager;

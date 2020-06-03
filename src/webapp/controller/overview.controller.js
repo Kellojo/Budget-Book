@@ -44,6 +44,16 @@ sap.ui.define([
         });
     }
 
+    ControllerProto.onSynchronizeTransactionButtonPress = function(oEvent) {
+        this.getOwnerComponent().openDialog("SyncWithAppDialog", {
+            title: "addTransactionDialogTitle",
+            placement: "Bottom",
+            contentHeight: "450px",
+            contentWidth: "300px",
+            showHeader: false
+        }, oEvent.getSource());
+    }
+
     ControllerProto.onTransactionPress = function(oEvent) {
         var oBindingContext = oEvent.getParameter("listItem").getBindingContext("Database"),
             oTransaction = oBindingContext.getObject(),

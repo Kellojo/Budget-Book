@@ -50,6 +50,7 @@
   color: white !important;
   margin-left: 0.5rem !important;
   padding: 0.5rem !important;
+  font-size: 1.25rem;
   transition: background-color 0.2s ease-out;
   background-color: transparent;
   border-radius: 5px;
@@ -246,4 +247,29 @@
 }
 .budgetBookWelcome-decisionAction .sapMBtnInner:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.budgetBook-SyncWithAppDialog-Sync {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.budgetBook-SyncWithAppDialog-Sync .sapMLabel {
+  white-space: normal !important;
+  text-align: center !important;
+}
+.budgetBook-SyncWithAppDialog-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem !important;
+  color: #333 !important;
+}
+.budgetBook-SyncWithAppDialog-status {
+  margin: 2rem 0;
+}
+.budgetBook-SyncWithAppDialog-signOutLink {
+  margin-top: 2rem;
 }

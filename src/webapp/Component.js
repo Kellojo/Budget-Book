@@ -13,6 +13,7 @@ sap.ui.define([
     "com/budgetBook/manager/Database",
     "com/budgetBook/manager/Formatter",
     "com/budgetBook/manager/AppManager",
+    "com/budgetBook/manager/FirebaseManager"
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, Config) {
     "use strict";
 
@@ -175,6 +176,7 @@ sap.ui.define([
             title: oResourceBundle.getText(oSettings.title)
         }).addStyleClass("kellojoMDialog");
         oDialog.setModel(this.m_oResourceBundle, "i18n");
+        oDialog.setModel(this.getModel("User"), "User");
 
         // Submit Button
         if (oSettings.submitButton) {
@@ -213,7 +215,66 @@ sap.ui.define([
         oDialog.setBeginButton(oCloseButton);
 
         oDialog.addContent(this.m_oDialogs[sDialog].view);
+        oDialog.setShowHeader(oSettings.showHeader);
         oDialog.open();
+
+        if (oController.onOpenInDialog) {
+            oController.onOpenInDialog(oSettings);
+        }
+    };
+
+    ComponentProto.openPopover = function (sDialog, oSettings, oControl) {
+        var oView = this.m_oDialogs[sDialog].view,
+            oController = oView.getController(),
+            oResourceBundle = this.getResourceBundle();
+        oController
+
+        var oDialog = new sap.m.ResponsivePopover({
+            title: oResourceBundle.getText(oSettings.title)
+        }).addStyleClass("kellojoMDialog");
+        oDialog.setModel(this.m_oResourceBundle, "i18n");
+
+        // Submit Button
+        if (oSettings.submitButton) {
+            var oSubmitButton = new sap.m.Button({
+                text: oSettings.submitText || oResourceBundle.getText("dialogSubmit"),
+                type: "Emphasized",
+                press: function () {
+                    var bSubmitValid = true;
+
+                    if (oController.onSubmitButtonPress) {
+                        bSubmitValid = oController.onSubmitButtonPress();
+                    }
+
+                    if (bSubmitValid) {
+                        if (oController.onCloseInDialog) {
+                            oController.onCloseInDialog();
+                        }
+                        oDialog.close();
+                    }
+                }
+            });
+            oDialog.setEndButton(oSubmitButton);
+        }
+
+        // Close Button
+        var oCloseButton = new sap.m.Button({
+            text: oResourceBundle.getText("dialogClose"),
+            type: "Transparent",
+            press: function () {
+                if (oController.onCloseInDialog) {
+                    oController.onCloseInDialog();
+                }
+                oDialog.close();
+            }
+        });
+        oDialog.setBeginButton(oCloseButton);
+
+        oDialog.addContent(this.m_oDialogs[sDialog].view);
+        oDialog.setPlacement(oSettings.placement);
+        oDialog.setContentHeight(oSettings.contentHeight);
+        oDialog.setShowHeader(!!oSettings.showHeader);
+        oDialog.openBy(oControl);
 
         if (oController.onOpenInDialog) {
             oController.onOpenInDialog(oSettings);
