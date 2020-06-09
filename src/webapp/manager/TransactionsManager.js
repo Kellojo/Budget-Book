@@ -19,6 +19,7 @@ sap.ui.define([
         assert(!!oTransaction.amount, "Transaction doesn't have an amount");
 
         var oDatabase = this.getOwnerComponent().getDatabase(),
+            aOldCategories = this.getAllCategories(),
             oData = oDatabase.getData();
         if (!oData.transactions) {
             oData.transactions = [];
@@ -29,6 +30,11 @@ sap.ui.define([
 
         oData.transactions.push(oTransaction);
         oDatabase.refresh();
+
+        // check for new category, which needs to be synced to the firestore
+        if (aOldCategories.length != this.getAllCategories().length) {
+            this.uploadCategories();
+        }
     };
 
     /**
@@ -280,6 +286,33 @@ sap.ui.define([
 
         oParams.complete({
             successfullSyncs: iSuccessfullCount
+        });
+    }
+
+    /**
+     * Synchronizes the categories with the firestore
+     * @public
+     */
+    ManagerProto.uploadCategories = async function() {
+        if (!this.getOwnerComponent().getFirebaseManager().getIsLoggedIn()) {
+            return;
+        }
+
+        var aCategories = this.getAllCategories(),
+            oSyncCollection = this.getOwnerComponent().getFirebaseManager().getFireStore()
+                .collection("transactions")
+                .doc(firebase.auth().currentUser.uid)
+                .collection("categories");
+
+        var oQuerySnapshot = await oSyncCollection.get();
+        oQuerySnapshot.forEach((oDoc) => {
+            oDoc.ref.delete();
+        });
+        
+        aCategories.forEach((sCategory) => {
+            oSyncCollection.add({
+                title: sCategory
+            });
         });
     }
 

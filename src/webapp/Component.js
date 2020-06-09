@@ -37,6 +37,11 @@ sap.ui.define([
                 this.createBean(sType, sBean);
             });
         }
+
+        // attach to logged in
+        this.getFirebaseManager().attachUserSignedIn(
+            this.getTransactionsManager().uploadCategories.bind( this.getTransactionsManager())
+        );
         
         // create shared dialogs
         this.m_oDialogs = {};

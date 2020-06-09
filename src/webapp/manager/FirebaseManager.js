@@ -14,6 +14,12 @@ sap.ui.define([
                 fireStore: {
                     type: "object"
                 }
+            },
+
+            events: {
+                userSignedIn: {
+
+                }
             }
         }
     }),
@@ -40,6 +46,10 @@ sap.ui.define([
         this.m_oUserModel.setProperty("/isLoggedIn", !!oUser);
         this.m_oUserModel.setProperty("/user", oUser);
         this.setIsLoggedIn(!!oUser);
+
+        if (this.getIsLoggedIn()) {
+            this.fireUserSignedIn();
+        }
     }
 
 
