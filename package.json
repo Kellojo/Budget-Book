@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Kellojo/Budget-Book#readme",
   "build": {
     "appId": "com.budgetP",
+    "productName": "BudgetP",
     "mac": {
       "category": "public.app-category.finance",
       "publish": [
