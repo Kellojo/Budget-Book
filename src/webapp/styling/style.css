@@ -62,6 +62,20 @@
 .sapMBtnInner {
   transition: background-color 0.1s ease-out;
 }
+.sap-phone .budgetBookApp-Page-Header > .sapMBarLeft {
+  padding-left: 0.25rem;
+}
+.sap-phone .budgetBookApp-Page-Header > .sapMBarRight {
+  padding-right: 0.25rem;
+}
+.sap-phone .budgetBookApp-Page-BackButton .sapMBtnActive {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+.sap-phone .budgetBookApp-Page-BackButton .sapMBtnIcon,
+.sap-phone .budgetBookApp-Page-BackButton .sapMBtnContent {
+  color: white !important;
+}
 .budgetBook-CheckBox .sapMCbBg {
   border-radius: 90% !important;
   height: 1.25rem !important;
@@ -161,6 +175,13 @@
   cursor: pointer;
   color: transparent;
   transition: color 0.2s ease-out;
+}
+.sap-phone .budgetBookOverview-transactionItem .sapMListTblHighlightCell,
+.sap-phone .budgetBookOverview-transactionItem .sapMListTblNavigatedCell {
+  display: none;
+}
+.sap-phone .budgetBookOverview-transactionItem-checkBoxColumn {
+  width: 32px !important;
 }
 .sapMList {
   border: 1px solid #e5e5e5;

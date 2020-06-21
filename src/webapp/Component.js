@@ -6,6 +6,7 @@ sap.ui.define([
     "sap/ui/Device",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/resource/ResourceModel",
+    "sap/ui/core/routing/History",
 
     "com/budgetBook/Config",
 
@@ -14,12 +15,19 @@ sap.ui.define([
     "com/budgetBook/manager/Formatter",
     "com/budgetBook/manager/AppManager",
     "com/budgetBook/manager/FirebaseManager"
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, Config) {
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, Config) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
         metadata: {
-            manifest: "json"
+            manifest: "json",
+
+            properties: {
+                isWebVersion: {
+                    type: "boolean",
+                    defaultValue: true
+                }
+            }
         }
     });
     var ComponentProto = Component.prototype;
@@ -55,7 +63,9 @@ sap.ui.define([
         }
 
         //set device & i18n model
-        this.setModel(new JSONModel(Device), "device");
+        var oDevice = Device;
+        oDevice.isWebVersion = this.getIsWebVersion();
+        this.setModel(new JSONModel(oDevice), "device");
         this.m_oResourceBundle = new ResourceModel({
             bundleName: "com.budgetBook.i18n.i18n"
          })
@@ -105,25 +115,24 @@ sap.ui.define([
     ComponentProto.toWelcomeScreen = function () {
         this.getRouter().navTo("welcome", {});
     };
-
-    ComponentProto.openUserManagementDialog = function (oSettings) {
-        oSettings = jQuery.extend(oSettings, {
-            title: "userManagementDialog-title"
+    ComponentProto.toTransaction = function (oTransaction) {
+        this.getRouter().navTo("transaction", {
+            transaction: oTransaction
         });
-        this.openDialog("userManagementDialog", oSettings);
     };
+
 
     /**
      * Navigates back, simple as that ;)
      */
     ComponentProto.navBack = function() {
-            var oHistory = History.getInstance();
-			    sPreviousHash = oHistory.getPreviousHash();
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				console.error("Could not navigate back and not default fallback has been configured...");
-			}
+        var oHistory = History.getInstance(),
+            sPreviousHash = oHistory.getPreviousHash();
+        if (sPreviousHash !== undefined) {
+            window.history.go(-1);
+        } else {
+            this.toOverview();
+        }
     };
 
 
@@ -178,7 +187,8 @@ sap.ui.define([
         oController
 
         var oDialog = new sap.m.Dialog({
-            title: oResourceBundle.getText(oSettings.title)
+            title: oResourceBundle.getText(oSettings.title),
+            stretchOnPhone: true,
         }).addStyleClass("kellojoMDialog");
         oDialog.setModel(this.m_oResourceBundle, "i18n");
         oDialog.setModel(this.getModel("User"), "User");

@@ -50,6 +50,11 @@
                     "pattern": "welcome",
                     "name": "welcome",
                     "target": "welcome"
+                },
+                {
+                    "pattern": "transaction",
+                    "name": "transaction",
+                    "target": "transaction"
                 }
             ],
 
@@ -59,6 +64,9 @@
                 },
                 "welcome": {
                     "viewName": "welcome"
+                },
+                "transaction": {
+                    "viewName": "transaction"
                 }
             }
         }

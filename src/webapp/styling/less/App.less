@@ -86,3 +86,27 @@
 .sapMBtnInner {
     transition: background-color 0.1s ease-out;
 }
+
+.sap-phone {
+    .budgetBookApp-Page-Header {
+
+        > .sapMBarLeft {
+            padding-left: @tinyPadding;
+        }
+
+        > .sapMBarRight {
+            padding-right: @tinyPadding;
+        }
+    }
+
+    .budgetBookApp-Page-BackButton {
+        .sapMBtnActive {
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
+
+        .sapMBtnIcon, .sapMBtnContent {
+            color: @white !important;
+        }
+    }
+}

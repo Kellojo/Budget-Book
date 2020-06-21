@@ -42,7 +42,7 @@
             <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'overTime' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
             <kM:ColumnChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatCategoryChartData'}" columnPress="onCategoryColumnPress" visible="{= ${Database>/preferences/currentOverviewChartType} === 'byCategory' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
 
-            <kM:TableActions>
+            <kM:TableActions visible="{= !${device>/system/phone} }">
                 <MenuButton id="idMonthTabButton" type="Transparent" text="{ path: '/currentTab', formatter: '.formatCurrentTab'}">
                     <Menu items="{/months}" itemSelected="onTabChanged">
                         <MenuItem text="{text}" startsSection="{isYear}">
@@ -66,20 +66,20 @@
             itemPress="onTransactionPress"
             noDataText="{i18n>overviewPageNoTransactionsYet}">
                 <columns>
-                    <Column width="48px"/>
+                    <Column width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
                     <Column>
                         <Label text="Transaction" />
                     </Column>
-                    <Column hAlign="End">
+                    <Column hAlign="End" visible="{= !${device>/system/phone}}">
                         <Label text="Amount" />
                     </Column>
-                    <Column>
+                    <Column visible="{= !${device>/system/phone}}">
                         <Label text="Category" />
                     </Column>
-                    <Column width="48px" />
+                    <Column width="48px" visible="{= !${device>/system/phone}}"/>
                 </columns>
 
-                <ColumnListItem type="Active" class="budgetBookOverview-transactionItem">
+                <ColumnListItem type="{= ${device>/system/phone} ? 'Navigation' : 'Active'}" class="budgetBookOverview-transactionItem">
                     <CheckBox class="budgetBook-CheckBox" selected="{Database>isCompleted}"/>
                     <VBox>
                         <Text text="{Database>title}" class="kellojoM-lineSpacing"/>

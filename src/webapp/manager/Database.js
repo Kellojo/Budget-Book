@@ -21,7 +21,13 @@ sap.ui.define([
 
         // Init Database model
         this.m_oDatabaseModel = null;
-        this.loadData();
+
+        if (this.getOwnerComponent().getIsWebVersion()) {
+            this.onDataLoaded(null, {});
+        } else {
+            this.loadData();
+        }
+        
     };
 
 

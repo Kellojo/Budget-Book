@@ -28,5 +28,9 @@ sap.ui.define([
         this.getOwnerComponent().getAppManager().openHelpPage();
     }
 
+    ControllerProto.onBackButtonPress = function() {
+        this.getOwnerComponent().navBack();
+    }
+
     return Controller;
 });

@@ -8,10 +8,11 @@
     width="100%"
     id="idAppView">
 
-    <Page showHeader="{AppHeader>/isAppHeaderVisible}" class="budgetBookApp-Page">
+    <Page showHeader="{AppHeader>/isAppHeaderVisible}" class="budgetBookApp-Page" navButtonVisible="true">
         <customHeader>
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
+                    <Button icon="sap-icon://nav-back" text="{i18n>back}" type="Transparent" press="onBackButtonPress" visible="{AppHeader>/showBackButton}" class="budgetBookApp-Page-BackButton"/>
                     <kellojoM:Wrapper class="budgetBookApp-Container">
                         <kellojoM:Wrapper class="budgetBookApp-TitleContainer">
                             <Title text="{i18n>appTitle}" class="budgetBookApp-Page-Title"/>
@@ -23,8 +24,9 @@
                 </contentLeft>
 
                 <contentRight>
-                    <core:Icon tooltip="{i18n>appHeaderExportTooltip}" src="sap-icon://upload" press="onExportPress" class="budgetBookApp-Page-Button"/>
-                    <core:Icon src="sap-icon://sys-help" press="onHelpPress" class="budgetBookApp-Page-Button"/>
+                    <core:Icon tooltip="{i18n>appHeaderExportTooltip}" src="sap-icon://upload" press="onExportPress" class="budgetBookApp-Page-Button" visible="{= !${device>/system/phone} }"/>
+                    <core:Icon src="sap-icon://sys-help" press="onHelpPress" class="budgetBookApp-Page-Button" visible="{= !${device>/system/phone} }"/>
+                    <core:Icon src="sap-icon://add" press="onAddTransactionPress" class="budgetBookApp-Page-Button" visible="{device>/system/phone}"/>
                 </contentRight>
             </Bar>
 		</customHeader>
