@@ -317,10 +317,10 @@ sap.ui.define([
 
             var sDocId = oDoc.id,
             oTransaction = oDoc.data();
-            oTransaction.occurredOn = new Date(oTransaction.occurredOn.seconds * 1000).toISOString();
+            oTransaction.occurredOn = new Date(oTransaction.occurredOn).toISOString();
 
             // delete document
-            var oResult = await oSyncCollection.doc(sDocId).delete();
+            await oSyncCollection.doc(sDocId).delete();
 
             // add transaction to the localy stored ones
             this.insertTransaction(oTransaction);
