@@ -1,14 +1,26 @@
 <mvc:View
-	controllerName="com.budgetBook.controller.transaction"
+	controllerName="com.budgetBook.controller.dialog.AddTransactionDialog"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns:u="sap.ui.unified"
     xmlns:kM="kellojo.m"
     height="100%"
-    width="100%"
-    id="idAppView">
+    width="100%">
 
-    <Text text="hello" />
+    <kM:Wrapper class="budgetPTransactionView">
+        <kM:TransactionEditor 
+            id="idTransactionEditor"
+            title="{transaction>/title}"
+            amount="{transaction>/amount}"
+            category="{transaction>/category}"
+            categories="{transaction>/categories}"
+            isCompleted="{transaction>/isCompleted}"
+            occurredOn="{transaction>/occurredOn}"
+            type="{transaction>/type}"/>
+
+        <kM:Deleter title="{i18n>dialogDelete}" press="onDeletePress" type="Active" visible="{/isExistingTransaction}"/>
+    
+    </kM:Wrapper>
 
 </mvc:View>

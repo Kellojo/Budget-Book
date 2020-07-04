@@ -12,60 +12,94 @@ sap.ui.define([
 
     };
 
-    ManagerProto.insertTransaction = function(oTransaction) {
+    /**
+     * Get's a transaction by id (currently only working in the web version)
+     * @param {string} sTransactionId 
+     * @returns {object}
+     */
+    ManagerProto.loadTransaction = async function(sTransactionId) {
+        assert(this.getOwnerComponent().getIsWebVersion(), "loadTransaction currently only works in the web version");
+        if (!this.getOwnerComponent().getFirebaseManager().getIsLoggedIn()) {
+            return;
+        }
+
+        var oTransaction = await this._getSynchronizeableTransactionFirebaseCollection().doc(sTransactionId).get();
+        return oTransaction.data();
+    }
+
+    ManagerProto.insertTransaction = async function(oTransaction) {
         assert(!!oTransaction, "Transaction not defined");
         assert(!!oTransaction.title, "Transaction doesn't have a title");
         assert(!!oTransaction.occurredOn, "Transaction doesn't have a date");
         assert(!!oTransaction.amount, "Transaction doesn't have an amount");
 
-        var oDatabase = this.getOwnerComponent().getDatabase(),
-            aOldCategories = this.getAllCategories(),
-            oData = oDatabase.getData();
-        if (!oData.transactions) {
-            oData.transactions = [];
-        }
+        var oComponent = this.getOwnerComponent();
 
-        oTransaction.title = oTransaction.title.trim();
-        oTransaction.category = oTransaction.category.trim();
+        if (oComponent.getIsWebVersion()) {
+            // insert into firestore
+            assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
+            await this._getSynchronizeableTransactionFirebaseCollection().add(oTransaction); 
+        } else {
+            var oDatabase = oComponent.getDatabase(),
+                aOldCategories = this.getAllCategories(),
+                oData = oDatabase.getData();
 
-        oData.transactions.push(oTransaction);
-        oDatabase.refresh();
+            if (!oData.transactions) {
+                oData.transactions = [];
+            }
 
-        // check for new category, which needs to be synced to the firestore
-        if (aOldCategories.length != this.getAllCategories().length) {
-            this.uploadCategories();
+            oTransaction.title = oTransaction.title.trim();
+            oTransaction.category = oTransaction.category.trim();
+
+            oData.transactions.push(oTransaction);
+            oDatabase.refresh();
+
+            // check for new category, which needs to be synced to the firestore
+            if (aOldCategories.length != this.getAllCategories().length) {
+                this.uploadCategories();
+            }
         }
     };
 
     /**
      * Updates an existing transaction
-     * @param {string} sPath
+     * @param {string} sPath either the model path for non web version or the ID (firebase)
      * @param {object} oTransaction
      * @public
      */
-    ManagerProto.updateTransaction = function(sPath, oTransaction) {
-        assert(typeof sPath === "string", "Path for transaction not defined");
+    ManagerProto.updateTransaction = async function(sPath, oTransaction) {
+        assert(typeof sPath === "string", "Path/ID for transaction not defined");
         assert(!!oTransaction, "Transaction not defined");
 
-        var oDatabase = this.getOwnerComponent().getDatabase();
-        oDatabase.setModelProperty(sPath, oTransaction);
+        if (this.getOwnerComponent().getIsWebVersion()) {
+            // insert into firestore
+            assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
+            await this._getSynchronizeableTransactionFirebaseCollection().doc(sPath).set(oTransaction); 
+        } else {
+            var oDatabase = this.getOwnerComponent().getDatabase();
+            oDatabase.setModelProperty(sPath, oTransaction);
+        }
     };
 
     /**
      * Deletes the transaction at the given path
      * @param {object} oTransaction - the tansaction to delete
      */
-    ManagerProto.deleteTransaction = function(oTransaction) {
+    ManagerProto.deleteTransaction = async function(oTransaction) {
         assert(!!oTransaction, "Transaction not defined");
 
-        var oDatabase = this.getOwnerComponent().getDatabase(),
+        if (this.getOwnerComponent().getIsWebVersion()) {
+            await this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction).delete();
+        } else {
+            var oDatabase = this.getOwnerComponent().getDatabase(),
             aTransactions = oDatabase.getData().transactions,
             iIndex = aTransactions.indexOf(oTransaction);
 
-        assert(iIndex >= 0, "The transaction to delete could not be found in the database");    
-        aTransactions.splice(iIndex, 1);
+            assert(iIndex >= 0, "The transaction to delete could not be found in the database");    
+            aTransactions.splice(iIndex, 1);
 
-        oDatabase.refresh();
+            oDatabase.refresh();
+        }
     }
 
     /**
@@ -94,6 +128,19 @@ sap.ui.define([
 
         return aCategories;
     };
+
+    /**
+     * Get's all categories from the firebase db
+     * @returns {string[]}
+     * @public
+     */
+    ManagerProto.getAllCategoriesFirebase = async function() {
+        var aCategories = [],
+            oQuerySnapshot = await this._getCategoriesFirebaseCollection().get();
+
+        oQuerySnapshot.forEach( (doc) => aCategories.push(doc.data().title));
+        return aCategories;
+    }
 
     /**
      * Get's all distinct years and the correpsonding months from a set of transactions
@@ -247,7 +294,7 @@ sap.ui.define([
 
 
     ManagerProto.listenForSynchronizeableTransactions = function(fnChange) {
-        this.getOwnerComponent().getFirebaseManager().getFireStore().collection("transactions").doc(firebase.auth().currentUser.uid).collection("synchronizable")//.where("state", "==", "CA")
+        this._getSynchronizeableTransactionFirebaseCollection()
         .onSnapshot(function(querySnapshot) {
             var aTransactions = [];
             querySnapshot.docs.forEach((oDoc) => aTransactions.push(oDoc));
@@ -261,26 +308,22 @@ sap.ui.define([
      */
     ManagerProto.synchronizeTransactions = async function(oParams) {
         var iSuccessfullCount = 0,
-            oSyncCollection = this.getOwnerComponent().getFirebaseManager().getFireStore()
-        .collection("transactions")
-        .doc(firebase.auth().currentUser.uid)
-        .collection("synchronizable");
-        
-        var oQuerySnapShot = await oSyncCollection.get(),
+            oSyncCollection = this._getSynchronizeableTransactionFirebaseCollection(),
+            oQuerySnapShot = await oSyncCollection.get(),
             aTransactions = oQuerySnapShot.docs;
 
         for (var i = 0; i < aTransactions.length; i++) {
             var oDoc = aTransactions[i];
 
             var sDocId = oDoc.id,
-            oTransaciton = oDoc.data();
-            oTransaciton.occurredOn = new Date(oTransaciton.occurredOn.seconds * 1000).toISOString();
+            oTransaction = oDoc.data();
+            oTransaction.occurredOn = new Date(oTransaction.occurredOn.seconds * 1000).toISOString();
 
             // delete document
             var oResult = await oSyncCollection.doc(sDocId).delete();
 
             // add transaction to the localy stored ones
-            this.insertTransaction(oTransaciton);
+            this.insertTransaction(oTransaction);
             iSuccessfullCount ++;
         }
 
@@ -294,15 +337,13 @@ sap.ui.define([
      * @public
      */
     ManagerProto.uploadCategories = async function() {
-        if (!this.getOwnerComponent().getFirebaseManager().getIsLoggedIn()) {
+        var oComponent = this.getOwnerComponent();
+        if (!oComponent.getFirebaseManager().getIsLoggedIn() || oComponent.getIsWebVersion()) {
             return;
         }
 
         var aCategories = this.getAllCategories(),
-            oSyncCollection = this.getOwnerComponent().getFirebaseManager().getFireStore()
-                .collection("transactions")
-                .doc(firebase.auth().currentUser.uid)
-                .collection("categories");
+            oSyncCollection = this._getCategoriesFirebaseCollection();
 
         var oQuerySnapshot = await oSyncCollection.get();
         oQuerySnapshot.forEach((oDoc) => {
@@ -315,6 +356,32 @@ sap.ui.define([
             });
         });
     }
+
+
+    /**
+     * Get's the firebase collection, where the users transactions are located in
+     * @returns {firebase.collection}
+     * @private
+     */
+    ManagerProto._getSynchronizeableTransactionFirebaseCollection = function() {
+        return this.getOwnerComponent().getFirebaseManager().getFireStore()
+            .collection("transactions")
+            .doc(firebase.auth().currentUser.uid)
+            .collection("synchronizable");
+    }
+
+    /**
+     * Get's the firebase collection, where the users categories are located in
+     * @returns {firebase.collection}
+     * @private
+     */
+    ManagerProto._getCategoriesFirebaseCollection = function() {
+        return this.getOwnerComponent().getFirebaseManager().getFireStore()
+            .collection("transactions")
+            .doc(firebase.auth().currentUser.uid)
+            .collection("categories");
+    }
+
 
     return oManager;
 });

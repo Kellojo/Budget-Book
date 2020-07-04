@@ -31,8 +31,12 @@ sap.ui.define([
     }
 
     ControllerProto.onPageEnter = function() {
-        this.getOwnerComponent().getAppManager().setShowBackButton(false);
-        this.getOwnerComponent().getAppManager().setShowAppHeader(true);
+        this.getOwnerComponent().getAppManager()
+            .setShowBackButton(false)
+            .setShowAppHeader(true)
+            .setShowSaveButton(false)
+            .setShowMenuButton(this.getOwnerComponent().getIsWebVersion())
+            .setShowAddButton(true);
         this.updateTabs();
     }
 

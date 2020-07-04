@@ -13,6 +13,18 @@ sap.ui.define([
 
         var oComponent = this.getOwnerComponent();
         oComponent.m_oErrorMessageContainer = this.m_oErrorMessageContainer;
+
+        // set app icons
+        this.byId("idApp").setHomeIcon({
+            'phone': './img/appicon.png',
+            'phone@2': './img/appicon.png',
+            'tablet': './img/appicon.png',
+            'tablet@2': './img/appicon.png',
+            'icon': './img/favicon.png' 
+        });
+
+        // set apple status bar appearance
+        jQuery("meta[name='apple-mobile-web-app-status-bar-style']").attr("content", "black-translucent");
     };
 
 
@@ -30,6 +42,14 @@ sap.ui.define([
 
     ControllerProto.onBackButtonPress = function() {
         this.getOwnerComponent().navBack();
+    }
+
+    ControllerProto.onAddTransactionPress = function() {
+        this.getOwnerComponent().toTransaction(null);
+    }
+
+    ControllerProto.onSaveButtonPress = function() {
+        this.getOwnerComponent().getAppManager().fireSaveButtonPress();
     }
 
     return Controller;

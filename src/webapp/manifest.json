@@ -52,9 +52,14 @@
                     "target": "welcome"
                 },
                 {
-                    "pattern": "transaction",
+                    "pattern": "transaction/{transactionId}",
                     "name": "transaction",
                     "target": "transaction"
+                },
+                {
+                    "pattern": "auth",
+                    "name": "auth",
+                    "target": "auth"
                 }
             ],
 
@@ -67,6 +72,9 @@
                 },
                 "transaction": {
                     "viewName": "transaction"
+                },
+                "auth": {
+                    "viewName": "auth"
                 }
             }
         }

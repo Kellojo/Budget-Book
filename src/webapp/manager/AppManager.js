@@ -13,6 +13,10 @@ sap.ui.define([
                     type: "boolean",
                     defaultValue: false
                 }
+            },
+
+            events: {
+                saveButtonPress: {}
             }
         }
     }),
@@ -25,6 +29,8 @@ sap.ui.define([
         this.m_oAppHeaderModel = new JSONModel({
             isAppHeaderVisible : this.getShowAppHeader(),
             showBackButton: this.getShowBackButton(),
+            showAddButton: false,
+            showSaveButton: false
         });
         this.getOwnerComponent().setModel(this.m_oAppHeaderModel, "AppHeader");
 
@@ -66,10 +72,27 @@ sap.ui.define([
 
     SchemaProto.setShowAppHeader = function(bVisible) {
         this.m_oAppHeaderModel.setProperty("/isAppHeaderVisible", !!bVisible);
+        return this;
+    }
+
+    SchemaProto.setShowAddButton = function(bVisible) {
+        this.m_oAppHeaderModel.setProperty("/showAddButton", !!bVisible);
+        return this;
+    }
+
+    SchemaProto.setShowSaveButton = function(bVisible) {
+        this.m_oAppHeaderModel.setProperty("/showSaveButton", !!bVisible);
+        return this;
+    }
+
+    SchemaProto.setShowMenuButton = function(bVisible) {
+        this.m_oAppHeaderModel.setProperty("/showMenuButton", !!bVisible);
+        return this;
     }
 
     SchemaProto.setShowBackButton = function (bVisible) {
         this.m_oAppHeaderModel.setProperty("/showBackButton", !!bVisible);
+        return this;
     }
 
 

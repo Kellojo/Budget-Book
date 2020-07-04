@@ -10,7 +10,14 @@
     width="350px">
 
         <NavContainer id="idNavContainer">
-            <kM:Login id="idLogin" signIn="onSignIn" signUp="onSignUp" passwordForgotten="" customErrorMessage="{/customErrorMessage}" busy="{/isLoginBusy}"/>
+            <kM:Login 
+                id="idLogin"
+                signIn="onSignIn"
+                signUp="onSignUp"
+                passwordForgotten=""
+                customErrorMessage="{auth>/customErrorMessage}"
+                busy="{auth>/isLoginBusy}"/>
+
             <Page id="idSyncPage" showHeader="false">
                 <kM:Wrapper class="budgetBook-SyncWithAppDialog-Sync">
                     <Label text="{i18n>SyncWithAppDialogSyncPageTitle}" class="budgetBook-SyncWithAppDialog-title"/>

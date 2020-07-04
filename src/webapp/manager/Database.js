@@ -22,8 +22,13 @@ sap.ui.define([
         // Init Database model
         this.m_oDatabaseModel = null;
 
-        if (this.getOwnerComponent().getIsWebVersion()) {
-            this.onDataLoaded(null, {});
+        var oComponent = this.getOwnerComponent();
+        this.m_oDatabaseModel = new JSONModel({transactions: []});
+        this.getOwnerComponent().setModel(this.m_oDatabaseModel, "Database");
+
+        if (oComponent.getIsWebVersion()) {
+            this.getOwnerComponent().notifyDatabaseReady();
+            oComponent.getFirebaseManager().attachUserSignedIn(this.loadData.bind(this));
         } else {
             this.loadData();
         }
@@ -31,22 +36,55 @@ sap.ui.define([
     };
 
 
+    /**
+     * Loads the data from the disk or attaches a handler for the web version
+     * @private
+     */
     SchemaProto.loadData = function() {
-        Log.info("Loading Database...");
-        api.loadData(this.onDataLoaded.bind(this));
+        if (this.getOwnerComponent().getIsWebVersion()) {
+            Log.info("Loading Database from firebase...");
+            this.getOwnerComponent().getTransactionsManager().listenForSynchronizeableTransactions(
+                this.onDataLoadedWeb.bind(this)
+            );
+           
+        } else {
+            Log.info("Loading Database...");
+            api.loadData(this.onDataLoaded.bind(this));
+        }
     };
 
+    /**
+     * Called, when the data has been loaded successfully
+     * @param {sap.ui.base.event} oEvent 
+     * @param {object} oData 
+     * @private
+     */
     SchemaProto.onDataLoaded = function(oEvent, oData) {
         Log.info("Database loaded");
 
         this._injectPotentiallyMissingPropertiesIntoDB(oData);
-        this.m_oDatabaseModel = new JSONModel(oData);
+        this.m_oDatabaseModel.setData(oData);
+        this.m_oDatabaseModel.refresh(true);
         this.m_oDatabaseModel.attachPropertyChange(this._onPropertyChange.bind(this));
         this.getOwnerComponent().setModel(this.m_oDatabaseModel, "Database");
-        this.getOwnerComponent().notifyDatabaseReady();
-
         this.fireUpdate();
+        this.getOwnerComponent().notifyDatabaseReady();
     };
+
+    /**
+     * Called, when the data has been loaded successfully on the web version (i.e. collection change)
+     * @param {firebase.document} aDocuments 
+     * @private
+     */
+    SchemaProto.onDataLoadedWeb = function(aDocuments) {
+        var aTransactions = [];
+        aDocuments.forEach((oDoc) => {
+            var oTransaction = oDoc.data();
+            oTransaction.id = oDoc.id;
+            aTransactions.push(oTransaction);
+        });
+        this.m_oDatabaseModel.setProperty("/transactions", aTransactions);
+    }
 
     /**
      * Injects any new properties into the database, which might be missing initially

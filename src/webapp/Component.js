@@ -36,8 +36,13 @@ sap.ui.define([
 
     ComponentProto.init = function () {
         UIComponent.prototype.init.apply(this, arguments);
-        var oRouter = this.getRouter();
-        oRouter.initialize();
+
+        this.setIsWebVersion(!window.api || (!!window.api && !window.api.isElectron));
+
+        // init routing, for non web version
+        if (!this.getIsWebVersion()) {
+            this.getRouter().initialize();
+        }
 
         //init beans
         for (var sType in Config.Beans) {
@@ -48,7 +53,7 @@ sap.ui.define([
 
         // attach to logged in
         this.getFirebaseManager().attachUserSignedIn(
-            this.getTransactionsManager().uploadCategories.bind( this.getTransactionsManager())
+            this.getTransactionsManager().uploadCategories.bind(this.getTransactionsManager())
         );
         
         // create shared dialogs
@@ -76,7 +81,26 @@ sap.ui.define([
             visible: true
         }), "appHeader");
         this.m_oAppHeaderModel = this.getModel("appHeader");
+
+        // attach auth state change event
+        this.getFirebaseManager().attachAuthStateChanged(this.onAuthStateChange.bind(this));
     };
+
+    /**
+     * Handles the auth state changes 
+     */
+    ComponentProto.onAuthStateChange = function() {
+        // if on the web version, check if we should show the login or not :)
+        if (this.getIsWebVersion()) {
+            this.getRouter().initialize();
+
+            if (this.getFirebaseManager().getIsLoggedIn()) {
+                this.toOverview();
+            } else {
+                this.toAuth();
+            }
+        }
+    }
 
     /**
      * Creates a bean
@@ -115,9 +139,12 @@ sap.ui.define([
     ComponentProto.toWelcomeScreen = function () {
         this.getRouter().navTo("welcome", {});
     };
+    ComponentProto.toAuth = function() {
+        this.getRouter().navTo("auth");
+    }
     ComponentProto.toTransaction = function (oTransaction) {
         this.getRouter().navTo("transaction", {
-            transaction: oTransaction
+            transactionId: !!oTransaction ? oTransaction.id : "new"
         });
     };
 
@@ -392,7 +419,6 @@ sap.ui.define([
             this.m_oAppHeaderModel.setProperty("/" + sKey, false);
         }.bind(this));
     };
-
 
     return Component;
 })

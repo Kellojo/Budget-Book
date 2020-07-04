@@ -26,8 +26,8 @@
 				</SegmentedButton>
                 <MenuButton text="{i18n>addTransaction}">
                     <Menu>
-                        <MenuItem text="{i18n>synchronizeTransactions}" press="onSynchronizeTransactionButtonPress"/>
                         <MenuItem text="{i18n>addTransactionManually}" press="onAddButtonPress"/>
+                        <MenuItem text="{i18n>synchronizeTransactions}" press="onSynchronizeTransactionButtonPress" visible="{= !${device>/isWebVersion}}"/>
                     </Menu>
                 </MenuButton>
             </OverflowToolbar>
@@ -82,15 +82,18 @@
                 <ColumnListItem type="{= ${device>/system/phone} ? 'Navigation' : 'Active'}" class="budgetBookOverview-transactionItem">
                     <CheckBox class="budgetBook-CheckBox" selected="{Database>isCompleted}"/>
                     <VBox>
-                        <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
-                        <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
+                        <HBox>
+                            <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
+                            <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft kellojoM-lineSpacing" visible="{device>/isWebVersion}"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="{Database>category}" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
+                            <Label text="-" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
+                            <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
+                        </HBox>
                     </VBox>
                     
-                    <u:Currency value="{Database>amount}" currency="EUR" maxPrecision="2" useSymbol="true" class="budgetBookOverview-currency">
-                        <u:customData>
-                            <core:CustomData key="type" value="{Database>type}" writeToDom="true" />
-                        </u:customData>
-                    </u:Currency>
+                    <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}"/>
                     <Label text="{Database>category}"/>
                     
                     <Button icon="sap-icon://delete" press="onDeleteTransactionPress" type="Unstyled" class="budgetBookOverview-deleteIcon"/>

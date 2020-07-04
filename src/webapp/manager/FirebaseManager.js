@@ -19,6 +19,9 @@ sap.ui.define([
             events: {
                 userSignedIn: {
 
+                },
+                authStateChanged: {
+
                 }
             }
         }
@@ -47,6 +50,7 @@ sap.ui.define([
         this.m_oUserModel.setProperty("/user", oUser);
         this.setIsLoggedIn(!!oUser);
 
+        this.fireAuthStateChanged();
         if (this.getIsLoggedIn()) {
             this.fireUserSignedIn();
         }
