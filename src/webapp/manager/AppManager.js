@@ -8,7 +8,15 @@ sap.ui.define([
     var oSchema = ManagedObject.extend("com.budgetBook.manager.AppManager", {
         metadata: {
             properties: {
-                showAppHeader: {type: "boolean", defaultValue: false}
+                showAppHeader: {type: "boolean", defaultValue: false},
+                showBackButton: {
+                    type: "boolean",
+                    defaultValue: false
+                }
+            },
+
+            events: {
+                saveButtonPress: {}
             }
         }
     }),
@@ -19,13 +27,24 @@ sap.ui.define([
 
         // Init app header model
         this.m_oAppHeaderModel = new JSONModel({
-            isAppHeaderVisible : this.getShowAppHeader()
+            isAppHeaderVisible : this.getShowAppHeader(),
+            showBackButton: this.getShowBackButton(),
+            showAddButton: false,
+            showSaveButton: false
         });
         this.getOwnerComponent().setModel(this.m_oAppHeaderModel, "AppHeader");
 
         // Init AppInfo model
         this.m_oAppInfoModel = null;
-        this.loadAppInfo();
+        if (this.getOwnerComponent().getIsWebVersion()) {
+            setTimeout(() => {
+                this.onAppInfoLoaded(null, {
+                    isFirstStartUp: false
+                });
+            }, 1);
+        } else {
+            this.loadAppInfo();
+        }
     };
 
 
@@ -53,7 +72,29 @@ sap.ui.define([
 
     SchemaProto.setShowAppHeader = function(bVisible) {
         this.m_oAppHeaderModel.setProperty("/isAppHeaderVisible", !!bVisible);
+        return this;
     }
+
+    SchemaProto.setShowAddButton = function(bVisible) {
+        this.m_oAppHeaderModel.setProperty("/showAddButton", !!bVisible);
+        return this;
+    }
+
+    SchemaProto.setShowSaveButton = function(bVisible) {
+        this.m_oAppHeaderModel.setProperty("/showSaveButton", !!bVisible);
+        return this;
+    }
+
+    SchemaProto.setShowMenuButton = function(bVisible) {
+        this.m_oAppHeaderModel.setProperty("/showMenuButton", !!bVisible);
+        return this;
+    }
+
+    SchemaProto.setShowBackButton = function (bVisible) {
+        this.m_oAppHeaderModel.setProperty("/showBackButton", !!bVisible);
+        return this;
+    }
+
 
 
     SchemaProto.openHelpPage = function() {

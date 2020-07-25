@@ -7,6 +7,7 @@ const {
 // the ipcRenderer without exposing the entire object
 contextBridge.exposeInMainWorld(
     "api", {
+        isElectron: true,
         saveData: (oData) => {
             ipcRenderer.send("saveData", oData);
         },

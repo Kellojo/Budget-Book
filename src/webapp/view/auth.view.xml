@@ -1,0 +1,18 @@
+ <mvc:View
+	controllerName="com.budgetBook.controller.auth"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:kM="kellojo.m">
+
+    <kM:Login
+        id="idLogin"
+        height="100%"
+        signIn="onSignIn"
+        signUp="onSignUp"
+        passwordForgotten="" 
+        customErrorMessage="{auth>/customErrorMessage}"
+        busy="{auth>/isLoginBusy}"/>
+
+</mvc:View>

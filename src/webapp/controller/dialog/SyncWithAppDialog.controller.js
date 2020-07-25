@@ -1,26 +1,21 @@
 sap.ui.define([
-    "com/budgetBook/controller/ControllerBase",
+    "com/budgetBook/controller/authBase.controller",
     "sap/ui/model/json/JSONModel",
-    "com/budgetBook/Config",
-    "sap/m/MessageToast",
-    "sap/m/Button"
-], function (Controller, JSONModel, Config, MessageToast, Button) {
+    "sap/m/MessageToast"
+], function (AuthBaseController, JSONModel, MessageToast) {
     "use strict";
 
-    var Controller = Controller.extend("com.budgetBook.controller.dialog.SyncWithAppDialog", {}),
+    var Controller = AuthBaseController.extend("com.budgetBook.controller.dialog.SyncWithAppDialog", {}),
         ControllerProto = Controller.prototype;
 
     
     ControllerProto.onInit = function() {
-        this.m_oLogin = this.byId("idLogin");
+        AuthBaseController.prototype.onInit.apply(this, arguments);
         this.m_oSyncPage = this.byId("idSyncPage");
         this.m_oNavContainer = this.byId("idNavContainer");
-
         this.m_oViewModel = new JSONModel({
-            isLoginBusy: false,
             transactions: [],
             transactionsCount: 0,
-            customErrorMessage: ""
         });
         this.getView().setModel(this.m_oViewModel);
     };
@@ -34,7 +29,6 @@ sap.ui.define([
             this.m_oNavContainer.to(this.m_oLogin, "show");
         }
         
-
         this.m_oSettings = oSettings;
     };
 
@@ -42,45 +36,16 @@ sap.ui.define([
     // Events
     // ------------------------
 
-    ControllerProto.onSignIn = function(oEvent) {
-        this.m_oViewModel.setProperty("/isLoginBusy", true);
-
-        this.getOwnerComponent().getFirebaseManager().login({
-            email: oEvent.getParameter("email"),
-            password: oEvent.getParameter("password"),
-            success: function() {
-                this.toSyncPage();
-            }.bind(this),
-            error: function(oEvent) {
-                this.m_oViewModel.setProperty("/customErrorMessage", oEvent.message);
-            }.bind(this),
-            complete: function() {
-                this.m_oViewModel.setProperty("/isLoginBusy", false);
-            }.bind(this),
-        });        
+    ControllerProto.onSignUpSuccess = function() {
+        this.toSyncPage();
     }
 
-    ControllerProto.onSignUp = function(oEvent) {
-        this.m_oViewModel.setProperty("/isLoginBusy", true);
-
-        this.getOwnerComponent().getFirebaseManager().signUp({
-            email: oEvent.getParameter("email"),
-            password: oEvent.getParameter("password"),
-            success: function() {
-                this.toSyncPage();
-            }.bind(this),
-            error: function(oEvent) {
-                this.m_oViewModel.setProperty("/customErrorMessage", oEvent.message);
-            }.bind(this),
-            complete: function() {
-                this.m_oViewModel.setProperty("/isLoginBusy", false);
-            }.bind(this),
-        });   
+    ControllerProto.onSignInSuccess = function() {
+        this.toSyncPage();
     }
 
-    ControllerProto.onSignOutPress = function() {
+    ControllerProto.onSignOutSuccess = function() {
         this.m_oNavContainer.to(this.m_oLogin, "slide");
-        this.getOwnerComponent().getFirebaseManager().signOut();
     }
 
     ControllerProto.toSyncPage = function(bInstant) {

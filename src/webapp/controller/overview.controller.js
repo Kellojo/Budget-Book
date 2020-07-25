@@ -7,7 +7,8 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/FilterType",
     "sap/m/MessageBox",
-], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType, MessageBox) {
+    "sap/ui/Device"
+], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType, MessageBox, Device) {
     "use strict";
 
     var Controller = ControllerBase.extend("com.budgetBook.controller.overview", {}),
@@ -30,7 +31,12 @@ sap.ui.define([
     }
 
     ControllerProto.onPageEnter = function() {
-        this.getOwnerComponent().getAppManager().setShowAppHeader(true);
+        this.getOwnerComponent().getAppManager()
+            .setShowBackButton(false)
+            .setShowAppHeader(true)
+            .setShowSaveButton(false)
+            .setShowMenuButton(this.getOwnerComponent().getIsWebVersion())
+            .setShowAddButton(true);
         this.updateTabs();
     }
 
@@ -58,15 +64,19 @@ sap.ui.define([
         var oBindingContext = oEvent.getParameter("listItem").getBindingContext("Database"),
             oTransaction = oBindingContext.getObject(),
             sPath = oBindingContext.getPath();
-            
-        this.getOwnerComponent().openDialog("AddTransactionDialog", {
-            title: "addTransactionDialogTitleEditMode",
-            submitButton: true,
-            transaction: oTransaction,
-            fnOnSubmit: function(oTransaction) {
-                this.getOwnerComponent().getTransactionsManager().updateTransaction(sPath, oTransaction);
-            }.bind(this)
-        });
+        
+        if (Device.system.phone) {
+            this.getOwnerComponent().toTransaction(oTransaction);
+        } else {
+            this.getOwnerComponent().openDialog("AddTransactionDialog", {
+                title: "addTransactionDialogTitleEditMode",
+                submitButton: true,
+                transaction: oTransaction,
+                fnOnSubmit: function (oTransaction) {
+                    this.getOwnerComponent().getTransactionsManager().updateTransaction(sPath, oTransaction);
+                }.bind(this)
+            });
+        }
     }
 
     ControllerProto.onDeleteTransactionPress = function(oEvent) {

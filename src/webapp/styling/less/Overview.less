@@ -14,20 +14,6 @@
     padding-left: @tinyPadding;
 }
 
-.budgetBookOverview-currency {
-    .sapUiUfdCurrencyCurrency {
-        width: unset;
-    }
-
-    &[data-type="expense"] {
-       color: @error;
-    }
-    &[data-type="income"] {
-        color: @success;
-     }
-}
-
-
 .budgetBookOverview-transactionItem {
     &:hover {
         .budgetBookOverview-deleteIcon .sapMBtnIcon {
@@ -45,4 +31,18 @@
         color: transparent;
         transition: color 0.2s ease-out;
     }
+}
+
+.sap-phone {
+    .budgetBookOverview-transactionItem {
+
+        .sapMListTblHighlightCell, .sapMListTblNavigatedCell {
+            display: none;
+        }
+    }
+
+    .budgetBookOverview-transactionItem-checkBoxColumn {
+        width: 32px !important;
+    }
+    
 }

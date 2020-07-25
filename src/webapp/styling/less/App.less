@@ -31,41 +31,6 @@
     }
 }
 
-.budgetBookApp-Container {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-}
-
-.budgetBookApp-TitleContainer {
-    display: flex;
-    flex-direction: column;
-
-    &:hover {
-        .budgetBookApp-BrandBar {
-            width: 100%;
-        }
-    }
-}
-
-.budgetBookApp-Page-Title {
-    color: @white !important;
-    user-select: none;
-}
-
-.budgedBook-Page-VersionLabel {
-    color: @brightGrey !important;
-    font-size: @smallFontSize !important;
-    margin-left: @tinyPadding;
-}
-
-.budgetBookApp-BrandBar {
-    height: 1px;
-    width: 0px;
-    transition: width 0.2s ease-out;
-    background: @white;
-}
-
 
 .budgetBookApp-Page-Button {
     color: @white !important;
@@ -85,4 +50,28 @@
 
 .sapMBtnInner {
     transition: background-color 0.1s ease-out;
+}
+
+.sap-phone {
+    .budgetBookApp-Page-Header {
+
+        > .sapMBarLeft {
+            padding-left: @halfPadding;
+        }
+
+        > .sapMBarRight {
+            padding-right: @halfPadding;
+        }
+    }
+
+    .budgetBookApp-Page-BackButton {
+        .sapMBtnActive {
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
+
+        .sapMBtnIcon, .sapMBtnContent {
+            color: @white !important;
+        }
+    }
 }

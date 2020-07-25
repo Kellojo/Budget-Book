@@ -8,8 +8,7 @@
     height="100%"
     width="100%">
 
-    <kM:Wrapper class="budgetBookDialog" busy="{/isLoading}">
-
+    <kM:Wrapper class="budgetPTransactionView">
         <kM:TransactionEditor 
             id="idTransactionEditor"
             title="{transaction>/title}"
@@ -20,6 +19,8 @@
             occurredOn="{transaction>/occurredOn}"
             type="{transaction>/type}"/>
 
+        <kM:Deleter title="{i18n>dialogDelete}" press="onDeletePress" type="Active" visible="{/isExistingTransaction}"/>
+    
     </kM:Wrapper>
 
 </mvc:View>

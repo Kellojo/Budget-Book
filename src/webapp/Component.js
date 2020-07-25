@@ -6,6 +6,10 @@ sap.ui.define([
     "sap/ui/Device",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/resource/ResourceModel",
+    "sap/ui/core/routing/History",
+
+    "kellojo/m/UserHelpMenu",
+    "sap/m/MessageToast",
 
     "com/budgetBook/Config",
 
@@ -14,12 +18,19 @@ sap.ui.define([
     "com/budgetBook/manager/Formatter",
     "com/budgetBook/manager/AppManager",
     "com/budgetBook/manager/FirebaseManager"
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, Config) {
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
         metadata: {
-            manifest: "json"
+            manifest: "json",
+
+            properties: {
+                isWebVersion: {
+                    type: "boolean",
+                    defaultValue: true
+                }
+            }
         }
     });
     var ComponentProto = Component.prototype;
@@ -28,8 +39,13 @@ sap.ui.define([
 
     ComponentProto.init = function () {
         UIComponent.prototype.init.apply(this, arguments);
-        var oRouter = this.getRouter();
-        oRouter.initialize();
+
+        this.setIsWebVersion(!window.api || (!!window.api && !window.api.isElectron));
+
+        // init routing, for non web version
+        if (!this.getIsWebVersion()) {
+            this.getRouter().initialize();
+        }
 
         //init beans
         for (var sType in Config.Beans) {
@@ -40,7 +56,7 @@ sap.ui.define([
 
         // attach to logged in
         this.getFirebaseManager().attachUserSignedIn(
-            this.getTransactionsManager().uploadCategories.bind( this.getTransactionsManager())
+            this.getTransactionsManager().uploadCategories.bind(this.getTransactionsManager())
         );
         
         // create shared dialogs
@@ -55,7 +71,9 @@ sap.ui.define([
         }
 
         //set device & i18n model
-        this.setModel(new JSONModel(Device), "device");
+        var oDevice = Device;
+        oDevice.isWebVersion = this.getIsWebVersion();
+        this.setModel(new JSONModel(oDevice), "device");
         this.m_oResourceBundle = new ResourceModel({
             bundleName: "com.budgetBook.i18n.i18n"
          })
@@ -66,7 +84,26 @@ sap.ui.define([
             visible: true
         }), "appHeader");
         this.m_oAppHeaderModel = this.getModel("appHeader");
+
+        // attach auth state change event
+        this.getFirebaseManager().attachAuthStateChanged(this.onAuthStateChange.bind(this));
     };
+
+    /**
+     * Handles the auth state changes 
+     */
+    ComponentProto.onAuthStateChange = function() {
+        // if on the web version, check if we should show the login or not :)
+        if (this.getIsWebVersion()) {
+            this.getRouter().initialize();
+
+            if (this.getFirebaseManager().getIsLoggedIn()) {
+                this.toOverview();
+            } else {
+                this.toAuth();
+            }
+        }
+    }
 
     /**
      * Creates a bean
@@ -105,25 +142,94 @@ sap.ui.define([
     ComponentProto.toWelcomeScreen = function () {
         this.getRouter().navTo("welcome", {});
     };
-
-    ComponentProto.openUserManagementDialog = function (oSettings) {
-        oSettings = jQuery.extend(oSettings, {
-            title: "userManagementDialog-title"
+    ComponentProto.toAuth = function() {
+        this.getRouter().navTo("auth");
+    }
+    ComponentProto.toTransaction = function (oTransaction) {
+        this.getRouter().navTo("transaction", {
+            transactionId: !!oTransaction ? oTransaction.id : "new"
         });
-        this.openDialog("userManagementDialog", oSettings);
     };
+
+    ComponentProto.openUserHelpMenu = function(oSource) {
+        if (!!this.m_oUserHelpMenu) {
+            this.m_oUserHelpMenu.close();
+        } else {
+            var oResourceBundle = this.getResourceBundle();
+            this.m_oUserHelpMenu = new UserHelpMenu({
+                closeButtonVisible: Device.system.phone,
+                close: function() {
+                    this.m_oUserHelpMenu = null;
+                }.bind(this),
+                items: [
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuExport"),
+                        icon: "sap-icon://upload",
+                        press: function() {
+                            this.getDatabase().exportData({
+                                success: () => {MessageToast.show(
+                                    this.getResourceBundle().getText("exportDataSuccess")
+                                )}
+                            });
+                        }.bind(this),
+                        hasSpacer: true,
+                        visible: !this.getIsWebVersion()
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuGetMobileApp"),
+                        icon: "sap-icon://iphone",
+                        press: function() {
+
+                        }.bind(this),
+                        hasSpacer: false,
+                        visible: !Device.system.phone
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuGetDesktopApp"),
+                        icon: "sap-icon://sys-monitor",
+                        press: function() {
+
+                        }.bind(this),
+                        hasSpacer: false,
+                        visible: Device.system.phone
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuWebsite"),
+                        icon: "sap-icon://sys-help",
+                        press: function() {
+                            this.getAppManager().openHelpPage();
+                        }.bind(this),
+                        hasSpacer: true,
+                        visible: true
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuSignOut"),
+                        icon: "sap-icon://log",
+                        press: function(oEvent) {
+                            this.getFirebaseManager().signOut();
+                        }.bind(this),
+                        hasSpacer: false,
+                        visible: this.getFirebaseManager().getIsLoggedIn()
+                    },
+                ]
+            });
+            //this.getUIArea().addDependent(this.m_oUserHelpMenu);
+            this.m_oUserHelpMenu.openBy(oSource, "Bottom");
+        }
+    }
+
 
     /**
      * Navigates back, simple as that ;)
      */
     ComponentProto.navBack = function() {
-            var oHistory = History.getInstance();
-			    sPreviousHash = oHistory.getPreviousHash();
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				console.error("Could not navigate back and not default fallback has been configured...");
-			}
+        var oHistory = History.getInstance(),
+            sPreviousHash = oHistory.getPreviousHash();
+        if (sPreviousHash !== undefined) {
+            window.history.go(-1);
+        } else {
+            this.toOverview();
+        }
     };
 
 
@@ -178,7 +284,8 @@ sap.ui.define([
         oController
 
         var oDialog = new sap.m.Dialog({
-            title: oResourceBundle.getText(oSettings.title)
+            title: oResourceBundle.getText(oSettings.title),
+            stretchOnPhone: true,
         }).addStyleClass("kellojoMDialog");
         oDialog.setModel(this.m_oResourceBundle, "i18n");
         oDialog.setModel(this.getModel("User"), "User");
@@ -382,7 +489,6 @@ sap.ui.define([
             this.m_oAppHeaderModel.setProperty("/" + sKey, false);
         }.bind(this));
     };
-
 
     return Component;
 })

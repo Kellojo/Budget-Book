@@ -3,7 +3,7 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
-    xmlns:kellojoM="kellojo.m"
+    xmlns:kM="kellojo.m"
     height="100%"
     width="100%"
     id="idAppView">
@@ -12,19 +12,15 @@
         <customHeader>
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
-                    <kellojoM:Wrapper class="budgetBookApp-Container">
-                        <kellojoM:Wrapper class="budgetBookApp-TitleContainer">
-                            <Title text="{i18n>appTitle}" class="budgetBookApp-Page-Title"/>
-                            <kellojoM:Wrapper class="budgetBookApp-BrandBar"/>
-                        </kellojoM:Wrapper>
-
-                        <Label text="{AppInfo>/version}" class="budgedBook-Page-VersionLabel"/>  
-                    </kellojoM:Wrapper>
+                    <core:Icon src="sap-icon://menu2" press="onMenuButtonPress" class="budgetBookApp-Page-Button" visible="false"/>
+                    <Button icon="sap-icon://nav-back" text="{i18n>back}" type="Transparent" press="onBackButtonPress" visible="{AppHeader>/showBackButton}" class="budgetBookApp-Page-BackButton"/>
+                    <kM:AppTitle title="{i18n>appTitle}" version="{AppInfo>/version}"/>
                 </contentLeft>
 
                 <contentRight>
-                    <core:Icon tooltip="{i18n>appHeaderExportTooltip}" src="sap-icon://upload" press="onExportPress" class="budgetBookApp-Page-Button"/>
-                    <core:Icon src="sap-icon://sys-help" press="onHelpPress" class="budgetBookApp-Page-Button"/>
+                    <core:Icon src="sap-icon://user-settings" press="onUserHelpMenuPress" class="budgetBookApp-Page-Button" visible="{= ${AppHeader>/showAddButton} || !${device>/isWebVersion}}" />
+                    <core:Icon src="sap-icon://add" press="onAddTransactionPress" class="budgetBookApp-Page-Button" visible="{= ${device>/system/phone} &amp;&amp; ${AppHeader>/showAddButton}}"/>
+                    <Button text="{i18n>save}" press="onSaveButtonPress" class="budgetBookApp-Page-BackButton"  type="Transparent" visible="{AppHeader>/showSaveButton}"/>
                 </contentRight>
             </Bar>
 		</customHeader>
