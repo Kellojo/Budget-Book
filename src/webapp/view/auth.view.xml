@@ -1,5 +1,5 @@
  <mvc:View
-	controllerName="com.budgetBook.controller.Auth"
+	controllerName="com.budgetBook.controller.auth"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"

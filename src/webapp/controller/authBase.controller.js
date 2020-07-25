@@ -44,6 +44,7 @@ sap.ui.define([
             success: this.onSignInSuccess.bind(this),
             error: function(oEvent) {
                 this.m_oAuthModel.setProperty("/customErrorMessage", oEvent.message);
+                this.m_oLogin.shakeSignIn();
             }.bind(this),
             complete: function() {
                 this.m_oAuthModel.setProperty("/isLoginBusy", false);
@@ -60,6 +61,7 @@ sap.ui.define([
             success: this.onSignUpSuccess.bind(this),
             error: function(oEvent) {
                 this.m_oAuthModel.setProperty("/customErrorMessage", oEvent.message);
+                this.m_oLogin.shakeSignUp();
             }.bind(this),
             complete: function() {
                 this.m_oAuthModel.setProperty("/isLoginBusy", false);

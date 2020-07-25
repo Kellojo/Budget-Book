@@ -37,7 +37,7 @@ function createWindow () {
   autoUpdater.checkForUpdatesAndNotify();
 
   // and load the index.html of the app.
-  mainWindow.loadFile('src/webapp/index.html');
+  mainWindow.loadFile('src/webapp/index-electron.html');
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools()

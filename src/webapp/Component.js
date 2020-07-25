@@ -8,6 +8,9 @@ sap.ui.define([
     "sap/ui/model/resource/ResourceModel",
     "sap/ui/core/routing/History",
 
+    "kellojo/m/UserHelpMenu",
+    "sap/m/MessageToast",
+
     "com/budgetBook/Config",
 
     "com/budgetBook/manager/TransactionsManager",
@@ -15,7 +18,7 @@ sap.ui.define([
     "com/budgetBook/manager/Formatter",
     "com/budgetBook/manager/AppManager",
     "com/budgetBook/manager/FirebaseManager"
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, Config) {
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
@@ -147,6 +150,73 @@ sap.ui.define([
             transactionId: !!oTransaction ? oTransaction.id : "new"
         });
     };
+
+    ComponentProto.openUserHelpMenu = function(oSource) {
+        if (!!this.m_oUserHelpMenu) {
+            this.m_oUserHelpMenu.close();
+        } else {
+            var oResourceBundle = this.getResourceBundle();
+            this.m_oUserHelpMenu = new UserHelpMenu({
+                closeButtonVisible: Device.system.phone,
+                close: function() {
+                    this.m_oUserHelpMenu = null;
+                }.bind(this),
+                items: [
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuExport"),
+                        icon: "sap-icon://upload",
+                        press: function() {
+                            this.getDatabase().exportData({
+                                success: () => {MessageToast.show(
+                                    this.getResourceBundle().getText("exportDataSuccess")
+                                )}
+                            });
+                        }.bind(this),
+                        hasSpacer: true,
+                        visible: !this.getIsWebVersion()
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuGetMobileApp"),
+                        icon: "sap-icon://iphone",
+                        press: function() {
+
+                        }.bind(this),
+                        hasSpacer: false,
+                        visible: !Device.system.phone
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuGetDesktopApp"),
+                        icon: "sap-icon://sys-monitor",
+                        press: function() {
+
+                        }.bind(this),
+                        hasSpacer: false,
+                        visible: Device.system.phone
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuWebsite"),
+                        icon: "sap-icon://sys-help",
+                        press: function() {
+                            this.getAppManager().openHelpPage();
+                        }.bind(this),
+                        hasSpacer: true,
+                        visible: true
+                    },
+                    {
+                        title: oResourceBundle.getText("UserHelpMenuSignOut"),
+                        icon: "sap-icon://log",
+                        press: function(oEvent) {
+                            this.getFirebaseManager().signOut();
+                        }.bind(this),
+                        hasSpacer: false,
+                        visible: this.getFirebaseManager().getIsLoggedIn()
+                    },
+                ]
+            });
+            //this.getUIArea().addDependent(this.m_oUserHelpMenu);
+            this.m_oUserHelpMenu.openBy(oSource, "Bottom");
+        }
+    }
 
 
     /**

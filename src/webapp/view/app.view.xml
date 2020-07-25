@@ -18,8 +18,7 @@
                 </contentLeft>
 
                 <contentRight>
-                    <core:Icon tooltip="{i18n>appHeaderExportTooltip}" src="sap-icon://upload" press="onExportPress" class="budgetBookApp-Page-Button" visible="{= !${device>/system/phone} }"/>
-                    <core:Icon src="sap-icon://sys-help" press="onHelpPress" class="budgetBookApp-Page-Button" visible="{= !${device>/system/phone} }"/>
+                    <core:Icon src="sap-icon://user-settings" press="onUserHelpMenuPress" class="budgetBookApp-Page-Button" visible="{= ${AppHeader>/showAddButton} || !${device>/isWebVersion}}" />
                     <core:Icon src="sap-icon://add" press="onAddTransactionPress" class="budgetBookApp-Page-Button" visible="{= ${device>/system/phone} &amp;&amp; ${AppHeader>/showAddButton}}"/>
                     <Button text="{i18n>save}" press="onSaveButtonPress" class="budgetBookApp-Page-BackButton"  type="Transparent" visible="{AppHeader>/showSaveButton}"/>
                 </contentRight>

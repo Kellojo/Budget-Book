@@ -2,7 +2,8 @@ sap.ui.define([
     "com/budgetBook/manager/BeanBase",
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
-], function (ManagedObject, JSONModel, Config) {
+    "sap/m/MessageToast"
+], function (ManagedObject, JSONModel, Config, MessageToast) {
     "use strict";
 
     var oSchema = ManagedObject.extend("com.budgetBook.manager.FirebaseManager", {
@@ -78,6 +79,7 @@ sap.ui.define([
 
     SchemaProto.signOut = function () {
         firebase.auth().signOut();
+        MessageToast.show(this.getOwnerComponent().getResourceBundle().getText("signOutSuccess"));
     };
 
     SchemaProto.sendPasswordResetEmail = function (mParameters) {

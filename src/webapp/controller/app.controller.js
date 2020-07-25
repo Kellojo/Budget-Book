@@ -1,7 +1,6 @@
 sap.ui.define([
-    "com/budgetBook/controller/ControllerBase",
-    "sap/m/MessageToast",
-], function (Controller, MessageToast) {
+    "com/budgetBook/controller/ControllerBase"
+], function (Controller) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.app", {}),
@@ -27,19 +26,6 @@ sap.ui.define([
         jQuery("meta[name='apple-mobile-web-app-status-bar-style']").attr("content", "black-translucent");
     };
 
-
-    ControllerProto.onExportPress = function() {
-        this.getOwnerComponent().getDatabase().exportData({
-            success: () => {MessageToast.show(
-                this.getOwnerComponent().getResourceBundle().getText("exportDataSuccess")
-            )}
-        });
-    }
-
-    ControllerProto.onHelpPress = function() {
-        this.getOwnerComponent().getAppManager().openHelpPage();
-    }
-
     ControllerProto.onBackButtonPress = function() {
         this.getOwnerComponent().navBack();
     }
@@ -50,6 +36,10 @@ sap.ui.define([
 
     ControllerProto.onSaveButtonPress = function() {
         this.getOwnerComponent().getAppManager().fireSaveButtonPress();
+    }
+
+    ControllerProto.onUserHelpMenuPress = function(oEvent) {
+        this.getOwnerComponent().openUserHelpMenu(oEvent.getSource());
     }
 
     return Controller;

@@ -3,10 +3,9 @@ sap.ui.define([
 ], function (AuthBaseController) {
     "use strict";
 
-    var Controller = AuthBaseController.extend("com.budgetBook.controller.Auth", {}),
+    var Controller = AuthBaseController.extend("com.budgetBook.controller.auth", {}),
         ControllerProto = Controller.prototype;
 
-    
     ControllerProto.onInit = function() {
         AuthBaseController.prototype.onInit.apply(this, arguments);
     };
