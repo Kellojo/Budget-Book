@@ -17,8 +17,20 @@ Currently only macOS and Windows are supported.
 Get the mobile webapp [here](https://budget-book-7ebd4.firebaseapp.com/).
 Android & iOS are supported.
 
+## Features
+- manage your income and expenses in a safe environment
+- all data (except for the transactions created via the app & your categories) is stored locally on your device.
+- compare different months and years to gain insight into your spending behaviour
+- see in which areas you spend most of your money and in which you have the highest incomes.
+- track them anywhere using the responsive [mobile app](https://budget-book-7ebd4.firebaseapp.com/)
 
-## Details 
+
+## Mobile app sync
+
+With the new app sync, you can now create transactions while not having access to the desktop app. Once you open the desktop app again, you can sign-in and synchronize your transactions. The mobile webapp is available [here](https://budget-book-7ebd4.firebaseapp.com/). Don't forget to add it to your home screen 😄
+
+
+## Getting started 
 The app helps in several ways to track and manage your income and expenses.
 This begins with the initial setup:
 
@@ -41,6 +53,3 @@ You can gain further insight by filtering your list using the search. You can en
 If you want to backup your saved transactions, you can hit the export button on the top right. It is going to promt you to select a location for your save file. After the export the save file can then be loaded again, when initially opening the app for the first time (i.e. on a new computer). In the future it is algo going to be possible to alyway save to an external file, so you can easily share it between devices with a service like OneDrive or Google Drive.
 
 ![Imgur](https://i.imgur.com/QHefOVR.png)
-
-
-With the new app sync, you can now create transactions while not having access to the desktop app. Once you open the desktop app again, you can sign-in and synchronize your transactions. The mobile webapp is available [here](https://budget-book-7ebd4.firebaseapp.com/). Don't forget to add it to your home screen 😄
