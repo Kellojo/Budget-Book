@@ -3,6 +3,8 @@
   height: auto !important;
 }
 .budgetBookApp-Page-Header {
+  display: flex !important;
+  flex-direction: row;
   height: 3.5rem !important;
   background: linear-gradient(to left, #005575, #514a9d) !important;
   -webkit-app-region: drag;
@@ -10,6 +12,11 @@
 .budgetBookApp-Page-Header > .sapMBarLeft {
   height: 3.5rem !important;
   padding-left: 2rem;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+.budgetBookApp-Page-Header > .sapMBarMiddle {
+  height: 2.5rem !important;
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
