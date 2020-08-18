@@ -8,6 +8,7 @@
     "start": "electron .",
     "start-web": "http-server ./",
     "start-auto-less-builder": "node ./src/bin/less-builder.js",
+    "build-styles": "./src/bin/build-less.sh",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "release": "electron-builder"
