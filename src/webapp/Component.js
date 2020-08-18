@@ -179,7 +179,7 @@ sap.ui.define([
                         title: oResourceBundle.getText("UserHelpMenuGetMobileApp"),
                         icon: "sap-icon://iphone",
                         press: function() {
-
+                            this.getAppManager().openHelpPage();
                         }.bind(this),
                         hasSpacer: false,
                         visible: !Device.system.phone
@@ -188,7 +188,7 @@ sap.ui.define([
                         title: oResourceBundle.getText("UserHelpMenuGetDesktopApp"),
                         icon: "sap-icon://sys-monitor",
                         press: function() {
-
+                            this.getAppManager().openHelpPage();
                         }.bind(this),
                         hasSpacer: false,
                         visible: Device.system.phone

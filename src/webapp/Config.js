@@ -40,7 +40,10 @@ sap.ui.define([], function () {
             storageBucket: "budget-book-7ebd4.appspot.com",
             messagingSenderId: "243765855914",
             appId: "1:243765855914:web:94ddd61389b9883a6a32d3"
-        }
+        },
+
+
+        WEBSITE: "https://kellojo.github.io/Budget-Book/",
 
 
     };

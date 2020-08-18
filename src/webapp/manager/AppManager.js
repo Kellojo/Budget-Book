@@ -1,8 +1,9 @@
 sap.ui.define([
     "com/budgetBook/manager/BeanBase",
     "sap/base/Log",
-    "sap/ui/model/json/JSONModel"
-], function (ManagedObject, Log, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "com/budgetBook/Config",
+], function (ManagedObject, Log, JSONModel, Config) {
     "use strict";
 
     var oSchema = ManagedObject.extend("com.budgetBook.manager.AppManager", {
@@ -112,7 +113,11 @@ sap.ui.define([
 
 
     SchemaProto.openHelpPage = function() {
-        api.openHelpPage();
+        if (!this.getOwnerComponent().getIsWebVersion()) {
+            api.openHelpPage();
+        } else {
+            window.open(Config.WEBSITE, "_blank");
+        }
     }
 
 
