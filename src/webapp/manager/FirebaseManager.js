@@ -33,7 +33,8 @@ sap.ui.define([
     SchemaProto.onInit = function() {
         this.m_oUserModel = new JSONModel({
             isLoggedIn: false,
-            user: undefined
+            user: undefined,
+            userInitials: "",
         });
         this.getOwnerComponent().setModel(this.m_oUserModel, "User");
 
@@ -49,6 +50,12 @@ sap.ui.define([
     SchemaProto.onAuthStateChanged = function(oUser) {
         this.m_oUserModel.setProperty("/isLoggedIn", !!oUser);
         this.m_oUserModel.setProperty("/user", oUser);
+
+        var sInitials = "";
+        if (!!oUser) {
+            sInitials = oUser.email.substr(0, 2).toUpperCase();
+        }
+        this.m_oUserModel.setProperty("/userInitials", sInitials);
         this.setIsLoggedIn(!!oUser);
 
         this.fireAuthStateChanged();

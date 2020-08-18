@@ -15,6 +15,7 @@
                     <core:Icon src="sap-icon://menu2" press="onMenuButtonPress" class="budgetBookApp-Page-Button" visible="false"/>
                     <Button icon="sap-icon://nav-back" text="{i18n>back}" type="Transparent" press="onBackButtonPress" visible="{AppHeader>/showBackButton}" class="budgetBookApp-Page-BackButton"/>
                     <kM:AppTitle title="{AppHeader>/appTitle}" version="{AppInfo>/version}" visible="{= !${device>/system/phone}}"/>
+                    <Avatar initials="{User>/userInitials}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{= ${device>/system/phone} &amp;&amp; ${User>/isLoggedIn} &amp;&amp; ${AppHeader>/showAddButton}}"/>
                 </contentLeft>
 
                 <contentMiddle>
@@ -22,7 +23,7 @@
                 </contentMiddle>
 
                 <contentRight>
-                    <core:Icon src="sap-icon://user-settings" press="onUserHelpMenuPress" class="budgetBookApp-Page-Button" visible="{= ${AppHeader>/showAddButton} || !${device>/isWebVersion}}" />
+                    <core:Icon src="sap-icon://user-settings" press="onUserHelpMenuPress" class="budgetBookApp-Page-Button" visible="{= ${AppHeader>/showAddButton} &amp;&amp; !${device>/system/phone}}" />
                     <core:Icon src="sap-icon://add" press="onAddTransactionPress" class="budgetBookApp-Page-Button" visible="{= ${device>/system/phone} &amp;&amp; ${AppHeader>/showAddButton}}"/>
                     <Button text="{i18n>save}" press="onSaveButtonPress" class="budgetBookApp-Page-BackButton"  type="Transparent" visible="{AppHeader>/showSaveButton}"/>
                 </contentRight>
