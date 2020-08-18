@@ -14,11 +14,11 @@
                 <contentLeft>
                     <core:Icon src="sap-icon://menu2" press="onMenuButtonPress" class="budgetBookApp-Page-Button" visible="false"/>
                     <Button icon="sap-icon://nav-back" text="{i18n>back}" type="Transparent" press="onBackButtonPress" visible="{AppHeader>/showBackButton}" class="budgetBookApp-Page-BackButton"/>
-                    <kM:AppTitle title="{i18n>appTitle}" version="{AppInfo>/version}" visible="{= !${device>/isWebVersion}}"/>
+                    <kM:AppTitle title="{AppHeader>/appTitle}" version="{AppInfo>/version}" visible="{= !${device>/system/phone}}"/>
                 </contentLeft>
 
                 <contentMiddle>
-                    <kM:AppTitle title="{i18n>appTitle}" version="{AppInfo>/version}" visible="{device>/isWebVersion}"/>
+                    <kM:AppTitle title="{AppHeader>/appTitle}" version="{AppInfo>/version}" visible="{device>/system/phone}"/>
                 </contentMiddle>
 
                 <contentRight>

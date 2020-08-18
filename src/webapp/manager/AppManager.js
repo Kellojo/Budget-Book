@@ -12,6 +12,9 @@ sap.ui.define([
                 showBackButton: {
                     type: "boolean",
                     defaultValue: false
+                },
+                appTitle: {
+                    type: "string"
                 }
             },
 
@@ -30,8 +33,10 @@ sap.ui.define([
             isAppHeaderVisible : this.getShowAppHeader(),
             showBackButton: this.getShowBackButton(),
             showAddButton: false,
-            showSaveButton: false
+            showSaveButton: false,
+            appTitle: ""
         });
+        this.setAppTitle();
         this.getOwnerComponent().setModel(this.m_oAppHeaderModel, "AppHeader");
 
         // Init AppInfo model
@@ -92,6 +97,15 @@ sap.ui.define([
 
     SchemaProto.setShowBackButton = function (bVisible) {
         this.m_oAppHeaderModel.setProperty("/showBackButton", !!bVisible);
+        return this;
+    }
+
+    SchemaProto.setAppTitle = function(sString) {
+        if (!sString) {
+            sString = this.getOwnerComponent().getResourceBundle().getText("appTitle");
+        }
+
+        this.m_oAppHeaderModel.setProperty("/appTitle", sString);
         return this;
     }
 

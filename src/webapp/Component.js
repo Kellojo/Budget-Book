@@ -42,6 +42,15 @@ sap.ui.define([
 
         this.setIsWebVersion(!window.api || (!!window.api && !window.api.isElectron));
 
+        //set device & i18n model
+        var oDevice = Device;
+        oDevice.isWebVersion = this.getIsWebVersion();
+        this.setModel(new JSONModel(oDevice), "device");
+        this.m_oResourceBundle = new ResourceModel({
+            bundleName: "com.budgetBook.i18n.i18n"
+        });
+        this.setModel(this.m_oResourceBundle, "i18n");
+
         // init routing, for non web version
         if (!this.getIsWebVersion()) {
             this.getRouter().initialize();
@@ -69,15 +78,6 @@ sap.ui.define([
                 }.bind(this, Config.SHARED_DIALOGS[key].view))
             };
         }
-
-        //set device & i18n model
-        var oDevice = Device;
-        oDevice.isWebVersion = this.getIsWebVersion();
-        this.setModel(new JSONModel(oDevice), "device");
-        this.m_oResourceBundle = new ResourceModel({
-            bundleName: "com.budgetBook.i18n.i18n"
-         })
-        this.setModel(this.m_oResourceBundle, "i18n");
 
         //init app header model
         this.setModel(new JSONModel({

@@ -36,7 +36,8 @@ sap.ui.define([
             .setShowAppHeader(true)
             .setShowSaveButton(false)
             .setShowMenuButton(this.getOwnerComponent().getIsWebVersion())
-            .setShowAddButton(true);
+            .setShowAddButton(true)
+            .setAppTitle("");
         this.updateTabs();
     }
 

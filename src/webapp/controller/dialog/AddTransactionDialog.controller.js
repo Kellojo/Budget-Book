@@ -29,9 +29,11 @@ sap.ui.define([
     };
 
     ControllerProto.onPageEnter = async function(oEvent) {
-        var oComponent = this.getOwnerComponent();
-        oComponent.getAppManager().attachSaveButtonPress(this.onSubmitButtonPress.bind(this));
-        oComponent.getAppManager()
+        var oComponent = this.getOwnerComponent(),
+            oAppManager = oComponent.getAppManager(),
+            oResourceBundle = oComponent.getResourceBundle();
+        oAppManager.attachSaveButtonPress(this.onSubmitButtonPress.bind(this));
+        oAppManager
             .setShowBackButton(true)
             .setShowSaveButton(true)
             .setShowMenuButton(false)
@@ -47,6 +49,9 @@ sap.ui.define([
             this.m_oViewModel.setProperty("/isLoading", true);
             oSettings.transaction = await oComponent.getTransactionsManager().loadTransaction(sTransactionId);
             this.m_oViewModel.setProperty("/isLoading", false);
+            oAppManager.setAppTitle(oResourceBundle.getText("addTransactionDialogTitleEditMode"));
+        } else {
+            oAppManager.setAppTitle(oResourceBundle.getText("addTransactionDialogTitle"));
         }
 
         this.onOpenInDialog(oSettings);
