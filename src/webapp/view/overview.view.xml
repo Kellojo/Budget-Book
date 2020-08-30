@@ -27,7 +27,10 @@
                 <MenuButton text="{i18n>addTransaction}">
                     <Menu>
                         <MenuItem text="{i18n>addTransactionManually}" press="onAddButtonPress"/>
-                        <MenuItem text="{i18n>synchronizeTransactions}" press="onSynchronizeTransactionButtonPress" visible="{= !${device>/isWebVersion}}"/>
+                        <MenuItem 
+                            text="{ path: '/synchronizeableTransactionsCount', formatter: '.formatSynchronizeFromAppActionText'}"
+                            press="onSynchronizeTransactionButtonPress"
+                            visible="{= !${device>/isWebVersion}}"/>
                     </Menu>
                 </MenuButton>
             </OverflowToolbar>

@@ -5,12 +5,41 @@ sap.ui.define([
 ], function (ManagedObject, Log, Config) {
     "use strict";
 
-    var oManager = ManagedObject.extend("com.budgetBook.manager.TransactionsManager", {}),
+    var oManager = ManagedObject.extend("com.budgetBook.manager.TransactionsManager", {
+        metadata: {
+            events: {
+                synchronizeTransactionsChanged: {
+                    parameters: {
+                        transactions: {
+                            type: "object[]"
+                        },
+                        count: {
+                            type: "int"
+                        }
+                    }
+                }
+            }
+        }
+    }),
         ManagerProto = oManager.prototype;
     
     ManagerProto.onInit = function() {
+        this.getOwnerComponent().getFirebaseManager().attachUserSignedIn(this._onUserSignedIn, this);
 
     };
+
+    /**
+     * Starts listening for change events in the synchronizeable transactions collection
+     * @param {sap.ui.base.Event} oEvent 
+     */
+    ManagerProto._onUserSignedIn = function(oEvent) {
+        this.listenForSynchronizeableTransactions((aTransactions) => {
+            this.fireSynchronizeTransactionsChanged({
+                transactions: aTransactions,
+                count: aTransactions.length
+            });
+        });
+    }
 
     /**
      * Get's a transaction by id (currently only working in the web version)

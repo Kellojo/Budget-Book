@@ -19,15 +19,20 @@ sap.ui.define([
     
     ControllerProto.onInit = function() {
         ControllerBase.prototype.onInit.apply(this, arguments);
+        var oComponent = this.getOwnerComponent();
 
         this.m_oViewModel = new JSONModel({
             months: [],
             currentTab: null,
             searchQuery: "",
+            synchronizeableTransactionsCount: 0,
         });
         this.getView().setModel(this.m_oViewModel);
 
-        this.getOwnerComponent().getDatabase().attachUpdate(this.updateTabs.bind(this));
+        oComponent.getDatabase().attachUpdate(this.updateTabs.bind(this));
+        oComponent.getTransactionsManager().attachSynchronizeTransactionsChanged((oEvent) => {
+            this.m_oViewModel.setProperty("/synchronizeableTransactionsCount", oEvent.getParameter("count"));
+        }, this);
     }
 
     ControllerProto.onPageEnter = function() {
@@ -329,6 +334,20 @@ sap.ui.define([
             return oResourceBundle.getText("thisMonth");
         }        
         return oResourceBundle.getText("monthWithIndex_" + oTab.month) + " " + oTab.year; 
+    }
+
+    /**
+     * Formats the sync transactions from app menu action text
+     * @param {number} iNumberOfTransactions
+     * @public
+     */
+    ControllerProto.formatSynchronizeFromAppActionText = function(iNumberOfTransactions) {
+        var oResourceBundle = this.getOwnerComponent().getResourceBundle();
+        if (iNumberOfTransactions > 0) {
+            return oResourceBundle.getText("synchronizeTransactionsWithNumber", [iNumberOfTransactions]);
+        }
+
+        return oResourceBundle.getText("synchronizeTransactions");
     }
 
     /**

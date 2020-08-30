@@ -57,11 +57,17 @@ sap.ui.define([
         }
 
         //init beans
+        this.m_aInstantiatedBeans = [];
         for (var sType in Config.Beans) {
             Config.Beans[sType].forEach((sBean) => {
                 this.createBean(sType, sBean);
             });
         }
+        this.m_aInstantiatedBeans.forEach((oBean) => {
+            if (typeof oBean.onInit === "function") {
+                oBean.onInit();
+            }
+        });
 
         // attach to logged in
         this.getFirebaseManager().attachUserSignedIn(
@@ -120,10 +126,7 @@ sap.ui.define([
             oBean = new oBean({
                 ownerComponent: this
             });
-
-            if (typeof oBean.onInit === "function") {
-                oBean.onInit();
-            }
+            this.m_aInstantiatedBeans.push(oBean);
             this["get" + sBean] = function() {
                 return this;
             }.bind(oBean);
