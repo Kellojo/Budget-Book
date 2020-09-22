@@ -9,6 +9,7 @@
     "start-web": "http-server ./",
     "start-auto-less-builder": "node ./src/bin/less-builder.js",
     "build-styles": "./src/bin/build-less.sh",
+    "build-preloads": "grunt",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "release": "electron-builder"
@@ -37,6 +38,8 @@
     "chokidar": "^3.4.0",
     "electron": "^8.1.1",
     "electron-builder": "^22.4.1",
+    "grunt": "^1.3.0",
+    "grunt-openui5": "^0.16.0",
     "http-server": "^0.12.3"
   },
   "dependencies": {
