@@ -8,8 +8,8 @@ module.exports = function (grunt) {
             library: {
                 options: {
                     resources: {
-                        cwd: 'src/webapp/lib/kellojo.m/',
-                        prefix: 'kellojo.m',
+                        cwd: 'src/webapp/lib/kellojo.m/src',
+                        prefix: 'kellojo/m',
                         src: [
                             '**/*.js',
                             '**/*.fragment.html',
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
                             '**/*.properties'
                         ]
                     },
-                    dest: 'src/webapp/lib/kellojo.m/'
+                    dest: 'src/webapp/lib/kellojo.m/src'
                 },
                 libraries: true
             },
@@ -30,12 +30,11 @@ module.exports = function (grunt) {
                 options: {
                     resources: {
                         cwd: 'src/webapp',
-                        prefix: 'budgetBook',
+                        prefix: 'com/budgetBook',
                         src: [
                             '*/*.js',
                             '*.js',
                             'Component.js',
-                            '**/assert.js',
                             '**/*.controller.js',
                             '**/manager/*.js',
                             '**/*.fragment.html',

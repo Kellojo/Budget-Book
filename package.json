@@ -12,7 +12,7 @@
     "build-preloads": "grunt",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "release": "electron-builder"
+    "release": "build-preloads && electron-builder"
   },
   "repository": {
     "type": "git",
