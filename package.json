@@ -10,6 +10,7 @@
     "start-auto-less-builder": "node ./src/bin/less-builder.js",
     "build-styles": "./src/bin/build-less.sh",
     "build-preloads": "grunt",
+    "remove-preloads": "rm -rf './src/webapp/Component-preload.js' && rm -rf './src/webapp/lib/kellojo.m/src/library-preload.js'",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "release": "build-preloads && electron-builder"

@@ -9,6 +9,9 @@
     "predeploy": [
         "npm run build-preloads"
     ],
+    "postdeploy": [
+        "npm run remove-preloads"
+    ],
     "rewrites": []
   },
   "functions": {
