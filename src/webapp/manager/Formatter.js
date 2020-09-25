@@ -1,5 +1,5 @@
 sap.ui.define([
-    "com/budgetBook/manager/BeanBase",
+    "kellojo/m/manager/BeanBase",
     "sap/ui/core/format/NumberFormat",
 ], function (BeanBase, NumberFormat) {
     "use strict";

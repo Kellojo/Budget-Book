@@ -1,5 +1,5 @@
 sap.ui.define([
-    "com/budgetBook/manager/BeanBase",
+    "kellojo/m/manager/BeanBase",
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
     "sap/m/MessageToast"
