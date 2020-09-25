@@ -4,7 +4,9 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "thirdparty/openui5-runtime-1.76.0/**"
+
     ],
     "predeploy": [
         "npm run build-preloads"
