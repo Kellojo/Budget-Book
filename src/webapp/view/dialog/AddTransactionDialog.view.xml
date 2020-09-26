@@ -9,7 +9,6 @@
     width="100%">
 
     <kM:Wrapper class="budgetBookDialog" busy="{/isLoading}">
-
         <kM:TransactionEditor 
             id="idTransactionEditor"
             title="{transaction>/title}"
@@ -19,7 +18,6 @@
             isCompleted="{transaction>/isCompleted}"
             occurredOn="{transaction>/occurredOn}"
             type="{transaction>/type}"/>
-
     </kM:Wrapper>
 
 </mvc:View>
