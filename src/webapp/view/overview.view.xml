@@ -83,7 +83,7 @@
                 </columns>
 
                 <ColumnListItem type="{= ${device>/system/phone} ? 'Navigation' : 'Active'}" class="budgetBookOverview-transactionItem">
-                    <CheckBox class="budgetBook-CheckBox" selected="{Database>isCompleted}"/>
+                    <CheckBox class="budgetBook-CheckBox" select="onIsCompletedChanged"  selected="{Database>isCompleted}"/>
                     <VBox>
                         <HBox justifyContent="SpaceBetween">
                             <Text text="{Database>title}" class="kellojoM-lineSpacing"/>

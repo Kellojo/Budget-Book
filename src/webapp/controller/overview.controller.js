@@ -136,6 +136,14 @@ sap.ui.define([
         this.onSearch(sCategory);
     }
 
+    ControllerProto.onIsCompletedChanged = function(oEvent) {
+        var oTransaction = oEvent.getSource().getBindingContext("Database").getObject();
+        if (this.getOwnerComponent().getIsWebVersion()) {
+            oTransaction.isCompleted = oEvent.getParameter("selected");
+            this.getOwnerComponent().getTransactionsManager().updateTransaction(oTransaction.id, oTransaction);
+        }
+    };
+
     /**
      * Updates the list binding filters (i.e. month & search filters)
      * @param {object} oCurrentTab - optionaly the current tab
