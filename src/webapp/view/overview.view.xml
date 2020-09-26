@@ -85,9 +85,9 @@
                 <ColumnListItem type="{= ${device>/system/phone} ? 'Navigation' : 'Active'}" class="budgetBookOverview-transactionItem">
                     <CheckBox class="budgetBook-CheckBox" selected="{Database>isCompleted}"/>
                     <VBox>
-                        <HBox>
+                        <HBox justifyContent="SpaceBetween">
                             <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
-                            <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft kellojoM-lineSpacing" visible="{device>/isWebVersion}"/>
+                            <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft kellojoM-lineSpacing" visible="{device>/system/phone}"/>
                         </HBox>
                         <HBox>
                             <Label text="{Database>category}" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
