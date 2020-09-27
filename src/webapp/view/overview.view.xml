@@ -84,17 +84,20 @@
 
                 <ColumnListItem type="{= ${device>/system/phone} ? 'Navigation' : 'Active'}" class="budgetBookOverview-transactionItem">
                     <CheckBox class="budgetBook-CheckBox" select="onIsCompletedChanged"  selected="{Database>isCompleted}"/>
-                    <VBox>
-                        <HBox justifyContent="SpaceBetween">
-                            <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
-                            <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft kellojoM-lineSpacing" visible="{device>/system/phone}"/>
-                        </HBox>
-                        <HBox>
-                            <Label text="{Database>category}" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
-                            <Label text="-" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
-                            <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
-                        </HBox>
-                    </VBox>
+                    
+                    <HBox justifyContent="SpaceBetween" alignItems="Center">
+                        <VBox>
+                            <HBox justifyContent="SpaceBetween">
+                                <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
+                            </HBox>
+                            <HBox>
+                                <Label text="{Database>category}" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
+                                <Label text="-" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
+                                <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
+                            </HBox>
+                        </VBox>
+                        <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft" visible="{device>/system/phone}"/>
+                    </HBox>
                     
                     <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}"/>
                     <Label text="{Database>category}"/>
