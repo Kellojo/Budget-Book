@@ -17,44 +17,8 @@
 
         <link rel="stylesheet" type="text/css" href="./styling/style.css">
 
-        <!-- Moment.js -->
-        <script src="./thirdparty/moment.js" ></script>
-
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
-
-        <!-- Assert -->
-        <script src="./thirdparty/assert.js"></script> 
-
-        <!-- Apex Charts -->
-        <script src="./thirdparty/ApexCharts.min.js"></script>
-
-        <!-- Open UI5 Bootstrap -->
-        <script 
-            src="https://openui5.hana.ondemand.com/1.76.0/resources/sap-ui-core.js" 
-            id="sap-ui-bootstrap" 
-            data-sap-ui-theme="sap_fiori_3"
-            data-sap-ui-libs="sap.m, kellojo.m, sap.ui.unified"
-            data-sap-ui-compatVersion="edge"
-            data-sap-ui-async="true"
-            data-sap-ui-xx-bindingSyntax="complex"
-            data-sap-ui-resourceroots='{
-                "com.budgetBook": "./",
-                "kellojo.m": "./lib/kellojo.m/src/"
-            }' >
-        </script>
-        <script type="text/javascript">
-            sap.ui.getCore().attachInit(function () {
-                new sap.ui.core.ComponentContainer({
-                    name: "com.budgetBook",
-                    manifest: true,
-                    height: "100%",
-                    id: "mainComponent"
-                }).placeAt("content");
-            });
-        </script>
+        <link rel="preload" href="./lib/kellojo.m/src/themes/sap_fiori_3/library.css" as="style"/>
+        <link rel="preconnect" href="https://openui5.hana.ondemand.com">
 
         <style>
             body {
@@ -148,6 +112,46 @@
     </head>
     
     <body class="sapUiBody sapUiSizeCompact" id="content">
+
+        <!-- Moment.js -->
+        <script src="./thirdparty/moment.js" ></script>
+
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+        <!-- Assert -->
+        <script src="./thirdparty/assert.js"></script> 
+
+        <!-- Apex Charts -->
+        <script src="./thirdparty/ApexCharts.min.js"></script>
+
+        <!-- Open UI5 Bootstrap -->
+        <script 
+            src="https://openui5.hana.ondemand.com/1.76.0/resources/sap-ui-core.js" 
+            id="sap-ui-bootstrap" 
+            data-sap-ui-theme="sap_fiori_3"
+            data-sap-ui-libs="sap.m, kellojo.m, sap.ui.unified"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-async="true"
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-resourceroots='{
+                "com.budgetBook": "./",
+                "kellojo.m": "./lib/kellojo.m/src/"
+            }' >
+        </script>
+        <script type="text/javascript">
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    name: "com.budgetBook",
+                    manifest: true,
+                    height: "100%",
+                    id: "mainComponent"
+                }).placeAt("content");
+            });
+        </script>
+
         <div id="idLoadingScreen">
             <div id="idLoadingScreen-AppTitle">BudgetP</div>
             <div id="idLoadingScreen-StatusIndicatorContainer">
