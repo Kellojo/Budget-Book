@@ -118,7 +118,7 @@ sap.ui.define([
         assert(!!oTransaction, "Transaction not defined");
 
         if (this.getOwnerComponent().getIsWebVersion()) {
-            await this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction).delete();
+            await this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction.id ? oTransaction.id : oTransaction).delete();
         } else {
             var oDatabase = this.getOwnerComponent().getDatabase(),
             aTransactions = oDatabase.getData().transactions,

@@ -29,6 +29,10 @@ sap.ui.define([
                 isWebVersion: {
                     type: "boolean",
                     defaultValue: true
+                },
+                isTrayVersion: {
+                    type: "boolean",
+                    defaultValue: false
                 }
             }
         }
@@ -40,11 +44,16 @@ sap.ui.define([
     ComponentProto.init = function () {
         UIComponent.prototype.init.apply(this, arguments);
 
+        const oUrlParams = new URLSearchParams(window.location.search),
+            sEnvironment = oUrlParams.get("env");
+        this.setIsTrayVersion(sEnvironment === "tray");
         this.setIsWebVersion(!window.api || (!!window.api && !window.api.isElectron));
 
         //set device & i18n model
         var oDevice = Device;
         oDevice.isWebVersion = this.getIsWebVersion();
+        oDevice.isTrayVersion = this.getIsTrayVersion();
+        debugger;
         this.setModel(new JSONModel(oDevice), "device");
         this.m_oResourceBundle = new ResourceModel({
             bundleName: "com.budgetBook.i18n.i18n"
@@ -254,9 +263,11 @@ sap.ui.define([
         if (this.m_bAppInfoLoaded && this.m_bDatabaseLoaded) {
 
             // navigate to correct view
-            if (this.getAppManager().getAppInfo().isFirstStartUp) {
+            if (this.getIsTrayVersion()) {
+                this.toOverview();
+            } if (this.getAppManager().getAppInfo().isFirstStartUp) {
                 this.toWelcomeScreen();
-            } else {
+            } else if (this.getIsTrayVersion()) {
                 this.toOverview();
             }
 
