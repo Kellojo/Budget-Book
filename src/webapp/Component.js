@@ -53,7 +53,6 @@ sap.ui.define([
         var oDevice = Device;
         oDevice.isWebVersion = this.getIsWebVersion();
         oDevice.isTrayVersion = this.getIsTrayVersion();
-        debugger;
         this.setModel(new JSONModel(oDevice), "device");
         this.m_oResourceBundle = new ResourceModel({
             bundleName: "com.budgetBook.i18n.i18n"
