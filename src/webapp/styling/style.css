@@ -42,6 +42,9 @@
 .sapMBtnInner {
   transition: background-color 0.1s ease-out;
 }
+.sap-phone .budgetBookApp-Page-Header {
+  background: linear-gradient(to bottom, #005575, #514a9d) !important;
+}
 .sap-phone .budgetBookApp-Page-Header > .sapMBarLeft {
   padding-left: 0.5rem;
 }
