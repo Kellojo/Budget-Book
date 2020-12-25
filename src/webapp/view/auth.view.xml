@@ -11,7 +11,7 @@
         height="100%"
         signIn="onSignIn"
         signUp="onSignUp"
-        passwordForgotten="" 
+        passwordForgotten="onPasswordForgotten" 
         customErrorMessage="{auth>/customErrorMessage}"
         busy="{auth>/isLoginBusy}"/>
 

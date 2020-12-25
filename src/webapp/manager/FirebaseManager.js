@@ -84,6 +84,13 @@ sap.ui.define([
             .finally(oParams.complete);
     };
 
+    SchemaProto.sendPasswordForgottenEmail = function(oParams) {
+        firebase.auth().sendPasswordResetEmail(oParams.email)
+            .then(oParams.success)
+            .catch(oParams.error)
+            .finally(oParams.complete);
+    }
+
     SchemaProto.signOut = function () {
         firebase.auth().signOut();
         MessageToast.show(this.getOwnerComponent().getResourceBundle().getText("signOutSuccess"));

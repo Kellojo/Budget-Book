@@ -69,6 +69,22 @@ sap.ui.define([
         });   
     }
 
+    ControllerProto.onPasswordForgotten = function(oEvent) {
+        this.m_oAuthModel.setProperty("/isLoginBusy", true);
+
+        this.getOwnerComponent().getFirebaseManager().sendPasswordForgottenEmail({
+            email: oEvent.getParameter("email"),
+            success: this.onPasswordForgottenSuccess.bind(this),
+            error: function(oEvent) {
+                this.m_oAuthModel.setProperty("/customErrorMessage", oEvent.message);
+                this.m_oLogin.shakeForgottenPassword();
+            }.bind(this),
+            complete: function() {
+                this.m_oAuthModel.setProperty("/isLoginBusy", false);
+            }.bind(this),
+        });   
+    }
+
     ControllerProto.onSignOutPress = function() {
         this.getOwnerComponent().getFirebaseManager().signOut();
         this.onSignOutSuccess();
@@ -77,6 +93,9 @@ sap.ui.define([
     ControllerProto.onSignUpSuccess = function() {}
     ControllerProto.onSignInSuccess = function() {}
     ControllerProto.onSignOutSuccess = function() {}
+    ControllerProto.onPasswordForgottenSuccess = function() {
+        this.m_oLogin.toSignIn();
+    }
 
 
     return Controller;
