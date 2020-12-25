@@ -206,7 +206,7 @@ sap.ui.define([
                     },
                     {
                         title: oResourceBundle.getText("UserHelpMenuWebsite"),
-                        icon: "sap-icon://sys-help",
+                        icon: "sap-icon://internet-browser",
                         press: function() {
                             this.getAppManager().openHelpPage();
                         }.bind(this),
@@ -221,7 +221,7 @@ sap.ui.define([
                         }.bind(this),
                         hasSpacer: false,
                         visible: this.getFirebaseManager().getIsLoggedIn()
-                    },
+                    }
                 ]
             });
             //this.getUIArea().addDependent(this.m_oUserHelpMenu);
