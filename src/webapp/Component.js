@@ -218,6 +218,7 @@ sap.ui.define([
                         icon: "sap-icon://log",
                         press: function(oEvent) {
                             this.getFirebaseManager().signOut();
+                            this.m_oUserHelpMenu.close();
                         }.bind(this),
                         hasSpacer: false,
                         visible: this.getFirebaseManager().getIsLoggedIn()

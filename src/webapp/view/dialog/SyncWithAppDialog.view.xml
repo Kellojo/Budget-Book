@@ -14,7 +14,7 @@
                 id="idLogin"
                 signIn="onSignIn"
                 signUp="onSignUp"
-                passwordForgotten=""
+                passwordForgotten="onPasswordForgotten"
                 customErrorMessage="{auth>/customErrorMessage}"
                 busy="{auth>/isLoginBusy}"/>
 
