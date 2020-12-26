@@ -1,6 +1,0 @@
-/*
- * ! OpenUI5
- * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
- * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
- */
-sap.ui.define(["sap/ui/fl/apply/_internal/flexState/FlexState","sap/ui/fl/LrepConnector"],function(F,L){"use strict";var U={};U.getPersonalization=function(r,c,i){var u=F.getUI2Personalization(r);if(!u||!u[c]){return i?undefined:[];}if(!i){return u[c];}return u[c].filter(function(e){return e.itemName===i;})[0];};U.setPersonalization=function(p){if(!p||!p.reference||!p.containerKey||!p.itemName||!p.content){return Promise.reject("not all mandatory properties were provided for the storage of the personalization");}return L.createConnector().send("/sap/bc/lrep/ui2personalization/","PUT",p,{}).then(function(P){var o=F.getUI2Personalization(P.response.reference);o[P.response.containerKey]=o[P.response.containerKey]||[];o[P.response.containerKey].push(P.response);});};U.deletePersonalization=function(r,c,i){if(!r||!c||!i){return Promise.reject("not all mandatory properties were provided for the storage of the personalization");}var u="/sap/bc/lrep/ui2personalization/?reference="+r+"&containerkey="+c+"&itemname="+i;return L.createConnector().send(u,"DELETE",{}).then(function(){var I=U.getPersonalization(r,c);var t=U.getPersonalization(r,c,i);var n=I.indexOf(t);I.splice(n,1);});};return U;});

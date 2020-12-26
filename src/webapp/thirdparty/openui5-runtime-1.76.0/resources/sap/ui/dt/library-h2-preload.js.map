@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"sap/ui/dt/library-h2-preload.js",
-"sourceroot":".",
-"sources":["library-dbg.js","manifest.json"],
-"names":["ManagedObjectMetadata"],
-"mappings":";;;;;;AASA,gBAAa,qBAAC,CACb,oCACA,0BACA,qBACD,EACA,QAAS,CACRA,CACD,CAAE,CACD,aAcA,8BACC,IAAK,CAAE,YACP,QAAS,SACT,YAAa,CAAE,gBACf,MAAO,CACN,yBACD,EACA,WAAY,GACZ,SAAU,GACV,SAAU,EACX,GAEAA,CAAqB,8BACpB,gBAAiB,+CACjB,qBAAsB,mDACtB,2BAA4B,yDAE5B,gBAAiB,wDAClB,GAEA,OAAO,UACR,EAAkB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-"x_com_sap_openui5_sections":[46,863,915,1498]
-}
