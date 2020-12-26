@@ -76,17 +76,17 @@
             showNoData="{= !${device>/system/phone}}"
             noDataText="{i18n>overviewPageNoTransactionsYet}">
                 <columns>
-                    <Column width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
-                    <Column>
+                    <kM:SortColumn width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
+                    <kM:SortColumn>
                         <Label text="Transaction" />
-                    </Column>
-                    <Column hAlign="End" visible="{= !${device>/system/phone}}">
+                    </kM:SortColumn>
+                    <kM:SortColumn hAlign="End" visible="{= !${device>/system/phone}}">
                         <Label text="Amount" />
-                    </Column>
-                    <Column visible="{= !${device>/system/phone}}">
+                    </kM:SortColumn>
+                    <kM:SortColumn visible="{= !${device>/system/phone}}">
                         <Label text="Category" />
-                    </Column>
-                    <Column width="48px" visible="{= !${device>/system/phone}}"/>
+                    </kM:SortColumn>
+                    <kM:SortColumn width="48px" visible="{= !${device>/system/phone}}"/>
                 </columns>
 
                 <ColumnListItem type="{= ${device>/system/phone} ? 'Navigation' : 'Active'}" class="budgetBookOverview-transactionItem">
