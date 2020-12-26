@@ -1,0 +1,88 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:kM="kellojo.m" width="100%" height="100%">
+
+        <NavContainer id="idNavContainer" class="kellojoMLogin-navContainer">
+
+            <kM:Wrapper id="idSignInPage" class="kellojoMLogin-page">
+                <kM:Wrapper class="kellojoMLogin-container">
+                    <Text text="{$this>login_title}" class="kellojoMLogin-title" />
+
+                    <kM:Wrapper id="idSignInForm" class="kellojoMLogin-loginForm" busy="{$this>/isSignInBusy}" busyIndicatorDelay="300">
+                        <Input placeholder="{$this>login_emailPlaceholder}" value="{$this>/email}" valueState="{$this>/emailValueState}" type="Email" showValueStateMessage="false" valueLiveUpdate="true" liveChange="validateInput"/>
+                        <kM:Divider onlyBorder="true"/>
+                        <Input placeholder="{$this>login_passwordPlaceholder}" value="{$this>/password}" valueState="{$this>/passwordValueState}" type="Password" showValueStateMessage="false" valueLiveUpdate="true" liveChange="validateInput"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-errorContainer">
+                        <kM:AnimatedLabel text="{$this>/customErrorMessage}" collapsed="{= !${$this>/customErrorMessage}}" class="kellojoMLogin-errorMessage"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-actionContainer">
+                        <Link text="{$this>login_forgotPassword}" press="onForgotPasswordPress"/>
+                        <Button text="{$this>login_signIn}" class="kellojoMLogin-rightAction" press="onSignInPress"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-secondaryActionContainter">
+                        <Link text="{$this>login_createAccountQuestion}" press="toSignUp"/>
+                    </kM:Wrapper>
+                </kM:Wrapper>
+            </kM:Wrapper>
+
+            <kM:Wrapper id="idSignUpPage" class="kellojoMLogin-page">
+                <kM:Wrapper class="kellojoMLogin-container">
+                    <Text text="{$this>registration_title}" class="kellojoMLogin-title" />
+
+                    <kM:Wrapper id="idSignUpForm" class="kellojoMLogin-loginForm" busy="{$this>/isSignUpBusy}" busyIndicatorDelay="300">
+                        <Input placeholder="{$this>login_emailPlaceholder}" value="{$this>/email}" valueState="{$this>/emailValueState}" showValueStateMessage="false" type="Email" 
+                            valueLiveUpdate="true" liveChange="validateInput"/>
+
+                        <kM:Divider onlyBorder="true"/>
+
+                        <Input placeholder="{$this>login_passwordPlaceholder}" value="{$this>/password}" valueState="{$this>/passwordValueState}" showValueStateMessage="false"  type="Password" 
+                            valueLiveUpdate="true"  liveChange="validateInput"/>
+
+                        <kM:Divider onlyBorder="true"/>
+
+                        <Input placeholder="{$this>login_passwordRepeatPlaceholder}" value="{$this>/password1}" valueState="{$this>/password1ValueState}" showValueStateMessage="false" type="Password" 
+                            valueLiveUpdate="true" liveChange="validateInput"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-errorContainer">
+                        <kM:AnimatedLabel text="{$this>/customErrorMessage}" collapsed="{= !${$this>/customErrorMessage}}" class="kellojoMLogin-errorMessage"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-actionContainer">
+                        <Button text="{$this>registration_signUp}" press="onSignUpPress"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-secondaryActionContainter">
+                        <Link text="{$this>registration_loginQuestion}" press="toSignIn"/>
+                    </kM:Wrapper>
+                </kM:Wrapper>
+            </kM:Wrapper>
+
+            <kM:Wrapper id="idPasswordForgottenPage" class="kellojoMLogin-page">
+                <kM:Wrapper class="kellojoMLogin-container">
+                    <Text text="{$this>passwordForgotten_title}" class="kellojoMLogin-title" />
+
+                    <kM:Wrapper id="idResetPasswordForm" class="kellojoMLogin-loginForm" busy="{$this>/isSignUpBusy}" busyIndicatorDelay="300">
+                        <Input placeholder="{$this>login_emailPlaceholder}" value="{$this>/email}" valueState="{$this>/emailValueState}" showValueStateMessage="false" type="Email" 
+                            valueLiveUpdate="true" liveChange="validateInput"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-errorContainer">
+                        <kM:AnimatedLabel text="{$this>/customErrorMessage}" collapsed="{= !${$this>/customErrorMessage}}" class="kellojoMLogin-errorMessage"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-actionContainer">
+                        <Button text="{$this>passwordForgotten_sendEmail}" press="onSendPasswordForgottenEmailPress"/>
+                    </kM:Wrapper>
+
+                    <kM:Wrapper class="kellojoMLogin-secondaryActionContainter">
+                        <Link text="{$this>passwordForgotten_backQuestion}" press="toSignIn"/>
+                    </kM:Wrapper>
+                </kM:Wrapper>
+            </kM:Wrapper>
+
+        </NavContainer>
+
+</core:FragmentDefinition>

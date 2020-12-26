@@ -1,0 +1,54 @@
+
+
+.sapMList {
+    border: 1px solid @borderGrey;
+
+    .sapMListShowSeparatorsAll {
+        .sapMLIBShowSeparator:first-child>td {
+            border-top: none;
+        }
+
+        .sapMLIBShowSeparator:last-child>td {
+            border-bottom: none;
+        }
+    }
+
+    .sapMListTblHeader {
+        .sapMTableTH {
+            position: sticky;
+            top: var(--kellojoM-page-header-height);
+            z-index: 10;
+        }
+    }
+
+    .sapMListTblSelCol {
+        padding-left: @halfPadding;
+    }
+
+    .sapMListItems {
+        .sapMListTblCell {
+            padding-top: @smallerPadding !important;
+            padding-bottom: @smallerPadding !important;
+        }
+
+        .sapMListTblRow {
+            &:not(.sapMLIBActive) {
+                .kellojoM-lightLabel {
+                    color: @labelGrey;
+                }
+            }
+        }
+    }
+
+    .sapMLIB {
+        transition: background-color 0.2s ease-out;
+    }
+
+    .sapMLIBSelected {
+        box-shadow: none !important;
+    }
+}
+
+.sapMListTbl .sapMLabel.budgetBookTable-lightLabel {
+    color: @labelGrey;
+}

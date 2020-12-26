@@ -1,0 +1,19 @@
+specVersion: '2.2'
+metadata:
+  name: BudgetP
+type: application
+framework:
+  name: OpenUI5
+  version: "1.85.2"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ui.unified
+    - name: themelib_sap_fiori_3
+
+server:
+  customMiddleware:
+  - name: ui5-middleware-index
+    afterMiddleware: compression
+    configuration:
+      index: "index.html"

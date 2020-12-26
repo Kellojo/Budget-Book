@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:kM="kellojo.m">
+
+    <kM:Wrapper class="kellojoMAppTitle-Container">
+        <kM:Wrapper class="kellojoMAppTitle-TitleContainer">
+            <Title text="{$this>/title}" class="kellojoMAppTitle-Page-Title"/>
+            <kM:Wrapper class="kellojoMAppTitle-BrandBar"/>
+        </kM:Wrapper>
+
+        <Label text="{$this>/version}" class="budgedBook-Page-VersionLabel"/>  
+    </kM:Wrapper>
+
+</core:FragmentDefinition>

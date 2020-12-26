@@ -1,0 +1,46 @@
+
+@budgetBook-CheckBox-default-size: 2rem;
+@budgetBook-CheckBox-size: 1.25rem;
+@budgetBook-CheckBox-icon-size: 12px;
+
+.budgetBook-CheckBox {
+
+    .sapMCbBg {
+        border-radius: 90% !important;
+        height: @budgetBook-CheckBox-size !important;
+        width: @budgetBook-CheckBox-size !important;
+        line-height: @budgetBook-CheckBox-size !important;
+
+        top: calc((@budgetBook-CheckBox-default-size - @budgetBook-CheckBox-size) / 2 ) !important;
+        left: calc((@budgetBook-CheckBox-default-size - @budgetBook-CheckBox-size) / 2 )  !important;
+
+        transition: border-color, background-color 0.2s ease-out;
+    }
+    .sapMCbHoverable:hover {
+        border-color: @success !important;
+    }
+
+    .sapMCbMark:not(.sapMCbMarkChecked) {
+        border-color: @error !important;
+        background-color: @error !important;
+
+        &:before {
+            color: @white !important;
+            font-size: @budgetBook-CheckBox-icon-size;
+            content: "\e03e";
+            font-family: "SAP-icons";
+            display: inline-block;
+        }
+    }
+
+    .sapMCbMarkChecked {
+        background-color: @success !important;
+        border-color: @success !important;
+
+        &:before {
+            color: @white !important;
+            font-size: @budgetBook-CheckBox-icon-size;
+        }
+    }
+    
+}

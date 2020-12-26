@@ -1,0 +1,49 @@
+@budgetBookApp-Page-HeaderHeight: 3.5rem;
+
+.kellojoMUserHelpMenu-list {
+    padding: 2 * @defaultPadding 0 !important;
+    background-color: @backgroundGrey;
+
+    .sapMLIB {
+        padding-right: @defaultPadding + @halfPadding !important;
+    }
+}
+
+.kellojoMUserHelpMenu-itemSpacer {
+    margin-bottom: @defaultPadding;
+}
+
+.sap-phone {
+
+    .kellojoMUserHelpMenu-popover {
+        padding-top: @budgetBookApp-Page-HeaderHeight !important;;
+
+        .sapMDialogTitle .sapMIBar {
+            height: @budgetBookApp-Page-HeaderHeight !important;
+            background: linear-gradient(to left, @budgetBookApp-BrandColor, @budgetBookApp-BrandColorSecondary) !important;
+        
+
+            .sapMTitle, .sapMBarContainer, .sapMBtnContent {
+                color: @white;
+            }
+
+            .sapMDialogTitle, .sapMBarContainer {
+                line-height: @budgetBookApp-Page-HeaderHeight - 0.5rem;
+                height: @budgetBookApp-Page-HeaderHeight - 0.5rem;
+            }
+        }
+        
+
+        .sapMDialogScroll {
+            height: 100%;
+        }
+
+        .kellojoMUserHelpMenu-list {
+            height: 100%;
+
+            .sapMLIB {
+                height: @defaultMobileListItemHeight;
+            }
+        }
+    }
+}

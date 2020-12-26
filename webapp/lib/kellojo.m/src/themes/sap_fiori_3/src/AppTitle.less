@@ -1,0 +1,34 @@
+.kellojoMAppTitle-Container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.kellojoMAppTitle-TitleContainer {
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        .kellojoMAppTitle-BrandBar {
+            width: 100%;
+        }
+    }
+}
+
+.kellojoMAppTitle-Page-Title {
+    color: @white !important;
+    user-select: none;
+}
+
+.budgedBook-Page-VersionLabel {
+    color: @brightGrey !important;
+    font-size: @smallFontSize !important;
+    margin-left: @tinyPadding;
+}
+
+.kellojoMAppTitle-BrandBar {
+    height: 1px;
+    width: 0px;
+    transition: width 0.2s ease-out;
+    background: @white;
+}

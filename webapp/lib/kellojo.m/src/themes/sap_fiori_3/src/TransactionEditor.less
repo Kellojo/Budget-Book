@@ -1,0 +1,41 @@
+.kellojoMTransactionEditor {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    .sapMInputBaseContentWrapper {
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        transition: border-color 0.2s;
+    }
+}
+
+.kellojoMTransactionEditor-container {
+    padding: @defaultPadding;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.kellojoMTransactionEditor-Toolbar {
+    padding: @tinyPadding @defaultPadding;
+    border-bottom: 1px solid @borderGrey;
+}
+
+.kellojoMTransactionEditor-FormInputContainer:not(:last-child) {
+    padding-bottom: @smallerPadding;
+}
+
+.kellojoMTransactionEditor-FormInputContainer-Checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.kellojoMTransactionEditor-FormInputContainer .sapMLabelTextWrapper {
+    overflow: visible;
+}
+
+.sapMFocus .sapMInputBaseContentWrapper {
+    outline: none !important;
+}
