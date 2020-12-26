@@ -1,1 +1,0 @@
-ace.define("ace/snippets/kotlin",["require","exports","module"],function(r,e,m){"use strict";e.snippetText=undefined;e.scope="";});(function(){ace.require(["ace/snippets/kotlin"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

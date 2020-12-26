@@ -2,13 +2,13 @@
   "name": "budget-book",
   "version": "1.1.2",
   "description": "A simple little app designed to help tracking your income and expenses.",
-  "main": "src/index.js",
+  "main": "electron/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "start-web": "http-server ./",
-    "start-auto-less-builder": "node ./src/bin/less-builder.js",
-    "build-styles": "./src/bin/build-less.sh",
+    "start-web": "ui5 serve",
+    "start-auto-less-builder": "node ./bin/less-builder.js",
+    "build-styles": "./bin/build-less.sh",
     "build-preloads": "grunt",
     "remove-preloads": "rm -rf './src/webapp/Component-preload.js' && rm -rf './src/webapp/lib/kellojo.m/src/library-preload.js'",
     "pack": "electron-builder --dir",
@@ -41,7 +41,7 @@
     "electron-builder": "^22.4.1",
     "grunt": "^1.3.0",
     "grunt-openui5": "^0.16.0",
-    "http-server": "^0.12.3"
+    "ui5-middleware-index": "^0.2.2"
   },
   "dependencies": {
     "electron-store": "^5.1.1",
@@ -50,5 +50,10 @@
     "firebase": "^7.14.6",
     "jsstore": "^3.7.6",
     "menubar": "^9.0.1"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-index"
+    ]
   }
 }

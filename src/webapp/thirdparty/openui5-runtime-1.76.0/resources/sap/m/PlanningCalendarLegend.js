@@ -1,6 +1,0 @@
-/*!
- * OpenUI5
- * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
- * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
- */
-sap.ui.define(['sap/ui/unified/CalendarLegend','sap/ui/unified/CalendarAppointment','./PlanningCalendarLegendRenderer'],function(C,a,P){"use strict";var b=C.extend("sap.m.PlanningCalendarLegend",{metadata:{library:"sap.m",properties:{itemsHeader:{type:"string",group:"Appearance",defaultValue:"Calendar"},appointmentItemsHeader:{type:"string",group:"Appearance",defaultValue:"Appointments"}},aggregations:{appointmentItems:{type:"sap.ui.unified.CalendarLegendItem",multiple:true,singularName:"appointmentItem"}},designtime:"sap/m/designtime/PlanningCalendarLegend.designtime"}});b._COLUMN_WIDTH_DEFAULT="auto";b.prototype.init=function(){C.prototype.init.call(this);this.setProperty("columnWidth",b._COLUMN_WIDTH_DEFAULT);this.addStyleClass("sapMPlanCalLegend");};b.prototype.setColumnWidth=function(w){if(w==undefined){w=b._COLUMN_WIDTH_DEFAULT;}return this.setProperty("columnWidth",w);};b.findLegendItemForItem=function(l,s){var L=l?l.getAppointmentItems():null,c=l?l.getItems():null,A=s instanceof a,I=A?L:c,o=A?s.getType():s.type,d,e,i;if(I&&I.length){for(i=0;i<I.length;i++){d=I[i];if(d.getType()===o){e=d.getText();break;}}}if(!e){e=o;}return e;};return b;});
