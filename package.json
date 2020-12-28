@@ -36,6 +36,7 @@
     }
   },
   "devDependencies": {
+    "@ui5/cli": "^2.7.1",
     "chokidar": "^3.4.0",
     "electron": "^8.5.2",
     "electron-builder": "^22.4.1",
