@@ -61,9 +61,8 @@ If you want to backup your saved transactions, you can hit the export button on 
 
 1. Link the kellojo.m library:
 `
-    cd webapp/lib/kellojo.m
+    cd lib/kellojo.m
     sudo npm link
-    cd ..
     cd ..
     cd ..
     npm link kellojo.m

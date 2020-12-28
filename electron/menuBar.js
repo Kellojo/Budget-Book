@@ -1,11 +1,11 @@
 const { menubar } = require('menubar');
 const { BrowserWindow } = require('electron');
 const path = require('path');
-
+const config = require("./config.js");
 
 const mb = menubar({
-    icon: "./webapp/img/icon.png",
-    index: `file://${process.cwd()}/webapp/index.html?env=tray`,
+    icon: config.TRAY_ICON,
+    index: `file://${process.cwd()}/${config.INDEX_HTML_TRAY}`,
     browserWindow: {
         width: 400,
         height: 475,
@@ -22,5 +22,8 @@ mb.on('ready', () => {
 
 });
 mb.on('after-create-window', () => {
-    //mb.window.openDevTools();
+    // Open the DevTools.
+    if (config.IS_DEVELOPMENT) {
+        mb.window.openDevTools();
+    }
 });

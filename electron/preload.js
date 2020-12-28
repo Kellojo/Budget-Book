@@ -2,12 +2,15 @@ const {
     contextBridge,
     ipcRenderer
 } = require("electron");
+const { Config } = require("jsstore");
+const config = require("./config.js");
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object
 contextBridge.exposeInMainWorld(
     "api", {
         isElectron: true,
+        isDevelopment: config.IS_DEVELOPMENT,
         saveData: (oData) => {
             ipcRenderer.send("saveData", oData);
         },

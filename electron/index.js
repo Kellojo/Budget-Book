@@ -3,6 +3,7 @@ const {app, BrowserWindow} = require("electron");
 const path = require("path");
 const windowStateKeeper = require('electron-window-state');
 const { autoUpdater } = require("electron-updater");
+const config = require("./config.js");
 
 let mainWindow = null;
 
@@ -35,12 +36,14 @@ function createWindow () {
   autoUpdater.checkForUpdatesAndNotify();
 
   // and load the index.html of the app.
-  mainWindow.loadFile('webapp/index.html');
+  mainWindow.loadFile(config.INDEX_HTML);
 
   require("./menuBar");
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (config.IS_DEVELOPMENT) {
+    mainWindow.webContents.openDevTools();
+  }
 }
 
 app.allowRendererProcessReuse = true;
