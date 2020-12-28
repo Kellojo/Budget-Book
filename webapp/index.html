@@ -146,7 +146,7 @@
                 sKellojoMRoots = "../lib/kellojo.m/src/kellojo/m";   
             }
 
-            if (!!window.api && !window.api.isDevelopment || window.location.hostname != "localhost") {
+            if (!!window.api && !window.api.isDevelopment || !["localhost", ""].includes(window.location.hostname)) {
                 sUi5Source = "./resources/sap-ui-custom.js";
             }
 

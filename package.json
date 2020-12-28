@@ -8,7 +8,7 @@
     "start": "electron .",
     "start-web": "ui5 serve",
     "start-auto-less-builder": "node ./bin/less-builder.js",
-    "build-styles": "./bin/build-less.sh",
+    "build-styles": "lessc ./webapp/styling/less/source.less ./webapp/styling/style.css",
     "ui5-build": "ui5 build -a self-contained --dest=dist-ui5",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",

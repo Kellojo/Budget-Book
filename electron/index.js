@@ -24,6 +24,10 @@ function createWindow () {
         height: mainWindowState.height,
         titleBarStyle: 'hidden',
         autoHideMenuBar: true,
+        trafficLightPosition: {
+            x: 30,
+            y: 39,
+        },
 
         webPreferences: {
             contextIsolation: true,     // protect against prototype pollution

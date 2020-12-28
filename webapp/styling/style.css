@@ -26,6 +26,9 @@
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
+[data-sap-ui-os="mac"] .budgetBookApp-Page-Header > .sapMBarLeft {
+  padding-left: 6rem;
+}
 .budgetBookApp-Page-Button {
   color: white !important;
   margin-left: 0.5rem !important;
