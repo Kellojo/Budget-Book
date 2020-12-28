@@ -53,3 +53,22 @@ You can gain further insight by filtering your list using the search. You can en
 If you want to backup your saved transactions, you can hit the export button on the top right. It is going to promt you to select a location for your save file. After the export the save file can then be loaded again, when initially opening the app for the first time (i.e. on a new computer). In the future it is algo going to be possible to alyway save to an external file, so you can easily share it between devices with a service like OneDrive or Google Drive.
 
 ![Imgur](https://i.imgur.com/QHefOVR.png)
+
+
+## Contributing
+
+### Local Development
+
+1. Link the kellojo.m library:
+`
+    cd webapp/lib/kellojo.m
+    sudo npm link
+    cd ..
+    cd ..
+    cd ..
+    npm link kellojo.m
+`
+2. Install the development dependencies
+`
+    npm install -only=dev
+`

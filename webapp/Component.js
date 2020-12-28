@@ -17,7 +17,9 @@ sap.ui.define([
     "com/budgetBook/manager/Database",
     "com/budgetBook/manager/Formatter",
     "com/budgetBook/manager/AppManager",
-    "com/budgetBook/manager/FirebaseManager"
+    "com/budgetBook/manager/FirebaseManager",
+
+    "kellojo/m/library"
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
     "use strict";
 

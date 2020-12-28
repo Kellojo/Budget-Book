@@ -1,8 +1,0 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:kM="kellojo.m">
-
-    <kM:Wrapper class="kellojoMNoData-container">
-        <core:Icon src="{$this>/icon}" class="kellojoMNoData-icon"/>
-        <Text text="{$this>/text}"/>
-    </kM:Wrapper>
-
-</core:FragmentDefinition>
