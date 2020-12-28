@@ -1,18 +1,14 @@
 {
   "hosting": {
-    "public": "./src/webapp",
+    "public": "dist-ui5",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**",
-      "thirdparty/openui5-runtime-1.76.0/**"
-
+      "dist/**"
     ],
     "predeploy": [
-        "npm run build-preloads"
-    ],
-    "postdeploy": [
-        "npm run remove-preloads"
+        "npm run ui5-build"
     ],
     "rewrites": []
   },

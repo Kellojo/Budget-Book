@@ -1,0 +1,261 @@
+.budgetBookApp-Page > section {
+  top: 3.5rem !important;
+  height: auto !important;
+}
+.budgetBookApp-Page-Header {
+  display: flex !important;
+  flex-direction: row;
+  height: 3.5rem !important;
+  background: linear-gradient(to left, #005575, #514a9d) !important;
+  -webkit-app-region: drag;
+}
+.budgetBookApp-Page-Header > .sapMBarLeft {
+  height: 3.5rem !important;
+  padding-left: 2rem;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+.budgetBookApp-Page-Header > .sapMBarMiddle {
+  height: 2.5rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+.budgetBookApp-Page-Header > .sapMBarRight {
+  height: 3.5rem !important;
+  padding-right: 2rem;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+[data-sap-ui-os="mac"] .budgetBookApp-Page-Header > .sapMBarLeft {
+  padding-left: 6rem;
+}
+.budgetBookApp-Page-Button {
+  color: white !important;
+  margin-left: 0.5rem !important;
+  padding: 0.5rem !important;
+  font-size: 1.25rem;
+  transition: background-color 0.2s ease-out;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+.budgetBookApp-Page-Button:hover {
+  background-color: #003c52;
+}
+.sapMBtnInner {
+  transition: background-color 0.1s ease-out;
+}
+.sap-phone .budgetBookApp-Page-Header {
+  background: linear-gradient(to bottom, #005575, #514a9d) !important;
+}
+.sap-phone .budgetBookApp-Page-Header > .sapMBarLeft {
+  padding-left: 0.5rem;
+}
+.sap-phone .budgetBookApp-Page-Header > .sapMBarRight {
+  padding-right: 0.5rem;
+}
+.sap-phone .budgetBookApp-Page-BackButton .sapMBtnActive {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+.sap-phone .budgetBookApp-Page-BackButton .sapMBtnIcon,
+.sap-phone .budgetBookApp-Page-BackButton .sapMBtnContent {
+  color: white !important;
+}
+.budgetBook-CheckBox .sapMCbBg {
+  border-radius: 90% !important;
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+  line-height: 1.25rem !important;
+  top: calc((2rem - 1.25rem) / 2) !important;
+  left: calc((2rem - 1.25rem) / 2) !important;
+  transition: border-color, background-color 0.2s ease-out;
+}
+.budgetBook-CheckBox .sapMCbHoverable:hover {
+  border-color: #14B341 !important;
+}
+.budgetBook-CheckBox .sapMCbMark:not(.sapMCbMarkChecked) {
+  border-color: #bb0000 !important;
+  background-color: #bb0000 !important;
+}
+.budgetBook-CheckBox .sapMCbMark:not(.sapMCbMarkChecked):before {
+  color: white !important;
+  font-size: 12px;
+  content: "\e03e";
+  font-family: "SAP-icons";
+  display: inline-block;
+}
+.budgetBook-CheckBox .sapMCbMarkChecked {
+  background-color: #14B341 !important;
+  border-color: #14B341 !important;
+}
+.budgetBook-CheckBox .sapMCbMarkChecked:before {
+  color: white !important;
+  font-size: 12px;
+}
+.budgetBookDialog {
+  display: flex;
+  flex-direction: column;
+}
+* {
+  outline: none !important;
+}
+.sapMSFF::before,
+.sapMCbHasLabel:focus:before {
+  border: none !important;
+}
+.sapMMessageToast {
+  background: linear-gradient(to left, #005575, #514a9d) !important;
+  color: white !important;
+}
+.sapUiMnuItm[data-iscurrentmonth="true"] {
+  color: #c0399f !important;
+}
+.sapUiMnuItm[data-iscurrentmonth="true"]:active {
+  color: white !important;
+}
+.sapUiMnuItm[data-isyear="true"] {
+  background-color: #f7f7f7;
+}
+.sapUiMnuItm[data-isyear="false"] {
+  padding-left: 0.25rem;
+}
+.budgetBookOverview-transactionItem:hover .budgetBookOverview-deleteIcon .sapMBtnIcon {
+  color: #bb0000;
+}
+.budgetBookOverview-deleteIcon {
+  background-color: transparent;
+  border: none;
+}
+.budgetBookOverview-deleteIcon .sapMBtnIcon {
+  cursor: pointer;
+  color: transparent;
+  transition: color 0.2s ease-out;
+}
+.sap-phone .budgetBookOverview-transactionItem .sapMListTblHighlightCell,
+.sap-phone .budgetBookOverview-transactionItem .sapMListTblNavigatedCell {
+  display: none;
+}
+.sap-phone .budgetBookOverview-transactionItem-checkBoxColumn {
+  width: 32px !important;
+}
+.sapMList {
+  border: 1px solid #e5e5e5;
+}
+.sapMList .sapMListShowSeparatorsAll .sapMLIBShowSeparator:first-child > td {
+  border-top: none;
+}
+.sapMList .sapMListShowSeparatorsAll .sapMLIBShowSeparator:last-child > td {
+  border-bottom: none;
+}
+.sapMList .sapMListTblHeader .sapMTableTH {
+  position: sticky;
+  top: var(--kellojoM-page-header-height);
+  z-index: 10;
+}
+.sapMList .sapMListTblSelCol {
+  padding-left: 0.5rem;
+}
+.sapMList .sapMListItems .sapMListTblCell {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+.sapMList .sapMListItems .sapMListTblRow:not(.sapMLIBActive) .kellojoM-lightLabel {
+  color: #6a6d70;
+}
+.sapMList .sapMLIB {
+  transition: background-color 0.2s ease-out;
+}
+.sapMList .sapMLIBSelected {
+  box-shadow: none !important;
+}
+.sapMListTbl .sapMLabel.budgetBookTable-lightLabel {
+  color: #6a6d70;
+}
+.budgetBookWelcome-contentWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.budgetBookWelcome-title {
+  font-size: 2rem !important;
+  margin-bottom: 2rem;
+  background-image: linear-gradient(to left, #005575, #514a9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.budgetBookWelcome-getStarted {
+  margin-top: 2.5rem;
+}
+.budgetBookWelcome-decisionContainer {
+  display: flex;
+  flex-direction: row;
+}
+.budgetBookWelcome-decision {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.budgetBookWelcome-divider {
+  width: 1px;
+  height: calc(100% - 1rem * 2);
+  box-sizing: border-box;
+  margin: 1rem;
+  background-color: #e5e5e5;
+}
+.budgetBookWelcome-decisionHelperIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  background-image: linear-gradient(to left, #005575, #514a9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.budgetBookWelcome-decisionAction {
+  margin-top: 1rem !important;
+}
+.budgetBookWelcome-decisionAction .sapMBtnInner {
+  transition: all 0.25s ease-out;
+  box-shadow: none;
+}
+.budgetBookWelcome-decisionAction .sapMBtnInner:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.budgetBook-SyncWithAppDialog-Sync {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.budgetBook-SyncWithAppDialog-Sync .sapMLabel {
+  white-space: normal !important;
+  text-align: center !important;
+}
+.budgetBook-SyncWithAppDialog-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem !important;
+  color: #333 !important;
+}
+.budgetBook-SyncWithAppDialog-status {
+  margin: 2rem 0;
+}
+.budgetBook-SyncWithAppDialog-signOutLink {
+  margin-top: 2rem;
+}
+.budgetPTransactionView {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+}
+.budgetPTransactionView .kellojoMTransactionEditor-container {
+  background-color: white;
+  border-bottom: 1px solid #e5e5e5;
+}

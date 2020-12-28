@@ -1,6 +1,0 @@
-/*!
- * OpenUI5
- * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
- * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
- */
-sap.ui.define(["sap/ui/integration/designtime/baseEditor/propertyEditor/BasePropertyEditor","sap/ui/integration/designtime/baseEditor/util/isValidBindingString"],function(B,i){"use strict";var E=B.extend("sap.ui.integration.designtime.baseEditor.propertyEditor.enumStringEditor.EnumStringEditor",{xmlFragment:"sap.ui.integration.designtime.baseEditor.propertyEditor.enumStringEditor.EnumStringEditor",renderer:B.getMetadata().getRenderer().render});E.prototype._onChange=function(){var c=this.getContent();var s=c.getSelectedKey();var v=c.getValue();var e=this._validate(s,v);if(!e){this.setValue(s||v);this._setInputState(true);}else{this._setInputState(false,this.getI18nProperty(e));}};E.prototype._validate=function(s,v){var c=this.getConfig();if(c["allowBindings"]===false&&i(v,false)){return"BASE_EDITOR.ENUM.BINDING_NOT_ALLOWED";}if(!c["allowCustomValues"]&&v&&!s&&!i(v,false)){return"BASE_EDITOR.ENUM.CUSTOM_VALUES_NOT_ALLOWED";}if(!i(v)){return"BASE_EDITOR.ENUM.INVALID_SELECTION";}};E.prototype._setInputState=function(I,e){var c=this.getContent();if(I){c.setValueState("None");}else{c.setValueState("Error");c.setValueStateText(e);}};return E;});

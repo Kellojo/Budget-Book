@@ -1,1 +1,0 @@
-define("ace/snippets/fsl",["require","exports","module"],function(r,e,m){"use strict";e.snippetText=undefined;e.scope="";});(function(){window.require(["ace/snippets/fsl"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

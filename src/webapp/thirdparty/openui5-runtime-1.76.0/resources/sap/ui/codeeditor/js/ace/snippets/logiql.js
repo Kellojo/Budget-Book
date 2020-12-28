@@ -1,1 +1,0 @@
-ace.define("ace/snippets/logiql",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="logiql";});(function(){ace.require(["ace/snippets/logiql"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

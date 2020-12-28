@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"sap/ui/testrecorder/library-h2-preload.js",
-"sourceroot":".",
-"sources":["library-dbg.js","manifest.json"],
-"names":[],
-"mappings":";;;;;;AASA,gBAAa,+BAAC,CACb,sBACA,mBACA,wBACD,EAAG,QAAS,EAAG,CACd,aAoBA,8BACC,IAAK,CAAE,sBACP,YAAa,CAAE,CACd,cACA,gBACD,EACA,WAAY,GACZ,SAAU,GACV,SAAU,GACV,aAAc,KACd,QAAS,SACT,WAAY,CAEX,iBAAkB,CACjB,kBACD,CACD,CACD,GAEA,OAAO,oBACR;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-"x_com_sap_openui5_sections":[56,606,668,1179]
-}

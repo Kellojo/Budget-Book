@@ -1,1 +1,0 @@
-ace.define("ace/snippets/gherkin",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="gherkin";});(function(){ace.require(["ace/snippets/gherkin"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

@@ -1,1 +1,0 @@
-ace.define("ace/snippets/gcode",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="gcode";});(function(){ace.require(["ace/snippets/gcode"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

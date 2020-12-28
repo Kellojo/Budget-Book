@@ -1,6 +1,0 @@
-/*!
- * OpenUI5
- * (c) Copyright 2009-2020 SAP SE or an SAP affiliate company.
- * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
- */
-sap.ui.define(['./library','sap/ui/core/Control','sap/m/OverflowToolbar','sap/m/OverflowToolbarAssociativePopover',"./ToolHeaderRenderer","sap/ui/Device","sap/m/library"],function(l,C,O,a,T,D,m){"use strict";var P=m.PlacementType;var b=O.extend("sap.tnt.ToolHeader",{metadata:{interfaces:["sap.tnt.IToolHeader"],library:"sap.tnt",properties:{},aggregations:{}}});b.prototype.init=function(){O.prototype.init.apply(this,arguments);this.addStyleClass('sapTntToolHeader sapContrast sapContrastPlus');};b.prototype._getPopover=function(){var p;if(!this.getAggregation("_popover")){p=new a(this.getId()+"-popover",{showHeader:false,showArrow:D.system.phone?false:true,modal:false,horizontalScrolling:D.system.phone?false:true,contentWidth:D.system.phone?"100%":"auto"}).addStyleClass('sapTntToolHeaderPopover sapContrast sapContrastPlus');if(D.system.phone){p.attachBeforeOpen(this._shiftPopupShadow,this);p.attachAfterOpen(this._shiftPopupShadow,this);}p.attachAfterClose(this._popOverClosedHandler,this);this.setAggregation("_popover",p,true);}return this.getAggregation("_popover");};b.prototype._getBestActionSheetPlacement=function(){return P.Bottom;};return b;});

@@ -1,6 +1,3 @@
-[submodule "src/lib/kellojo.m"]
-	path = src/lib/kellojo.m
-	url = https://github.com/Kellojo/kellojo.m.git
-[submodule "src/webapp/lib/kellojo.m"]
-	path = src/webapp/lib/kellojo.m
+[submodule "lib/kellojo.m"]
+	path = lib/kellojo.m
 	url = https://github.com/Kellojo/kellojo.m.git

@@ -14,7 +14,7 @@ Any feature requests or bug reports are welcome, do not hesitate 😀
 Download the latest version from [here](https://github.com/Kellojo/Budget-Book/releases/latest).
 Currently only macOS and Windows are supported.
 
-Get the mobile webapp [here](https://budget-book-7ebd4.firebaseapp.com/).
+Get the mobile webapp [here](https://budget-book-7ebd4.web.app).
 Android & iOS are supported.
 
 ## Features
@@ -22,12 +22,12 @@ Android & iOS are supported.
 - all data (except for the transactions created via the app & your categories) is stored locally on your device.
 - compare different months and years to gain insight into your spending behaviour
 - see in which areas you spend most of your money and in which you have the highest incomes.
-- track them anywhere using the responsive [mobile app](https://budget-book-7ebd4.firebaseapp.com/)
+- track them anywhere using the responsive [mobile app](https://budget-book-7ebd4.web.app)
 
 
 ## Mobile app sync
 
-With the new app sync, you can now create transactions while not having access to the desktop app. Once you open the desktop app again, you can sign-in and synchronize your transactions. The mobile webapp is available [here](https://budget-book-7ebd4.firebaseapp.com/). Don't forget to add it to your home screen 😄
+With the new app sync, you can now create transactions while not having access to the desktop app. Once you open the desktop app again, you can sign-in and synchronize your transactions. The mobile webapp is available [here](https://budget-book-7ebd4.web.app). Don't forget to add it to your home screen 😄
 
 
 ## Getting started 
@@ -53,3 +53,21 @@ You can gain further insight by filtering your list using the search. You can en
 If you want to backup your saved transactions, you can hit the export button on the top right. It is going to promt you to select a location for your save file. After the export the save file can then be loaded again, when initially opening the app for the first time (i.e. on a new computer). In the future it is algo going to be possible to alyway save to an external file, so you can easily share it between devices with a service like OneDrive or Google Drive.
 
 ![Imgur](https://i.imgur.com/QHefOVR.png)
+
+
+## Contributing
+
+### Local Development
+
+1. Link the kellojo.m library:
+`
+    cd lib/kellojo.m
+    sudo npm link
+    cd ..
+    cd ..
+    npm link kellojo.m
+`
+2. Install the development dependencies
+`
+    npm install -only=dev
+`

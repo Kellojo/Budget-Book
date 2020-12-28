@@ -1,1 +1,0 @@
-ace.define("ace/snippets/coldfusion",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="coldfusion";});(function(){ace.require(["ace/snippets/coldfusion"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

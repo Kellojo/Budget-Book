@@ -1,1 +1,0 @@
-ace.define("ace/snippets/less",["require","exports","module"],function(r,e,m){"use strict";e.snippetText="";e.scope="less";});(function(){ace.require(["ace/snippets/less"],function(m){if(typeof module=="object"&&typeof exports=="object"&&module){module.exports=m;}});})();

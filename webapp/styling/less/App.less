@@ -1,0 +1,95 @@
+
+@budgetBookApp-Page-HeaderHeight: 3.5rem;
+@budgetBookApp-BrandColor: #005575;
+@budgetBookApp-BrandColor-Darker: #003c52;
+@budgetBookApp-BrandColorSecondary: #514a9d;
+
+.budgetBookApp-Page {
+    >section {
+        top: @budgetBookApp-Page-HeaderHeight !important;
+        height: auto !important;
+    }
+}
+
+.budgetBookApp-Page-Header {
+    display: flex !important;
+    flex-direction: row;
+
+    height: @budgetBookApp-Page-HeaderHeight !important;
+    background: linear-gradient(to left, @budgetBookApp-BrandColor, @budgetBookApp-BrandColorSecondary) !important;
+    -webkit-app-region: drag;
+
+    > .sapMBarLeft {
+        height: @budgetBookApp-Page-HeaderHeight !important;
+        padding-left: @defaultPadding * 2;
+        padding-top: @halfPadding !important;
+        padding-bottom: @halfPadding !important;
+    }
+
+    > .sapMBarMiddle {
+        height: @budgetBookApp-Page-HeaderHeight - @defaultPadding !important;
+        
+        padding-top: @halfPadding !important;
+        padding-bottom: @halfPadding !important;
+    }
+
+    > .sapMBarRight {
+        height: @budgetBookApp-Page-HeaderHeight !important;
+        padding-right: @defaultPadding * 2;
+        padding-top: @halfPadding !important;
+        padding-bottom: @halfPadding !important;
+    }
+}
+
+[data-sap-ui-os="mac"] {
+    .budgetBookApp-Page-Header  > .sapMBarLeft {
+        padding-left: 6rem;
+    }
+}
+
+
+.budgetBookApp-Page-Button {
+    color: @white !important;
+    margin-left: @halfPadding !important;
+    padding: @halfPadding !important;
+    font-size: @iconFontSize;
+
+    transition: background-color 0.2s ease-out;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid transparent;
+
+    &:hover {
+        background-color: @budgetBookApp-BrandColor-Darker;
+    }
+}
+
+.sapMBtnInner {
+    transition: background-color 0.1s ease-out;
+}
+
+.sap-phone {
+    .budgetBookApp-Page-Header {
+
+        background: linear-gradient(to bottom, @budgetBookApp-BrandColor, @budgetBookApp-BrandColorSecondary) !important;
+
+        > .sapMBarLeft {
+            padding-left: @halfPadding;
+        }
+
+        > .sapMBarRight {
+            padding-right: @halfPadding;
+        }
+    }
+
+    .budgetBookApp-Page-BackButton {
+        .sapMBtnActive {
+            background-color: transparent !important;
+            border-color: transparent !important;
+        }
+
+        .sapMBtnIcon, .sapMBtnContent {
+            color: @white !important;
+        }
+    }
+}

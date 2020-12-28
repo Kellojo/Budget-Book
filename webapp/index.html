@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Budget Planner</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="A simple firebase, UI5 roles/user management app">
+		<meta name="keywords" content="Budget Book">
+		<meta name="author" content="Kellojo (https://github.com/Kellojo)">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <!-- iOS Home Screen Settings -->
+        <meta name="apple-mobile-web-app-title" content="BudgetP">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="theme-color" content="#005575">
+       
+
+        <link rel="stylesheet" type="text/css" href="./styling/style.css">
+
+        <link rel="preload" href="./lib/kellojo.m/src/kellojo/m/themes/sap_fiori_3/library.css" as="style"/>
+        <link rel="preconnect" href="https://openui5.hana.ondemand.com">
+
+        <style>
+            body {
+                background-color: #005575 !important;
+            }
+
+            #idLoadingScreen {
+
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 10;
+
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                visibility: visible !important;
+                background-color: white;
+
+                -webkit-app-region: drag;
+
+            }
+
+            #idLoadingScreen * {
+                visibility: visible !important;
+            }
+
+            #idLoadingScreen-AppTitle {
+                font-family: Arial,Helvetica,sans-serif !important;
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+                color: #32363a;
+
+                background-image: linear-gradient(to left, #005575, #514a9d);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            #idLoadingScreen-StatusIndicatorContainer {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #idLoadingScreen-StatusIndicator {
+                font-family: Arial,Helvetica,sans-serif !important;
+                font-size: 1rem;
+                color: #32363a;
+            }
+
+            .spinner {
+                text-align: left;
+                display: inline-flex;
+            }
+
+            .spinner > div {
+                border-radius: 100%;
+                display: inline-block;
+                -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+                animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            }
+
+             .spinner .bounce1 {
+                -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s;
+            }
+
+            .spinner .bounce2 {
+                -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s;
+            }
+
+            @-webkit-keyframes sk-bouncedelay {
+                0%, 80%, 100% { -webkit-transform: translateY(-8px) }
+                40% { -webkit-transform: translateY(-8px) }
+            }
+
+            @keyframes sk-bouncedelay {
+                0%, 80%, 100% { 
+                    -webkit-transform: translateY(0px);
+                    transform: translateY(0px);
+                } 40% { 
+                    -webkit-transform: translateY(-8px);
+                    transform: translateY(-8px);
+                }
+            }
+        </style>
+    </head>
+    
+    <body class="sapUiBody sapUiSizeCompact" id="content">
+
+
+        <!-- Firebase web/electron -->
+        <script>
+            const aElectronDependencies = [
+                "../node_modules/firebase/firebase-app.js",
+                "../node_modules/firebase/firebase-auth.js",
+                "../node_modules/firebase/firebase-firestore.js"
+            ];
+            const aWebDependencies = [
+                "https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js",
+                "https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js",
+                "https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"
+            ];
+
+            function loadExternalScript(sSource) {
+                var oScript = document.createElement("script");
+                oScript.setAttribute("src", sSource);
+                document.body.appendChild(oScript);
+            }
+
+            let aDependencies = !!window.api && window.api.isElectron ? aElectronDependencies : aWebDependencies;
+            aDependencies.forEach(loadExternalScript);
+        </script>
+
+        <!-- Update ui5 resource roots for the electron environment -->
+        <script>
+
+            let sKellojoMRoots = "./resources/kellojo/m";
+            let sUi5Source = "https://openui5.hana.ondemand.com/1.85.2/resources/sap-ui-core.js";
+            if (!!window.api && window.api.isElectron) {
+                sKellojoMRoots = "../lib/kellojo.m/src/kellojo/m";   
+            }
+
+            if (!!window.api && !window.api.isDevelopment || !["localhost", ""].includes(window.location.hostname)) {
+                sUi5Source = "./resources/sap-ui-custom.js";
+            }
+
+            var oScript = document.createElement("script");
+            oScript.setAttribute("src", sUi5Source);
+            oScript.setAttribute("id", "sap-ui-bootstrap");
+            oScript.setAttribute("data-sap-ui-theme", "sap_fiori_3");
+            oScript.setAttribute("data-sap-ui-libs", "sap.m, kellojo.m, sap.ui.unified");
+            oScript.setAttribute("data-sap-ui-compatVersion", "edge");
+            oScript.setAttribute("data-sap-ui-async", "true");
+            oScript.setAttribute("data-sap-ui-xx-bindingSyntax", "complex");
+            oScript.setAttribute("data-sap-ui-resourceroots", `{
+                    "com.budgetBook": "./",
+                    "kellojo.m": "${sKellojoMRoots}"
+            }`);
+            oScript.onload = () => {
+                sap.ui.getCore().attachInit(function () {
+                    new sap.ui.core.ComponentContainer({
+                        name: "com.budgetBook",
+                        manifest: true,
+                        height: "100%",
+                        id: "mainComponent"
+                    }).placeAt("content");
+                });
+            };
+
+            document.body.appendChild(oScript);
+        </script>
+
+        <!-- Moment.js -->
+        <script src="./thirdparty/moment.js" ></script>
+
+        <!-- Assert -->
+        <script src="./thirdparty/assert.js"></script> 
+
+        <!-- Apex Charts -->
+        <script src="./thirdparty/ApexCharts.min.js"></script>
+        
+
+        <div id="idLoadingScreen">
+            <div id="idLoadingScreen-AppTitle">BudgetP</div>
+            <div id="idLoadingScreen-StatusIndicatorContainer">
+                <div id="idLoadingScreen-StatusIndicator">Loading</div>
+                <div class="spinner">
+                    <div class="bounce1">.</div>
+                    <div class="bounce2">.</div>
+                    <div class="bounce3">.</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
