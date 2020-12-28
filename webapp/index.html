@@ -143,10 +143,11 @@
             let sKellojoMRoots = "./resources/kellojo/m";
             let sUi5Source = "https://openui5.hana.ondemand.com/1.85.2/resources/sap-ui-core.js";
             if (!!window.api && window.api.isElectron) {
-                sKellojoMRoots = "../lib/kellojo.m/src/kellojo/m";
-                if (!window.api.isDevelopment) {
-                    sUi5Source = "./resources/sap-ui-custom.js";
-                }
+                sKellojoMRoots = "../lib/kellojo.m/src/kellojo/m";   
+            }
+
+            if (!!window.api && !window.api.isDevelopment || window.location.hostname != "localhost") {
+                sUi5Source = "./resources/sap-ui-custom.js";
             }
 
             var oScript = document.createElement("script");

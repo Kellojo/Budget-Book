@@ -12,7 +12,8 @@
     "ui5-build": "ui5 build -a self-contained --dest=dist-ui5",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "release": "npm run ui5-build && electron-builder"
+    "release": "npm run ui5-build && electron-builder",
+    "release-web": "firebase deploy"
   },
   "repository": {
     "type": "git",

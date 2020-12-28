@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./src/webapp",
+    "public": "dist-ui5",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,10 +8,7 @@
       "dist/**"
     ],
     "predeploy": [
-        "npm run build-preloads"
-    ],
-    "postdeploy": [
-        "npm run remove-preloads"
+        "npm run ui5-build"
     ],
     "rewrites": []
   },
