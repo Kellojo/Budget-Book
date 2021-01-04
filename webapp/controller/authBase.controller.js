@@ -1,7 +1,8 @@
 sap.ui.define([
     "com/budgetBook/controller/ControllerBase",
-    "sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageToast"
+], function (Controller, JSONModel, MessageToast) {
     "use strict";
 
     var Controller = Controller.extend("com.budgetBook.controller.authBase", {}),
@@ -95,6 +96,8 @@ sap.ui.define([
     ControllerProto.onSignOutSuccess = function() {}
     ControllerProto.onPasswordForgottenSuccess = function() {
         this.m_oLogin.toSignIn();
+        var oResourceBundle = this.getOwnerComponent().getResourceBundle();
+        MessageToast.show(oResourceBundle.getText("passwordForgottenEmailSent"));
     }
 
 
