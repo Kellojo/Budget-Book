@@ -57,7 +57,7 @@ sap.ui.define([
         this.onOpenInDialog(oSettings);
 
         // load categories
-        this.m_oTransactionModel.setProperty(
+        this.m_oViewModel.setProperty(
             "/categories", 
             await this.getOwnerComponent().getTransactionsManager().getAllCategoriesFirebase()
         );
@@ -72,17 +72,10 @@ sap.ui.define([
 
         // reset combobox...
         //this.byId("idCategoryInput").setSelectedKey("");
+        let oTransactionsManager = this.getOwnerComponent().getTransactionsManager();
 
         // Setup transaction
-        var oTransaction = {
-            title: "",
-            amount: 0,
-            category: "",
-            occurredOn: new Date(),
-            type: Config.TRANSACTION_TYPE_EXPENSE,
-            currency: Config.DEFAULT_CURRENCY,
-            isCompleted: Config.DEFAULT_IS_TRANSACTION_COMPLETED
-        };
+        var oTransaction = oTransactionsManager.getDefaultTransaction();
 
         // Get transaction from settings, if this is the edit mode
         if (oSettings.hasOwnProperty("transaction")) {
@@ -93,10 +86,7 @@ sap.ui.define([
         // Update view model
         this.m_oTransactionModel.setData(oTransaction)
         this.m_oTransactionModel.refresh(true);
-        this.m_oTransactionModel.setProperty(
-            "/categories", 
-            this.getOwnerComponent().getTransactionsManager().getAllCategories()
-        );
+        this.m_oViewModel.setProperty( "/categories",  oTransactionsManager.getAllCategories());
 
         this.m_oTransactionEditor.resetValidation();
     };

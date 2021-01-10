@@ -1,7 +1,7 @@
 const chokidar = require('chokidar');
 const watchDir = "../";
 
-const lessBuilder = "sh ./bin/build-less.sh";
+const lessBuilder = "npm run build-styles";
 const libBuilder = "sh cd ./src/webapp/lib/kellojo.m/; grunt --gruntfile ./src/webapp/lib/kellojo.m/Gruntfile.js";
  
 //start watching

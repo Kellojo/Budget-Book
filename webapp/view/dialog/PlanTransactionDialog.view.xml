@@ -1,0 +1,28 @@
+<mvc:View
+	controllerName="com.budgetBook.controller.dialog.PlanTransactionDialog"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:kM="kellojo.m"
+    height="100%"
+    width="100%">
+
+    <kM:Wrapper class="budgetBookDialog" busy="{/isLoading}">
+        <kM:TransactionEditor 
+            id="idTransactionEditor"
+            title="{transaction>/transaction/title}"
+            amount="{transaction>/transaction/amount}"
+            category="{transaction>/transaction/category}"
+            categories="{/categories}"
+            isCompleted="{transaction>/transaction/isCompleted}"
+            occurredOn="{transaction>/transaction/occurredOn}"
+            type="{transaction>/type}"
+
+            reccurrence="{transaction>/reccurrence}"
+            startingFrom="{transaction>/startingFrom}"
+            isPlannedTransaction="true"
+            />
+    </kM:Wrapper>
+
+</mvc:View>

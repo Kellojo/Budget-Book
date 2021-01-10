@@ -100,11 +100,20 @@ sap.ui.define([
             oData.preferences.currentOverviewChartType = Config.DEFAULT_OVERVIEW_CHART_TYPE;
         }
 
+        if (!oData.plannedTransactions) {
+            oData.plannedTransactions = [];
+        }
+
         // Inject isComplete flag into transactions
         if (oData.transactions) {
             oData.transactions.forEach((oTransaction) => {
                 if (!oTransaction.hasOwnProperty("isCompleted")) {
                     oTransaction.isCompleted = Config.DEFAULT_IS_TRANSACTION_COMPLETED;
+                }
+
+                // remove accidentally added categories property on the transaction
+                if (oTransaction.hasOwnProperty("categories")) {
+                    delete oTransaction.categories;
                 }
             });
         }

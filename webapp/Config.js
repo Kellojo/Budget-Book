@@ -1,4 +1,6 @@
-sap.ui.define([], function () {
+sap.ui.define([
+    "kellojo/m/library"
+], function (library) {
     "use strict";
 
     return {
@@ -16,6 +18,9 @@ sap.ui.define([], function () {
             AddTransactionDialog: {
                 view: "com.budgetBook.view.dialog.AddTransactionDialog"
             },
+            PlanTransactionDialog: {
+                view: "com.budgetBook.view.dialog.PlanTransactionDialog"
+            },
             SyncWithAppDialog: {
                 view: "com.budgetBook.view.dialog.SyncWithAppDialog"
             }
@@ -24,6 +29,7 @@ sap.ui.define([], function () {
 
         DEFAULT_CURRENCY: "EUR",
         DEFAULT_IS_TRANSACTION_COMPLETED: true,
+        DEFAULT_PLANNED_TRANSACTION_RECURRENCE: library.TransactionreccurrenceType.MONTHLY,
 
         DEFAULT_OVERVIEW_CHART_TYPE: "overTime",
 

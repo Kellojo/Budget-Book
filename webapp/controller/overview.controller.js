@@ -26,6 +26,7 @@ sap.ui.define([
             currentTab: null,
             searchQuery: "",
             synchronizeableTransactionsCount: 0,
+            currentTransactionTab: oComponent.getResourceBundle().getText("overviewPageTitleYourTransactions"),
         });
         this.getView().setModel(this.m_oViewModel);
 
@@ -53,6 +54,13 @@ sap.ui.define([
             fnOnSubmit: (oTransaction) => {
                 this.getOwnerComponent().getTransactionsManager().insertTransaction(oTransaction);
             }
+        });
+    }
+
+    ControllerProto.onAddPlannedButtonPress = function() {
+        this.getOwnerComponent().openDialog("PlanTransactionDialog", {
+            title: "planTransactionDialogTitle",
+            submitButton: true,
         });
     }
 
@@ -85,24 +93,56 @@ sap.ui.define([
         }
     }
 
-    ControllerProto.onDeleteTransactionPress = function(oEvent) {
+    ControllerProto.onDeleteTransactionPress = async function(oEvent) {
         var oBindingContext = oEvent.getSource().getBindingContext("Database"),
-            oTransaction = oBindingContext.getObject(),
-            oComponent = this.getOwnerComponent(),
-            oResourceBundle = oComponent.getResourceBundle(),
-            sDeleteAction = oResourceBundle.getText("dialogDelete");
+            oTransaction = oBindingContext.getObject();
 
-        MessageBox.warning(oResourceBundle.getText("deleteTransactionWarning"), {
-            emphasizedAction: sDeleteAction,
-            actions: [
-                oResourceBundle.getText("dialogCancel"),
-                sDeleteAction
-            ],
-            onClose: function(sAction) {
-                if (sAction === sDeleteAction) {
-                    oComponent.getTransactionsManager().deleteTransaction(oTransaction);
-                }
-            }.bind(this)
+        try {
+            await this._showDeleteTransactionWarning();
+        } catch (error) {
+            return;
+        }
+        
+        this.getOwnerComponent().getTransactionsManager().deleteTransaction(oTransaction);
+    }
+    ControllerProto.onDeletePlannedTransactionPress = async function(oEvent) {
+        var oBindingContext = oEvent.getSource().getBindingContext("Database"),
+            oTransaction = oBindingContext.getObject();
+
+        try {
+            await this._showDeleteTransactionWarning();
+        } catch (error) {
+            return;
+        }
+        
+        this.getOwnerComponent().getTransactionsManager().deletePlannedTransaction(oTransaction);
+    }
+    /**
+     * Shows the delete transaction warning
+     * @returns {Promise}
+     * @private
+     */
+    ControllerProto._showDeleteTransactionWarning = async function() {
+
+        return new Promise((resolve, reject) => {
+            var oComponent = this.getOwnerComponent(),
+                oResourceBundle = oComponent.getResourceBundle(),
+                sDeleteAction = oResourceBundle.getText("dialogDelete");
+
+            MessageBox.warning(oResourceBundle.getText("deleteTransactionWarning"), {
+                emphasizedAction: sDeleteAction,
+                actions: [
+                    oResourceBundle.getText("dialogCancel"),
+                    sDeleteAction
+                ],
+                onClose: function(sAction) {
+                    if (sAction === sDeleteAction) {
+                        resolve();
+                        return;
+                    }
+                    reject();
+                }.bind(this)
+            });
         });
     }
 
@@ -142,6 +182,11 @@ sap.ui.define([
             oTransaction.isCompleted = oEvent.getParameter("selected");
             this.getOwnerComponent().getTransactionsManager().updateTransaction(oTransaction.id, oTransaction);
         }
+    };
+
+    ControllerProto.onTransactionTabChanged = function(oEvent) {
+        var sText = oEvent.getSource().getText();
+        this.m_oViewModel.setProperty("/currentTransactionTab", sText);
     };
 
     /**

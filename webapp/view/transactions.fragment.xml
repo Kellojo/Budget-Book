@@ -1,0 +1,77 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:kM="kellojo.m">
+	
+    <kM:Wrapper id="idTransactionsPage" visible="{= ${/currentTransactionTab} === ${i18n>overviewPageTitleYourTransactions}}">
+          
+        <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'overTime' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
+        <kM:ColumnChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatCategoryChartData'}" columnPress="onCategoryColumnPress" visible="{= ${Database>/preferences/currentOverviewChartType} === 'byCategory' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
+
+        <kM:TableActions visible="{= !${device>/system/phone} }">
+            <MenuButton id="idMonthTabButton" type="Transparent" text="{ path: '/currentTab', formatter: '.formatCurrentTab'}">
+                <Menu items="{/months}" itemSelected="onTabChanged">
+                    <MenuItem text="{text}" startsSection="{isYear}">
+                        <customData>
+                            <core:CustomData key="time" value="{key}"></core:CustomData>
+                            <core:CustomData key="isCurrentMonth" value="{isCurrentString}" writeToDom="true"></core:CustomData>
+                            <core:CustomData key="isYear" value="{isYearString}" writeToDom="true"></core:CustomData>
+                        </customData>
+                    </MenuItem>
+                </Menu>
+            </MenuButton>
+
+            <kM:right>
+                <Button text="{i18n>addTransaction}" visible="{device>/isTrayVersion}" press="onAddButtonPress"/>
+            </kM:right>
+        </kM:TableActions>
+
+        <Table id="idTable" items="{ 
+            path: 'Database>/transactions',
+            sorter : {
+                path : 'occurredOn',
+                comparator: '.sortByDate'
+            }
+        }" 
+        itemPress="onTransactionPress"
+        showNoData="{= !${device>/system/phone}}"
+        noDataText="{i18n>overviewPageNoTransactionsYet}">
+            <columns>
+                <kM:SortColumn width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
+                <kM:SortColumn>
+                    <Label text="Transaction" />
+                </kM:SortColumn>
+                <kM:SortColumn hAlign="End" visible="{= !${device>/system/phone}}">
+                    <Label text="Amount" />
+                </kM:SortColumn>
+                <kM:SortColumn visible="{= !${device>/system/phone}}">
+                    <Label text="Category" />
+                </kM:SortColumn>
+                <kM:SortColumn width="48px" visible="{= !${device>/system/phone}}"/>
+            </columns>
+
+            <ColumnListItem type="{= ${device>/system/phone} ? 'Navigation' : 'Active'}" class="budgetBookOverview-transactionItem">
+                <CheckBox class="budgetBook-CheckBox" select="onIsCompletedChanged"  selected="{Database>isCompleted}"/>
+                
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <VBox width="100%">
+                        <HBox justifyContent="SpaceBetween">
+                            <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
+                        </HBox>
+                        <HBox width="100%" wrap="Wrap">
+                            <Label text="{Database>category}" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
+                            <Label text="-" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
+                            <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
+                        </HBox>
+                    </VBox>
+                    <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft" visible="{device>/system/phone}"/>
+                </HBox>
+                
+                <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}"/>
+                <Label text="{Database>category}"/>
+                
+                <Button icon="sap-icon://delete" press="onDeleteTransactionPress" type="Unstyled" class="budgetBookOverview-deleteIcon"/>
+            </ColumnListItem>
+        </Table>
+
+        <kM:NoData text="{i18n>overviewPageNoTransactionsYetExtended}" icon="sap-icon://create" visible="{= ${Database>/transactions}.length === 0 &amp;&amp; ${device>/system/phone}}" />
+    </kM:Wrapper>
+
+</core:FragmentDefinition>
