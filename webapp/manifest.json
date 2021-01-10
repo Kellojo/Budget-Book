@@ -1,4 +1,28 @@
 {
+    "name": "BudgetP",
+    "short_name": "BudgetP",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#005575",
+    "theme_color": "#005575",
+    "description": "A simple app designed to help you tracking your income and expenses.",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "icons": [
+        {
+            "src": "img/manifest-icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "img/manifest-icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+
     "sap.app": {
         "id": "com.budgetBook",
         "type": "application",
