@@ -176,6 +176,11 @@ sap.ui.define([
         oTabFilter = new Filter({
             path: "occurredOn",
             test: function(sDate) {
+                // always show all transactions on phone
+                if (Device.system.phone) {
+                    return true;
+                }
+
                 var oDate = new Date(sDate);
                 return oDate.getFullYear() == oTab.year &&
                 (!oTab.hasOwnProperty("month") || oDate.getMonth() == oTab.month);
