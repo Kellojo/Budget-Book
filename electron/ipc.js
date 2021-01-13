@@ -1,6 +1,7 @@
 const {app, ipcMain, shell} = require('electron');
 const Store = require("electron-store");
 const IOManager = require("./IoManager");
+const username = require("username");
 
 
 
@@ -38,10 +39,13 @@ ipcMain.on("importData", (event, oParam) => {
     }, mainWindow);
 });
 ipcMain.on("loadAppInfo", (event) => {
-    
+    const sUsername = username.sync();
+
     var oAppInfo = {
         version: app.getVersion(),
-        isFirstStartUp: !!store.get("isFirstStartUp", true)
+        isFirstStartUp: !!store.get("isFirstStartUp", true),
+        username: sUsername,
+        initials: sUsername.charAt(0),
     };
 
     store.set("isFirstStartUp", false);

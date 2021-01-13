@@ -48,8 +48,9 @@
     "electron-window-state": "^5.0.3",
     "firebase": "^7.14.6",
     "jsstore": "^3.7.6",
+    "kellojo.m": "file:lib/kellojo.m",
     "menubar": "^9.0.1",
-    "kellojo.m": "file:lib/kellojo.m"
+    "username": "^5.1.0"
   },
   "ui5": {
     "dependencies": [

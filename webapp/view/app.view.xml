@@ -23,7 +23,7 @@
                 </contentMiddle>
 
                 <contentRight>
-                    <core:Icon src="sap-icon://user-settings" press="onUserHelpMenuPress" class="budgetBookApp-Page-Button" visible="{= ${AppHeader>/showAddButton} &amp;&amp; !${device>/system/phone} &amp;&amp; !${device>/isTrayVersion}}" />
+                    <Avatar initials="{= ${User>/isLoggedIn} ? ${User>/userInitials} : ${AppInfo>/initials} }" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{= ${AppHeader>/showAddButton} &amp;&amp; !${device>/system/phone} &amp;&amp; !${device>/isTrayVersion}}"/>
                     <core:Icon src="sap-icon://add" press="onAddTransactionPress" class="budgetBookApp-Page-Button" visible="{= ${device>/system/phone} &amp;&amp; ${User>/isLoggedIn} &amp;&amp; ${AppHeader>/showAddButton}}"/>
                     <Button text="{i18n>save}" press="onSaveButtonPress" class="budgetBookApp-Page-BackButton"  type="Transparent" visible="{AppHeader>/showSaveButton}"/>
                 </contentRight>
