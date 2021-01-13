@@ -36,13 +36,6 @@ sap.ui.define([
     }
 
     ControllerProto.onPageEnter = function() {
-        this.getOwnerComponent().getAppManager()
-            .setShowBackButton(false)
-            .setShowAppHeader(true)
-            .setShowSaveButton(false)
-            .setShowMenuButton(this.getOwnerComponent().getIsWebVersion())
-            .setShowAddButton(true)
-            .setAppTitle("");
         this.updateTabs();
     }
 
@@ -54,6 +47,13 @@ sap.ui.define([
                 this.getOwnerComponent().getTransactionsManager().insertTransaction(oTransaction);
             }
         });
+    }
+
+    ControllerProto.onAddTransactionPress = function () {
+        this.getOwnerComponent().toTransaction(null);
+    }
+    ControllerProto.onUserHelpMenuPress = function (oEvent) {
+        this.getOwnerComponent().openUserHelpMenu(oEvent.getSource());
     }
 
     ControllerProto.onSynchronizeTransactionButtonPress = function(oEvent) {

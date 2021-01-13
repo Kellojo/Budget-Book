@@ -1,4 +1,4 @@
-.budgetBookApp-Page > section {
+.budgetBookApp-Page.sapMPageWithHeader > section {
   top: 3.5rem !important;
   height: auto !important;
 }

@@ -95,12 +95,6 @@ sap.ui.define([
             };
         }
 
-        //init app header model
-        this.setModel(new JSONModel({
-            visible: true
-        }), "appHeader");
-        this.m_oAppHeaderModel = this.getModel("appHeader");
-
         // attach auth state change event
         this.getFirebaseManager().attachAuthStateChanged(this.onAuthStateChange.bind(this));
     };
@@ -423,35 +417,7 @@ sap.ui.define([
             }
         }
     };
-    /**
-     * Registeres an app header control
-     */
-    ComponentProto.registerAppHeaderControl = function(oControl, sName) {
-        this.registerControl(oControl, sName);
-        var oVisibilityData = this.m_oAppHeaderModel.getData(),
-            sName = sName + "Visibility";
-        oVisibilityData[sName] = false;
-        this.m_oAppHeaderModel.setData(oVisibilityData);
-        this.m_oAppHeaderModel.refresh(true);
-        this["set" + sName] = function(sName, bVisible, fnPressHandler) {
-            if (bVisible) {
-                this.m_oAppHeaderModel.setProperty("/visible", true); //show app header, if value is true
-
-                //attach/detach press handler if present
-                if (typeof oControl.data("pressHandler") === "function") {
-                    oControl.detachPress(oControl.data("pressHandler"));
-                }
-                if (
-                    typeof oControl.attachPress === "function" &&
-                    typeof fnPressHandler === "function"
-                ) {
-                    oControl.attachPress(fnPressHandler);
-                    oControl.data("pressHandler", fnPressHandler);
-                }
-            }
-            this.m_oAppHeaderModel.setProperty("/" + sName, bVisible);
-        }.bind(this, sName);
-    };
+    
     /**
      * Gets a control by it's name
      * @param {string} sName - the name of the control. Has to be registered beforehand!
@@ -469,41 +435,12 @@ sap.ui.define([
         return this.m_oResourceBundle.getResourceBundle();
     };
 
-    //
+    // -----------------------
     // App Header
-    //
+    // -----------------------
 
     ComponentProto.onBackButtonPressed = function () {
         this.navBack();
-    };
-
-    /**
-     * Sets the button visibility of any registered button, and the press handler
-     */
-    ComponentProto.setButtonVisible = function (sName, bVisible, fnOnPress) {
-        this.m_oAppHeaderModel.setProperty("/" + sName + "Visible", bVisible);
-
-        var oButton = this.getControl(sName),
-            sHandlerVarName = "m_fnOn" + sName + "Press";
-        if (this[sHandlerVarName]) {
-            oButton.detachPress(this[sHandlerVarName]);
-            this[sHandlerVarName] = null;
-        }
-        if (fnOnPress) {
-            oButton.attachPress(fnOnPress);
-            this[sHandlerVarName] = fnOnPress;
-        }
-    };
-
-    /**
-     * Hides all app hesder buttons
-     * @public
-     */
-    ComponentProto.hideAllAppHeaderButtons = function() {
-        var aKeys = Object.keys(this.m_oAppHeaderModel.getData());
-        aKeys.forEach(function(sKey) {
-            this.m_oAppHeaderModel.setProperty("/" + sKey, false);
-        }.bind(this));
     };
 
     return Component;

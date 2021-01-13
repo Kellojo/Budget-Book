@@ -8,7 +8,23 @@
     height="100%"
     width="100%">
 
-    <kM:Wrapper class="budgetPTransactionView">
+    <Page class="budgetPTransactionView budgetBookApp-Page" titleAlignment="Center" showFooter="false" showHeader="{device>/system/phone}">
+        <customHeader>
+			<Bar design="Header" class="budgetBookApp-Page-Header">
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" text="{i18n>back}" type="Transparent" press="onBackButtonPress" class="budgetBookApp-Page-BackButton"/>
+                </contentLeft>
+
+                <contentMiddle>
+                    <kM:AppTitle title="{/title}"/>
+                </contentMiddle>
+
+                <contentRight>
+                    <Button text="{i18n>save}" press="onSubmitButtonPress" class="budgetBookApp-Page-BackButton"  type="Transparent"/>
+                </contentRight>
+            </Bar>
+		</customHeader>
+
         <kM:TransactionEditor 
             id="idTransactionEditor"
             title="{transaction>/title}"
@@ -20,7 +36,6 @@
             type="{transaction>/type}"/>
 
         <kM:Deleter title="{i18n>dialogDelete}" press="onDeletePress" type="Active" visible="{/isExistingTransaction}"/>
-    
-    </kM:Wrapper>
+    </Page>
 
 </mvc:View>

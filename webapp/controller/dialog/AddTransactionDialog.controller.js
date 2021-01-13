@@ -20,6 +20,7 @@ sap.ui.define([
             isLoading: false,
             categories: [],
             isExistingTransaction: false,
+            title: ""
         });
         this.getView().setModel(this.m_oViewModel);
 
@@ -30,14 +31,7 @@ sap.ui.define([
 
     ControllerProto.onPageEnter = async function(oEvent) {
         var oComponent = this.getOwnerComponent(),
-            oAppManager = oComponent.getAppManager(),
             oResourceBundle = oComponent.getResourceBundle();
-        oAppManager.attachSaveButtonPress(this.onSubmitButtonPress.bind(this));
-        oAppManager
-            .setShowBackButton(true)
-            .setShowSaveButton(true)
-            .setShowMenuButton(false)
-            .setShowAddButton(false);
 
         var sTransactionId = oEvent.getParameter("arguments").transactionId,
             oSettings = {};
@@ -49,9 +43,9 @@ sap.ui.define([
             this.m_oViewModel.setProperty("/isLoading", true);
             oSettings.transaction = await oComponent.getTransactionsManager().loadTransaction(sTransactionId);
             this.m_oViewModel.setProperty("/isLoading", false);
-            oAppManager.setAppTitle(oResourceBundle.getText("addTransactionDialogTitleEditMode"));
+            this.m_oViewModel.setProperty("/title", oResourceBundle.getText("addTransactionDialogTitleEditMode"));
         } else {
-            oAppManager.setAppTitle(oResourceBundle.getText("addTransactionDialogTitle"));
+            this.m_oViewModel.setProperty("/title", oResourceBundle.getText("addTransactionDialogTitle"));
         }
 
         this.onOpenInDialog(oSettings);
@@ -61,10 +55,6 @@ sap.ui.define([
             "/categories", 
             await this.getOwnerComponent().getTransactionsManager().getAllCategoriesFirebase()
         );
-    }
-
-    ControllerProto.onPageLeave = function() {
-        this.getOwnerComponent().getAppManager().detachSaveButtonPress(this.onSubmitButtonPress.bind(this));
     }
 
     ControllerProto.onOpenInDialog = async function(oSettings) {
@@ -163,6 +153,10 @@ sap.ui.define([
                 }
             }.bind(this)
         });
+    }
+
+    ControllerProto.onBackButtonPress = function() {
+        this.getOwnerComponent().onBackButtonPressed();
     }
 
     

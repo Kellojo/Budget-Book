@@ -30,13 +30,7 @@ sap.ui.define([
         this.getOwnerComponent().navBack();
     }
 
-    ControllerProto.onAddTransactionPress = function() {
-        this.getOwnerComponent().toTransaction(null);
-    }
 
-    ControllerProto.onSaveButtonPress = function() {
-        this.getOwnerComponent().getAppManager().fireSaveButtonPress();
-    }
 
     ControllerProto.onUserHelpMenuPress = function(oEvent) {
         this.getOwnerComponent().openUserHelpMenu(oEvent.getSource());

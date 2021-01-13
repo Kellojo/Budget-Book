@@ -8,24 +8,16 @@
     width="100%"
     id="idAppView">
 
-    <Page showHeader="{AppHeader>/isAppHeaderVisible}" class="budgetBookApp-Page">
+    <Page showHeader="{= !${device>/system/phone} }" class="budgetBookApp-Page" >
         <customHeader>
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
                     <core:Icon src="sap-icon://menu2" press="onMenuButtonPress" class="budgetBookApp-Page-Button" visible="false"/>
-                    <Button icon="sap-icon://nav-back" text="{i18n>back}" type="Transparent" press="onBackButtonPress" visible="{AppHeader>/showBackButton}" class="budgetBookApp-Page-BackButton"/>
-                    <kM:AppTitle title="{AppHeader>/appTitle}" version="{AppInfo>/version}" visible="{= !${device>/system/phone}}"/>
-                    <Avatar initials="{User>/userInitials}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{= ${device>/system/phone} &amp;&amp; ${User>/isLoggedIn} &amp;&amp; ${AppHeader>/showAddButton}}"/>
+                    <kM:AppTitle title="{i18n>appTitle}" version="{AppInfo>/version}"/>
                 </contentLeft>
 
-                <contentMiddle>
-                    <kM:AppTitle title="{AppHeader>/appTitle}" version="{AppInfo>/version}" visible="{device>/system/phone}"/>
-                </contentMiddle>
-
                 <contentRight>
-                    <Avatar initials="{= ${User>/isLoggedIn} ? ${User>/userInitials} : ${AppInfo>/initials} }" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{= ${AppHeader>/showAddButton} &amp;&amp; !${device>/system/phone} &amp;&amp; !${device>/isTrayVersion}}"/>
-                    <core:Icon src="sap-icon://add" press="onAddTransactionPress" class="budgetBookApp-Page-Button" visible="{= ${device>/system/phone} &amp;&amp; ${User>/isLoggedIn} &amp;&amp; ${AppHeader>/showAddButton}}"/>
-                    <Button text="{i18n>save}" press="onSaveButtonPress" class="budgetBookApp-Page-BackButton"  type="Transparent" visible="{AppHeader>/showSaveButton}"/>
+                    <Avatar initials="{= ${User>/isLoggedIn} ? ${User>/userInitials} : ${AppInfo>/initials} }" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{= !${device>/isTrayVersion}}"/>
                 </contentRight>
             </Bar>
 		</customHeader>

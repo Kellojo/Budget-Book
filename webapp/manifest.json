@@ -45,9 +45,6 @@
             "AppInfo": {
                 "type": "sap.ui.model.json.JSONModel"
             },
-            "AppHeader": {
-                "type": "sap.ui.model.json.JSONModel"
-            },
             "User": {
                 "type": "sap.ui.model.json.JSONModel"
             }

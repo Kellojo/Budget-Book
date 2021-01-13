@@ -25,7 +25,9 @@ sap.ui.define([
             return;
         }
 
-        this.onPageEnter(oEvent);
+        if (typeof this.onPageEnter === "function") {
+            this.onPageEnter(oEvent);
+        }
     };
 
     ControllerProto.onPageLeave = function(sRouteName) {
