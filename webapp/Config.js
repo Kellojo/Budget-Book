@@ -1,4 +1,6 @@
-sap.ui.define([], function () {
+sap.ui.define([
+    "kellojo/m/beans/ThemeManager"
+], function (ThemeManager) {
     "use strict";
 
     return {
@@ -9,6 +11,10 @@ sap.ui.define([], function () {
                 "AppManager",
                 "FirebaseManager",
                 "Database",
+            ],
+
+            directReferences: [
+                ThemeManager
             ]
         },
 

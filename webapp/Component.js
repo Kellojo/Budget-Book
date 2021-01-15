@@ -121,7 +121,15 @@ sap.ui.define([
      * @param {string} sBean
      */
     ComponentProto.createBean = function(sPrefix, sBean) {
-        var oBean = com.budgetBook[sPrefix][sBean];
+        if (sPrefix != "directReferences") {
+            var oBean = com.budgetBook[sPrefix][sBean];
+        } else {
+            var oBean = sBean;
+            let aParts = oBean.getMetadata().getName().split(".");
+            sBean = aParts[aParts.length - 1];
+        }
+
+
         if (!oBean) {
             jQuery.sap.log.error("Could not initialize missing bean '" + sPrefix + "." + sBean + "'");
         } else {
@@ -168,58 +176,40 @@ sap.ui.define([
                 close: function() {
                     this.m_oUserHelpMenu = null;
                 }.bind(this),
-                items: [
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuExport"),
-                        icon: "sap-icon://upload",
-                        press: function() {
-                            this.getDatabase().exportData({
-                                success: () => {MessageToast.show(
-                                    this.getResourceBundle().getText("exportDataSuccess")
-                                )}
-                            });
-                        }.bind(this),
-                        hasSpacer: true,
-                        visible: !this.getIsWebVersion()
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuGetMobileApp"),
-                        icon: "sap-icon://iphone",
-                        press: function() {
-                            this.getAppManager().openHelpPage();
-                        }.bind(this),
-                        hasSpacer: false,
-                        visible: !Device.system.phone
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuGetDesktopApp"),
-                        icon: "sap-icon://sys-monitor",
-                        press: function() {
-                            this.getAppManager().openHelpPage();
-                        }.bind(this),
-                        hasSpacer: false,
-                        visible: Device.system.phone
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuWebsite"),
-                        icon: "sap-icon://internet-browser",
-                        press: function() {
-                            this.getAppManager().openHelpPage();
-                        }.bind(this),
-                        hasSpacer: true,
-                        visible: true
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuSignOut"),
-                        icon: "sap-icon://log",
-                        press: function(oEvent) {
-                            this.getFirebaseManager().signOut();
-                            this.m_oUserHelpMenu.close();
-                        }.bind(this),
-                        hasSpacer: false,
-                        visible: this.getFirebaseManager().getIsLoggedIn()
-                    }
-                ]
+                
+
+                exportPress: function() {
+                    this.getDatabase().exportData({
+                        success: () => {MessageToast.show(
+                            this.getResourceBundle().getText("exportDataSuccess")
+                        )}
+                    });
+                }.bind(this),
+                exportVisible: !this.getIsWebVersion(),
+
+                getMobileAppPress: function() {
+                    this.getAppManager().openHelpPage();
+                }.bind(this),
+                getDesktopAppPress: function() {
+                    this.getAppManager().openHelpPage();
+                }.bind(this),
+
+                websitePress: function() {
+                    this.getAppManager().openHelpPage();
+                }.bind(this),
+
+                signOutPress: function(oEvent) {
+                    this.getFirebaseManager().signOut();
+                    this.m_oUserHelpMenu.close();
+                }.bind(this),
+                signOutVisible: this.getFirebaseManager().getIsLoggedIn(),
+
+                switchDarkMode: (oEvent) => {
+                    this.getThemeManager().setTheme(
+                        oEvent.getParameter("enabled") ? "sap_fiori_3_dark" : "sap_fiori_3"
+                    );
+                },
+                darkModeEnabled: this.getThemeManager().isDarkTheme(),
             });
             //this.getUIArea().addDependent(this.m_oUserHelpMenu);
             this.m_oUserHelpMenu.openBy(oSource, "Bottom");
