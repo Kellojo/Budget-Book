@@ -5,11 +5,11 @@
   "main": "electron/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+
     "start": "electron .",
     "start-electron-local": "node ./bin/copyThemes.js && npm start",
     "start-web": "node ./bin/deleteThemes.js && ui5 serve",
-    "start-auto-less-builder": "node ./bin/less-builder.js",
-    "build-styles": "lessc ./webapp/styling/less/source.less ./webapp/styling/style.css",
+
     "ui5-build": "ui5 build -a self-contained --dest=dist-ui5",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
