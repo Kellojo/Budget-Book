@@ -50,6 +50,9 @@ sap.ui.define([
             sEnvironment = oUrlParams.get("env");
         this.setIsTrayVersion(sEnvironment === "tray");
         this.setIsWebVersion(!window.api || (!!window.api && !window.api.isElectron));
+        if (!this.getIsWebVersion()) {
+            document.getElementsByTagName('html')[0].classList.add('sap-electron');
+        }
 
         //set device & i18n model
         var oDevice = Device;
