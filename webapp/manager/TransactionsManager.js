@@ -103,7 +103,7 @@ sap.ui.define([
         if (this.getOwnerComponent().getIsWebVersion()) {
             // insert into firestore
             assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
-            await this._getSynchronizeableTransactionFirebaseCollection().doc(sPath).set(oTransaction); 
+            await this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction.id).set(oTransaction); 
         } else {
             var oDatabase = this.getOwnerComponent().getDatabase();
             oDatabase.setModelProperty(sPath, oTransaction);
