@@ -13,6 +13,8 @@
         signUp="onSignUp"
         passwordForgotten="onPasswordForgotten" 
         customErrorMessage="{auth>/customErrorMessage}"
-        busy="{auth>/isLoginBusy}"/>
+        busy="{auth>/isLoginBusy}"
+        appTitle="{i18n>appTitleShort}"
+        appTitleVisible="{device>/system/phone}"/>
 
 </mvc:View>
