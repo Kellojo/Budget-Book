@@ -48,6 +48,10 @@ sap.ui.define([
             }
         }
 
+        if (!oPreferences) {
+            oPreferences = {};
+        }
+
         // assign default values
         oPreferences.darkMode = oPreferences.darkMode || false;
         oPreferences.currency = oPreferences.currency || Config.DEFAULT_CURRENCY;
