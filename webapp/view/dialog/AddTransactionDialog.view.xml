@@ -17,7 +17,8 @@
             categories="{transaction>/categories}"
             isCompleted="{transaction>/isCompleted}"
             occurredOn="{transaction>/occurredOn}"
-            type="{transaction>/type}"/>
+            type="{transaction>/type}"
+            currency="{Preferences>/currency}"/>
     </kM:Wrapper>
 
 </mvc:View>

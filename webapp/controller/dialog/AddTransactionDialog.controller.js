@@ -70,7 +70,7 @@ sap.ui.define([
             category: "",
             occurredOn: new Date(),
             type: Config.TRANSACTION_TYPE_EXPENSE,
-            currency: Config.DEFAULT_CURRENCY,
+            currency: this.getOwnerComponent().getPreferenceManager().getPreference("/currency"),
             isCompleted: Config.DEFAULT_IS_TRANSACTION_COMPLETED
         };
 
