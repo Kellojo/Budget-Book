@@ -11,6 +11,7 @@ sap.ui.define([
                 "AppManager",
                 "FirebaseManager",
                 "Database",
+                "PreferenceManager",
             ],
 
             directReferences: [
@@ -28,7 +29,6 @@ sap.ui.define([
         },
 
 
-        DEFAULT_CURRENCY: "EUR",
         DEFAULT_IS_TRANSACTION_COMPLETED: true,
 
         DEFAULT_OVERVIEW_CHART_TYPE: "overTime",
@@ -36,6 +36,43 @@ sap.ui.define([
 
         TRANSACTION_TYPE_EXPENSE: "expense",
         TRANSACTION_TYPE_INCOME: "income",
+
+        DEFAULT_CURRENCY: "EUR",
+        AVAILABLE_CURRENCIES: [
+            {
+                code: "USD",
+            },
+            {
+                code: "EUR",
+            },
+            {
+                code: "JPY",
+            },
+            {
+                code: "GBP",
+            },
+            {
+                code: "AUD",
+            },
+            {
+                code: "CAD",
+            },
+            {
+                code: "CHF",
+            },
+            {
+                code: "CNY",
+            },
+            {
+                code: "HKD",
+            },
+            {
+                code: "NZD",
+            },
+            {
+                code: "SEK",
+            },
+        ],
 
 
         FIREBASE: {

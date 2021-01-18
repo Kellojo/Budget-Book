@@ -30,7 +30,7 @@
             showHeader="{= !${device>/isTrayVersion}}"
             condensed="{device>/isTrayVersion}"
             subTitle="{
-                parts: ['Database>/transactions', '/currentTab'],
+                parts: ['Database>/transactions', '/currentTab', 'Preferences>/currency'],
                 formatter: '.formatPageSubtitle'
             }">
 
@@ -120,10 +120,10 @@
                                     <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
                                 </HBox>
                             </VBox>
-                            <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft" visible="{device>/system/phone}"/>
+                            <kM:Currency value="{Database>amount}" currency="{Preferences>/currency}" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft" visible="{device>/system/phone}"/>
                         </HBox>
                         
-                        <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}"/>
+                        <kM:Currency value="{Database>amount}" currency="{Preferences>/currency}" negative="{= ${Database>type} === 'expense'}"/>
                         <Label text="{Database>category}"/>
                         
                         <Button icon="sap-icon://delete" press="onDeleteTransactionPress" type="Unstyled" class="budgetBookOverview-deleteIcon"/>

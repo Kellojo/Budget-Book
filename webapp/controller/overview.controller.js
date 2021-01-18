@@ -319,7 +319,7 @@ sap.ui.define([
             }
         });
 
-        sTransactionVolume = Formatter.formatCurrency(iTransactionVolume, Config.DEFAULT_CURRENCY);
+        sTransactionVolume = Formatter.formatCurrency(iTransactionVolume, oComponent.getPreferenceManager().getPreference("/currency"));
         return oComponent.getResourceBundle().getText(
             iTransactionCount < 2 ? "overviewPageSubtitle" : "overviewPageSubtitlePlural",
             [iTransactionCount, sTransactionVolume]

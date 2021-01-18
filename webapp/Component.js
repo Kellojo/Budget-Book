@@ -18,6 +18,7 @@ sap.ui.define([
     "com/budgetBook/manager/Formatter",
     "com/budgetBook/manager/AppManager",
     "com/budgetBook/manager/FirebaseManager",
+    "com/budgetBook/manager/PreferenceManager",
 
     "kellojo/m/library"
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
@@ -116,6 +117,8 @@ sap.ui.define([
                 this.toAuth();
             }
         }
+        
+        this.getPreferenceManager().fetchPreferences();
     }
 
     /**
@@ -173,7 +176,6 @@ sap.ui.define([
         if (!!this.m_oUserHelpMenu) {
             this.m_oUserHelpMenu.close();
         } else {
-            var oResourceBundle = this.getResourceBundle();
             this.m_oUserHelpMenu = new UserHelpMenu({
                 closeButtonVisible: Device.system.phone,
                 close: function() {
@@ -213,6 +215,12 @@ sap.ui.define([
                     );
                 },
                 darkModeEnabled: this.getThemeManager().isDarkTheme(),
+
+                availableCurrencies: Config.AVAILABLE_CURRENCIES,
+                selectedCurrency: this.getPreferenceManager().getPreference("/currency"),
+                currencyChange: (oEvent) => {
+                    this.getPreferenceManager().setPreference("/currency", oEvent.getParameter("currency"));
+                }
             });
             //this.getUIArea().addDependent(this.m_oUserHelpMenu);
             this.m_oUserHelpMenu.openBy(oSource, "Bottom");
@@ -292,6 +300,7 @@ sap.ui.define([
         }).addStyleClass("kellojoMDialog");
         oDialog.setModel(this.m_oResourceBundle, "i18n");
         oDialog.setModel(this.getModel("User"), "User");
+        oDialog.setModel(this.getModel("Preferences"), "Preferences");
 
         // Submit Button
         if (oSettings.submitButton) {
