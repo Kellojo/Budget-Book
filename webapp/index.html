@@ -72,6 +72,16 @@
         <link rel="preload" href="./lib/kellojo.m/src/kellojo/m/themes/sap_fiori_3/library.css" as="style"/>
         <link rel="preconnect" href="https://openui5.hana.ondemand.com">
 
+        <!-- Firebase web -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+        <!-- Firebase electron -->
+        <script src="../node_modules/firebase/firebase-app.js"></script>
+        <script src="../node_modules/firebase/firebase-auth.js"></script>
+        <script src="../node_modules/firebase/firebase-firestore.js"></script>
+
         <style>
             body {
                 background-color: #005575 !important;
@@ -165,29 +175,6 @@
     
     <body class="sapUiBody sapUiSizeCompact" id="content">
 
-
-        <!-- Firebase web/electron -->
-        <script>
-            const aElectronDependencies = [
-                "../node_modules/firebase/firebase-app.js",
-                "../node_modules/firebase/firebase-auth.js",
-                "../node_modules/firebase/firebase-firestore.js"
-            ];
-            const aWebDependencies = [
-                "https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js",
-                "https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js",
-                "https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"
-            ];
-
-            function loadExternalScript(sSource) {
-                var oScript = document.createElement("script");
-                oScript.setAttribute("src", sSource);
-                document.body.appendChild(oScript);
-            }
-
-            let aDependencies = !!window.api && window.api.isElectron ? aElectronDependencies : aWebDependencies;
-            aDependencies.forEach(loadExternalScript);
-        </script>
 
         <!-- Update ui5 resource roots for the electron environment -->
         <script>
