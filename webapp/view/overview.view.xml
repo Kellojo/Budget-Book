@@ -90,8 +90,7 @@
                     }
                 }" 
                 itemPress="onTransactionPress"
-                showNoData="{= !${device>/system/phone}}"
-                noDataText="{i18n>overviewPageNoTransactionsYet}">
+                showNoData="{= !${device>/system/phone}}">
                     <columns>
                         <kM:SortColumn width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
                         <kM:SortColumn>
@@ -130,7 +129,7 @@
                     </ColumnListItem>
                 </Table>
 
-                <kM:NoData text="{i18n>overviewPageNoTransactionsYetExtended}" icon="sap-icon://create" visible="{= ${Database>/transactions}.length === 0 &amp;&amp; ${device>/system/phone}}" />
+                <kM:NoData text="{i18n>overviewPageNoTransactionsYetExtended}" icon="sap-icon://create" visible="{= ${Database>/transactions}.length === 0}" />
             </kM:content>
 
         </kM:Page>

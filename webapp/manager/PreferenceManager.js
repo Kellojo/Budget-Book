@@ -40,7 +40,10 @@ sap.ui.define([
         if (this.getOwnerComponent().getFirebaseManager().getIsLoggedIn()) {
             let oUserCollection = await this._getPreferencesFirestoreDocument().get(),
                 oUserData = oUserCollection.data();
+
+            if (!!oUserData) {
                 oPreferences = oUserData.preferences;
+            }
         } else {
             oPreferences = {
                 currency: localStorage.getItem("preferences_currency"),
