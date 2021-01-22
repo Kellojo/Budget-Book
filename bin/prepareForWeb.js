@@ -5,6 +5,7 @@ const chalk = require("chalk");
 const sIndex = "./webapp/index.html";
 sIndexHtml = fs.readFileSync(sIndex).toString();
 sIndexHtml = sIndexHtml.replace('"kellojo.m": "../lib/kellojo.m/src/kellojo/m"', '"kellojo.m": "./resources/kellojo/m"');
+sIndexHtml = sIndexHtml.replace("https://openui5.hana.ondemand.com/1.85.2/resources/sap-ui-core.js", "./resources/sap-ui-core.js");
 fs.writeFileSync(sIndex, sIndexHtml);
 console.log(chalk.green("Updated index.html"));
 

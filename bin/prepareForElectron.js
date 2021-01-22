@@ -1,12 +1,19 @@
 const fs = require("fs");
 const chalk = require("chalk");
+const { IS_DEVELOPMENT } = require("../electron/config");
+require("../electron/config");
 
 // Update index.html
 const sIndex = "./webapp/index.html";
 sIndexHtml = fs.readFileSync(sIndex).toString();
 sIndexHtml = sIndexHtml.replace('"kellojo.m": "./resources/kellojo/m"', '"kellojo.m": "../lib/kellojo.m/src/kellojo/m"');
+sIndexHtml = sIndexHtml.replace("./resources/sap-ui-core.js", "https://openui5.hana.ondemand.com/1.85.2/resources/sap-ui-core.js");
 fs.writeFileSync(sIndex, sIndexHtml);
 console.log(chalk.green("Updated index.html"));
+
+if (!IS_DEVELOPMENT) {
+    console.log(chalk.redBright("Starting locally with electron development mode disabled. Please enable it in the config."));
+}
 
 // copy over themes
 const aThemes = ["sap_fiori_3", "sap_fiori_3_dark"];
