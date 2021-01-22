@@ -176,43 +176,30 @@
     <body class="sapUiBody sapUiSizeCompact" id="content">
 
 
-        <!-- Update ui5 resource roots for the electron environment -->
+        <!-- Update ui5 resources -->
+        <script id="sap-ui-bootstrap" 
+            type="text/javascript"
+            src="resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_fiori_3"
+            data-sap-ui-libs="sap.m, kellojo.m, sap.ui.unified"
+            data-sap-ui-async="true"
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-resourceroots='{
+                "com.budgetBook": "./",
+                "kellojo.m": "./resources/kellojo/m"
+            }'
+            data-sap-ui-compatVersion="edge">
+        </script>
+
         <script>
-
-            let sKellojoMRoots = "./resources/kellojo/m";
-            let sUi5Source = "https://openui5.hana.ondemand.com/1.85.2/resources/sap-ui-core.js";
-            if (!!window.api && window.api.isElectron) {
-                sKellojoMRoots = "../lib/kellojo.m/src/kellojo/m";   
-            }
-
-            if (!!window.api && !window.api.isDevelopment || !["localhost", ""].includes(window.location.hostname)) {
-                sUi5Source = "./resources/sap-ui-custom.js";
-            }
-
-            var oScript = document.createElement("script");
-            oScript.setAttribute("src", sUi5Source);
-            oScript.setAttribute("id", "sap-ui-bootstrap");
-            oScript.setAttribute("data-sap-ui-theme", "sap_fiori_3");
-            oScript.setAttribute("data-sap-ui-libs", "sap.m, kellojo.m, sap.ui.unified");
-            oScript.setAttribute("data-sap-ui-compatVersion", "edge");
-            oScript.setAttribute("data-sap-ui-async", "true");
-            oScript.setAttribute("data-sap-ui-xx-bindingSyntax", "complex");
-            oScript.setAttribute("data-sap-ui-resourceroots", `{
-                    "com.budgetBook": "./",
-                    "kellojo.m": "${sKellojoMRoots}"
-            }`);
-            oScript.onload = () => {
-                sap.ui.getCore().attachInit(function () {
-                    new sap.ui.core.ComponentContainer({
-                        name: "com.budgetBook",
-                        manifest: true,
-                        height: "100%",
-                        id: "mainComponent"
-                    }).placeAt("content");
-                });
-            };
-
-            document.body.appendChild(oScript);
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    name: "com.budgetBook",
+                    manifest: true,
+                    height: "100%",
+                    id: "mainComponent"
+                }).placeAt("content");
+            });
         </script>
 
         <!-- Add service worker -->
