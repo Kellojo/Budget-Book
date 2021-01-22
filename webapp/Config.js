@@ -28,16 +28,15 @@ sap.ui.define([
             }
         },
 
+        MODEL_SIZE_LIMIT: 10000,
 
         DEFAULT_IS_TRANSACTION_COMPLETED: true,
-
         DEFAULT_OVERVIEW_CHART_TYPE: "overTime",
-
+        DEFAULT_CURRENCY: "EUR",
 
         TRANSACTION_TYPE_EXPENSE: "expense",
         TRANSACTION_TYPE_INCOME: "income",
 
-        DEFAULT_CURRENCY: "EUR",
         AVAILABLE_CURRENCIES: [
             {
                 code: "USD",

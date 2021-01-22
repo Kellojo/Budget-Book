@@ -24,6 +24,7 @@ sap.ui.define([
 
         var oComponent = this.getOwnerComponent();
         this.m_oDatabaseModel = new JSONModel({transactions: []});
+        this.m_oDatabaseModel.setSizeLimit(Config.MODEL_SIZE_LIMIT);
         this.getOwnerComponent().setModel(this.m_oDatabaseModel, "Database");
 
         if (oComponent.getIsWebVersion()) {
