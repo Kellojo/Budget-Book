@@ -6,9 +6,6 @@ It is written with electron and OpenUI5.
 Any feature requests or bug reports are welcome, do not hesitate 😀
 
 
-[![Build Status](https://travis-ci.org/Kellojo/Budget-Book.svg?branch=master)](https://travis-ci.org/Kellojo/Budget-Book)
-
-
 
 ## Download
 Download the latest version from [here](https://github.com/Kellojo/Budget-Book/releases/latest).
