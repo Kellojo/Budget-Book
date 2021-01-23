@@ -8,7 +8,7 @@
     "start-electron-local": "npm run build-styles && node ./bin/prepareForElectron.js && npm start",
     "start-web": "node ./bin/prepareForWeb.js && ui5 serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run ui5-build",
+    "build": "node ./bin/prepareForElectron.js && npm run ui5-build",
     "ui5-build": "ui5 build -a self-contained --dest=dist-ui5 && npm run build-styles && node ./bin/copyThemesDist.js",
     "build-styles": "cd ./lib/kellojo.m && ui5 build dev",
     "pack": "electron-builder --dir",
