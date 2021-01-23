@@ -8,6 +8,7 @@
       "dist/**"
     ],
     "predeploy": [
+        "node ./bin/prepareForWeb.js",
         "npm run ui5-build"
     ],
     "rewrites": []
