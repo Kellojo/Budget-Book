@@ -24,7 +24,6 @@ Android & iOS are supported.
 - see in which areas you spend most of your money and in which you have the highest incomes.
 - track them anywhere using the responsive [mobile app](https://budget-book-7ebd4.web.app)
 - enjoy the dark side with the new dark mode 
-- you can run the app in the background and track transactions on the fly
 - support for popular currencies
 
 
