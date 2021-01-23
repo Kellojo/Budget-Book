@@ -177,6 +177,7 @@ sap.ui.define([
             this.m_oUserHelpMenu.close();
         } else {
             this.m_oUserHelpMenu = new UserHelpMenu({
+                installationHintVisible: Device.os.ios,
                 closeButtonVisible: Device.system.phone,
                 close: function() {
                     this.m_oUserHelpMenu = null;
