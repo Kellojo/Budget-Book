@@ -407,29 +407,6 @@ sap.ui.define([
     };
 
     /**
-     * Registers an control to this component
-     * @param {sap.ui.core.control} oControl - the control to register
-     * @parag {string} sName - the name of the control
-     */
-    ComponentProto.registerControl = function (oControl, sName) {
-        if (oControl && sName) {
-            this["m_c" + sName] = oControl;
-
-            if (sName === "BackButton") {
-                oControl.attachPress(this.onBackButtonPressed.bind(this));
-            }
-        }
-    };
-    
-    /**
-     * Gets a control by it's name
-     * @param {string} sName - the name of the control. Has to be registered beforehand!
-     */
-    ComponentProto.getControl = function (sName) {
-        return this["m_c" + sName];
-    };
-
-    /**
      * Get's the resource model
      * @returns {sap.ui.model.resource.ResourceBundle}
      * @public
@@ -437,14 +414,6 @@ sap.ui.define([
     ComponentProto.getResourceBundle = function() {
         return this.m_oResourceBundle.getResourceBundle();
     };
-
-    // -----------------------
-    // App Header
-    // -----------------------
-
-    ComponentProto.onBackButtonPressed = function () {
-        this.navBack();
-    };
-
+    
     return Component;
 })
