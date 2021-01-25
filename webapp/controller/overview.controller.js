@@ -37,13 +37,6 @@ sap.ui.define([
     }
 
     ControllerProto.onPageEnter = function() {
-        this.getOwnerComponent().getAppManager()
-            .setShowBackButton(false)
-            .setShowAppHeader(true)
-            .setShowSaveButton(false)
-            .setShowMenuButton(this.getOwnerComponent().getIsWebVersion())
-            .setShowAddButton(true)
-            .setAppTitle("");
         this.updateTabs();
     }
 
@@ -57,11 +50,17 @@ sap.ui.define([
         });
     }
 
-    ControllerProto.onAddPlannedButtonPress = function() {
+    ControllerProto.onAddPlannedButtonPress = function () {
         this.getOwnerComponent().openDialog("PlanTransactionDialog", {
             title: "planTransactionDialogTitle",
             submitButton: true,
         });
+    }
+    ControllerProto.onAddTransactionPress = function () {
+        this.getOwnerComponent().toTransaction(null);
+    }
+    ControllerProto.onUserHelpMenuPress = function (oEvent) {
+        this.getOwnerComponent().openUserHelpMenu(oEvent.getSource());
     }
 
     ControllerProto.onSynchronizeTransactionButtonPress = function(oEvent) {
@@ -221,6 +220,11 @@ sap.ui.define([
         oTabFilter = new Filter({
             path: "occurredOn",
             test: function(sDate) {
+                // always show all transactions on phone
+                if (Device.system.phone) {
+                    return true;
+                }
+
                 var oDate = new Date(sDate);
                 return oDate.getFullYear() == oTab.year &&
                 (!oTab.hasOwnProperty("month") || oDate.getMonth() == oTab.month);
@@ -359,7 +363,7 @@ sap.ui.define([
             }
         });
 
-        sTransactionVolume = Formatter.formatCurrency(iTransactionVolume, Config.DEFAULT_CURRENCY);
+        sTransactionVolume = Formatter.formatCurrency(iTransactionVolume, oComponent.getPreferenceManager().getPreference("/currency"));
         return oComponent.getResourceBundle().getText(
             iTransactionCount < 2 ? "overviewPageSubtitle" : "overviewPageSubtitlePlural",
             [iTransactionCount, sTransactionVolume]

@@ -31,8 +31,7 @@
             }
         }" 
         itemPress="onTransactionPress"
-        showNoData="{= !${device>/system/phone}}"
-        noDataText="{i18n>overviewPageNoTransactionsYet}">
+        showNoData="{= !${device>/system/phone}}">
             <columns>
                 <kM:SortColumn width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
                 <kM:SortColumn>
@@ -61,17 +60,17 @@
                             <Label text="{ path: 'Database>occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
                         </HBox>
                     </VBox>
-                    <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft" visible="{device>/system/phone}"/>
+                    <kM:Currency value="{Database>amount}" currency="{Preferences>/currency}" negative="{= ${Database>type} === 'expense'}" class="kellojoM-spacingLeft" visible="{device>/system/phone}"/>
                 </HBox>
                 
-                <kM:Currency value="{Database>amount}" currency="EUR" negative="{= ${Database>type} === 'expense'}"/>
+                <kM:Currency value="{Database>amount}" currency="{Preferences>/currency}" negative="{= ${Database>type} === 'expense'}"/>
                 <Label text="{Database>category}"/>
                 
                 <Button icon="sap-icon://delete" press="onDeleteTransactionPress" type="Unstyled" class="budgetBookOverview-deleteIcon"/>
             </ColumnListItem>
         </Table>
 
-        <kM:NoData text="{i18n>overviewPageNoTransactionsYetExtended}" icon="sap-icon://create" visible="{= ${Database>/transactions}.length === 0 &amp;&amp; ${device>/system/phone}}" />
+        <kM:NoData text="{i18n>overviewPageNoTransactionsYetExtended}" icon="sap-icon://create" visible="{= ${Database>/transactions}.length === 0}" />
     </kM:Wrapper>
 
 </core:FragmentDefinition>

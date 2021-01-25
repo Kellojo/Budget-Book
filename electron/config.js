@@ -1,7 +1,7 @@
 
 
 // modify me based on local development or production build
-const IS_DEVELOPMENT = true;
+const IS_DEVELOPMENT = false;
 
 
 

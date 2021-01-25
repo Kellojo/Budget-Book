@@ -103,7 +103,7 @@ sap.ui.define([
         if (this.getOwnerComponent().getIsWebVersion()) {
             // insert into firestore
             assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
-            await this._getSynchronizeableTransactionFirebaseCollection().doc(sPath).set(oTransaction); 
+            await this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction.id || sPath).set(oTransaction); 
         } else {
             var oDatabase = this.getOwnerComponent().getDatabase();
             oDatabase.setModelProperty(sPath, oTransaction);
@@ -442,7 +442,7 @@ sap.ui.define([
             category: "",
             occurredOn: new Date(),
             type: Config.TRANSACTION_TYPE_EXPENSE,
-            currency: Config.DEFAULT_CURRENCY,
+            currency: this.getOwnerComponent().getPreferenceManager().getPreference("/currency"),
             isCompleted: Config.DEFAULT_IS_TRANSACTION_COMPLETED
         };
     }

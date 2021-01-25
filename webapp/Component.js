@@ -18,6 +18,7 @@ sap.ui.define([
     "com/budgetBook/manager/Formatter",
     "com/budgetBook/manager/AppManager",
     "com/budgetBook/manager/FirebaseManager",
+    "com/budgetBook/manager/PreferenceManager",
 
     "kellojo/m/library"
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
@@ -50,6 +51,9 @@ sap.ui.define([
             sEnvironment = oUrlParams.get("env");
         this.setIsTrayVersion(sEnvironment === "tray");
         this.setIsWebVersion(!window.api || (!!window.api && !window.api.isElectron));
+        if (!this.getIsWebVersion()) {
+            document.getElementsByTagName('html')[0].classList.add('sap-electron');
+        }
 
         if (!this.getIsWebVersion()) {
             document.documentElement.classList.add("sap-electron");
@@ -99,12 +103,6 @@ sap.ui.define([
             };
         }
 
-        //init app header model
-        this.setModel(new JSONModel({
-            visible: true
-        }), "appHeader");
-        this.m_oAppHeaderModel = this.getModel("appHeader");
-
         // attach auth state change event
         this.getFirebaseManager().attachAuthStateChanged(this.onAuthStateChange.bind(this));
     };
@@ -123,6 +121,8 @@ sap.ui.define([
                 this.toAuth();
             }
         }
+        
+        this.getPreferenceManager().fetchPreferences();
     }
 
     /**
@@ -131,7 +131,15 @@ sap.ui.define([
      * @param {string} sBean
      */
     ComponentProto.createBean = function(sPrefix, sBean) {
-        var oBean = com.budgetBook[sPrefix][sBean];
+        if (sPrefix != "directReferences") {
+            var oBean = com.budgetBook[sPrefix][sBean];
+        } else {
+            var oBean = sBean;
+            let aParts = oBean.getMetadata().getName().split(".");
+            sBean = aParts[aParts.length - 1];
+        }
+
+
         if (!oBean) {
             jQuery.sap.log.error("Could not initialize missing bean '" + sPrefix + "." + sBean + "'");
         } else {
@@ -172,64 +180,52 @@ sap.ui.define([
         if (!!this.m_oUserHelpMenu) {
             this.m_oUserHelpMenu.close();
         } else {
-            var oResourceBundle = this.getResourceBundle();
             this.m_oUserHelpMenu = new UserHelpMenu({
+                installationHintVisible: Device.os.ios,
                 closeButtonVisible: Device.system.phone,
                 close: function() {
                     this.m_oUserHelpMenu = null;
                 }.bind(this),
-                items: [
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuExport"),
-                        icon: "sap-icon://upload",
-                        press: function() {
-                            this.getDatabase().exportData({
-                                success: () => {MessageToast.show(
-                                    this.getResourceBundle().getText("exportDataSuccess")
-                                )}
-                            });
-                        }.bind(this),
-                        hasSpacer: true,
-                        visible: !this.getIsWebVersion()
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuGetMobileApp"),
-                        icon: "sap-icon://iphone",
-                        press: function() {
-                            this.getAppManager().openHelpPage();
-                        }.bind(this),
-                        hasSpacer: false,
-                        visible: !Device.system.phone
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuGetDesktopApp"),
-                        icon: "sap-icon://sys-monitor",
-                        press: function() {
-                            this.getAppManager().openHelpPage();
-                        }.bind(this),
-                        hasSpacer: false,
-                        visible: Device.system.phone
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuWebsite"),
-                        icon: "sap-icon://internet-browser",
-                        press: function() {
-                            this.getAppManager().openHelpPage();
-                        }.bind(this),
-                        hasSpacer: true,
-                        visible: true
-                    },
-                    {
-                        title: oResourceBundle.getText("UserHelpMenuSignOut"),
-                        icon: "sap-icon://log",
-                        press: function(oEvent) {
-                            this.getFirebaseManager().signOut();
-                            this.m_oUserHelpMenu.close();
-                        }.bind(this),
-                        hasSpacer: false,
-                        visible: this.getFirebaseManager().getIsLoggedIn()
-                    }
-                ]
+                
+
+                exportPress: function() {
+                    this.getDatabase().exportData({
+                        success: () => {MessageToast.show(
+                            this.getResourceBundle().getText("exportDataSuccess")
+                        )}
+                    });
+                }.bind(this),
+                exportVisible: !this.getIsWebVersion(),
+
+                getMobileAppPress: function() {
+                    this.getAppManager().openHelpPage();
+                }.bind(this),
+                getDesktopAppPress: function() {
+                    this.getAppManager().openHelpPage();
+                }.bind(this),
+
+                websitePress: function() {
+                    this.getAppManager().openHelpPage();
+                }.bind(this),
+
+                signOutPress: function(oEvent) {
+                    this.getFirebaseManager().signOut();
+                    this.m_oUserHelpMenu.close();
+                }.bind(this),
+                signOutVisible: this.getFirebaseManager().getIsLoggedIn(),
+
+                switchDarkMode: (oEvent) => {
+                    this.getThemeManager().setTheme(
+                        oEvent.getParameter("enabled") ? "sap_fiori_3_dark" : "sap_fiori_3"
+                    );
+                },
+                darkModeEnabled: this.getThemeManager().isDarkTheme(),
+
+                availableCurrencies: Config.AVAILABLE_CURRENCIES,
+                selectedCurrency: this.getPreferenceManager().getPreference("/currency"),
+                currencyChange: (oEvent) => {
+                    this.getPreferenceManager().setPreference("/currency", oEvent.getParameter("currency"));
+                }
             });
             //this.getUIArea().addDependent(this.m_oUserHelpMenu);
             this.m_oUserHelpMenu.openBy(oSource, "Bottom");
@@ -309,6 +305,7 @@ sap.ui.define([
         }).addStyleClass("kellojoMDialog");
         oDialog.setModel(this.m_oResourceBundle, "i18n");
         oDialog.setModel(this.getModel("User"), "User");
+        oDialog.setModel(this.getModel("Preferences"), "Preferences");
 
         // Submit Button
         if (oSettings.submitButton) {
@@ -427,35 +424,7 @@ sap.ui.define([
             }
         }
     };
-    /**
-     * Registeres an app header control
-     */
-    ComponentProto.registerAppHeaderControl = function(oControl, sName) {
-        this.registerControl(oControl, sName);
-        var oVisibilityData = this.m_oAppHeaderModel.getData(),
-            sName = sName + "Visibility";
-        oVisibilityData[sName] = false;
-        this.m_oAppHeaderModel.setData(oVisibilityData);
-        this.m_oAppHeaderModel.refresh(true);
-        this["set" + sName] = function(sName, bVisible, fnPressHandler) {
-            if (bVisible) {
-                this.m_oAppHeaderModel.setProperty("/visible", true); //show app header, if value is true
-
-                //attach/detach press handler if present
-                if (typeof oControl.data("pressHandler") === "function") {
-                    oControl.detachPress(oControl.data("pressHandler"));
-                }
-                if (
-                    typeof oControl.attachPress === "function" &&
-                    typeof fnPressHandler === "function"
-                ) {
-                    oControl.attachPress(fnPressHandler);
-                    oControl.data("pressHandler", fnPressHandler);
-                }
-            }
-            this.m_oAppHeaderModel.setProperty("/" + sName, bVisible);
-        }.bind(this, sName);
-    };
+    
     /**
      * Gets a control by it's name
      * @param {string} sName - the name of the control. Has to be registered beforehand!
@@ -473,41 +442,12 @@ sap.ui.define([
         return this.m_oResourceBundle.getResourceBundle();
     };
 
-    //
+    // -----------------------
     // App Header
-    //
+    // -----------------------
 
     ComponentProto.onBackButtonPressed = function () {
         this.navBack();
-    };
-
-    /**
-     * Sets the button visibility of any registered button, and the press handler
-     */
-    ComponentProto.setButtonVisible = function (sName, bVisible, fnOnPress) {
-        this.m_oAppHeaderModel.setProperty("/" + sName + "Visible", bVisible);
-
-        var oButton = this.getControl(sName),
-            sHandlerVarName = "m_fnOn" + sName + "Press";
-        if (this[sHandlerVarName]) {
-            oButton.detachPress(this[sHandlerVarName]);
-            this[sHandlerVarName] = null;
-        }
-        if (fnOnPress) {
-            oButton.attachPress(fnOnPress);
-            this[sHandlerVarName] = fnOnPress;
-        }
-    };
-
-    /**
-     * Hides all app hesder buttons
-     * @public
-     */
-    ComponentProto.hideAllAppHeaderButtons = function() {
-        var aKeys = Object.keys(this.m_oAppHeaderModel.getData());
-        aKeys.forEach(function(sKey) {
-            this.m_oAppHeaderModel.setProperty("/" + sKey, false);
-        }.bind(this));
     };
 
     return Component;

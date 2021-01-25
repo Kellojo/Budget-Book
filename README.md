@@ -6,9 +6,6 @@ It is written with electron and OpenUI5.
 Any feature requests or bug reports are welcome, do not hesitate 😀
 
 
-[![Build Status](https://travis-ci.org/Kellojo/Budget-Book.svg?branch=master)](https://travis-ci.org/Kellojo/Budget-Book)
-
-
 
 ## Download
 Download the latest version from [here](https://github.com/Kellojo/Budget-Book/releases/latest).
@@ -23,6 +20,9 @@ Android & iOS are supported.
 - compare different months and years to gain insight into your spending behaviour
 - see in which areas you spend most of your money and in which you have the highest incomes.
 - track them anywhere using the responsive [mobile app](https://budget-book-7ebd4.web.app)
+- enjoy the dark side with the new dark mode 
+- support for popular currencies
+
 
 
 ## Mobile app sync

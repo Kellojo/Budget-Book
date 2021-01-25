@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>BudgetP Splash Screen</title>
+		<meta charset="UTF-8">
+        
+
+        <style>
+            .sap-phone body {
+                background-color: #005575 !important;
+            }
+
+            #idLoadingScreen {
+
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 99999;
+
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                visibility: visible !important;
+                background-color: white;
+
+                -webkit-app-region: drag;
+
+            }
+
+            #idLoadingScreen * {
+                visibility: visible !important;
+            }
+
+            #idLoadingScreen-AppTitle {
+                font-family: Arial,Helvetica,sans-serif !important;
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+                color: #32363a;
+
+                background-image: linear-gradient(to left, #005575, #514a9d);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            #idLoadingScreen-StatusIndicatorContainer {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #idLoadingScreen-StatusIndicator {
+                font-family: Arial,Helvetica,sans-serif !important;
+                font-size: 1rem;
+                color: #32363a;
+            }
+
+            .spinner {
+                text-align: left;
+                display: inline-flex;
+            }
+
+            .spinner > div {
+                border-radius: 100%;
+                display: inline-block;
+                -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+                animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            }
+
+             .spinner .bounce1 {
+                -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s;
+            }
+
+            .spinner .bounce2 {
+                -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="idLoadingScreen">
+            <div id="idLoadingScreen-AppTitle">BudgetP</div>
+            <div id="idLoadingScreen-StatusIndicatorContainer">
+                <div id="idLoadingScreen-StatusIndicator">Loading</div>
+                <div class="spinner">
+                    <div class="bounce1">.</div>
+                    <div class="bounce2">.</div>
+                    <div class="bounce3">.</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -17,11 +17,6 @@ sap.ui.define([
     };
 
 
-    ControllerProto.onPageEnter = function() {
-        this.getOwnerComponent().getAppManager().setShowAppHeader(false);
-    }
-
-
     ControllerProto.onGetStartedPress = function() {
         this.m_oNavContainer.to(this.byId("idGetStartedPage"));
     }

@@ -4,6 +4,7 @@ const path = require("path");
 const windowStateKeeper = require('electron-window-state');
 const { autoUpdater } = require("electron-updater");
 const config = require("./config.js");
+const IPC = require("./ipc");
 
 let mainWindow = null;
 
@@ -42,7 +43,7 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadFile(config.INDEX_HTML);
 
-  require("./menuBar");
+  //require("./menuBar");
 
   // Open the DevTools.
   if (config.IS_DEVELOPMENT) {
@@ -72,4 +73,4 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-require("./ipc").startIPC(mainWindow);
+new IPC(mainWindow);

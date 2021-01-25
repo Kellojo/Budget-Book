@@ -9,57 +9,75 @@
     width="100%"
     id="idAppView">
 
-    <kM:Page class="budgetBookPage" id="idPage" 
-        showHeader="{= !${device>/isTrayVersion}}"
-        condensed="{device>/isTrayVersion}"
-        subTitle="{
-            parts: ['Database>/transactions', '/currentTab'],
-            formatter: '.formatPageSubtitle'
-        }">
+    <Page class="budgetBookApp-Page" titleAlignment="Center" showFooter="false" showHeader="{device>/system/phone}">
+        <customHeader>
+			<Bar design="Header" class="budgetBookApp-Page-Header">
+                <contentLeft>
+                    <Avatar initials="{User>/userInitials}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress"/>
+                </contentLeft>
 
-        <kM:title>
-            <MenuButton text="{/currentTransactionTab}" type="Transparent">
-                <menu>
-                    <Menu>
-                        <MenuItem text="{i18n>overviewPageTitleYourTransactions}" press="onTransactionTabChanged" visible="{= ${/currentTransactionTab} !== ${i18n>overviewPageTitleYourTransactions}}"/>
-                        <MenuItem text="{i18n>overviewPageTitlePlannedTransactions}" press="onTransactionTabChanged" visible="{= ${/currentTransactionTab} !== ${i18n>overviewPageTitlePlannedTransactions}}"/>
-                    </Menu>
-                </menu>
-            </MenuButton>
-        </kM:title>
+                <contentMiddle>
+                    <kM:AppTitle title="{i18n>appTitle}"/>
+                </contentMiddle>
 
-        <kM:actions>
-            <OverflowToolbar width="100%">
-                <ToolbarSpacer />
-                <SegmentedButton selectedKey="{Database>/preferences/currentOverviewChartType}"
-                    visible="{= !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0 &amp;&amp; ${/currentTransactionTab} === ${i18n>overviewPageTitleYourTransactions}}">
-					<items>
-						<SegmentedButtonItem icon="sap-icon://donut-chart" tooltip="{i18n>chartTypeByCategory}" key="byCategory" />
-						<SegmentedButtonItem icon="sap-icon://line-chart-time-axis" tooltip="{i18n>chartTypeOverTime}" key="overTime"/>
-					</items>
-				</SegmentedButton>
-                <MenuButton text="{i18n>addTransaction}" visible="{= ${/currentTransactionTab} === ${i18n>overviewPageTitleYourTransactions}}">
-                    <Menu>
-                        <MenuItem text="{i18n>addTransactionManually}" press="onAddButtonPress"/>
-                        <MenuItem 
-                            text="{ path: '/synchronizeableTransactionsCount', formatter: '.formatSynchronizeFromAppActionText'}"
-                            press="onSynchronizeTransactionButtonPress"
-                            visible="{= !${device>/isWebVersion}}"/>
-                    </Menu>
+                <contentRight>
+                    <Button icon="sap-icon://add" press="onAddTransactionPress" class="budgetBookApp-Page-BackButton"  type="Transparent"/>
+                </contentRight>
+            </Bar>
+		</customHeader>
+
+        <kM:Page class="budgetBookPage" id="idPage"
+            showHeader="{= !${device>/isTrayVersion}}"
+            condensed="{device>/isTrayVersion}"
+            subTitle="{
+                parts: ['Database>/transactions', '/currentTab', 'Preferences>/currency'],
+                formatter: '.formatPageSubtitle'
+            }">
+
+            <kM:title>
+                <MenuButton text="{/currentTransactionTab}" type="Transparent">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>overviewPageTitleYourTransactions}" press="onTransactionTabChanged" visible="{= ${/currentTransactionTab} !== ${i18n>overviewPageTitleYourTransactions}}"/>
+                            <MenuItem text="{i18n>overviewPageTitlePlannedTransactions}" press="onTransactionTabChanged" visible="{= ${/currentTransactionTab} !== ${i18n>overviewPageTitlePlannedTransactions}}"/>
+                        </Menu>
+                    </menu>
                 </MenuButton>
-                <Button text="{i18n>planTransaction}" press="onAddPlannedButtonPress" visible="{= ${/currentTransactionTab} === ${i18n>overviewPageTitlePlannedTransactions}}"/>
-            </OverflowToolbar>
-        </kM:actions>
+            </kM:title>
 
-        <kM:mainAction>
-            <SearchField width="250px" value="{/searchQuery}" liveChange="onSearch"/>
-        </kM:mainAction>
-            
-        <kM:content>
-            <core:Fragment fragmentName="com.budgetBook.view.transactions" type="XML"/>
-            <core:Fragment fragmentName="com.budgetBook.view.plannedTransactions" type="XML"/>
-        </kM:content>
+            <kM:actions>
+                <OverflowToolbar width="100%">
+                    <ToolbarSpacer />
+                    <SegmentedButton selectedKey="{Database>/preferences/currentOverviewChartType}" visible="{= !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}">
+                        <items>
+                            <SegmentedButtonItem icon="sap-icon://donut-chart" tooltip="{i18n>chartTypeByCategory}" key="byCategory" />
+                            <SegmentedButtonItem icon="sap-icon://line-chart-time-axis" tooltip="{i18n>chartTypeOverTime}" key="overTime"/>
+                        </items>
+                    </SegmentedButton>
+                    <MenuButton text="{i18n>addTransaction}" visible="{= ${/currentTransactionTab} === ${i18n>overviewPageTitleYourTransactions}}">
+                        <Menu>
+                            <MenuItem text="{i18n>addTransactionManually}" press="onAddButtonPress"/>
+                            <MenuItem 
+                                text="{ path: '/synchronizeableTransactionsCount', formatter: '.formatSynchronizeFromAppActionText'}"
+                                press="onSynchronizeTransactionButtonPress"
+                                visible="{= !${device>/isWebVersion}}"/>
+                        </Menu>
+                    </MenuButton>
+                    <Button text="{i18n>planTransaction}" press="onAddPlannedButtonPress" visible="{= ${/currentTransactionTab} === ${i18n>overviewPageTitlePlannedTransactions}}"/>
+                </OverflowToolbar>
+            </kM:actions>
 
-    </kM:Page>
+            <kM:mainAction>
+                <SearchField width="250px" value="{/searchQuery}" liveChange="onSearch"/>
+            </kM:mainAction>
+
+            <kM:content>
+                <core:Fragment fragmentName="com.budgetBook.view.transactions" type="XML"/>
+                <core:Fragment fragmentName="com.budgetBook.view.plannedTransactions" type="XML"/>
+            </kM:content>
+
+        </kM:Page>
+
+    </Page>
 
 </mvc:View>

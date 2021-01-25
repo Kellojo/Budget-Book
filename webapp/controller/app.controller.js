@@ -19,7 +19,7 @@ sap.ui.define([
             'phone@2': './img/appicon.png',
             'tablet': './img/appicon.png',
             'tablet@2': './img/appicon.png',
-            'icon': './img/favicon.png' 
+            'icon': './img/icon@2x.png' 
         });
 
         // set apple status bar appearance
@@ -30,13 +30,7 @@ sap.ui.define([
         this.getOwnerComponent().navBack();
     }
 
-    ControllerProto.onAddTransactionPress = function() {
-        this.getOwnerComponent().toTransaction(null);
-    }
 
-    ControllerProto.onSaveButtonPress = function() {
-        this.getOwnerComponent().getAppManager().fireSaveButtonPress();
-    }
 
     ControllerProto.onUserHelpMenuPress = function(oEvent) {
         this.getOwnerComponent().openUserHelpMenu(oEvent.getSource());

@@ -3,24 +3,73 @@
 	<head>
 		<title>Budget Planner</title>
 		<meta charset="UTF-8">
-		<meta name="description" content="A simple firebase, UI5 roles/user management app">
+		<meta name="description" content="A simple app designed to help you tracking your income and expenses.">
 		<meta name="keywords" content="Budget Book">
 		<meta name="author" content="Kellojo (https://github.com/Kellojo)">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="manifest" href="/manifest.json">
         
         <!-- iOS Home Screen Settings -->
         <meta name="apple-mobile-web-app-title" content="BudgetP">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="theme-color" content="#005575">
-       
 
-        <link rel="stylesheet" type="text/css" href="./styling/style.css">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+        <link rel="apple-touch-startup-image" href="img/appicon@192x192.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
 
         <link rel="preload" href="./lib/kellojo.m/src/kellojo/m/themes/sap_fiori_3/library.css" as="style"/>
         <link rel="preconnect" href="https://openui5.hana.ondemand.com">
 
+        <!-- Firebase web -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+        <!-- Firebase electron -->
+        <script src="../node_modules/firebase/firebase-app.js"></script>
+        <script src="../node_modules/firebase/firebase-auth.js"></script>
+        <script src="../node_modules/firebase/firebase-firestore.js"></script>
+
         <style>
+            .sap-phone body {
+                background-color: #005575 !important;
+            }
+
             #idLoadingScreen {
 
                 position: fixed;
@@ -28,7 +77,7 @@
                 right: 0;
                 top: 0;
                 bottom: 0;
-                z-index: 10;
+                z-index: 99999;
 
                 display: flex !important;
                 flex-direction: column;
@@ -110,66 +159,41 @@
     <body class="sapUiBody sapUiSizeCompact" id="content">
 
 
-        <!-- Firebase web/electron -->
-        <script>
-            const aElectronDependencies = [
-                "../node_modules/firebase/firebase-app.js",
-                "../node_modules/firebase/firebase-auth.js",
-                "../node_modules/firebase/firebase-firestore.js"
-            ];
-            const aWebDependencies = [
-                "https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js",
-                "https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js",
-                "https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"
-            ];
-
-            function loadExternalScript(sSource) {
-                var oScript = document.createElement("script");
-                oScript.setAttribute("src", sSource);
-                document.body.appendChild(oScript);
-            }
-
-            let aDependencies = !!window.api && window.api.isElectron ? aElectronDependencies : aWebDependencies;
-            aDependencies.forEach(loadExternalScript);
+        <!-- Update ui5 resources -->
+        <script id="sap-ui-bootstrap" 
+            type="text/javascript"
+            src="./resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_fiori_3"
+            data-sap-ui-libs="sap.m, kellojo.m, sap.ui.unified"
+            data-sap-ui-async="true"
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-resourceroots='{
+                "com.budgetBook": "./",
+                "kellojo.m": "./resources/kellojo/m"
+            }'
+            data-sap-ui-compatVersion="edge">
         </script>
 
-        <!-- Update ui5 resource roots for the electron environment -->
         <script>
+            sap.ui.getCore().attachInit(function () {
+                new sap.ui.core.ComponentContainer({
+                    name: "com.budgetBook",
+                    manifest: true,
+                    height: "100%",
+                    id: "mainComponent"
+                }).placeAt("content");
+            });
+        </script>
 
-            let sKellojoMRoots = "./resources/kellojo/m";
-            let sUi5Source = "https://openui5.hana.ondemand.com/1.85.2/resources/sap-ui-core.js";
-            if (!!window.api && window.api.isElectron) {
-                sKellojoMRoots = "../lib/kellojo.m/src/kellojo/m";   
-            }
-
-            if (!!window.api && !window.api.isDevelopment || !["localhost", ""].includes(window.location.hostname)) {
-                sUi5Source = "./resources/sap-ui-custom.js";
-            }
-
-            var oScript = document.createElement("script");
-            oScript.setAttribute("src", sUi5Source);
-            oScript.setAttribute("id", "sap-ui-bootstrap");
-            oScript.setAttribute("data-sap-ui-theme", "sap_fiori_3");
-            oScript.setAttribute("data-sap-ui-libs", "sap.m, kellojo.m, sap.ui.unified");
-            oScript.setAttribute("data-sap-ui-compatVersion", "edge");
-            oScript.setAttribute("data-sap-ui-async", "true");
-            oScript.setAttribute("data-sap-ui-xx-bindingSyntax", "complex");
-            oScript.setAttribute("data-sap-ui-resourceroots", `{
-                    "com.budgetBook": "./",
-                    "kellojo.m": "${sKellojoMRoots}"
-            }`);
-            oScript.onload = () => {
-                sap.ui.getCore().attachInit(function () {
-                    new sap.ui.core.ComponentContainer({
-                        name: "com.budgetBook",
-                        manifest: true,
-                        height: "100%",
-                        id: "mainComponent"
-                    }).placeAt("content");
+        <!-- Add service worker -->
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator && !window.api) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
                 });
-            };
-
-            document.body.appendChild(oScript);
+            }
         </script>
 
         <!-- Moment.js -->

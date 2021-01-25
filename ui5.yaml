@@ -17,16 +17,3 @@ server:
     afterMiddleware: compression
     configuration:
       index: "index.html"
-
-
----
-specVersion: "2.2"
-kind: extension
-type: project-shim
-metadata:
-  name: kellojo.m
-shims:
-  configurations:
-    kellojo.m:
-      specVersion: "2.2"
-      type: library
