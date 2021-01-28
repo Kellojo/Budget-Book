@@ -39,7 +39,7 @@
   "devDependencies": {
     "@ui5/cli": "^2.7.1",
     "chokidar": "^3.4.0",
-    "electron": "^8.5.2",
+    "electron": "^9.4.0",
     "electron-builder": "^22.9.1",
     "ui5-middleware-index": "^0.2.2",
     "chalk": "^4.1.0"
