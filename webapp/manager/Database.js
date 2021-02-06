@@ -10,7 +10,8 @@ sap.ui.define([
     var oSchema = ManagedObject.extend("com.budgetBook.manager.Database", {
         metadata: {
             events: {
-                update: {}
+                update: {},
+                dataLoaded: {}
             }
         }
     }),
@@ -69,6 +70,7 @@ sap.ui.define([
         this.m_oDatabaseModel.attachPropertyChange(this._onPropertyChange.bind(this));
         this.getOwnerComponent().setModel(this.m_oDatabaseModel, "Database");
         this.fireUpdate();
+        this.fireDataLoaded();
         this.getOwnerComponent().notifyDatabaseReady();
     };
 

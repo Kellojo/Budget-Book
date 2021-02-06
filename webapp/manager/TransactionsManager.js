@@ -2,6 +2,7 @@ sap.ui.define([
     "kellojo/m/beans/BeanBase",
     "sap/base/Log",
     "com/budgetBook/Config",
+    "com/budgetBook/thirdparty/uuidv4.min",
 ], function (ManagedObject, Log, Config) {
     "use strict";
 
@@ -140,29 +141,35 @@ sap.ui.define([
         var oDatabase = this.getOwnerComponent().getDatabase(),
             oData = oDatabase.getData(),
             aCategories = [],
-            aCounterCache = {};
+            aCounterCache = {},
+            fnGrabCategories = (oTransaction) => {
+                var sCategory = oTransaction.category != null && oTransaction.category != undefined ? oTransaction.category : oTransaction.transaction.category;
+
+                if (!aCategories.includes(sCategory) &&
+                    sCategory != undefined &&
+                    sCategory != null) {
+                    aCategories.push(sCategory);
+                }
+
+                if (!aCounterCache.hasOwnProperty(sCategory)) {
+                    aCounterCache[sCategory] = 0;
+                }
+
+                aCounterCache[sCategory]++;
+            }
 
         if (!oData.transactions) {
             return aCategories;
         }
 
 
+        // normal transactions
+        oData.transactions.forEach(fnGrabCategories);
 
-        oData.transactions.forEach((oTransaction) => {
-            var sCategory = oTransaction.category;
-
-            if (!aCategories.includes(sCategory) &&
-                sCategory != undefined &&
-                sCategory != null)  {
-                aCategories.push(sCategory);
-            }
-
-            if (!aCounterCache.hasOwnProperty(sCategory)) {
-                aCounterCache[sCategory] = 0;
-            }
-
-            aCounterCache[sCategory]++;
-        });
+        // planned transactions
+        if (oData.plannedTransactions) {
+            oData.plannedTransactions.forEach(fnGrabCategories);
+        }
 
         // sort by usage
         aCategories.sort((a, b) => {
@@ -481,6 +488,7 @@ sap.ui.define([
 
         oTransaction.title = oTransaction.title.trim();
         oTransaction.category = oTransaction.category.trim();
+        oPlannedTransaction.uuid = uuidv4();
 
         oData.plannedTransactions.push(oPlannedTransaction);
         oDatabase.refresh();
@@ -507,6 +515,20 @@ sap.ui.define([
 
         oDatabase.refresh();
     }
+
+    /**
+     * Updates an existing planned transaction
+     * @param {string} sPath either the model path
+     * @param {object} oTransaction
+     * @public
+     */
+    ManagerProto.updatePlannedTransaction = async function (sPath, oTransaction) {
+        assert(typeof sPath === "string", "Path for transaction not defined");
+        assert(!!oTransaction, "Transaction not defined");
+
+        var oDatabase = this.getOwnerComponent().getDatabase();
+        oDatabase.setModelProperty(sPath, oTransaction);
+    };
 
 
     return oManager;

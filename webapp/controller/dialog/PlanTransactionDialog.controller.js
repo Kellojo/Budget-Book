@@ -17,7 +17,7 @@ sap.ui.define([
         this.m_oViewModel = new JSONModel({
             isLoading: false,
             categories: [],
-            isExistingTransaction: false,
+            minDate: new Date(),
         });
         this.getView().setModel(this.m_oViewModel);
 
@@ -42,6 +42,7 @@ sap.ui.define([
         }
 
         // Update view model
+        this.m_oViewModel.setProperty("/minDate", !!oSettings.hasOwnProperty("transaction") ?  new Date(0) : new Date());
         this.m_oTransactionModel.setData(oPlannedTransaction)
         this.m_oTransactionModel.refresh(true);
         this.m_oViewModel.setProperty( "/categories", this.getOwnerComponent().getTransactionsManager().getAllCategories());
@@ -57,8 +58,12 @@ sap.ui.define([
             oPlannedTransaction.startingFrom =  oPlannedTransaction.startingFrom.toISOString();
             oPlannedTransaction.createdOn = new Date().toISOString();
 
-            this.getOwnerComponent().getTransactionsManager().insertPlannedTransaction(oPlannedTransaction);
-
+            if (!!this.m_oSettings.fnOnSubmit) {
+                // let the caller handle
+                this.m_oSettings.fnOnSubmit(oPlannedTransaction);
+            } else {
+                this.getOwnerComponent().getTransactionsManager().insertPlannedTransaction(oPlannedTransaction);
+            }
             this.m_oTransactionModel.setData(null);
             this.m_oSettings = null;
         }

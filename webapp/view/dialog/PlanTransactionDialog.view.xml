@@ -17,12 +17,12 @@
             categories="{/categories}"
             isCompleted="{transaction>/transaction/isCompleted}"
             occurredOn="{transaction>/transaction/occurredOn}"
-            type="{transaction>/type}"
+            type="{transaction>/transaction/type}"
 
             reccurrence="{transaction>/reccurrence}"
             startingFrom="{transaction>/startingFrom}"
-            isPlannedTransaction="true"
-            />
+            today="{/minDate}"
+            isPlannedTransaction="true" />
     </kM:Wrapper>
 
 </mvc:View>

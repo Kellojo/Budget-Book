@@ -13,6 +13,8 @@ sap.ui.define([
                 "FirebaseManager",
                 "Database",
                 "PreferenceManager",
+                "MessageManager",
+                "PlannedTransactionsManager",
             ],
 
             directReferences: [

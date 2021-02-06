@@ -19,6 +19,8 @@ sap.ui.define([
     "com/budgetBook/manager/AppManager",
     "com/budgetBook/manager/FirebaseManager",
     "com/budgetBook/manager/PreferenceManager",
+    "com/budgetBook/manager/MessageManager",
+    "com/budgetBook/manager/PlannedTransactionsManager",
 
     "kellojo/m/library"
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
@@ -163,6 +165,9 @@ sap.ui.define([
 
     ComponentProto.toOverview = function () {
         this.getRouter().navTo("overview", {});
+    };
+    ComponentProto.toPlannedTransactionsView  = function() {
+        this.getRouter().navTo("plannedTransactions", {});
     };
     ComponentProto.toWelcomeScreen = function () {
         this.getRouter().navTo("welcome", {});
