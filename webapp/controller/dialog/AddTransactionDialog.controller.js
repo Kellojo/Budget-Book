@@ -79,6 +79,13 @@ sap.ui.define([
         this.m_oViewModel.setProperty( "/categories",  oTransactionsManager.getAllCategories());
 
         this.m_oTransactionEditor.resetValidation();
+
+        // focus title field for new transactions
+        if (!oSettings.hasOwnProperty("transaction")) {
+            setTimeout(() => {
+                this.m_oTransactionEditor.focusTitle();
+            }, 400);
+        }
     };
 
     ControllerProto.onSubmitButtonPress = function() {
