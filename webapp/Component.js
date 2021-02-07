@@ -23,7 +23,7 @@ sap.ui.define([
     "com/budgetBook/manager/PlannedTransactionsManager",
 
     "kellojo/m/library"
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config, Licences) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
@@ -70,6 +70,9 @@ sap.ui.define([
             bundleName: "com.budgetBook.i18n.i18n"
         });
         this.setModel(this.m_oResourceBundle, "i18n");
+
+        // open source licenses model
+        this.setModel(new JSONModel("./config/package-licenses.json"), "OpenSourceLicenses");
 
         // init routing, for non web version
         if (!this.getIsWebVersion()) {
@@ -186,6 +189,7 @@ sap.ui.define([
             this.m_oUserHelpMenu.close();
         } else {
             this.m_oUserHelpMenu = new UserHelpMenu({
+                openSourceLicenses: this.getModel("OpenSourceLicenses").getData(),
                 installationHintVisible: Device.os.ios,
                 closeButtonVisible: Device.system.phone,
                 close: function() {

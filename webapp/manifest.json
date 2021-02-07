@@ -51,6 +51,9 @@
             },
             "Preferences": {
                 "type": "sap.ui.model.json.JSONModel"
+            },
+            "OpenSourceLicenses": {
+                "type": "sap.ui.model.json.JSONModel"
             }
         },
         
