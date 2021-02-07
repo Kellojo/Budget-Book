@@ -146,7 +146,7 @@ sap.ui.define([
     }
 
     ControllerProto.onBackButtonPress = function() {
-        this.getOwnerComponent().onBackButtonPressed();
+        this.getOwnerComponent().navBack();
     }
 
     
