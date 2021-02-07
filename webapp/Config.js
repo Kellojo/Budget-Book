@@ -1,6 +1,7 @@
 sap.ui.define([
-    "kellojo/m/beans/ThemeManager"
-], function (ThemeManager) {
+    "kellojo/m/library",
+    "kellojo/m/beans/ThemeManager",
+], function (library, ThemeManager) {
     "use strict";
 
     return {
@@ -12,6 +13,8 @@ sap.ui.define([
                 "FirebaseManager",
                 "Database",
                 "PreferenceManager",
+                "MessageManager",
+                "PlannedTransactionsManager",
             ],
 
             directReferences: [
@@ -23,6 +26,9 @@ sap.ui.define([
             AddTransactionDialog: {
                 view: "com.budgetBook.view.dialog.AddTransactionDialog"
             },
+            PlanTransactionDialog: {
+                view: "com.budgetBook.view.dialog.PlanTransactionDialog"
+            },
             SyncWithAppDialog: {
                 view: "com.budgetBook.view.dialog.SyncWithAppDialog"
             }
@@ -31,6 +37,8 @@ sap.ui.define([
         MODEL_SIZE_LIMIT: 10000,
 
         DEFAULT_IS_TRANSACTION_COMPLETED: true,
+        DEFAULT_PLANNED_TRANSACTION_RECURRENCE: library.TransactionreccurrenceType.MONTHLY,
+
         DEFAULT_OVERVIEW_CHART_TYPE: "overTime",
         DEFAULT_CURRENCY: "EUR",
 

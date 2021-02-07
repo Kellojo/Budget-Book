@@ -30,7 +30,7 @@
             title="{transaction>/title}"
             amount="{transaction>/amount}"
             category="{transaction>/category}"
-            categories="{transaction>/categories}"
+            categories="{/categories}"
             isCompleted="{transaction>/isCompleted}"
             occurredOn="{transaction>/occurredOn}"
             type="{transaction>/type}"

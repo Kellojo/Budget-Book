@@ -7,8 +7,9 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/FilterType",
     "sap/m/MessageBox",
-    "sap/ui/Device"
-], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType, MessageBox, Device) {
+    "sap/ui/Device",
+    "kellojo/m/beans/Sorter",
+], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType, MessageBox, Device, Sorter) {
     "use strict";
 
     var Controller = ControllerBase.extend("com.budgetBook.controller.overview", {}),
@@ -20,6 +21,9 @@ sap.ui.define([
     ControllerProto.onInit = function() {
         ControllerBase.prototype.onInit.apply(this, arguments);
         var oComponent = this.getOwnerComponent();
+
+        this.m_oPage = this.byId("idPage");
+        this.m_oTable = this.byId("idTable");
 
         this.m_oViewModel = new JSONModel({
             months: [],
@@ -85,26 +89,20 @@ sap.ui.define([
         }
     }
 
-    ControllerProto.onDeleteTransactionPress = function(oEvent) {
+    ControllerProto.onDeleteTransactionPress = async function(oEvent) {
         var oBindingContext = oEvent.getSource().getBindingContext("Database"),
-            oTransaction = oBindingContext.getObject(),
-            oComponent = this.getOwnerComponent(),
-            oResourceBundle = oComponent.getResourceBundle(),
-            sDeleteAction = oResourceBundle.getText("dialogDelete");
+            oTransaction = oBindingContext.getObject();
 
-        MessageBox.warning(oResourceBundle.getText("deleteTransactionWarning"), {
-            emphasizedAction: sDeleteAction,
-            actions: [
-                oResourceBundle.getText("dialogCancel"),
-                sDeleteAction
-            ],
-            onClose: function(sAction) {
-                if (sAction === sDeleteAction) {
-                    oComponent.getTransactionsManager().deleteTransaction(oTransaction);
-                }
-            }.bind(this)
-        });
+        try {
+            await this.getOwnerComponent().getMessageManager().showDeleteTransactionWarning();
+        } catch (error) {
+            return;
+        }
+        
+        this.getOwnerComponent().getTransactionsManager().deleteTransaction(oTransaction);
     }
+
+
 
     /**
      * Triggered by the searhc, when the search term changes.
@@ -142,6 +140,10 @@ sap.ui.define([
             oTransaction.isCompleted = oEvent.getParameter("selected");
             this.getOwnerComponent().getTransactionsManager().updateTransaction(oTransaction.id, oTransaction);
         }
+    };
+
+    ControllerProto.onTransactionTabChanged = function(oEvent) {
+        this.getOwnerComponent().toPlannedTransactionsView();
     };
 
     /**
@@ -275,17 +277,7 @@ sap.ui.define([
      * @public
      */
     ControllerProto.sortByDate = function(oDateA, oDateB) {
-        var iDateA = oDateA,
-            iDateB = oDateB;
-        if (typeof oDateA === "string") {
-            iDateA = new Date(oDateA).getTime();
-        }
-
-        if (typeof oDateB !== "number") {
-            iDateB = new Date(oDateB).getTime();
-        }
-
-        return iDateB - iDateA;
+        return Sorter.sortByDate(oDateA, oDateB);
     };
 
     // ----------------------------------
@@ -294,36 +286,13 @@ sap.ui.define([
 
     /**
      * Formats the page subtitle
-     * @param {array} aTransactions
      * @returns {string} 
      * @public
      */
-    ControllerProto.formatPageSubtitle = function() {
-        var oTable = this.byId("idTable"),
-            aItems = oTable.getItems(),
-            iTransactionCount = aItems.length,
-            iTransactionVolume = 0,
-            sTransactionVolume = "",
-            oComponent = this.getOwnerComponent();
-
-        aItems.forEach((oItem) => {
-            var oTransaction = oItem.getBindingContext("Database").getObject();
-
-            // can be undefined, in case of a deleted transaction
-            if (!!oTransaction) {
-                if (oTransaction.type == Config.TRANSACTION_TYPE_EXPENSE) {
-                    iTransactionVolume -= oTransaction.amount;
-                } else {
-                    iTransactionVolume += oTransaction.amount;
-                }
-            }
-        });
-
-        sTransactionVolume = Formatter.formatCurrency(iTransactionVolume, oComponent.getPreferenceManager().getPreference("/currency"));
-        return oComponent.getResourceBundle().getText(
-            iTransactionCount < 2 ? "overviewPageSubtitle" : "overviewPageSubtitlePlural",
-            [iTransactionCount, sTransactionVolume]
-        );
+    ControllerProto.formatPageSubtitle = function () {
+        const sSubTitle = Formatter.formatPageSubtitle(this.m_oTable, this.getOwnerComponent());
+        this.m_oPage.setSubTitle(sSubTitle);
+        return sSubTitle;
     }
 
     ControllerProto.formatCurrentTab = function() {
@@ -453,7 +422,7 @@ sap.ui.define([
      * @private
      */
     ControllerProto._createDataPointsForMonth = function(sYear, sMonth, iStartTransactionVolume) {
-        var iDaysInCurrentMonth =  new Date(sYear, sMonth, 0).getDate(),
+        var iDaysInCurrentMonth = new Date(sYear, parseInt(sMonth) + 1, 0).getDate(),
             iTransactionVolume = iStartTransactionVolume,
             aDataPoints = [],
             oComponent = this.getOwnerComponent();

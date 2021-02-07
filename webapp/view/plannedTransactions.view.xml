@@ -1,0 +1,93 @@
+<mvc:View
+	controllerName="com.budgetBook.controller.plannedTransactions"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:kM="kellojo.m"
+    height="100%"
+    width="100%"
+    id="idAppView">
+
+    <Page class="budgetBookApp-Page" titleAlignment="Center" showFooter="false" showHeader="{device>/system/phone}">
+        <kM:Page class="budgetBookPage" id="idPage"
+            condensed="{device>/isTrayVersion}"
+            subTitle="{
+                parts: ['Database>/plannedTransactions', 'Preferences>/currency'],
+                formatter: '.formatPageSubtitle'
+            }">
+
+            <kM:title>
+                <MenuButton text="{i18n>overviewPageTitlePlannedTransactions}" type="Transparent">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>overviewPageTitleYourTransactions}" press="onTransactionTabChanged" />
+                        </Menu>
+                    </menu>
+                </MenuButton>
+            </kM:title>
+
+            <kM:actions>
+                <OverflowToolbar width="100%">
+                    <ToolbarSpacer />
+                    <Button text="{i18n>planTransaction}" press="onAddPlannedButtonPress"/>
+                </OverflowToolbar>
+            </kM:actions>
+
+            <kM:mainAction>
+                <SearchField width="250px" value="{/searchQuery}" liveChange="onSearch"/>
+            </kM:mainAction>
+
+            <kM:content>
+                <kM:TableActions visible="{= !${device>/system/phone} }" />
+
+                <Table items="{ 
+                    path: 'Database>/plannedTransactions',
+                    groupHeaderFactory: '.getGroupHeader',
+                    sorter : {
+                        path : '',
+                        group: '.groupTransactions',
+                        comparator: '.sortByDate'
+                    }
+                }" 
+                id="idTable"
+                itemPress="onTransactionPress"
+                showNoData="{= !${device>/system/phone}}">
+                    <columns>
+                        <Column width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
+                        <Column>
+                            <Label text="{i18n>transaction}" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Label text="{i18n>category}" />
+                        </Column>
+                        <Column>
+                            <Label text="{i18n>transaction}" />
+                        </Column>
+                        <Column width="48px"/>
+                    </columns>
+
+                    <ColumnListItem type="Active" class="budgetBookOverview-transactionItem">
+                        <CheckBox class="budgetBook-CheckBox" selected="{Database>transaction/isCompleted}"/>
+                        
+                        <VBox width="100%">
+                            <Text text="{Database>transaction/title}" class="kellojoM-lineSpacing"/>
+                            <Label text="{ parts: ['Database>reccurrence', 'Database>startingFrom'], formatter: '.formatStartingFrom'}" class="budgetBookTable-lightLabel"/>
+                            <Label text="{ path: 'Database>transaction/occurredOn', formatter: '.formatter.fromNow'}" class="budgetBookTable-lightLabel"/>
+                        </VBox>  
+                        
+                        <kM:Currency value="{Database>transaction/amount}" currency="{Preferences>/currency}" negative="{= ${Database>transaction/type} === 'expense'}"/>
+                        <Label text="{Database>transaction/category}"/>
+                        
+                        <Button icon="sap-icon://delete" press="onDeletePlannedTransactionPress" type="Unstyled" class="budgetBookOverview-deleteIcon"/>
+                    </ColumnListItem>
+                </Table>
+
+                <kM:NoData text="{i18n>plannedTransactionsPageNoTransactionsYet}" icon="sap-icon://accelerated" visible="{= ${Database>/plannedTransactions}.length === 0}" />
+            </kM:content>
+
+        </kM:Page>
+
+    </Page>
+
+</mvc:View>

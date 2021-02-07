@@ -8,9 +8,10 @@
     "start-electron-local": "npm run build-styles && node ./bin/prepareForElectron.js && npm start",
     "start-web": "node ./bin/prepareForWeb.js && ui5 serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build-styles && node ./bin/prepareForElectron.js && npm run ui5-build",
-    "ui5-build": "ui5 build -a self-contained --dest=dist-ui5 && npm run build-styles && node ./bin/copyThemesDist.js",
+    "build": "npm run build-licenses && npm run build-styles && node ./bin/prepareForElectron.js && npm run ui5-build",
+    "ui5-build": "npm run build-licenses && ui5 build -a self-contained --dest=dist-ui5 && npm run build-styles && node ./bin/copyThemesDist.js",
     "build-styles": "cd ./lib/kellojo.m && ui5 build dev",
+    "build-licenses": "license-checker --production --json > ./webapp/config/package-licenses.json",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "release": "npm run ui5-build && electron-builder",
@@ -21,7 +22,7 @@
     "url": "git+https://github.com/Kellojo/Budget-Book.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "bugs": {
     "url": "https://github.com/Kellojo/Budget-Book/issues"
   },
@@ -38,11 +39,12 @@
   },
   "devDependencies": {
     "@ui5/cli": "^2.7.1",
+    "chalk": "^4.1.0",
     "chokidar": "^3.4.0",
     "electron": "^9.4.0",
     "electron-builder": "^22.9.1",
-    "ui5-middleware-index": "^0.2.2",
-    "chalk": "^4.1.0"
+    "license-checker": "^25.0.1",
+    "ui5-middleware-index": "^0.2.2"
   },
   "dependencies": {
     "electron-store": "^5.1.1",

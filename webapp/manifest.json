@@ -51,6 +51,9 @@
             },
             "Preferences": {
                 "type": "sap.ui.model.json.JSONModel"
+            },
+            "OpenSourceLicenses": {
+                "type": "sap.ui.model.json.JSONModel"
             }
         },
         
@@ -81,6 +84,11 @@
                     "target": "overview"
                 },
                 {
+                    "pattern": "plannedTransactions",
+                    "name": "plannedTransactions",
+                    "target": "plannedTransactions"
+                },
+                {
                     "pattern": "welcome",
                     "name": "welcome",
                     "target": "welcome"
@@ -100,6 +108,9 @@
             "targets": {
                 "overview": {
                     "viewName": "overview"
+                },
+                "plannedTransactions": {
+                    "viewName": "plannedTransactions"
                 },
                 "welcome": {
                     "viewName": "welcome"

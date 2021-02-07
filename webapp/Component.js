@@ -19,9 +19,11 @@ sap.ui.define([
     "com/budgetBook/manager/AppManager",
     "com/budgetBook/manager/FirebaseManager",
     "com/budgetBook/manager/PreferenceManager",
+    "com/budgetBook/manager/MessageManager",
+    "com/budgetBook/manager/PlannedTransactionsManager",
 
     "kellojo/m/library"
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config) {
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config, Licences) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
@@ -55,6 +57,10 @@ sap.ui.define([
             document.getElementsByTagName('html')[0].classList.add('sap-electron');
         }
 
+        if (!this.getIsWebVersion()) {
+            document.documentElement.classList.add("sap-electron");
+        }
+
         //set device & i18n model
         var oDevice = Device;
         oDevice.isWebVersion = this.getIsWebVersion();
@@ -64,6 +70,9 @@ sap.ui.define([
             bundleName: "com.budgetBook.i18n.i18n"
         });
         this.setModel(this.m_oResourceBundle, "i18n");
+
+        // open source licenses model
+        this.setModel(new JSONModel("./config/package-licenses.json"), "OpenSourceLicenses");
 
         // init routing, for non web version
         if (!this.getIsWebVersion()) {
@@ -160,6 +169,9 @@ sap.ui.define([
     ComponentProto.toOverview = function () {
         this.getRouter().navTo("overview", {});
     };
+    ComponentProto.toPlannedTransactionsView  = function() {
+        this.getRouter().navTo("plannedTransactions", {});
+    };
     ComponentProto.toWelcomeScreen = function () {
         this.getRouter().navTo("welcome", {});
     };
@@ -177,6 +189,8 @@ sap.ui.define([
             this.m_oUserHelpMenu.close();
         } else {
             this.m_oUserHelpMenu = new UserHelpMenu({
+                signOutVisible: this.getFirebaseManager().getIsLoggedIn(),
+                openSourceLicenses: this.getModel("OpenSourceLicenses").getData(),
                 installationHintVisible: Device.os.ios,
                 closeButtonVisible: Device.system.phone,
                 close: function() {

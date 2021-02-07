@@ -13,7 +13,7 @@
         <customHeader>
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
-                    <Avatar initials="{User>/userInitials}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress"/>
+                    <Avatar initials="{User>/userInitials}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{device>/system/phone}"/>
                 </contentLeft>
 
                 <contentMiddle>
@@ -26,7 +26,7 @@
             </Bar>
 		</customHeader>
 
-        <kM:Page class="budgetBookPage" id="idPage" title="{i18n>overviewPageTitle}" 
+        <kM:Page class="budgetBookPage" id="idPage"
             showHeader="{= !${device>/isTrayVersion}}"
             condensed="{device>/isTrayVersion}"
             subTitle="{
@@ -34,10 +34,20 @@
                 formatter: '.formatPageSubtitle'
             }">
 
+            <kM:title>
+                <MenuButton text="{i18n>overviewPageTitleYourTransactions}" type="Transparent" enabled="{= !${device>/isWebVersion}}">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>overviewPageTitlePlannedTransactions}" press="onTransactionTabChanged"/>
+                        </Menu>
+                    </menu>
+                </MenuButton>
+            </kM:title>
+
             <kM:actions>
                 <OverflowToolbar width="100%">
                     <ToolbarSpacer />
-                    <SegmentedButton selectedKey="{Database>/preferences/currentOverviewChartType}" visible="{= !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}">
+                    <SegmentedButton selectedKey="{Database>/preferences/currentOverviewChartType}" visible="{= !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0 &amp;&amp; !${device>/isWebVersion}}">
                         <items>
                             <SegmentedButtonItem icon="sap-icon://donut-chart" tooltip="{i18n>chartTypeByCategory}" key="byCategory" />
                             <SegmentedButtonItem icon="sap-icon://line-chart-time-axis" tooltip="{i18n>chartTypeOverTime}" key="overTime"/>
@@ -58,9 +68,8 @@
             <kM:mainAction>
                 <SearchField width="250px" value="{/searchQuery}" liveChange="onSearch"/>
             </kM:mainAction>
-                
-            <kM:content>
 
+            <kM:content>
                 <kM:LineChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatMonthChartData'}" visible="{= ${Database>/preferences/currentOverviewChartType} === 'overTime' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
                 <kM:ColumnChart dataPoints="{ parts: ['Database>/transactions', '/currentTab'], formatter: '.formatCategoryChartData'}" columnPress="onCategoryColumnPress" visible="{= ${Database>/preferences/currentOverviewChartType} === 'byCategory' &amp;&amp; !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0}"/>
 
@@ -94,13 +103,13 @@
                     <columns>
                         <kM:SortColumn width="48px" styleClass="budgetBookOverview-transactionItem-checkBoxColumn"/>
                         <kM:SortColumn>
-                            <Label text="Transaction" />
+                            <Label text="{i18n>transaction}" />
                         </kM:SortColumn>
                         <kM:SortColumn hAlign="End" visible="{= !${device>/system/phone}}">
-                            <Label text="Amount" />
+                            <Label text="{i18n>amount}" />
                         </kM:SortColumn>
                         <kM:SortColumn visible="{= !${device>/system/phone}}">
-                            <Label text="Category" />
+                            <Label text="{i18n>category}" />
                         </kM:SortColumn>
                         <kM:SortColumn width="48px" visible="{= !${device>/system/phone}}"/>
                     </columns>
@@ -130,6 +139,7 @@
                 </Table>
 
                 <kM:NoData text="{i18n>overviewPageNoTransactionsYetExtended}" icon="sap-icon://create" visible="{= ${Database>/transactions}.length === 0}" />
+
             </kM:content>
 
         </kM:Page>

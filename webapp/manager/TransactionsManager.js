@@ -2,6 +2,7 @@ sap.ui.define([
     "kellojo/m/beans/BeanBase",
     "sap/base/Log",
     "com/budgetBook/Config",
+    "com/budgetBook/thirdparty/uuidv4.min",
 ], function (ManagedObject, Log, Config) {
     "use strict";
 
@@ -139,21 +140,45 @@ sap.ui.define([
     ManagerProto.getAllCategories = function() {
         var oDatabase = this.getOwnerComponent().getDatabase(),
             oData = oDatabase.getData(),
-            aCategories = [];
+            aCategories = [],
+            aCounterCache = {},
+            fnGrabCategories = (oTransaction) => {
+                var sCategory = oTransaction.category != null && oTransaction.category != undefined ? oTransaction.category : oTransaction.transaction.category;
+
+                if (!aCategories.includes(sCategory) &&
+                    sCategory != undefined &&
+                    sCategory != null) {
+                    aCategories.push(sCategory);
+                }
+
+                if (!aCounterCache.hasOwnProperty(sCategory)) {
+                    aCounterCache[sCategory] = 0;
+                }
+
+                aCounterCache[sCategory]++;
+            }
 
         if (!oData.transactions) {
             return aCategories;
         }
 
-        oData.transactions.forEach((oTransaction) => {
-            var sCategory = oTransaction.category;
 
-            if (!aCategories.includes(sCategory) &&
-                sCategory != undefined &&
-                sCategory != null)  {
-                aCategories.push(sCategory);
-            }
+        // normal transactions
+        oData.transactions.forEach(fnGrabCategories);
+
+        // planned transactions
+        if (oData.plannedTransactions) {
+            oData.plannedTransactions.forEach(fnGrabCategories);
+        }
+
+        // sort by usage
+        aCategories.sort((a, b) => {
+            return aCounterCache[b] - aCounterCache[a];
         });
+
+        // make sure empty value is always up top
+        aCategories = aCategories.filter(item => item !== "")
+        aCategories.unshift("");
 
         return aCategories;
     };
@@ -410,6 +435,100 @@ sap.ui.define([
             .doc(firebase.auth().currentUser.uid)
             .collection("categories");
     }
+
+
+    /**
+     * Creates a default transaction object
+     * @returns {object}
+     * @public
+     */
+    ManagerProto.getDefaultTransaction = function() {
+        return {
+            title: "",
+            amount: 0,
+            category: "",
+            occurredOn: new Date(),
+            type: Config.TRANSACTION_TYPE_EXPENSE,
+            currency: this.getOwnerComponent().getPreferenceManager().getPreference("/currency"),
+            isCompleted: Config.DEFAULT_IS_TRANSACTION_COMPLETED
+        };
+    }
+
+    /**
+     * Creates a default planned transaction object
+     * @returns {object}
+     * @public
+     */
+    ManagerProto.getDefaultPlannedTransaction = function() {
+        return {
+            reccurrence: Config.DEFAULT_PLANNED_TRANSACTION_RECURRENCE,
+            startingFrom: new Date(),
+            transaction: this.getDefaultTransaction(),
+        }
+    }
+
+
+    ManagerProto.insertPlannedTransaction = function(oPlannedTransaction) {
+        let oTransaction = oPlannedTransaction.transaction;
+        assert(!!oTransaction, "Transaction not defined");
+        assert(!!oTransaction.title, "Transaction doesn't have a title");
+        assert(!!oTransaction.occurredOn, "Transaction doesn't have a date");
+        assert(!!oTransaction.amount, "Transaction doesn't have an amount");
+        assert(!!oPlannedTransaction.startingFrom, "Transaction doesn't have a startingFrom date");
+        assert(!!oPlannedTransaction.reccurrence, "Transaction doesn't have a reccurrence");
+
+        var oComponent = this.getOwnerComponent(),
+            oDatabase = oComponent.getDatabase(),
+            aOldCategories = this.getAllCategories(),
+            oData = oDatabase.getData();
+
+        if (!oData.plannedTransactions) {
+            oData.plannedTransactions = [];
+        }
+
+        oTransaction.title = oTransaction.title.trim();
+        oTransaction.category = oTransaction.category.trim();
+        oPlannedTransaction.uuid = uuidv4();
+
+        oData.plannedTransactions.push(oPlannedTransaction);
+        oDatabase.refresh();
+
+        // check for new category, which needs to be synced to the firestore
+        if (aOldCategories.length != this.getAllCategories().length) {
+            this.uploadCategories();
+        }
+    }
+
+    /**
+     * Deletes the transaction at the given path
+     * @param {object} oPlannedTransaction - the tansaction to delete
+     */
+    ManagerProto.deletePlannedTransaction = async function(oPlannedTransaction) {
+        assert(!!oPlannedTransaction, "Transaction not defined");
+        
+        var oDatabase = this.getOwnerComponent().getDatabase(),
+        aTransactions = oDatabase.getData().plannedTransactions,
+        iIndex = aTransactions.indexOf(oPlannedTransaction);
+
+        assert(iIndex >= 0, "The transaction to delete could not be found in the database");    
+        aTransactions.splice(iIndex, 1);
+
+        oDatabase.refresh();
+    }
+
+    /**
+     * Updates an existing planned transaction
+     * @param {string} sPath either the model path
+     * @param {object} oTransaction
+     * @public
+     */
+    ManagerProto.updatePlannedTransaction = async function (sPath, oTransaction) {
+        assert(typeof sPath === "string", "Path for transaction not defined");
+        assert(!!oTransaction, "Transaction not defined");
+
+        var oDatabase = this.getOwnerComponent().getDatabase();
+        oDatabase.setModelProperty(sPath, oTransaction);
+    };
 
 
     return oManager;
