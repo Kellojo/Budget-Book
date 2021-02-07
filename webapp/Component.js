@@ -189,6 +189,7 @@ sap.ui.define([
             this.m_oUserHelpMenu.close();
         } else {
             this.m_oUserHelpMenu = new UserHelpMenu({
+                signOutVisible: this.getFirebaseManager().getIsLoggedIn(),
                 openSourceLicenses: this.getModel("OpenSourceLicenses").getData(),
                 installationHintVisible: Device.os.ios,
                 closeButtonVisible: Device.system.phone,
