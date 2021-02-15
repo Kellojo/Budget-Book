@@ -19,11 +19,66 @@
                         <Text text="{i18n>welcomeAppDescription}" class="kellojoM-lineSpacing"/>
                         <Text text="{i18n>welcomeAppMission}" class="kellojoM-lineSpacing"/>
 
-                        <Link text="{i18n>welcomeGetStarted}" class="budgetBookWelcome-getStarted" press="onGetStartedPress"/>
+                        <Link text="{i18n>welcomeGetStarted}" class="budgetBookWelcome-getStarted" press="onToStep1Press"/>
                     </kM:Wrapper>
                     
                 </content>
             </Page>
+
+
+            <Page id="idTransactionsPage" showHeader="false">
+                <content>
+
+                    <kM:Wrapper class="budgetBookWelcome-contentWrapper">
+                        <Image src="./img/BudgetP Transactions Preview.png" class="budgetBookWelcome-fadeoutPreview-app"/>
+
+                        <Text text="{i18n>welcomeTransactionsTitle}" class="budgetBookWelcome-title"/>
+                        <Text text="{i18n>welcomeTransactionsDescription}" class="kellojoM-lineSpacing"/>
+                        <Text text="{i18n>welcomeTransactionsDescription2}" class="kellojoM-lineSpacing"/>
+
+                        <Link text="{i18n>next}" class="budgetBookWelcome-getStarted" press="onToStep2Press"/>
+                    </kM:Wrapper>
+                    
+                </content>
+            </Page>
+
+
+            <Page id="idPlanTransactionsPage" showHeader="false">
+                <content>
+
+                    <kM:Wrapper class="budgetBookWelcome-contentWrapper">
+                        <Image src="./img/BudgetP Plan Transactions Preview.png" class="budgetBookWelcome-fadeoutPreview-app"/>
+
+                        <Text text="{i18n>welcomePlanTransactionsTitle}" class="budgetBookWelcome-title"/>
+                        <Text text="{i18n>welcomePlanTransactionsDescription}" class="kellojoM-lineSpacing"/>
+                        <Text text="{i18n>welcomePlanTransactionsDescription2}" class="kellojoM-lineSpacing"/>
+
+                        <Link text="{i18n>next}" class="budgetBookWelcome-getStarted" press="onToStep3Press"/>
+                    </kM:Wrapper>
+                    
+                </content>
+            </Page>
+
+
+            <Page id="idMobileAppPage" showHeader="false">
+                <content>
+
+                    <kM:Wrapper class="budgetBookWelcome-contentWrapper">
+                        <Image src="./img/BudgetP Mobile Preview.png" class="budgetBookWelcome-fadeoutPreview"/>
+
+                        <Text text="{i18n>welcomeMobileAppTitle}" class="budgetBookWelcome-title"/>
+                        <Text text="{i18n>welcomeMobileAppDescription}" class="kellojoM-lineSpacing"/>
+                        <HBox alignItems="Center">
+                            <Text text="{i18n>welcomeMobileAppGetTheApp}"/>
+                            <Link text="{i18n>welcomeMobileAppLink}" class="budgetBookWelcome-link" press="onGetMobileAppPress" />
+                        </HBox>
+
+                        <Link text="{i18n>next}" class="budgetBookWelcome-getStarted" press="onGetStartedPress"/>
+                    </kM:Wrapper>
+                    
+                </content>
+            </Page>
+
 
             <Page id="idGetStartedPage" showHeader="false">
                 <content>

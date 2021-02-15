@@ -17,8 +17,23 @@ sap.ui.define([
     };
 
 
-    ControllerProto.onGetStartedPress = function() {
+    ControllerProto.onToStep1Press = function() {
+        this.m_oNavContainer.to(this.byId("idTransactionsPage"));
+    }
+    ControllerProto.onToStep2Press = function () {
+        this.m_oNavContainer.to(this.byId("idPlanTransactionsPage"));
+    }
+    ControllerProto.onToStep3Press = function() {
+        this.m_oNavContainer.to(this.byId("idMobileAppPage"));
+    }
+
+
+    ControllerProto.onGetStartedPress = function () {
         this.m_oNavContainer.to(this.byId("idGetStartedPage"));
+    }
+
+    ControllerProto.onGetMobileAppPress = function() {
+        this.getOwnerComponent().getAppManager().openHelpPage();
     }
 
     ControllerProto.onImportFilePress = function() {
