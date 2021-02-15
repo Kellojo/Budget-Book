@@ -11,7 +11,7 @@
     "build": "npm run build-licenses && npm run build-styles && node ./bin/prepareForElectron.js && npm run ui5-build",
     "ui5-build": "npm run build-licenses && ui5 build -a self-contained --dest=dist-ui5 && npm run build-styles && node ./bin/copyThemesDist.js",
     "build-styles": "cd ./lib/kellojo.m && ui5 build dev",
-    "build-licenses": "license-checker --production --json > ./webapp/config/package-licenses.json",
+    "build-licenses": "node ./bin/license-build.js",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "release": "npm run ui5-build && electron-builder",
