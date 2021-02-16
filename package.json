@@ -7,7 +7,7 @@
     "start": "electron .",
     "start-electron-local": "npm run build-styles && node ./bin/prepareForElectron.js && npm start",
     "start-web": "node ./bin/prepareForWeb.js && ui5 serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ui5-test-i18n ./webapp/i18n && cd lib/kellojo.m/ && npm run test",
     "build": "npm run build-licenses && npm run build-styles && node ./bin/prepareForElectron.js && npm run ui5-build",
     "ui5-build": "npm run build-licenses && ui5 build -a self-contained --dest=dist-ui5 && npm run build-styles && node ./bin/copyThemesDist.js",
     "build-styles": "cd ./lib/kellojo.m && ui5 build dev",
@@ -44,7 +44,8 @@
     "electron": "^9.4.0",
     "electron-builder": "^22.9.1",
     "license-checker": "^25.0.1",
-    "ui5-middleware-index": "^0.2.2"
+    "ui5-middleware-index": "^0.2.2",
+    "ui5-test-i18n": "^1.0.1"
   },
   "dependencies": {
     "electron-store": "^5.1.1",
