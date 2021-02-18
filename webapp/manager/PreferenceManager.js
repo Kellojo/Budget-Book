@@ -2,8 +2,8 @@ sap.ui.define([
     "kellojo/m/beans/BeanBase",
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
-    "sap/m/MessageToast"
-], function (ManagedObject, JSONModel, Config, MessageToast) {
+    "kellojo/m/library"
+], function (ManagedObject, JSONModel, Config, library) {
     "use strict";
 
     var oSchema = ManagedObject.extend("com.budgetBook.manager.PreferenceManager", {
@@ -13,7 +13,13 @@ sap.ui.define([
             },
 
             events: {
-
+                preferenceChange: {
+                    parameters: {
+                        preferences: {
+                            type: "object"
+                        }
+                    }
+                }
             }
         }
     }),
@@ -23,6 +29,9 @@ sap.ui.define([
     SchemaProto.onInit = function() {
         this.m_oPreferenceModel = new JSONModel({});
         this.getOwnerComponent().setModel(this.m_oPreferenceModel, "Preferences");
+        this.getOwnerComponent().getThemeManager().attachThemeChange(oEvent => {
+            this.setPreference("/theme", oEvent.getParameter("theme"));
+        });
         
     };
 
@@ -31,7 +40,7 @@ sap.ui.define([
     // -------------------------------------
 
     /**
-     * 
+     * Fetches the preferences from the firestore or localstorage
      * @private
      */
     SchemaProto.fetchPreferences = async function() {
@@ -47,7 +56,7 @@ sap.ui.define([
         } else {
             oPreferences = {
                 currency: localStorage.getItem("preferences_currency"),
-                darkMode: localStorage.getItem("preferences_darkMode"),
+                theme: localStorage.getItem("preferences_theme"),
             }
         }
 
@@ -56,11 +65,15 @@ sap.ui.define([
         }
 
         // assign default values
-        oPreferences.darkMode = oPreferences.darkMode || false;
+        oPreferences.theme = oPreferences.theme || library.Theme.Auto;
         oPreferences.currency = oPreferences.currency || Config.DEFAULT_CURRENCY;
 
         this.m_oPreferenceModel.setData(oPreferences);
         this.m_oPreferenceModel.refresh(true);
+
+        this.firePreferenceChange({
+            preferences: this.m_oPreferenceModel.getData(),
+        });
     }
 
     SchemaProto.updatePreferences = async function() {
@@ -69,9 +82,13 @@ sap.ui.define([
                 preferences: this.m_oPreferenceModel.getData()
             });
         } else {
-            localStorage.setItem("preferences_darkMode", this.m_oPreferenceModel.getPreference("/darkMode"));
-            localStorage.setItem("preferences_currency", this.m_oPreferenceModel.getPreference("/currency"));
+            localStorage.setItem("preferences_theme", this.getPreference("/theme"));
+            localStorage.setItem("preferences_currency", this.getPreference("/currency"));
         }
+
+        this.firePreferenceChange({
+            preferences: this.m_oPreferenceModel.getData(),
+        });
     }
 
     /**

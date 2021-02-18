@@ -9,6 +9,7 @@ sap.ui.define([
     "sap/ui/core/routing/History",
 
     "kellojo/m/UserHelpMenu",
+    "kellojo/m/library",
     "sap/m/MessageToast",
 
     "com/budgetBook/Config",
@@ -23,7 +24,7 @@ sap.ui.define([
     "com/budgetBook/manager/PlannedTransactionsManager",
 
     "kellojo/m/library"
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, MessageToast, Config, Licences) {
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, library, MessageToast, Config, Licences) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
@@ -110,6 +111,7 @@ sap.ui.define([
 
         // attach auth state change event
         this.getFirebaseManager().attachAuthStateChanged(this.onAuthStateChange.bind(this));
+        this.getPreferenceManager().attachPreferenceChange(this.onPreferenceChange.bind(this));
     };
 
     /**
@@ -128,6 +130,16 @@ sap.ui.define([
         }
         
         this.getPreferenceManager().fetchPreferences();
+    }
+
+    /**
+     * Called, when the preferences change
+     * @param {sap.ui.base.Event} oEvent 
+     * @protected
+     */
+    ComponentProto.onPreferenceChange = function(oEvent) {
+        const oPreferences = oEvent.getParameter("preferences");
+        this.getThemeManager().setTheme(library.mapStringToTheme(oPreferences.theme));
     }
 
     /**
@@ -224,12 +236,10 @@ sap.ui.define([
                 }.bind(this),
                 signOutVisible: this.getFirebaseManager().getIsLoggedIn(),
 
-                switchDarkMode: (oEvent) => {
-                    this.getThemeManager().setTheme(
-                        oEvent.getParameter("enabled") ? "sap_fiori_3_dark" : "sap_fiori_3"
-                    );
+                selectedTheme: this.getThemeManager().getTheme(),
+                themeChange: (oEvent) => {
+                    this.getThemeManager().setTheme(oEvent.getParameter("theme"));
                 },
-                darkModeEnabled: this.getThemeManager().isDarkTheme(),
 
                 availableCurrencies: Config.AVAILABLE_CURRENCIES,
                 selectedCurrency: this.getPreferenceManager().getPreference("/currency"),
