@@ -70,6 +70,15 @@ sap.ui.define([
     // User
     // -------------------------------------
 
+    /**
+     * Get's the email of the current user
+     * @returns {string}
+     * @public
+     */
+    SchemaProto.getEmail = function() {
+        return this.m_oUserModel.getProperty("/user/email");
+    }
+
     SchemaProto.login = function(oParams) {
         firebase.auth().signInWithEmailAndPassword(oParams.email, oParams.password)
             .then(oParams.success)
