@@ -18,6 +18,7 @@
             isCompleted="{transaction>/transaction/isCompleted}"
             occurredOn="{transaction>/transaction/occurredOn}"
             type="{transaction>/transaction/type}"
+            titleSuggestions="{/titleSuggestions}"
 
             reccurrence="{transaction>/reccurrence}"
             startingFrom="{transaction>/startingFrom}"

@@ -1,5 +1,5 @@
 sap.ui.define([
-    "com/budgetBook/controller/ControllerBase",
+    "com/budgetBook/controller/dialog/TransactionEditorBase.controller",
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
     "sap/m/MessageToast",
@@ -12,57 +12,31 @@ sap.ui.define([
     
     ControllerProto.ROUTE_NAME = "transaction";
 
-    
-    ControllerProto.onInit = function() {
-        ControllerBase.prototype.onInit.apply(this, arguments);
-
-        this.m_oViewModel = new JSONModel({
-            isLoading: false,
-            categories: [],
-            isExistingTransaction: false,
-            title: ""
-        });
-        this.getView().setModel(this.m_oViewModel);
-
-        this.m_oTransactionModel = new JSONModel({});
-        this.getView().setModel(this.m_oTransactionModel, "transaction");
-        this.m_oTransactionEditor = this.byId("idTransactionEditor");
-    };
-
     ControllerProto.onPageEnter = async function(oEvent) {
+        const sTransactionId = oEvent.getParameter("arguments").transactionId,
+            bIsExistingTransaction = sTransactionId !== "new";
+        await ControllerBase.prototype.onPageEnter.apply(this, arguments);
+
         var oComponent = this.getOwnerComponent(),
             oResourceBundle = oComponent.getResourceBundle();
 
-        var sTransactionId = oEvent.getParameter("arguments").transactionId,
-            oSettings = {};
-
-        this.m_oViewModel.setProperty("/isExistingTransaction", sTransactionId !== "new");
-        if (sTransactionId !== "new") {
+        var  oSettings = {};
+        this.m_oViewModel.setProperty("/isExistingTransaction", bIsExistingTransaction);
+        this.m_oViewModel.setProperty("/title", oResourceBundle.getText(bIsExistingTransaction ? "addTransactionDialogTitleEditMode": "addTransactionDialogTitle"));
+        
+        if (bIsExistingTransaction) {
             oSettings.transactionId = sTransactionId;
-            
             this.m_oViewModel.setProperty("/isLoading", true);
             oSettings.transaction = await oComponent.getTransactionsManager().loadTransaction(sTransactionId);
-            this.m_oViewModel.setProperty("/isLoading", false);
-            this.m_oViewModel.setProperty("/title", oResourceBundle.getText("addTransactionDialogTitleEditMode"));
-        } else {
-            this.m_oViewModel.setProperty("/title", oResourceBundle.getText("addTransactionDialogTitle"));
+            this.m_oViewModel.setProperty("/isLoading", false);   
         }
 
         this.onOpenInDialog(oSettings);
-
-        // load categories
-        this.m_oViewModel.setProperty(
-            "/categories", 
-            await this.getOwnerComponent().getTransactionsManager().getAllCategoriesFirebase()
-        );
     }
 
     ControllerProto.onOpenInDialog = async function(oSettings) {
-        this.m_oSettings = oSettings;
-
-        // reset combobox...
-        //this.byId("idCategoryInput").setSelectedKey("");
-        let oTransactionsManager = this.getOwnerComponent().getTransactionsManager();
+        await ControllerBase.prototype.onOpenInDialog.apply(this, arguments);
+        const oTransactionsManager = this.getOwnerComponent().getTransactionsManager();
 
         // Setup transaction
         var oTransaction = oTransactionsManager.getDefaultTransaction();
@@ -76,32 +50,20 @@ sap.ui.define([
         // Update view model
         this.m_oTransactionModel.setData(oTransaction)
         this.m_oTransactionModel.refresh(true);
-        this.m_oViewModel.setProperty( "/categories",  oTransactionsManager.getAllCategories());
-
-        this.m_oTransactionEditor.resetValidation();
-
-        // focus title field for new transactions
-        if (!oSettings.hasOwnProperty("transaction")) {
-            setTimeout(() => {
-                this.m_oTransactionEditor.focusTitle();
-            }, 400);
-        }
     };
 
     ControllerProto.onSubmitButtonPress = function() {
-        var bIsValid = this.m_oTransactionEditor.validateControls();
+        const bIsValid = this.m_oTransactionEditor.validateControls();
         if (bIsValid) {
             var oTransaction = this.m_oTransactionModel.getData();
             oTransaction.occurredOn = oTransaction.occurredOn.toISOString();
             oTransaction.createdOn = new Date().toISOString();
 
             if (!!this.m_oSettings.fnOnSubmit) {
-                // let the caller handle
                 this.m_oSettings.fnOnSubmit(oTransaction);
             } else {
                 this.onSubmitWebVersion(oTransaction);
             }
-
 
             this.m_oTransactionModel.setData(null);
             this.m_oSettings = null;
@@ -111,7 +73,7 @@ sap.ui.define([
     };
 
     ControllerProto.onSubmitWebVersion = async function(oTransaction) {
-        var oComponent = this.getOwnerComponent(),
+        const oComponent = this.getOwnerComponent(),
             oResouceBundle = oComponent.getResourceBundle();
 
         if (!!this.m_oSettings.transactionId) {
@@ -128,8 +90,6 @@ sap.ui.define([
         }
 
         oComponent.navBack();
-        this.m_oTransactionModel.setData(null);
-        this.m_oSettings = null;
     }
 
     ControllerProto.onDeletePress = function() {
@@ -152,11 +112,7 @@ sap.ui.define([
         });
     }
 
-    ControllerProto.onBackButtonPress = function() {
-        this.getOwnerComponent().navBack();
-    }
 
-    
 
     return Controller;
 });

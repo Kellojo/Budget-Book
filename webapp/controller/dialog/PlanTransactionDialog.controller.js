@@ -1,5 +1,5 @@
 sap.ui.define([
-    "com/budgetBook/controller/ControllerBase",
+    "com/budgetBook/controller/dialog/TransactionEditorBase.controller",
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
     "sap/m/MessageToast",
@@ -10,28 +10,12 @@ sap.ui.define([
     var Controller = ControllerBase.extend("com.budgetBook.controller.dialog.PlanTransactionDialog", {}),
         ControllerProto = Controller.prototype;
 
-    
-    ControllerProto.onInit = function() {
-        ControllerBase.prototype.onInit.apply(this, arguments);
-
-        this.m_oViewModel = new JSONModel({
-            isLoading: false,
-            categories: [],
-            minDate: new Date(),
-        });
-        this.getView().setModel(this.m_oViewModel);
-
-        this.m_oTransactionModel = new JSONModel({});
-        this.getView().setModel(this.m_oTransactionModel, "transaction");
-        this.m_oTransactionEditor = this.byId("idTransactionEditor");
-    };
 
     ControllerProto.onOpenInDialog = async function(oSettings) {
-        this.m_oSettings = oSettings;
-
-        let oTransactionsManager = this.getOwnerComponent().getTransactionsManager();
+        await ControllerBase.prototype.onOpenInDialog.apply(this, arguments);
 
         // Setup transaction
+        const oTransactionsManager = this.getOwnerComponent().getTransactionsManager();
         var oPlannedTransaction = oTransactionsManager.getDefaultPlannedTransaction();
 
         // Get transaction from settings, if this is the edit mode
@@ -45,20 +29,10 @@ sap.ui.define([
         this.m_oViewModel.setProperty("/minDate", !!oSettings.hasOwnProperty("transaction") ?  new Date(0) : new Date());
         this.m_oTransactionModel.setData(oPlannedTransaction)
         this.m_oTransactionModel.refresh(true);
-        this.m_oViewModel.setProperty( "/categories", this.getOwnerComponent().getTransactionsManager().getAllCategories());
-
-        this.m_oTransactionEditor.resetValidation();
-        
-        // focus title field for new transactions
-        if (!oSettings.hasOwnProperty("transaction")) {
-            setTimeout(() => {
-                this.m_oTransactionEditor.focusTitle();
-            }, 400);
-        }
     };
 
     ControllerProto.onSubmitButtonPress = function() {
-        var bIsValid = this.m_oTransactionEditor.validateControls();
+        const bIsValid = this.m_oTransactionEditor.validateControls();
         if (bIsValid) {
             var oPlannedTransaction = this.m_oTransactionModel.getData();
             oPlannedTransaction.transaction.occurredOn = oPlannedTransaction.transaction.occurredOn.toISOString();

@@ -197,6 +197,45 @@ sap.ui.define([
     }
 
     /**
+     * Get's all titles of all transactions ranked by usage
+     * @returns {string[]}
+     * @public
+     */
+    ManagerProto.getAllTitles = function() {
+        var oDatabase = this.getOwnerComponent().getDatabase(),
+        oData = oDatabase.getData(),
+        aTitles = [],
+        aCounterCache = {},
+        fnGrabTitles = (oTransaction) => {
+            var sTitle = oTransaction.title != null && oTransaction.title != undefined ? oTransaction.title : oTransaction.transaction.title;
+
+            if (!aTitles.includes(sTitle) && !!sTitle) {
+                aTitles.push(sTitle);
+            }
+
+            if (!aCounterCache.hasOwnProperty(sTitle)) {
+                aCounterCache[sTitle] = 0;
+            }
+            aCounterCache[sTitle]++;
+        }
+
+        if (!oData.transactions) {
+            return aTitles;
+        }
+
+
+        // normal transactions
+        oData.transactions.forEach(fnGrabTitles);
+
+        // planned transactions
+        if (oData.plannedTransactions) {
+            oData.plannedTransactions.forEach(fnGrabTitles);
+        }
+
+        return aTitles;
+    }
+
+    /**
      * Get's all distinct years and the correpsonding months from a set of transactions
      * @param {array} aTransactions
      * @returns {object} 

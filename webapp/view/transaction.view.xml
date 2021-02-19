@@ -34,7 +34,8 @@
             isCompleted="{transaction>/isCompleted}"
             occurredOn="{transaction>/occurredOn}"
             type="{transaction>/type}"
-            currency="{Preferences>/currency}"/>
+            currency="{Preferences>/currency}"
+            titleSuggestions="{/titleSuggestions}"/>
 
         <kM:Deleter title="{i18n>dialogDelete}" press="onDeletePress" type="Active" visible="{/isExistingTransaction}"/>
     </Page>
