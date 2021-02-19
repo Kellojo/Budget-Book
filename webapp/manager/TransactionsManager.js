@@ -209,7 +209,7 @@ sap.ui.define([
         fnGrabTitles = (oTransaction) => {
             var sTitle = oTransaction.title != null && oTransaction.title != undefined ? oTransaction.title : oTransaction.transaction.title;
 
-            if (!aTitles.includes(sTitle) && !!sTitle) {
+            if (!aTitles.includes(sTitle)) {
                 aTitles.push(sTitle);
             }
 
@@ -231,6 +231,11 @@ sap.ui.define([
         if (oData.plannedTransactions) {
             oData.plannedTransactions.forEach(fnGrabTitles);
         }
+
+        // sort by usage
+        aTitles.sort((a, b) => {
+            return aCounterCache[b] - aCounterCache[a];
+        });
 
         return aTitles;
     }

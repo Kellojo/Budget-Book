@@ -22,6 +22,7 @@ sap.ui.define([
             isExistingTransaction: false,
         });
         this.getView().setModel(this.m_oViewModel);
+        this.m_oViewModel.setSizeLimit(Config.MODEL_SIZE_LIMIT);
     
         this.m_oTransactionModel = new JSONModel({});
         this.getView().setModel(this.m_oTransactionModel, "transaction");
