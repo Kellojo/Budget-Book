@@ -2,8 +2,10 @@ sap.ui.define([
     "kellojo/m/beans/BeanBase",
     "sap/base/Log",
     "com/budgetBook/Config",
+    "kellojo/m/library",
+
     "com/budgetBook/thirdparty/uuidv4.min",
-], function (ManagedObject, Log, Config) {
+], function (ManagedObject, Log, Config, library) {
     "use strict";
 
     var oManager = ManagedObject.extend("com.budgetBook.manager.TransactionsManager", {
@@ -138,46 +140,10 @@ sap.ui.define([
      * @public
      */
     ManagerProto.getAllCategories = function() {
-        var oDatabase = this.getOwnerComponent().getDatabase(),
-            oData = oDatabase.getData(),
-            aCategories = [],
-            aCounterCache = {},
-            fnGrabCategories = (oTransaction) => {
-                var sCategory = oTransaction.category != null && oTransaction.category != undefined ? oTransaction.category : oTransaction.transaction.category;
-
-                if (!aCategories.includes(sCategory) &&
-                    sCategory != undefined &&
-                    sCategory != null) {
-                    aCategories.push(sCategory);
-                }
-
-                if (!aCounterCache.hasOwnProperty(sCategory)) {
-                    aCounterCache[sCategory] = 0;
-                }
-
-                aCounterCache[sCategory]++;
-            }
-
-        if (!oData.transactions) {
-            return aCategories;
-        }
-
-
-        // normal transactions
-        oData.transactions.forEach(fnGrabCategories);
-
-        // planned transactions
-        if (oData.plannedTransactions) {
-            oData.plannedTransactions.forEach(fnGrabCategories);
-        }
-
-        // sort by usage
-        aCategories.sort((a, b) => {
-            return aCounterCache[b] - aCounterCache[a];
-        });
+        let aCategories = this.getPropertyFromAllTransactions("category");
 
         // make sure empty value is always up top
-        aCategories = aCategories.filter(item => item !== "")
+        aCategories = aCategories.filter(item => item !== "");
         aCategories.unshift("");
 
         return aCategories;
@@ -197,47 +163,53 @@ sap.ui.define([
     }
 
     /**
+     * Grabs a value distinctly from the databse sorting them by usage
+     * @param {string} sProperty 
+     * @public
+     * @returns {any[]}
+     */
+    ManagerProto.getPropertyFromAllTransactions = function(sProperty) {
+        const oDatabase = this.getOwnerComponent().getDatabase();
+        const oData =  oDatabase.getData();
+
+        let aValues = [];
+        let aCounterCache = {};
+        let fnGrabProperty = (oTransaction) => {
+            const val = oTransaction[sProperty];
+            var value = val != null && val != undefined ? val : oTransaction.transaction[sProperty];
+
+            if (!aValues.includes(value)) {
+                aValues.push(value);
+            }
+            if (!aCounterCache.hasOwnProperty(value)) {
+                aCounterCache[value] = 0;
+            }
+            aCounterCache[value]++;
+        }
+
+        if (!oData.transactions) {
+            return aValues;
+        }
+
+
+        oData.transactions.forEach(fnGrabProperty);
+        if (!!oData.plannedTransactions) {
+            oData.plannedTransactions.forEach(fnGrabProperty);
+        }
+
+        // sort by usage
+        aValues.sort((a, b) => { return aCounterCache[b] - aCounterCache[a]; });
+
+        return aValues;
+    }
+
+    /**
      * Get's all titles of all transactions ranked by usage
      * @returns {string[]}
      * @public
      */
     ManagerProto.getAllTitles = function() {
-        var oDatabase = this.getOwnerComponent().getDatabase(),
-        oData = oDatabase.getData(),
-        aTitles = [],
-        aCounterCache = {},
-        fnGrabTitles = (oTransaction) => {
-            var sTitle = oTransaction.title != null && oTransaction.title != undefined ? oTransaction.title : oTransaction.transaction.title;
-
-            if (!aTitles.includes(sTitle)) {
-                aTitles.push(sTitle);
-            }
-
-            if (!aCounterCache.hasOwnProperty(sTitle)) {
-                aCounterCache[sTitle] = 0;
-            }
-            aCounterCache[sTitle]++;
-        }
-
-        if (!oData.transactions) {
-            return aTitles;
-        }
-
-
-        // normal transactions
-        oData.transactions.forEach(fnGrabTitles);
-
-        // planned transactions
-        if (oData.plannedTransactions) {
-            oData.plannedTransactions.forEach(fnGrabTitles);
-        }
-
-        // sort by usage
-        aTitles.sort((a, b) => {
-            return aCounterCache[b] - aCounterCache[a];
-        });
-
-        return aTitles;
+        return this.getPropertyFromAllTransactions("title");
     }
 
     /**
