@@ -54,7 +54,6 @@
     "firebase": "^7.24.0",
     "jsstore": "^3.7.6",
     "kellojo.m": "file:lib/kellojo.m",
-    "menubar": "^9.0.1",
     "username": "^5.1.0"
   },
   "ui5": {
