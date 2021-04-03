@@ -30,9 +30,15 @@
   "build": {
     "appId": "com.budgetP",
     "productName": "BudgetP",
+    "afterSign": "bin/notarize.js",
     "mac": {
       "category": "public.app-category.finance",
       "hardenedRuntime": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "dmg": {
+        "sign": false
+      },
       "publish": [
         "github"
       ]
@@ -44,6 +50,7 @@
     "chokidar": "^3.4.0",
     "electron": "^9.4.0",
     "electron-builder": "^22.9.1",
+    "electron-notarize": "^1.0.0",
     "license-checker": "^25.0.1",
     "ui5-middleware-index": "^0.2.2",
     "ui5-test-i18n": "^1.0.1"
