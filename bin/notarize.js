@@ -9,6 +9,8 @@ exports.default = async function notarizing(context) {
 
   const appName = context.packager.appInfo.productFilename;
 
+  console.log("starting notarization");
+
   return await notarize({
     appBundleId: 'com.BudgetP',
     appPath: `${appOutDir}/${appName}.app`,
