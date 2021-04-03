@@ -36,12 +36,12 @@
       "hardenedRuntime": true,
       "entitlements": "build/entitlements.mac.plist",
       "entitlementsInherit": "build/entitlements.mac.plist",
-      "dmg": {
-        "sign": false
-      },
       "publish": [
         "github"
       ]
+    },
+    "dmg": {
+        "sign": false
     }
   },
   "devDependencies": {
