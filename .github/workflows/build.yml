@@ -38,6 +38,8 @@ jobs:
         env:
           CSC_LINK: ${{ secrets.CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          APPLE_NOTARIZE_ID: ${{ secrets.APPLE_NOTARIZE_ID }}
+          APPLE_NOTARIZE_PASSWORD: ${{ secrets.APPLE_NOTARIZE_PASSWORD }}
         with:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
