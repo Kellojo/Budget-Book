@@ -47,6 +47,7 @@
             <kM:actions>
                 <OverflowToolbar width="100%">
                     <ToolbarSpacer />
+                    <Button icon="sap-icon://upload" tooltip="{i18n>appHeaderExportTooltip}" press="onExportDataPress" visible="{= !${device>/isWebVersion}}"/>
                     <SegmentedButton selectedKey="{Database>/preferences/currentOverviewChartType}" visible="{= !!${Database>/transactions} &amp;&amp; ${Database>/transactions}.length > 0 &amp;&amp; !${device>/isWebVersion}}">
                         <items>
                             <SegmentedButtonItem icon="sap-icon://donut-chart" tooltip="{i18n>chartTypeByCategory}" key="byCategory" />

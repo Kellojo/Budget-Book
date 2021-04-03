@@ -212,11 +212,7 @@ sap.ui.define([
                 
 
                 exportPress: function() {
-                    this.getDatabase().exportData({
-                        success: () => {MessageToast.show(
-                            this.getResourceBundle().getText("exportDataSuccess")
-                        )}
-                    });
+                    this.getDatabase().exportData();
                 }.bind(this),
                 exportVisible: !this.getIsWebVersion(),
 

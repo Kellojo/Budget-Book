@@ -70,6 +70,10 @@ sap.ui.define([
         }, oEvent.getSource());
     }
 
+    ControllerProto.onExportDataPress = function() {
+        this.getOwnerComponent().getDatabase().exportData();
+    }
+
     ControllerProto.onTransactionPress = function(oEvent) {
         var oBindingContext = oEvent.getParameter("listItem").getBindingContext("Database"),
             oTransaction = oBindingContext.getObject(),

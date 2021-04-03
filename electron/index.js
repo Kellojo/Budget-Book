@@ -43,8 +43,6 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadFile(config.INDEX_HTML);
 
-  //require("./menuBar");
-
   // Open the DevTools.
   if (config.IS_DEVELOPMENT) {
     mainWindow.webContents.openDevTools();

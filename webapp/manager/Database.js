@@ -4,7 +4,8 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
     "sap/ui/model/ChangeReason",
-], function (ManagedObject, Log, JSONModel, Config, ChangeReason) {
+    "sap/m/MessageBox"
+], function (ManagedObject, Log, JSONModel, Config, ChangeReason, MessageBox) {
     "use strict";
 
     var oSchema = ManagedObject.extend("com.budgetBook.manager.Database", {
@@ -147,12 +148,20 @@ sap.ui.define([
     SchemaProto.exportData = function(oParam) {
         Log.info("Exporting Database...");
 
+        oParam = !!oParam ? oParam : {};
+
         var oResourceBundle = this.getOwnerComponent().getResourceBundle();
         api.exportData({
             title: oResourceBundle.getText("exportDialogTitle"),
             fileName: "BudgetP Save File.json",
             saveLabel: oResourceBundle.getText("exportDialogSaveLabel"),
-            success: oParam.success,
+            success: function() {
+                MessageToast.show(oResourceBundle.getText("exportDataSuccess"))
+
+                if (typeof oParam.success === "function") {
+                    oParam.success();
+                }
+            },
             error: oParam.error,
             data: this.getData()
         });

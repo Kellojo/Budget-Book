@@ -19,11 +19,16 @@ contextBridge.exposeInMainWorld(
             ipcRenderer.send("loadData");
         },
         exportData: (oParam) => {
-            ipcRenderer.once("exportDataComplete", oParam.success);
+            if (oParam.success) {
+                ipcRenderer.once("exportDataComplete", oParam.success);
+                oParam.success = null;
+            }
             if (oParam.error) {
                 ipcRenderer.once("exportDataError", oParam.error);
+                oParam.error = null;
             }
             
+            console.log(oParam);
             ipcRenderer.send("exportData", oParam);
         },
         importData: (oParam) => {
