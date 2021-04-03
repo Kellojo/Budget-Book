@@ -4,8 +4,8 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
     "sap/ui/model/ChangeReason",
-    "sap/m/MessageBox"
-], function (ManagedObject, Log, JSONModel, Config, ChangeReason, MessageBox) {
+    "sap/m/MessageToast",
+], function (ManagedObject, Log, JSONModel, Config, ChangeReason, MessageToast) {
     "use strict";
 
     var oSchema = ManagedObject.extend("com.budgetBook.manager.Database", {
