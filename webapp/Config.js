@@ -79,6 +79,9 @@ sap.ui.define([
             {
                 code: "SEK",
             },
+            {
+                code: "THB",
+            }
         ],
 
 
