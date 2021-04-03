@@ -37,6 +37,7 @@ jobs:
         uses: samuelmeuli/action-electron-builder@v1
         env:
           CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
         with:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
