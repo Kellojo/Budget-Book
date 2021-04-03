@@ -28,7 +28,6 @@ contextBridge.exposeInMainWorld(
                 oParam.error = null;
             }
             
-            console.log(oParam);
             ipcRenderer.send("exportData", oParam);
         },
         importData: (oParam) => {
