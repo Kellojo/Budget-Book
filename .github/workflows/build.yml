@@ -36,8 +36,6 @@ jobs:
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         env:
-          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
-          APPLE_API_KEY_ISSUER: ${{ secrets.APPLE_API_KEY_ISSUER }}
           CSC_LINK: ${{ secrets.CSC_LINK }}
         with:
           # GitHub token, automatically provided to the action
