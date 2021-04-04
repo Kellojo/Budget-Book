@@ -34,9 +34,8 @@ jobs:
           node-version: 10
           
       - name: Delete current release assets
-        uses: Kellojo/delete-release-assets-action@v1.7
+        uses: Kellojo/delete-release-assets-action@v1.8
         with:
-          version: ''
           delete-only-drafts: true
           github-access-token: ${{ secrets.github_token }}
 
