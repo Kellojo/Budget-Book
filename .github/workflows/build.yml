@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Delete current release assets
-        uses: Kellojo/delete-release-assets-action@v1.2
+        uses: Kellojo/delete-release-assets-action@v1.3
         with:
           version: ''
           delete-only-drafts: true
