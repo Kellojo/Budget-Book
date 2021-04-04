@@ -23,6 +23,13 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
+      - name: Delete current release assets
+        uses: Kellojo/delete-release-assets-action@v1
+        with:
+          version: ''
+          delete-only-drafts: true
+          github-access-token: ${{ secrets.github_token }}
+    
       - name: Check out Git repository
         uses: actions/checkout@v1
         with:
