@@ -22,7 +22,7 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
 
-    steps:
+    steps:    
       - name: Check out Git repository
         uses: actions/checkout@v1
         with:
@@ -32,6 +32,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10
+          
+      - name: Delete current release assets
+        uses: Kellojo/delete-release-assets-action@v1.8
+        with:
+          delete-only-drafts: true
+          github-access-token: ${{ secrets.github_token }}
 
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
