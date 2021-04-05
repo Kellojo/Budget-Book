@@ -226,6 +226,9 @@ sap.ui.define([
                 websitePress: function() {
                     this.getAppManager().openHelpPage();
                 }.bind(this),
+                changelogPress: function () {
+                    this.getAppManager().openChangeLogPage();
+                }.bind(this),
 
                 signOutPress: function(oEvent) {
                     this.getFirebaseManager().signOut();

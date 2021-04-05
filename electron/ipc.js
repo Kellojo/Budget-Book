@@ -62,6 +62,9 @@ class IPC {
         ipcMain.on("openHelpPage", (event) => {
             shell.openExternal("https://kellojo.github.io/Budget-Book/");
         });
+        ipcMain.on("openChangeLogPage", (event) => {
+            shell.openExternal("https://github.com/Kellojo/Budget-Book/releases");
+        });
     }
 }
 

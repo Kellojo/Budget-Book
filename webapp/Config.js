@@ -97,6 +97,7 @@ sap.ui.define([
 
 
         WEBSITE: "https://kellojo.github.io/Budget-Book/",
+        WEBSITE_CHANGELOG: "https://github.com/Kellojo/Budget-Book/releases",
 
 
     };

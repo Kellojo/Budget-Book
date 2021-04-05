@@ -48,6 +48,9 @@ contextBridge.exposeInMainWorld(
         },
         openHelpPage: () => {
             ipcRenderer.send("openHelpPage");
+        },
+        openChangeLogPage: () => {
+            ipcRenderer.send("openChangeLogPage");
         }
     }
 );

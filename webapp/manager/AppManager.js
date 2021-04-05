@@ -64,6 +64,14 @@ sap.ui.define([
         }
     }
 
+    SchemaProto.openChangeLogPage = function() {
+        if (!this.getOwnerComponent().getIsWebVersion()) {
+            api.openChangeLogPage();
+        } else {
+            window.open(Config.WEBSITE_CHANGELOG, "_blank");
+        }
+    }
+
 
     return oSchema;
 });
