@@ -546,6 +546,22 @@ sap.ui.define([
         oDatabase.setModelProperty(sPath, oTransaction);
     };
 
+    /**
+     * Get's a planned transaction by id
+     * @param {string} sId
+     * @returns {object}
+     * @public 
+     */
+    ManagerProto.getPlannedTransactionById = function(sId) {
+        const aPlannedTransactions = this.getOwnerComponent().getDatabase().getData().plannedTransactions;
+
+        if (!aPlannedTransactions) {
+            return null;
+        }
+
+        return aPlannedTransactions.find(oPlannedTransaction => oPlannedTransaction.uuid === sId);
+    }
+
 
     return oManager;
 });

@@ -2,7 +2,8 @@ sap.ui.define([
     "kellojo/m/beans/BeanBase",
     "sap/ui/core/format/NumberFormat",
     "com/budgetBook/Config",
-], function (BeanBase, NumberFormat, Config) {
+    "sap/ui/core/Core",
+], function (BeanBase, NumberFormat, Config, Core) {
     "use strict";
 
     var Formatter = BeanBase.extend("com.budgetBook.manager.Formatter", {});
@@ -76,6 +77,24 @@ sap.ui.define([
             iTransactionCount < 2 ? "overviewPageSubtitle" : "overviewPageSubtitlePlural",
             [iTransactionCount, sTransactionVolume]
         );
+    }
+
+    /**
+     * Get's the transaction recurrence by the planned transaction uuid
+     * @param {string} sPlannedTransactionID - the planned transaction uuid
+     * @returns {string}
+     * @public
+     */
+    Formatter.formatPlannedTransactionRecurranceByID = function(sPlannedTransactionID) {
+        const oComponent = this.getOwnerComponent();
+        const oPlannedTransaction = oComponent.getTransactionsManager().getPlannedTransactionById(sPlannedTransactionID);
+
+        if (!!oPlannedTransaction) {
+            const sRecurrance = oPlannedTransaction.reccurrence;
+            return Core.getLibraryResourceBundle("kellojo.m").getText("reccurrence" + sRecurrance);
+        }
+
+        return false;
     }
 
     return Formatter;

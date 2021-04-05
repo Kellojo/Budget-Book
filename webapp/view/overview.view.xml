@@ -120,8 +120,9 @@
                         
                         <HBox justifyContent="SpaceBetween" alignItems="Center">
                             <VBox width="100%">
-                                <HBox justifyContent="SpaceBetween">
+                                <HBox justifyContent="Start">
                                     <Text text="{Database>title}" class="kellojoM-lineSpacing"/>
+                                    <kM:Tag text="{ path: 'Database>plannedTransactionUUID', formatter: '.formatter.formatPlannedTransactionRecurranceByID'}" visible="{= !!${ path: 'Database>plannedTransactionUUID', formatter: '.formatter.formatPlannedTransactionRecurranceByID'}}" spacingLeft="true"/>
                                 </HBox>
                                 <HBox width="100%" wrap="Wrap">
                                     <Label text="{Database>category}" class="budgetBookTable-lightLabel kellojoM-spacingRight" visible="{= ${device>/isWebVersion} &amp;&amp; !!${Database>category} }"/>
