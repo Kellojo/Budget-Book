@@ -32,6 +32,7 @@
     "productName": "BudgetP",
     "afterSign": "bin/notarize.js",
     "mac": {
+      "target": ["dmg", "mas"],
       "category": "public.app-category.finance",
       "hardenedRuntime": true,
       "entitlements": "build/entitlements.mac.plist",
@@ -42,10 +43,6 @@
     },
     "dmg": {
         "sign": false
-    },
-    "mas": {
-        "entitlements": "build/entitlements.mac.plist",
-        "entitlementsInherit": "build/entitlements.mac.plist"
     }
   },
   "devDependencies": {
