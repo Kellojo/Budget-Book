@@ -42,6 +42,10 @@
     },
     "dmg": {
         "sign": false
+    },
+    "mas": {
+        "entitlements": "build/entitlements.mac.plist",
+        "entitlementsInherit": "build/entitlements.mac.plist"
     }
   },
   "devDependencies": {
