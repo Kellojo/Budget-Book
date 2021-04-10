@@ -22,6 +22,7 @@ sap.ui.define([
     "com/budgetBook/manager/PreferenceManager",
     "com/budgetBook/manager/MessageManager",
     "com/budgetBook/manager/PlannedTransactionsManager",
+    "com/budgetBook/manager/PurchaseManager",
 
     "kellojo/m/library"
 ], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, library, MessageToast, Config, Licences) {
@@ -325,7 +326,10 @@ sap.ui.define([
         }).addStyleClass("kellojoMDialog");
         oDialog.setModel(this.m_oResourceBundle, "i18n");
         oDialog.setModel(this.getModel("User"), "User");
+        oDialog.setModel(this.getModel("AppInfo"), "AppInfo");
         oDialog.setModel(this.getModel("Preferences"), "Preferences");
+        oDialog.setContentHeight(oSettings.contentHeight);
+        oDialog.setContentWidth(oSettings.contentWidth);
 
         // Submit Button
         if (oSettings.submitButton) {

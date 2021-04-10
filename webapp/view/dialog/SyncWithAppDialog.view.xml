@@ -6,8 +6,8 @@
     xmlns:u="sap.ui.unified"
     xmlns:kM="kellojo.m"
     core:require="{ formatMessage: 'sap/base/strings/formatMessage' }"
-    height="450px"
-    width="350px">
+    height="100%"
+    width="100%">
 
         <NavContainer id="idNavContainer">
             <kM:Login 
@@ -18,6 +18,43 @@
                 customErrorMessage="{auth>/customErrorMessage}"
                 busy="{auth>/isLoginBusy}"/>
 
+            <Page id="idSubscriptionPage" showHeader="false">
+                <kM:Wrapper class="budgetBook-SyncWithAppDialog-Sync">
+                    <Label text="{i18n>SyncWithAppDialogPurchaseSubscriptionPageTitle}" class="budgetBook-SyncWithAppDialog-title"/>
+                    <Label text="{i18n>SyncWithAppDialogPurchaseSubscriptionDetails}" class="budgetBook-SyncWithAppDialog-subscription-details"/>
+
+                    <kM:SubscriptionContainer>
+                        <kM:SubscriptionTile name="{i18n>SyncWithAppDialogPurchaseSubscription-freeTier}" price="{i18n>SyncWithAppDialogPurchaseSubscription-freePrice}">
+                            <kM:content>
+                                <kM:Label src="sap-icon://accept" text="{i18n>SyncWithAppDialogPurchaseSubscription-FreeBenefit-1}" iconValueState="Warning"/>
+                                <kM:Label src="sap-icon://accept" text="{i18n>SyncWithAppDialogPurchaseSubscription-FreeBenefit-2}" iconValueState="Warning"/>
+                                <kM:Label src="sap-icon://accept" text="{i18n>SyncWithAppDialogPurchaseSubscription-FreeBenefit-3}" iconValueState="Warning"/>
+                            </kM:content>
+
+                            <kM:submitButton>
+                                <Button type="Emphasized" text="{i18n>SyncWithAppDialogPurchaseSubscription-purchase}" enabled="false"/>
+                            </kM:submitButton>
+                        </kM:SubscriptionTile>
+
+                        <kM:SubscriptionTile color="BudgetP" 
+                            name="{i18n>SyncWithAppDialogPurchaseSubscription-ProTier}"
+                            price="{ parts: ['i18n>SyncWithAppDialogPurchaseSubscription-ProPrice', 'AppInfo>/subscriptions/monthly/formattedPrice'], formatter: 'formatMessage'}">
+                            <kM:content>
+                                <kM:Label src="sap-icon://accept" text="{i18n>SyncWithAppDialogPurchaseSubscription-ProBenefit-1}" iconValueState="Success"/>
+                                <kM:Label src="sap-icon://accept" text="{i18n>SyncWithAppDialogPurchaseSubscription-ProBenefit-2}" iconValueState="Success"/>
+                                <kM:Label src="sap-icon://accept" text="{i18n>SyncWithAppDialogPurchaseSubscription-ProBenefit-3}" iconValueState="Success"/>
+                            </kM:content>
+
+                            <kM:submitButton>
+                                <Button type="Emphasized" text="{i18n>SyncWithAppDialogPurchaseSubscription-purchase}" press="onPurchaseSubscriptionPress"/>
+                            </kM:submitButton>
+                        </kM:SubscriptionTile>
+                    </kM:SubscriptionContainer>
+                    
+                    <Link text="{i18n>SyncWithAppDialogToSyncPage}" class="budgetBook-SyncWithAppDialog-remindMeLink" press="toSyncPage"/>
+                </kM:Wrapper>   
+            </Page>
+
             <Page id="idSyncPage" showHeader="false">
                 <kM:Wrapper class="budgetBook-SyncWithAppDialog-Sync">
                     <Label text="{i18n>SyncWithAppDialogSyncPageTitle}" class="budgetBook-SyncWithAppDialog-title"/>
@@ -25,8 +62,7 @@
                     <Label text="{ parts: ['i18n>SyncWithAppDialogSyncStatus', '/transactionsCount'], formatter: 'formatMessage'}" class="budgetBook-SyncWithAppDialog-status"/>
                     <Button text="{i18n>SyncWithAppDialogSyncPageAction}" enabled="{= ${/transactions}.length > 0}" type="Emphasized" press="onSynchronizeButtonPress" />
                     <Link text="{i18n>SyncWithAppDialogSignOut}" class="budgetBook-SyncWithAppDialog-signOutLink" press="onSignOutPress"/>
-                </kM:Wrapper>
-                
+                </kM:Wrapper>   
             </Page>
         </NavContainer>
 

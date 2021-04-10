@@ -15,6 +15,7 @@ sap.ui.define([
                 "PreferenceManager",
                 "MessageManager",
                 "PlannedTransactionsManager",
+                "PurchaseManager",
             ],
 
             directReferences: [

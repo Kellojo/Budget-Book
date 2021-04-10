@@ -24,7 +24,7 @@ sap.ui.define([
         // reset view
         this.m_oLogin.reset();
         if (this.getOwnerComponent().getFirebaseManager().getIsLoggedIn()) {
-            this.toSyncPage(true);
+            this.toSubscriptionPage(true);
         } else {
             this.m_oNavContainer.to(this.m_oLogin, "show");
         }
@@ -37,23 +37,35 @@ sap.ui.define([
     // ------------------------
 
     ControllerProto.onSignUpSuccess = function() {
-        this.toSyncPage();
+        this.toSubscriptionPage();
     }
 
     ControllerProto.onSignInSuccess = function() {
-        this.toSyncPage();
+        this.toSubscriptionPage();
     }
 
     ControllerProto.onSignOutSuccess = function() {
         this.m_oNavContainer.to(this.m_oLogin, "slide");
     }
 
-    ControllerProto.toSyncPage = function(bInstant) {
+    ControllerProto.toSyncPage = function(oEvent, bInstant) {
         this.m_oLogin.reset();
-        this.m_oNavContainer.to(this.m_oSyncPage, bInstant ? "show" : undefined);
+        this.m_oNavContainer.to(this.m_oSyncPage, !!bInstant ? "show" : "slide");
         this.getOwnerComponent().getTransactionsManager().listenForSynchronizeableTransactions(
             this.onSynchronizeableTransactionsChange.bind(this)
         );
+    }
+
+    ControllerProto.toSubscriptionPage = function(bInstant) {
+        this.m_oNavContainer.to(this.byId("idSubscriptionPage"), !!bInstant ? "show" : "slide");
+    }
+
+    ControllerProto.onPurchaseSubscriptionPress = function(oEvent) {
+        const oComponent = this.getOwnerComponent();
+        const oSubscription = oComponent.getModel("AppInfo").getProperty("/subscriptions/monthly/");
+        oComponent.getPurchaseManager().purchaseSubscription({
+            subscription: oSubscription,
+        });
     }
 
     ControllerProto.onSynchronizeableTransactionsChange = function(aTransactions) {

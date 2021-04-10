@@ -64,8 +64,8 @@ sap.ui.define([
         this.getOwnerComponent().openDialog("SyncWithAppDialog", {
             title: "addTransactionDialogTitle",
             placement: "Bottom",
-            contentHeight: "450px",
-            contentWidth: "300px",
+            contentHeight: "550px",
+            contentWidth: "432px",
             showHeader: false
         }, oEvent.getSource());
     }
