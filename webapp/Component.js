@@ -279,6 +279,8 @@ sap.ui.define([
 
     ComponentProto.notifyAppInfoReady = function() {
         this.m_bAppInfoLoaded = true;
+        Config.applyTranslatedConfigProperties(this.getResourceBundle(), Config, this.getAppManager().getAppInfo());
+        this.setModel(new JSONModel(Config), "Config");
         this._checkAppReady();
     }
 
@@ -328,6 +330,7 @@ sap.ui.define([
         oDialog.setModel(this.getModel("User"), "User");
         oDialog.setModel(this.getModel("AppInfo"), "AppInfo");
         oDialog.setModel(this.getModel("Preferences"), "Preferences");
+        oDialog.setModel(this.getModel("Config"), "Config");
         oDialog.setContentHeight(oSettings.contentHeight);
         oDialog.setContentWidth(oSettings.contentWidth);
 

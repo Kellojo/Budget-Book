@@ -54,6 +54,9 @@
             },
             "OpenSourceLicenses": {
                 "type": "sap.ui.model.json.JSONModel"
+            },
+            "Config": {
+                "type": "sap.ui.model.json.JSONModel"
             }
         },
         

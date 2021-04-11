@@ -4,7 +4,8 @@ sap.ui.define([
     "com/budgetBook/Config",
     "kellojo/m/library",
     "sap/m/MessageBox",
-], function (ManagedObject, JSONModel, Config, library, MessageBox) {
+    "sap/ui/core/Core",
+], function (ManagedObject, JSONModel, Config, library, MessageBox, Core) {
     "use strict";
 
     var oSchema = ManagedObject.extend("com.budgetBook.manager.PurchaseManager", {
@@ -34,18 +35,25 @@ sap.ui.define([
 
     SchemaProto.purchaseSubscription = function(oParam) {
         assert(!!oParam.subscription);
-        oParam.purchasing = alert;
-        oParam.purchased = alert;
-        oParam.failed = this.onPurchaseFailed.bind(this);
-        oParam.restored = alert;
-        oParam.deferred = alert;
-        window.api.purchaseSubscription(oParam);
+
+        window.api.purchaseSubscription({
+            subscription: oParam.subscription,
+            purchasing: () => { oParam.purchasing(); },
+            purchased: () => { oParam.purchased(); },
+            failed: this.onPurchaseFailed.bind(this, oParam.failed),
+            restored: () => { oParam.restored(); },
+            deferred: () => { oParam.deferred(); },
+        });
     }
 
-    SchemaProto.onPurchaseFailed = function(oResponse) {
+    SchemaProto.onPurchaseFailed = function(fnInitialHandler, oResponse) {
         const oComponent = this.getOwnerComponent();
-        const oResourceBundle = oComponent.getResourceBundle();
+        const oResourceBundle = Core.getLibraryResourceBundle("kellojo.m");
         MessageBox.error(oResourceBundle.getText("subscriptionPurchaseFailed"));
+
+        if (typeof fnInitialHandler === "function") {
+            fnInitialHandler();
+        }
     }
 
 
