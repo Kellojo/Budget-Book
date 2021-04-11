@@ -137,8 +137,8 @@ sap.ui.define([
                 },
                 {
                     name: oResourceBundle.getText("subscription-Professional-name"),
-                    formattedPrice: oResourceBundle.getText("subscription-Professional-price", oAppInfo.subscriptions.monthly.formattedPrice),
-                    productIdentifier: oAppInfo.subscriptions.monthly.productIdentifier,
+                    formattedPrice: oResourceBundle.getText("subscription-Professional-price", oAppInfo.subscriptions?.monthly.formattedPrice),
+                    productIdentifier: oAppInfo.subscriptions?.monthly.productIdentifier,
                     owned: false,
                     color: library.Color.BudgetP,
                     benefits: [
