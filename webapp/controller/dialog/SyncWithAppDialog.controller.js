@@ -13,6 +13,7 @@ sap.ui.define([
         AuthBaseController.prototype.onInit.apply(this, arguments);
         this.m_oSyncPage = this.byId("idSyncPage");
         this.m_oNavContainer = this.byId("idNavContainer");
+        this.m_oSubscriptionPurchase = this.byId("idSubscriptionPage");
         this.m_oViewModel = new JSONModel({
             transactions: [],
             transactionsCount: 0,
@@ -57,6 +58,7 @@ sap.ui.define([
     }
 
     ControllerProto.toSubscriptionPage = function(bInstant) {
+        this.m_oSubscriptionPurchase.reset();
         this.m_oNavContainer.to(this.byId("idSubscriptionPage"), !!bInstant ? "show" : "slide");
     }
 
