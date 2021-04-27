@@ -260,7 +260,15 @@ sap.ui.define([
         var oHistory = History.getInstance(),
             sPreviousHash = oHistory.getPreviousHash();
         if (sPreviousHash !== undefined) {
+            const sOldHash = window.location.hash;
             window.history.go(-1);
+
+            // Failover, since safari sometimes doesn't perform the navigation when app is added to home screen
+            setTimeout(() => {
+                if (sOldHash === window.location.hash) {
+                    this.toOverview();
+                }
+            }, 1);
         } else {
             this.toOverview();
         }
