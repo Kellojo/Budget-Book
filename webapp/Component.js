@@ -1,6 +1,6 @@
 sap.ui.define([
     'jquery.sap.global',
-    'sap/ui/core/UIComponent',
+    'kellojo/m/ComponentBase',
 
     "sap/m/MessageStrip",
     "sap/ui/Device",

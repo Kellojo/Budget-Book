@@ -364,12 +364,14 @@ sap.ui.define([
 
 
     ManagerProto.listenForSynchronizeableTransactions = function(fnChange) {
-        this._getSynchronizeableTransactionFirebaseCollection()
-        .onSnapshot(function(querySnapshot) {
-            var aTransactions = [];
-            querySnapshot.docs.forEach((oDoc) => aTransactions.push(oDoc));
-            fnChange(aTransactions);
-        }.bind(this));
+        this.getOwnerComponent().getFirebaseManager().subscribeToChanges(
+            this._getSynchronizeableTransactionFirebaseCollection(),
+            function(querySnapshot) {
+                var aTransactions = [];
+                querySnapshot.docs.forEach((oDoc) => aTransactions.push(oDoc));
+                fnChange(aTransactions);
+            }.bind(this)
+        );
     }
 
     /**

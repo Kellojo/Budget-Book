@@ -31,6 +31,8 @@ sap.ui.define([
 
     
     SchemaProto.onInit = function() {
+        this.m_aQueryListeners = [];
+
         this.m_oUserModel = new JSONModel({
             isLoggedIn: false,
             user: undefined,
@@ -41,6 +43,10 @@ sap.ui.define([
         firebase.initializeApp(Config.FIREBASE);
         firebase.auth().onAuthStateChanged(this.onAuthStateChanged.bind(this));
         this.setFireStore(firebase.firestore());
+
+        this.getOwnerComponent().attachUnload(this.cancelAllSubscriptions, this);
+        this.getOwnerComponent().attachShow(this.restoreAllSubscriptions, this);
+        this.getOwnerComponent().attachHide(this.cancelAllSubscriptions, this);
     };
 
     // -------------------------------------
@@ -112,6 +118,50 @@ sap.ui.define([
             }
         }).catch(this.getOwnerComponent().getRestClient()._generateErrorHandler(mParameters.error));
     };
+
+    // -------------------------------------
+    // Subscriptions to queries
+    // -------------------------------------
+
+    /**
+     * Listens to a query for changes
+     * @param {firestore.Document || firestore.Collection} oDocOrCollection 
+     * @param {function} fnListener 
+     * @returns {function} method to suspend the listener
+     * @public
+     */
+    SchemaProto.subscribeToChanges = function(oDocOrCollection, fnListener) {
+        const fnUnsubscribe = oDocOrCollection.onSnapshot(fnListener);
+        this.m_aQueryListeners.push({
+            unsubscribe: fnUnsubscribe,
+            docOrCollection: oDocOrCollection,
+            listener: fnListener,
+        });
+        return fnUnsubscribe;
+    }
+
+    /**
+     * Unsubscribes from all firestore subscriptions
+     */
+    SchemaProto.cancelAllSubscriptions = function() {
+        this.m_aQueryListeners.forEach(oInfo => {
+            if (oInfo && typeof oInfo.unsubscribe === "function") {
+                oInfo.unsubscribe();
+                oInfo.unsubscribe = null;
+            }
+        });
+    }
+
+    /**
+     * Restores all subscriptions
+     */
+    SchemaProto.restoreAllSubscriptions = function() {
+        const aListeners = this.m_aQueryListeners;
+        this.m_aQueryListeners = [];
+        aListeners.forEach(oInfo => {
+            this.subscribeToChanges(oInfo.docOrCollection, oInfo.listener);
+        });
+    }
 
 
 

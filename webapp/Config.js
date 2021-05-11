@@ -91,7 +91,11 @@ sap.ui.define([
         ],
 
 
-
+        API: {
+            SUBSCRIPTIONS: {
+                PURCHASED: "https://us-central1-budget-book-7ebd4.cloudfunctions.net/widgets/subscriptions/purchased"
+            }
+        },
 
         FIREBASE: {
             apiKey: "AIzaSyDF4H6-j5wCSPt5HLPLakVLQrea5WOLNwQ",
@@ -137,8 +141,8 @@ sap.ui.define([
                 },
                 {
                     name: oResourceBundle.getText("subscription-Professional-name"),
-                    formattedPrice: oResourceBundle.getText("subscription-Professional-price", oAppInfo.subscriptions?.monthly.formattedPrice),
-                    productIdentifier: oAppInfo.subscriptions?.monthly.productIdentifier,
+                    formattedPrice: oResourceBundle.getText("subscription-Professional-price", oAppInfo.subscriptions?.Professional.formattedPrice),
+                    productIdentifier: oAppInfo.subscriptions?.Professional.productIdentifier,
                     owned: false,
                     color: library.Color.BudgetP,
                     benefits: [

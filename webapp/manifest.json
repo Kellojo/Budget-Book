@@ -49,6 +49,9 @@
             "User": {
                 "type": "sap.ui.model.json.JSONModel"
             },
+            "Subscription": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
             "Preferences": {
                 "type": "sap.ui.model.json.JSONModel"
             },

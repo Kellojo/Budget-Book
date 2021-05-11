@@ -58,6 +58,11 @@ sap.ui.define([
     }
 
     ControllerProto.toSubscriptionPage = function(bInstant) {
+        if (this.getOwnerComponent().getPurchaseManager().isSubscribed()) {
+            this.toSyncPage(null, bInstant);
+            return;
+        }
+
         this.m_oSubscriptionPurchase.reset();
         this.m_oNavContainer.to(this.byId("idSubscriptionPage"), !!bInstant ? "show" : "slide");
     }
@@ -65,7 +70,7 @@ sap.ui.define([
     ControllerProto.onPurchaseSubscription = function(oEvent) {
         const oSource = oEvent.getSource();
         const oComponent = this.getOwnerComponent();
-        const oSubscription = oComponent.getModel("AppInfo").getProperty("/subscriptions/monthly/");
+        const oSubscription = oEvent.getParameter("subscription");
         oComponent.getPurchaseManager().purchaseSubscription({
             subscription: oSubscription,
             failed: oSource.subscriptionFailed.bind(oSource),
