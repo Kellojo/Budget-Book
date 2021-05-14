@@ -37,6 +37,9 @@ sap.ui.define([
             },
             SyncWithAppDialog: {
                 view: "com.budgetBook.view.dialog.SyncWithAppDialog"
+            },
+            SubscriptionDialog: {
+                view: "com.budgetBook.view.dialog.SubscriptionDialog"
             }
         },
 
@@ -111,6 +114,8 @@ sap.ui.define([
         WEBSITE: "https://kellojo.github.io/Budget-Book/",
         WEBSITE_CHANGELOG: "https://github.com/Kellojo/Budget-Book/releases",
 
+        MAX_PLANNED_TRANSACTIONS_FREE: 3,
+
 
         applyTranslatedConfigProperties: function(oResourceBundle, oConfig, oAppInfo) {
             oConfig.SUBSCRIPTIONS = [
@@ -124,17 +129,17 @@ sap.ui.define([
                         {
                             valueState: "Warning",
                             text: oResourceBundle.getText("subscription-Free-benefit-1"),
-                            icon: "sap-icon://accept",
+                            icon: "sap-icon://navigation-down-arrow",
                         },
                         {
                             valueState: "Warning",
                             text: oResourceBundle.getText("subscription-Free-benefit-2"),
-                            icon: "sap-icon://accept",
+                            icon: "sap-icon://navigation-down-arrow",
                         },
                         {
                             valueState: "Warning",
                             text: oResourceBundle.getText("subscription-Free-benefit-3"),
-                            icon: "sap-icon://accept",
+                            icon: "sap-icon://navigation-down-arrow",
                         }
                     ]
 

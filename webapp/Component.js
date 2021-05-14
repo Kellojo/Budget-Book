@@ -333,6 +333,7 @@ sap.ui.define([
         oDialog.setModel(this.getModel("Config"), "Config");
         oDialog.setContentHeight(oSettings.contentHeight);
         oDialog.setContentWidth(oSettings.contentWidth);
+        oSettings.dialog = oDialog;
 
         // Submit Button
         if (oSettings.submitButton) {

@@ -564,6 +564,12 @@ sap.ui.define([
         return aPlannedTransactions.find(oPlannedTransaction => oPlannedTransaction.uuid === sId);
     }
 
+    ManagerProto.canAddPlannedTransactions = function() {
+        const oComponent = this.getOwnerComponent();
+        const aPlannedTransactions = oComponent.getDatabase().getData().plannedTransactions;
+        return aPlannedTransactions.length < Config.MAX_PLANNED_TRANSACTIONS_FREE || oComponent.getPurchaseManager().isSubscribed();
+    }
+
 
     return oManager;
 });

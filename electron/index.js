@@ -31,6 +31,7 @@ function createWindow() {
         },
 
         webPreferences: {
+            devTools: config.IS_DEVELOPMENT,
             contextIsolation: true,     // protect against prototype pollution
             enableRemoteModule: false,  // turn off remote
             preload: path.resolve(__dirname, 'preload.js')  // use a preload script

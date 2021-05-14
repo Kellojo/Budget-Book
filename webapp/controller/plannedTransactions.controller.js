@@ -49,10 +49,22 @@ sap.ui.define([
     };
 
     ControllerProto.onAddPlannedButtonPress = function () {
-        this.getOwnerComponent().openDialog("PlanTransactionDialog", {
-            title: "planTransactionDialogTitle",
-            submitButton: true,
-        });
+        const oComponent = this.getOwnerComponent();
+        if (oComponent.getTransactionsManager().canAddPlannedTransactions()) {
+            oComponent.openDialog("PlanTransactionDialog", {
+                title: "planTransactionDialogTitle",
+                submitButton: true,
+            });
+        } else {
+            oComponent.openDialog("SubscriptionDialog", {
+                title: "subscriptionDialogTitle",
+                contentHeight: "550px",
+                contentWidth: "432px",
+                showHeader: false
+            });
+        }
+
+        
     };
     ControllerProto.onDeletePlannedTransactionPress = async function (oEvent) {
         var oBindingContext = oEvent.getSource().getBindingContext("Database"),
