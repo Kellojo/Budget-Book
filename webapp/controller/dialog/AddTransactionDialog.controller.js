@@ -15,7 +15,6 @@ sap.ui.define([
     ControllerProto.onPageEnter = async function(oEvent) {
         const sTransactionId = oEvent.getParameter("arguments").transactionId,
             bIsExistingTransaction = sTransactionId !== "new";
-        await ControllerBase.prototype.onPageEnter.apply(this, arguments);
 
         var oComponent = this.getOwnerComponent(),
             oResourceBundle = oComponent.getResourceBundle();
@@ -32,6 +31,7 @@ sap.ui.define([
         }
 
         this.onOpenInDialog(oSettings);
+        await ControllerBase.prototype.onPageEnter.apply(this, arguments);
     }
 
     ControllerProto.onOpenInDialog = async function(oSettings) {
