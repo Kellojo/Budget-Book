@@ -70,7 +70,7 @@ sap.ui.define([
         if (oComponent.getIsWebVersion()) {
             // insert into firestore
             assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
-            await this._getSynchronizeableTransactionFirebaseCollection().add(oTransaction); 
+            this._getSynchronizeableTransactionFirebaseCollection().add(oTransaction); 
         } else {
             var oDatabase = oComponent.getDatabase(),
                 aOldCategories = this.getAllCategories(),
@@ -106,7 +106,7 @@ sap.ui.define([
         if (this.getOwnerComponent().getIsWebVersion()) {
             // insert into firestore
             assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
-            await this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction.id || sPath).set(oTransaction); 
+            this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction.id || sPath).set(oTransaction); 
         } else {
             var oDatabase = this.getOwnerComponent().getDatabase();
             oDatabase.setModelProperty(sPath, oTransaction);
