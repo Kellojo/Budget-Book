@@ -39,13 +39,13 @@ jobs:
           delete-only-drafts: true
           github-access-token: ${{ secrets.github_token }}
       - name: Create Release Notes
-        uses: Kellojo/github-release-notes-generator@v1
+        uses: Kellojo/github-release-notes-generator@v1.2
         with:
           destination: './webapp/config/release-notes.json'
           github-access-token: ${{ secrets.github_token }}
 
       - name: Build/release Electron app
-        uses: samuelmeuli/action-electron-builder@v1.1
+        uses: samuelmeuli/action-electron-builder@v1
         env:
           CSC_LINK: ${{ secrets.CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
