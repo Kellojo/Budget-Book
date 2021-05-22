@@ -39,7 +39,7 @@ jobs:
           delete-only-drafts: true
           github-access-token: ${{ secrets.github_token }}
       - name: Create Release Notes
-        uses: Kellojo/github-release-notes-generator@v1.3
+        uses: Kellojo/github-release-notes-generator@v1.4
         with:
           destination: './webapp/config/release-notes.json'
           github-access-token: ${{ secrets.github_token }}
