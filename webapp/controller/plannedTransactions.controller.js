@@ -6,7 +6,7 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/FilterType",
-    "sap/m/MessageBox",
+    "kellojo/m/thirdparty/MessageBox",
     "sap/ui/Device",
     "sap/ui/core/format/DateFormat",
     "sap/ui/core/Core",

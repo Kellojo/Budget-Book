@@ -1,7 +1,7 @@
 sap.ui.define([
     "kellojo/m/beans/BeanBase",
     "com/budgetBook/Config",
-    "sap/m/MessageBox",
+    "kellojo/m/thirdparty/MessageBox",
     "sap/ui/core/Core",
     "sap/m/MessageToast",
     "kellojo/m/library",
