@@ -121,7 +121,7 @@ sap.ui.define([
     /**
      * Handles the auth state changes 
      */
-    ComponentProto.onAuthStateChange = function() {
+    ComponentProto.onAuthStateChange = async function() {
         // if on the web version, check if we should show the login or not :)
         if (this.getIsWebVersion()) {
             this.getRouter().initialize();
@@ -133,7 +133,7 @@ sap.ui.define([
             }
         }
         
-        this.getPreferenceManager().fetchPreferences();
+        await this.getPreferenceManager().fetchPreferences();
         this.openWhatsNewDialog();
     }
 
@@ -259,7 +259,12 @@ sap.ui.define([
 
     ComponentProto.openWhatsNewDialog = async function() {
         const oReleaseNote = await (await fetch("./config/release-notes.json")).json();
-        new WhatsNewDialog(oReleaseNote).open();
+        const oPreferenceManager = this.getPreferenceManager();
+        const sLastViewedReleaseNotes = oPreferenceManager.getPreference("/lastViewedReleaseNotes");
+        if (sLastViewedReleaseNotes !== oReleaseNote.version) {
+            oReleaseNote.dismiss = oPreferenceManager.setPreference.bind(oPreferenceManager, "/lastViewedReleaseNotes", oReleaseNote.version),
+            new WhatsNewDialog(oReleaseNote).open();
+        }
     }
 
 
