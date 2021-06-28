@@ -41,11 +41,11 @@
       ]
     },
     "dmg": {
-        "sign": false
+      "sign": false
     }
   },
   "devDependencies": {
-    "@ui5/cli": "^2.7.1",
+    "@ui5/cli": "^2.11.2",
     "chalk": "^4.1.0",
     "chokidar": "^3.4.0",
     "electron": "^9.4.0",
