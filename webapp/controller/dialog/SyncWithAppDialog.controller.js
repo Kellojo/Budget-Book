@@ -13,6 +13,7 @@ sap.ui.define([
         AuthBaseController.prototype.onInit.apply(this, arguments);
         this.m_oSyncPage = this.byId("idSyncPage");
         this.m_oNavContainer = this.byId("idNavContainer");
+        this.m_oSubscriptionPurchase = this.byId("idSubscriptionPage");
         this.m_oViewModel = new JSONModel({
             transactions: [],
             transactionsCount: 0,
@@ -24,7 +25,7 @@ sap.ui.define([
         // reset view
         this.m_oLogin.reset();
         if (this.getOwnerComponent().getFirebaseManager().getIsLoggedIn()) {
-            this.toSyncPage(true);
+            this.toSubscriptionPage(true);
         } else {
             this.m_oNavContainer.to(this.m_oLogin, "show");
         }
@@ -37,23 +38,44 @@ sap.ui.define([
     // ------------------------
 
     ControllerProto.onSignUpSuccess = function() {
-        this.toSyncPage();
+        this.toSubscriptionPage();
     }
 
     ControllerProto.onSignInSuccess = function() {
-        this.toSyncPage();
+        this.toSubscriptionPage();
     }
 
     ControllerProto.onSignOutSuccess = function() {
         this.m_oNavContainer.to(this.m_oLogin, "slide");
     }
 
-    ControllerProto.toSyncPage = function(bInstant) {
+    ControllerProto.toSyncPage = function(oEvent, bInstant) {
         this.m_oLogin.reset();
-        this.m_oNavContainer.to(this.m_oSyncPage, bInstant ? "show" : undefined);
+        this.m_oNavContainer.to(this.m_oSyncPage, !!bInstant ? "show" : "slide");
         this.getOwnerComponent().getTransactionsManager().listenForSynchronizeableTransactions(
             this.onSynchronizeableTransactionsChange.bind(this)
         );
+    }
+
+    ControllerProto.toSubscriptionPage = function(bInstant) {
+        if (this.getOwnerComponent().getPurchaseManager().isSubscribed()) {
+            this.toSyncPage(null, bInstant);
+            return;
+        }
+
+        this.m_oSubscriptionPurchase.reset();
+        this.m_oNavContainer.to(this.byId("idSubscriptionPage"), !!bInstant ? "show" : "slide");
+    }
+
+    ControllerProto.onPurchaseSubscription = function(oEvent) {
+        const oSource = oEvent.getSource();
+        const oComponent = this.getOwnerComponent();
+        const oSubscription = oEvent.getParameter("subscription");
+        oComponent.getPurchaseManager().purchaseSubscription({
+            subscription: oSubscription,
+            failed: oSource.subscriptionFailed.bind(oSource),
+            purchased: oSource.subscriptionPurchased.bind(oSource),
+        });
     }
 
     ControllerProto.onSynchronizeableTransactionsChange = function(aTransactions) {

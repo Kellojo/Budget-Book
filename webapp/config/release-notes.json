@@ -1,0 +1,10 @@
+{
+	"name": "Now featuring Planned Transactions",
+	"url": "https://github.com/Kellojo/Budget-Book/releases/tag/untagged-b2a963a1d8e02fa15e97",
+	"version": "v1.3.0",
+	"creationDate": "2021-02-07T13:36:50Z",
+	"releaseDate": "2021-06-27T21:12:21.917Z",
+	"description": "In this release, you can now start planning recurring transactions with the new transaction planning feature.\r\nThis way you can easily automate your income and expense tracking for recurring payments (i.e. rent, salary, etc.).\r\nTransactions can be planned to recur on a daily, weekly, monthly, yearly basis.\r\n\r\nOther smaller enhancements have been added:\r\n- Besides that you can now find the used open source packages in the user help menu.\r\n- The onboarding has been updated to showcase the features of the app\r\n- Some smaller UI enhancements have been added\r\n- The app is now signed and notarized for (Mac OS only). This makes installation easier, as Mac OS will no longer show it as an untrusted app.\r\n- Dialogs and popovers now use new opening and closing animations \r\n- The MIT license has been removed and the project is from now on licensed under the [Commons Clause license](https://commonsclause.com/)",
+	"author": "Kellojo",
+	"authorAvatar": "https://avatars.githubusercontent.com/u/12833426?v=4"
+}

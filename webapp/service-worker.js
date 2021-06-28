@@ -2,6 +2,8 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox
 
 // This will work!
 workbox.routing.registerRoute(
-    ({ request }) => request.destination === 'image',
-    new workbox.strategies.CacheFirst()
+    ({ request }) => {
+        return request.url.includes(self.registration.scope) && !request.url.includes("localhost:8080");
+    },
+    new workbox.strategies.StaleWhileRevalidate()
 );

@@ -1,7 +1,8 @@
-const { app, ipcMain, shell, remote} = require('electron');
+const { app, ipcMain, shell, remote, inAppPurchase} = require('electron');
 const Store = require("electron-store");
 const IOManager = require("./IoManager");
 const username = require("username");
+const InAppPurchases = require("./inAppPurchases");
 
 
 class IPC {
@@ -9,6 +10,7 @@ class IPC {
     constructor(mainWindow) {
         const store = new Store();
         const ioManager = new IOManager();
+        const inAppPurchases = new InAppPurchases(mainWindow);
 
         ipcMain.on("saveData", (event, oData) => {
             console.log("Writing " + oData);
@@ -44,7 +46,7 @@ class IPC {
             }, mainWindow);
         });
 
-        ipcMain.on("loadAppInfo", (event) => {
+        ipcMain.on("loadAppInfo", async (event) => {
             const sUsername = username.sync();
 
             var oAppInfo = {
@@ -52,11 +54,17 @@ class IPC {
                 isFirstStartUp: !!store.get("isFirstStartUp", true),
                 username: sUsername,
                 initials: sUsername.charAt(0),
+                canMakePayments: inAppPurchases.canMakePayments(),
+                subscriptions: await inAppPurchases.getProducts(),
             };
 
             store.set("isFirstStartUp", false);
 
             event.reply("loadAppInfoComplete", oAppInfo);
+        });
+
+        ipcMain.on("purchaseSubscription", (event, oParam) => {
+            inAppPurchases.purchaseSubscription(oParam);
         });
 
         ipcMain.on("openHelpPage", (event) => {

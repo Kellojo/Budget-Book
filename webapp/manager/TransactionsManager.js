@@ -70,7 +70,7 @@ sap.ui.define([
         if (oComponent.getIsWebVersion()) {
             // insert into firestore
             assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
-            await this._getSynchronizeableTransactionFirebaseCollection().add(oTransaction); 
+            this._getSynchronizeableTransactionFirebaseCollection().add(oTransaction); 
         } else {
             var oDatabase = oComponent.getDatabase(),
                 aOldCategories = this.getAllCategories(),
@@ -106,7 +106,7 @@ sap.ui.define([
         if (this.getOwnerComponent().getIsWebVersion()) {
             // insert into firestore
             assert(this.getOwnerComponent().getFirebaseManager().getIsLoggedIn(), "User must be signed in");
-            await this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction.id || sPath).set(oTransaction); 
+            this._getSynchronizeableTransactionFirebaseCollection().doc(oTransaction.id || sPath).set(oTransaction); 
         } else {
             var oDatabase = this.getOwnerComponent().getDatabase();
             oDatabase.setModelProperty(sPath, oTransaction);
@@ -364,12 +364,14 @@ sap.ui.define([
 
 
     ManagerProto.listenForSynchronizeableTransactions = function(fnChange) {
-        this._getSynchronizeableTransactionFirebaseCollection()
-        .onSnapshot(function(querySnapshot) {
-            var aTransactions = [];
-            querySnapshot.docs.forEach((oDoc) => aTransactions.push(oDoc));
-            fnChange(aTransactions);
-        }.bind(this));
+        this.getOwnerComponent().getFirebaseManager().subscribeToChanges(
+            this._getSynchronizeableTransactionFirebaseCollection(),
+            function(querySnapshot) {
+                var aTransactions = [];
+                querySnapshot.docs.forEach((oDoc) => aTransactions.push(oDoc));
+                fnChange(aTransactions);
+            }.bind(this)
+        );
     }
 
     /**
@@ -560,6 +562,12 @@ sap.ui.define([
         }
 
         return aPlannedTransactions.find(oPlannedTransaction => oPlannedTransaction.uuid === sId);
+    }
+
+    ManagerProto.canAddPlannedTransactions = function() {
+        const oComponent = this.getOwnerComponent();
+        const aPlannedTransactions = oComponent.getDatabase().getData().plannedTransactions;
+        return aPlannedTransactions.length < Config.MAX_PLANNED_TRANSACTIONS_FREE || oComponent.getPurchaseManager().isSubscribed();
     }
 
 

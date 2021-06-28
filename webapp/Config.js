@@ -1,8 +1,13 @@
 sap.ui.define([
     "kellojo/m/library",
     "kellojo/m/beans/ThemeManager",
-], function (library, ThemeManager) {
+    "sap/ui/core/Core",
+    "sap/ui/model/resource/ResourceModel",
+], function (library, ThemeManager, Core) {
     "use strict";
+
+    const oLibraryResourceBundle = Core.getLibraryResourceBundle("kellojo.m");
+    const oResourceBundle = Core.getLibraryResourceBundle("com.budgetBook");
 
     return {
         Beans: {
@@ -15,6 +20,7 @@ sap.ui.define([
                 "PreferenceManager",
                 "MessageManager",
                 "PlannedTransactionsManager",
+                "PurchaseManager",
             ],
 
             directReferences: [
@@ -31,6 +37,9 @@ sap.ui.define([
             },
             SyncWithAppDialog: {
                 view: "com.budgetBook.view.dialog.SyncWithAppDialog"
+            },
+            SubscriptionDialog: {
+                view: "com.budgetBook.view.dialog.SubscriptionDialog"
             }
         },
 
@@ -85,6 +94,12 @@ sap.ui.define([
         ],
 
 
+        API: {
+            SUBSCRIPTIONS: {
+                PURCHASED: "https://us-central1-budget-book-7ebd4.cloudfunctions.net/widgets/subscriptions/purchased"
+            }
+        },
+
         FIREBASE: {
             apiKey: "AIzaSyDF4H6-j5wCSPt5HLPLakVLQrea5WOLNwQ",
             authDomain: "budget-book-7ebd4.firebaseapp.com",
@@ -99,6 +114,62 @@ sap.ui.define([
         WEBSITE: "https://kellojo.github.io/Budget-Book/",
         WEBSITE_CHANGELOG: "https://github.com/Kellojo/Budget-Book/releases",
 
+        MAX_PLANNED_TRANSACTIONS_FREE: 3,
+
+
+        applyTranslatedConfigProperties: function(oResourceBundle, oConfig, oAppInfo) {
+            oConfig.SUBSCRIPTIONS = [
+                {
+                    name: oResourceBundle.getText("subscription-Free-name"),
+                    formattedPrice: oResourceBundle.getText("subscription-Free-price"),
+                    productIdentifier: null,
+                    owned: true,
+                    color: library.Color.Default,
+                    benefits: [
+                        {
+                            valueState: "Warning",
+                            text: oResourceBundle.getText("subscription-Free-benefit-1"),
+                            icon: "sap-icon://navigation-down-arrow",
+                        },
+                        {
+                            valueState: "Warning",
+                            text: oResourceBundle.getText("subscription-Free-benefit-2"),
+                            icon: "sap-icon://navigation-down-arrow",
+                        },
+                        {
+                            valueState: "Warning",
+                            text: oResourceBundle.getText("subscription-Free-benefit-3"),
+                            icon: "sap-icon://navigation-down-arrow",
+                        }
+                    ]
+
+                },
+                {
+                    name: oResourceBundle.getText("subscription-Professional-name"),
+                    formattedPrice: oResourceBundle.getText("subscription-Professional-price", oAppInfo.subscriptions?.Professional.formattedPrice),
+                    productIdentifier: oAppInfo.subscriptions?.Professional.productIdentifier,
+                    owned: false,
+                    color: library.Color.BudgetP,
+                    benefits: [
+                        {
+                            valueState: "Success",
+                            text: oResourceBundle.getText("subscription-Professional-benefit-1"),
+                            icon: "sap-icon://accept",
+                        },
+                        {
+                            valueState: "Success",
+                            text: oResourceBundle.getText("subscription-Professional-benefit-2"),
+                            icon: "sap-icon://accept",
+                        },
+                        {
+                            valueState: "Success",
+                            text: oResourceBundle.getText("subscription-Professional-benefit-3"),
+                            icon: "sap-icon://accept",
+                        }
+                    ]
+                }
+            ];
+        }
 
     };
 });

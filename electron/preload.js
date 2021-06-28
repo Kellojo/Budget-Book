@@ -42,6 +42,21 @@ contextBridge.exposeInMainWorld(
             
             ipcRenderer.send("importData", oParam);
         },
+        purchaseSubscription: (oParam) => {
+            ipcRenderer.once("purchaseSubscription-purchasing", oParam.purchasing);
+            ipcRenderer.once("purchaseSubscription-purchased", oParam.purchased);
+            ipcRenderer.once("purchaseSubscription-failed", oParam.failed);
+            ipcRenderer.once("purchaseSubscription-restored", oParam.restored);
+            ipcRenderer.once("purchaseSubscription-deferred", oParam.deferred);
+            
+            delete oParam.purchasing;
+            delete oParam.purchased;
+            delete oParam.failed;
+            delete oParam.restored;
+            delete oParam.deferred;
+
+            ipcRenderer.send("purchaseSubscription", oParam);
+        }, 
         loadAppInfo: (fnCallback) => {
             ipcRenderer.once("loadAppInfoComplete", fnCallback);
             ipcRenderer.send("loadAppInfo");

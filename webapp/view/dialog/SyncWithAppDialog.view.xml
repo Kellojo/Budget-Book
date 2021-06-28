@@ -6,8 +6,8 @@
     xmlns:u="sap.ui.unified"
     xmlns:kM="kellojo.m"
     core:require="{ formatMessage: 'sap/base/strings/formatMessage' }"
-    height="450px"
-    width="350px">
+    height="100%"
+    width="100%">
 
         <NavContainer id="idNavContainer">
             <kM:Login 
@@ -18,6 +18,13 @@
                 customErrorMessage="{auth>/customErrorMessage}"
                 busy="{auth>/isLoginBusy}"/>
 
+            <kM:SubscriptionPurchase id="idSubscriptionPage" 
+                subscriptions="{Config>/SUBSCRIPTIONS}"
+                appName="{i18n>appTitleShort}"
+                skipSubscription="toSyncPage" 
+                continue="toSyncPage" 
+                subscribe="onPurchaseSubscription"/>
+
             <Page id="idSyncPage" showHeader="false">
                 <kM:Wrapper class="budgetBook-SyncWithAppDialog-Sync">
                     <Label text="{i18n>SyncWithAppDialogSyncPageTitle}" class="budgetBook-SyncWithAppDialog-title"/>
@@ -25,8 +32,7 @@
                     <Label text="{ parts: ['i18n>SyncWithAppDialogSyncStatus', '/transactionsCount'], formatter: 'formatMessage'}" class="budgetBook-SyncWithAppDialog-status"/>
                     <Button text="{i18n>SyncWithAppDialogSyncPageAction}" enabled="{= ${/transactions}.length > 0}" type="Emphasized" press="onSynchronizeButtonPress" />
                     <Link text="{i18n>SyncWithAppDialogSignOut}" class="budgetBook-SyncWithAppDialog-signOutLink" press="onSignOutPress"/>
-                </kM:Wrapper>
-                
+                </kM:Wrapper>   
             </Page>
         </NavContainer>
 

@@ -1,6 +1,6 @@
 sap.ui.define([
     'jquery.sap.global',
-    'sap/ui/core/UIComponent',
+    'kellojo/m/ComponentBase',
 
     "sap/m/MessageStrip",
     "sap/ui/Device",
@@ -13,6 +13,9 @@ sap.ui.define([
     "sap/m/MessageToast",
 
     "com/budgetBook/Config",
+    "kellojo/m/WhatsNewDialog",
+    "kellojo/m/Dialog",
+    "sap/m/Button",
 
     "com/budgetBook/manager/TransactionsManager",
     "com/budgetBook/manager/Database",
@@ -22,9 +25,10 @@ sap.ui.define([
     "com/budgetBook/manager/PreferenceManager",
     "com/budgetBook/manager/MessageManager",
     "com/budgetBook/manager/PlannedTransactionsManager",
+    "com/budgetBook/manager/PurchaseManager",
 
     "kellojo/m/library"
-], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, library, MessageToast, Config, Licences) {
+], function (jQuery, UIComponent, MessageStrip, Device, JSONModel, ResourceModel, History, UserHelpMenu, library, MessageToast, Config, WhatsNewDialog, Dialog, Button, Licences) {
     "use strict";
 
     var Component = UIComponent.extend("com.budgetBook.Component", {
@@ -117,7 +121,7 @@ sap.ui.define([
     /**
      * Handles the auth state changes 
      */
-    ComponentProto.onAuthStateChange = function() {
+    ComponentProto.onAuthStateChange = async function() {
         // if on the web version, check if we should show the login or not :)
         if (this.getIsWebVersion()) {
             this.getRouter().initialize();
@@ -129,7 +133,8 @@ sap.ui.define([
             }
         }
         
-        this.getPreferenceManager().fetchPreferences();
+        await this.getPreferenceManager().fetchPreferences();
+        this.openWhatsNewDialog();
     }
 
     /**
@@ -252,6 +257,16 @@ sap.ui.define([
         }
     }
 
+    ComponentProto.openWhatsNewDialog = async function() {
+        const oReleaseNote = await (await fetch("./config/release-notes.json")).json();
+        const oPreferenceManager = this.getPreferenceManager();
+        const sLastViewedReleaseNotes = oPreferenceManager.getPreference("/lastViewedReleaseNotes");
+        if (sLastViewedReleaseNotes !== oReleaseNote.version) {
+            oReleaseNote.dismiss = oPreferenceManager.setPreference.bind(oPreferenceManager, "/lastViewedReleaseNotes", oReleaseNote.version),
+            new WhatsNewDialog(oReleaseNote).open();
+        }
+    }
+
 
     /**
      * Navigates back, simple as that ;)
@@ -286,6 +301,8 @@ sap.ui.define([
 
     ComponentProto.notifyAppInfoReady = function() {
         this.m_bAppInfoLoaded = true;
+        Config.applyTranslatedConfigProperties(this.getResourceBundle(), Config, this.getAppManager().getAppInfo());
+        this.setModel(new JSONModel(Config), "Config");
         this._checkAppReady();
     }
 
@@ -327,17 +344,22 @@ sap.ui.define([
             oResourceBundle = this.getResourceBundle();
         oController
 
-        var oDialog = new sap.m.Dialog({
+        var oDialog = new Dialog({
             title: oResourceBundle.getText(oSettings.title),
             stretchOnPhone: true,
         }).addStyleClass("kellojoMDialog");
         oDialog.setModel(this.m_oResourceBundle, "i18n");
         oDialog.setModel(this.getModel("User"), "User");
+        oDialog.setModel(this.getModel("AppInfo"), "AppInfo");
         oDialog.setModel(this.getModel("Preferences"), "Preferences");
+        oDialog.setModel(this.getModel("Config"), "Config");
+        oDialog.setContentHeight(oSettings.contentHeight);
+        oDialog.setContentWidth(oSettings.contentWidth);
+        oSettings.dialog = oDialog;
 
         // Submit Button
         if (oSettings.submitButton) {
-            var oSubmitButton = new sap.m.Button({
+            var oSubmitButton = new Button({
                 text: oSettings.submitText || oResourceBundle.getText("dialogSubmit"),
                 type: "Emphasized",
                 press: function () {
@@ -359,7 +381,7 @@ sap.ui.define([
         }
 
         // Close Button
-        var oCloseButton = new sap.m.Button({
+        var oCloseButton = new Button({
             text: oResourceBundle.getText("dialogClose"),
             type: "Transparent",
             press: function () {
@@ -393,7 +415,7 @@ sap.ui.define([
 
         // Submit Button
         if (oSettings.submitButton) {
-            var oSubmitButton = new sap.m.Button({
+            var oSubmitButton = new Button({
                 text: oSettings.submitText || oResourceBundle.getText("dialogSubmit"),
                 type: "Emphasized",
                 press: function () {
@@ -415,7 +437,7 @@ sap.ui.define([
         }
 
         // Close Button
-        var oCloseButton = new sap.m.Button({
+        var oCloseButton = new Button({
             text: oResourceBundle.getText("dialogClose"),
             type: "Transparent",
             press: function () {

@@ -9,7 +9,7 @@
     "start-web": "node ./bin/prepareForWeb.js && ui5 serve",
     "test": "ui5-test-i18n ./webapp/i18n && cd lib/kellojo.m/ && npm run test",
     "build": "npm run build-licenses && npm run ui5-build",
-    "ui5-build": "npm run build-licenses && ui5 build -a self-contained --dest=dist-ui5 --clean-dest",
+    "ui5-build": "npm run build-licenses && ui5 build -a self-contained --dest=dist-ui5 --clean-dest --exclude-task=createDebugFiles",
     "build-styles": "cd ./lib/kellojo.m && ui5 build dev",
     "build-licenses": "node ./bin/license-build.js",
     "pack": "electron-builder --dir",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/Kellojo/Budget-Book#readme",
   "build": {
-    "appId": "com.budgetP",
+    "appId": "com.BudgetP",
     "productName": "BudgetP",
     "afterSign": "bin/notarize.js",
     "mac": {

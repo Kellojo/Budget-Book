@@ -13,7 +13,7 @@
         <customHeader>
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
-                    <Avatar initials="{User>/userInitials}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{device>/system/phone}"/>
+                    <kM:Avatar initials="{User>/userInitials}" animate="{Subscription>/isSubscribed}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{device>/system/phone}"/>
                 </contentLeft>
 
                 <contentMiddle>

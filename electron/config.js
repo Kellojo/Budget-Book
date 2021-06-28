@@ -20,4 +20,7 @@ module.exports = {
     INDEX_HTML_TRAY: `${DIRECTORY}/index.html?env=tray`,
     IS_DEVELOPMENT: IS_DEVELOPMENT,
     TRAY_ICON: `${DIRECTORY}/img/icon.png`,
+    IN_APP_PURCHASE_IDS: [
+        "Professional"
+    ]
 }

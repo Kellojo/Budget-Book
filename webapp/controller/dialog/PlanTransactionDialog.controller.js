@@ -3,7 +3,7 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "com/budgetBook/Config",
     "sap/m/MessageToast",
-    "sap/m/MessageBox",
+    "kellojo/m/thirdparty/MessageBox",
 ], function (ControllerBase, JSONModel, Config, MessageToast, MessageBox) {
     "use strict";
 

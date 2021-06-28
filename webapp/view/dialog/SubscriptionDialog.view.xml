@@ -1,0 +1,20 @@
+<mvc:View
+	controllerName="com.budgetBook.controller.dialog.SubscriptionDialog"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:kM="kellojo.m"
+    height="100%"
+    width="100%">
+
+    <NavContainer>
+        <kM:SubscriptionPurchase id="idSubscriptionPage" 
+            subscriptions="{Config>/SUBSCRIPTIONS}"
+            appName="{i18n>appTitleShort}"
+            skipSubscription="close" 
+            continue="close" 
+            subscribe="onPurchaseSubscription"/>
+    </NavContainer>
+
+</mvc:View>

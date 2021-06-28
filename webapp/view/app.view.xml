@@ -13,11 +13,11 @@
 			<Bar design="Header" class="budgetBookApp-Page-Header">
                 <contentLeft>
                     <core:Icon src="sap-icon://menu2" press="onMenuButtonPress" class="budgetBookApp-Page-Button" visible="false"/>
-                    <kM:AppTitle title="{i18n>appTitle}" version="{AppInfo>/version}"/>
+                    <kM:AppTitle title="{i18n>appTitle}" version="{AppInfo>/version}" subscription="{Subscription>/currentPlan}" subscriptionExpiration="{Subscription>/expiresAt}" />
                 </contentLeft>
 
                 <contentRight>
-                    <Avatar initials="{= ${User>/isLoggedIn} ? ${User>/userInitials} : ${AppInfo>/initials} }" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{= !${device>/isTrayVersion}}"/>
+                    <kM:Avatar initials="{= ${User>/isLoggedIn} ? ${User>/userInitials} : ${AppInfo>/initials} }" animate="{Subscription>/isSubscribed}" displaySize="XS" backgroundColor="Random" press="onUserHelpMenuPress" visible="{= !${device>/isTrayVersion}}"/>
                 </contentRight>
             </Bar>
 		</customHeader>
