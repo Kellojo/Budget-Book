@@ -13,7 +13,8 @@ sap.ui.define([
     "sap/m/GroupHeaderListItem",
     "kellojo/m/library",
     "kellojo/m/beans/Sorter",
-], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType, MessageBox, Device, DateFormat, Core, GroupHeaderListItem, library, Sorter) {
+    "sap/m/ListType",
+], function (ControllerBase, Config, Formatter, Filter, FilterOperator, JSONModel, FilterType, MessageBox, Device, DateFormat, Core, GroupHeaderListItem, library, Sorter, ListType) {
     "use strict";
 
     var Controller = ControllerBase.extend("com.budgetBook.controller.plannedTransactions", {}),
@@ -191,6 +192,40 @@ sap.ui.define([
         }
         return iResult;
     };
+
+    /**
+     * Format's, if the given transaction should be enabled
+     * @param {object} oPlannedTransaction 
+     * @returns {sap.m.ListType}
+     */
+    ControllerProto.formatListItemType = function(oPlannedTransaction, bIsSubscribed) {
+        return this.formatisEditable(oPlannedTransaction, bIsSubscribed) ? ListType.Active : ListType.Inactive;
+    }
+
+    /**
+     * Format's, if the given transaction is editable
+     * @param {object} oPlannedTransaction 
+     * @returns {boolean}
+     */
+    ControllerProto.formatisEditable = function(oPlannedTransaction, bIsSubscribed) {
+        const oTransactionManager = this.getOwnerComponent().getTransactionsManager();
+        return oTransactionManager.isPlannedTransactionEditable(oPlannedTransaction);
+    }
+
+    /**
+     * Format's, if the given transaction is editable
+     * @param {object} oPlannedTransaction 
+     * @returns {string}
+     */
+    ControllerProto.formatTooltip = function(oPlannedTransaction, bIsSubscribed) {
+        const oComponent = this.getOwnerComponent();
+        const oResourceBundle = oComponent.getResourceBundle();
+        const sDisabledTooltip = oResourceBundle.getText("plannedTransactionsPageTransactionDisabled", Config.MAX_PLANNED_TRANSACTIONS_FREE);
+        return !this.formatisEditable(oPlannedTransaction, bIsSubscribed) ? sDisabledTooltip : "";
+    }
+
+
+   
 
 
     return Controller;

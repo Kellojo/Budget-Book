@@ -564,6 +564,22 @@ sap.ui.define([
         return aPlannedTransactions.find(oPlannedTransaction => oPlannedTransaction.uuid === sId);
     }
 
+    /**
+     * Get's the index of a planned transaction
+     * @param {object} oPlannedTransaction 
+     * @returns {int}
+     */
+    ManagerProto.isPlannedTransactionEditable = function(oPlannedTransaction) {
+        const oComponent = this.getOwnerComponent();
+        const aPlannedTransactions = oComponent.getDatabase().getData().plannedTransactions;
+        var index = 0;
+        if (!!aPlannedTransactions) {
+            index = aPlannedTransactions.indexOf(oPlannedTransaction);
+        }
+
+        return index < Config.MAX_PLANNED_TRANSACTIONS_FREE || oComponent.getModel("Subscription").getProperty("/isSubscribed");
+    }
+
     ManagerProto.canAddPlannedTransactions = function() {
         const oComponent = this.getOwnerComponent();
         const aPlannedTransactions = oComponent.getDatabase().getData().plannedTransactions;

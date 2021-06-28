@@ -67,7 +67,7 @@
                         <Column width="48px"/>
                     </columns>
 
-                    <ColumnListItem type="Active" class="budgetBookOverview-transactionItem">
+                    <ColumnListItem tooltip="{parts: ['Database>', 'Subscription>/isSubscribed'], formatter: '.formatTooltip'}" type="{parts: ['Database>', 'Subscription>/isSubscribed'], formatter: '.formatListItemType'}" class="budgetBookOverview-transactionItem">
                         <CheckBox class="budgetBook-CheckBox" selected="{Database>transaction/isCompleted}"/>
                         
                         <VBox width="100%">
