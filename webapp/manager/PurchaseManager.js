@@ -122,6 +122,24 @@ sap.ui.define([
         return this.m_oSubscriptionModel.getProperty("/isSubscribed");
     }
 
+    SchemaProto.openSubscriptionDialog = function() {
+        const oComponent = this.getOwnerComponent();
+        const bCanMakePurchases = oComponent.getAppManager().getAppInfo().canMakePayments;
+
+        if (bCanMakePurchases) {
+            oComponent.openDialog("SubscriptionDialog", {
+                title: "subscriptionDialogTitle",
+                contentHeight: "550px",
+                contentWidth: "432px",
+                showHeader: false
+            });
+        } else {
+            MessageToast.show(oComponent.getResourceBundle().getText("subscriptionsNotEnabled"));
+        }
+
+        
+    }
+
 
     return oSchema;
 });

@@ -57,12 +57,7 @@ sap.ui.define([
                 submitButton: true,
             });
         } else {
-            oComponent.openDialog("SubscriptionDialog", {
-                title: "subscriptionDialogTitle",
-                contentHeight: "550px",
-                contentWidth: "432px",
-                showHeader: false
-            });
+            oComponent.getPurchaseManager().openSubscriptionDialog();
         }
 
         
