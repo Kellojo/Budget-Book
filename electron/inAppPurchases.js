@@ -6,7 +6,11 @@ class InAppPurchases {
     MainWindow;
 
     constructor(mainWindow) {
-        inAppPurchase.on("transactions-updated", this.onTransactionsUpdated);
+        console.log(inAppPurchase.canMakePayments());
+        if (inAppPurchase.canMakePayments()) {
+            inAppPurchase.on("transactions-updated", this.onTransactionsUpdated);
+        }
+        
         this.MainWindow = mainWindow;
     }
 
@@ -87,9 +91,11 @@ class InAppPurchases {
      * @public
      */
     async getProducts() {
-        this.Products = await inAppPurchase.getProducts(Config.IN_APP_PURCHASE_IDS);
+        if (!inAppPurchase.canMakePayments()) {
+            return {};
+        }
 
-        console.log(this.Products[0]);
+        this.Products = await inAppPurchase.getProducts(Config.IN_APP_PURCHASE_IDS);
 
         return {
             monthly: this.Products[0],
