@@ -64,7 +64,8 @@ sap.ui.define([
     }
 
     ControllerProto.toSubscriptionPage = function(bInstant) {
-        if (this.getOwnerComponent().getPurchaseManager().isSubscribed()) {
+        const oComponent = this.getOwnerComponent();
+        if (oComponent.getPurchaseManager().isSubscribed() || !oComponent.getAppManager().getAppInfo().canMakePayments) {
             this.toSyncPage(null, bInstant);
             return;
         }
