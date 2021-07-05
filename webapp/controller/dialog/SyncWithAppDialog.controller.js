@@ -115,10 +115,8 @@ sap.ui.define([
         const oComponent = this.getOwnerComponent();
         const oResourceBundle = oComponent.getResourceBundle();
         const oTransactionsManager = oComponent.getTransactionsManager();
-        const oPreferenceManager = oComponent.getPreferenceManager();
         const bCanSync = oTransactionsManager.canSyncTransactions();
-        let oLastSyncDate = oPreferenceManager.getPreference("/lastSyncDate");
-        oLastSyncDate = typeof oLastSyncDate.toDate === "function" ? oLastSyncDate.toDate() : oLastSyncDate || new Date(0);
+        const oLastSyncDate = oTransactionsManager.getLastSyncDate();
         const sTimeUntilSync = Formatter.diffBetweenDate(oLastSyncDate, new Date());
 
         return bCanSync ? oResourceBundle.getText("SyncWithAppDialogSyncPageAction") : oResourceBundle.getText("SyncWithAppDialogSyncPageActionWithTime", sTimeUntilSync);

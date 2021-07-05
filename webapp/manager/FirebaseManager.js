@@ -44,6 +44,7 @@ sap.ui.define([
         firebase.auth().onAuthStateChanged(this.onAuthStateChanged.bind(this));
         this.setFireStore(firebase.firestore());
         firebase.firestore().enablePersistence();
+        firebase.auth().useDeviceLanguage();
 
         this.getOwnerComponent().attachUnload(this.cancelAllSubscriptions, this);
         this.getOwnerComponent().attachShow(this.restoreAllSubscriptions, this);

@@ -596,13 +596,36 @@ sap.ui.define([
      * @returns {boolean}
      */
     ManagerProto.canSyncTransactions = function() {
-        const oPreferenceManager = this.getOwnerComponent().getPreferenceManager();
-        let oLastSyncDate = oPreferenceManager.getPreference("/lastSyncDate");
-        oLastSyncDate = typeof oLastSyncDate.toDate === "function" ? oLastSyncDate.toDate() : oLastSyncDate || new Date(0);
+        const oComponent = this.getOwnerComponent();
+
+        if (!oComponent.getFirebaseManager().getIsLoggedIn()) {
+            return false;
+        }
+
+        const oLastSyncDate = this.getLastSyncDate();
         const nextSyncDate = new Date(oLastSyncDate.getTime());
         nextSyncDate.setHours(nextSyncDate.getHours() + Config.TRANSACRION_SYNC_COOLDOWN_FREE);
 
-        return nextSyncDate <= new Date() || this.getOwnerComponent().getPurchaseManager().isSubscribed();
+        return nextSyncDate <= new Date() || oComponent.getPurchaseManager().isSubscribed();
+    }
+
+    /**
+     * Get's the last sync date for the mobile transactions sync
+     * Returns new Date(0), if not signed in or not yet synced
+     * @returns {Date}
+     */
+    ManagerProto.getLastSyncDate = function() {
+        const oComponent = this.getOwnerComponent();
+        const oPreferenceManager = oComponent.getPreferenceManager();
+
+        if (!oComponent.getFirebaseManager().getIsLoggedIn()) {
+            return new Date(0);
+        }
+
+        let oLastSyncDate = oPreferenceManager.getPreference("/lastSyncDate") || new Date(0);
+        oLastSyncDate = typeof oLastSyncDate.toDate === "function" ? oLastSyncDate.toDate() : oLastSyncDate;
+
+        return oLastSyncDate;
     }
 
 
