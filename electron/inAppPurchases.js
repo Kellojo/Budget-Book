@@ -35,11 +35,18 @@ class InAppPurchases {
 
             case "purchased": {
                 const receiptURL = inAppPurchase.getReceiptURL();
+                console.log("");
                 console.log(`Receipt URL: ${receiptURL}`);
                 console.log(`${payment.productIdentifier} purchased.`);
+                console.log("");
+                
+                console.log("Transaction:");
+                console.log(oTransaction);
+                console.log("");
 
                 this.MainWindow.webContents.send('purchaseSubscription-purchased', {
                     productIdentifier: payment.productIdentifier,
+                    transaction: oTransaction,
                 });
 
                 // Submit the receipt file to the server and check if it is valid.
@@ -92,7 +99,7 @@ class InAppPurchases {
         console.log(this.Products[0]);
 
         return {
-            monthly: this.Products[0],
+            Professional: this.Products[0],
         };
     }
 
