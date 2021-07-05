@@ -97,5 +97,19 @@ sap.ui.define([
         return false;
     }
 
+    /**
+     * Formats the difference between two dates as HH:MM:SS
+     * @param {Date} oDate1 
+     * @param {Date} oDate2 
+     * @returns {string}
+     */
+    Formatter.diffBetweenDate = function(oDate1, oDate2) {
+        var diff = new Date(oDate1 - oDate2);
+        var hour = diff.getUTCHours();
+        var min = diff.getUTCMinutes();
+        var sec = diff.getUTCSeconds();
+        return `${hour.toString().padStart(2, "0")}:${min.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
+    }
+
     return Formatter;
 });

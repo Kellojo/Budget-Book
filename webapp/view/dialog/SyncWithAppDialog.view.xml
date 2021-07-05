@@ -30,7 +30,10 @@
                     <Label text="{i18n>SyncWithAppDialogSyncPageTitle}" class="budgetBook-SyncWithAppDialog-title"/>
                     <Label text="{ parts: ['i18n>SyncWithAppDialogSyncDescription', 'User>/user/email'], formatter: 'formatMessage'}"/>
                     <Label text="{ parts: ['i18n>SyncWithAppDialogSyncStatus', '/transactionsCount'], formatter: 'formatMessage'}" class="budgetBook-SyncWithAppDialog-status"/>
-                    <Button text="{i18n>SyncWithAppDialogSyncPageAction}" enabled="{= ${/transactions}.length > 0}" type="Emphasized" press="onSynchronizeButtonPress" />
+                    <Button text="{parts: ['Preferences>/lastSyncDate', '/now', 'Subscription>/isSubscribed', '/transactions'], formatter: '.formatSyncButtonText'}" 
+                        enabled="{parts: ['Preferences>/lastSyncDate', '/now', 'Subscription>/isSubscribed', '/transactions'], formatter: '.formatCanSync'}"
+                        type="Emphasized"
+                        press="onSynchronizeButtonPress" />
                     <Link text="{i18n>SyncWithAppDialogSignOut}" class="budgetBook-SyncWithAppDialog-signOutLink" press="onSignOutPress"/>
                 </kM:Wrapper>   
             </Page>

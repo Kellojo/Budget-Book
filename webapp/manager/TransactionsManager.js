@@ -399,6 +399,10 @@ sap.ui.define([
             iSuccessfullCount ++;
         }
 
+        const oComponent = this.getOwnerComponent();
+        const oPreferenceManager = oComponent.getPreferenceManager();
+        oPreferenceManager.setPreference("/lastSyncDate", new Date());
+
         oParams.complete({
             successfullSyncs: iSuccessfullCount
         });
@@ -584,6 +588,21 @@ sap.ui.define([
         const oComponent = this.getOwnerComponent();
         const aPlannedTransactions = oComponent.getDatabase().getData().plannedTransactions;
         return aPlannedTransactions.length < Config.MAX_PLANNED_TRANSACTIONS_FREE || oComponent.getPurchaseManager().isSubscribed();
+    }
+
+    /**
+     * Can transactions be synced by the user?
+     * @public
+     * @returns {boolean}
+     */
+    ManagerProto.canSyncTransactions = function() {
+        const oPreferenceManager = this.getOwnerComponent().getPreferenceManager();
+        let oLastSyncDate = oPreferenceManager.getPreference("/lastSyncDate");
+        oLastSyncDate = typeof oLastSyncDate.toDate === "function" ? oLastSyncDate.toDate() : oLastSyncDate || new Date(0);
+        const nextSyncDate = new Date(oLastSyncDate.getTime());
+        nextSyncDate.setHours(nextSyncDate.getHours() + Config.TRANSACRION_SYNC_COOLDOWN_FREE);
+
+        return nextSyncDate <= new Date() || this.getOwnerComponent().getPurchaseManager().isSubscribed();
     }
 
 

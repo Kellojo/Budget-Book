@@ -115,6 +115,7 @@ sap.ui.define([
         WEBSITE_CHANGELOG: "https://github.com/Kellojo/Budget-Book/releases",
 
         MAX_PLANNED_TRANSACTIONS_FREE: 3,
+        TRANSACRION_SYNC_COOLDOWN_FREE: 24,
 
 
         applyTranslatedConfigProperties: function(oResourceBundle, oConfig, oAppInfo) {

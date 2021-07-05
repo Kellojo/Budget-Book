@@ -353,6 +353,7 @@ sap.ui.define([
         oDialog.setModel(this.getModel("AppInfo"), "AppInfo");
         oDialog.setModel(this.getModel("Preferences"), "Preferences");
         oDialog.setModel(this.getModel("Config"), "Config");
+        oDialog.setModel(this.getModel("Subscription"), "Subscription");
         oDialog.setContentHeight(oSettings.contentHeight);
         oDialog.setContentWidth(oSettings.contentWidth);
         oSettings.dialog = oDialog;

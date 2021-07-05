@@ -1,8 +1,9 @@
 sap.ui.define([
     "com/budgetBook/controller/authBase.controller",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
-], function (AuthBaseController, JSONModel, MessageToast) {
+    "sap/m/MessageToast",
+    "com/budgetBook/manager/Formatter",
+], function (AuthBaseController, JSONModel, MessageToast, Formatter) {
     "use strict";
 
     var Controller = AuthBaseController.extend("com.budgetBook.controller.dialog.SyncWithAppDialog", {}),
@@ -17,8 +18,13 @@ sap.ui.define([
         this.m_oViewModel = new JSONModel({
             transactions: [],
             transactionsCount: 0,
+            now: new Date(),
         });
         this.getView().setModel(this.m_oViewModel);
+
+        setInterval(() => {
+            this.m_oViewModel.setProperty("/now", new Date());
+        }, 1000);
     };
 
     ControllerProto.onOpenInDialog = function(oSettings) {
@@ -91,6 +97,31 @@ sap.ui.define([
         });
     }
 
+    /**
+     * Can transactions be synced now
+     * @param {Date} oLastSyncDate 
+     * @param {Date} oNow 
+     * @param {boolean} bIsSubscribed 
+     * @returns {boolean}
+     */
+    ControllerProto.formatCanSync = function(oLastSyncDate, oNow, bIsSubscribed, aTransactions) {
+        const oTransactionsManager = this.getOwnerComponent().getTransactionsManager();
+        return oTransactionsManager.canSyncTransactions() && aTransactions.length > 0;
+    }
+
+
+    ControllerProto.formatSyncButtonText = function() {
+        const oComponent = this.getOwnerComponent();
+        const oResourceBundle = oComponent.getResourceBundle();
+        const oTransactionsManager = oComponent.getTransactionsManager();
+        const oPreferenceManager = oComponent.getPreferenceManager();
+        const bCanSync = oTransactionsManager.canSyncTransactions();
+        let oLastSyncDate = oPreferenceManager.getPreference("/lastSyncDate");
+        oLastSyncDate = typeof oLastSyncDate.toDate === "function" ? oLastSyncDate.toDate() : oLastSyncDate || new Date(0);
+        const sTimeUntilSync = Formatter.diffBetweenDate(oLastSyncDate, new Date());
+
+        return bCanSync ? oResourceBundle.getText("SyncWithAppDialogSyncPageAction") : oResourceBundle.getText("SyncWithAppDialogSyncPageActionWithTime", sTimeUntilSync);
+    }
 
     return Controller;
 });
