@@ -4,10 +4,12 @@ const path = require("path");
 const windowStateKeeper = require('electron-window-state');
 const { autoUpdater } = require("electron-updater");
 const config = require("./config.js");
+const os = require("os");
 const IPC = require("./ipc");
 
 let mainWindow = null;
 
+const isMacOS = os.platform() === "darwin";
 
 function createWindow() {
     // Load the previous state with fallback to defaults
@@ -39,7 +41,11 @@ function createWindow() {
     });
 
     mainWindowState.manage(mainWindow);
-    autoUpdater.checkForUpdatesAndNotify();
+
+    // App updates are disabled for MacOS
+    if (!isMacOS) {
+        autoUpdater.checkForUpdatesAndNotify();
+    }
 
     new IPC(mainWindow);
 
