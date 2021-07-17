@@ -384,7 +384,11 @@ sap.ui.define([
             oQuerySnapShot = await oSyncCollection.get(),
             aTransactions = oQuerySnapShot.docs;
 
-        for (var i = 0; i < aTransactions.length; i++) {
+        const oComponent = this.getOwnerComponent();
+        const oPurchaseManager = oComponent.getPurchaseManager();
+        const maxTransactions = oPurchaseManager.isSubscribed() ? aTransactions.length : Config.TRANSACRION_SYNC_MAX_TRANSACTIONS_FREE;
+
+        for (var i = 0; i < maxTransactions; i++) {
             var oDoc = aTransactions[i];
 
             var sDocId = oDoc.id,
@@ -399,7 +403,6 @@ sap.ui.define([
             iSuccessfullCount ++;
         }
 
-        const oComponent = this.getOwnerComponent();
         const oPreferenceManager = oComponent.getPreferenceManager();
         oPreferenceManager.setPreference("/lastSyncDate", new Date());
 

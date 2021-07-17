@@ -116,6 +116,7 @@ sap.ui.define([
 
         MAX_PLANNED_TRANSACTIONS_FREE: 3,
         TRANSACRION_SYNC_COOLDOWN_FREE: 24,
+        TRANSACRION_SYNC_MAX_TRANSACTIONS_FREE: 1,
 
 
         applyTranslatedConfigProperties: function(oResourceBundle, oConfig, oAppInfo) {
@@ -136,11 +137,6 @@ sap.ui.define([
                             valueState: "Warning",
                             text: oResourceBundle.getText("subscription-Free-benefit-2"),
                             icon: "sap-icon://navigation-down-arrow",
-                        },
-                        {
-                            valueState: "Warning",
-                            text: oResourceBundle.getText("subscription-Free-benefit-3"),
-                            icon: "sap-icon://navigation-down-arrow",
                         }
                     ]
 
@@ -160,11 +156,6 @@ sap.ui.define([
                         {
                             valueState: "Success",
                             text: oResourceBundle.getText("subscription-Professional-benefit-2"),
-                            icon: "sap-icon://accept",
-                        },
-                        {
-                            valueState: "Success",
-                            text: oResourceBundle.getText("subscription-Professional-benefit-3"),
                             icon: "sap-icon://accept",
                         }
                     ]
