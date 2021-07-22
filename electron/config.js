@@ -26,6 +26,5 @@ module.exports = {
     EXPOSED_ELECTRON_EVENTS: [
         'enter-full-screen',
         'leave-full-screen',
-        'maximize',
     ],
 }
