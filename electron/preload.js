@@ -2,8 +2,19 @@ const {
     contextBridge,
     ipcRenderer
 } = require("electron");
-const { Config } = require("jsstore");
 const config = require("./config.js");
+const EventHandler = require("./EventHandler");
+
+
+// subscribe to all exposed events
+const oEventHandler = new EventHandler();
+config.EXPOSED_ELECTRON_EVENTS.forEach(sEvent => {
+    ipcRenderer.on(sEvent, () => {
+        oEventHandler.triggerEvent(sEvent);
+    });
+});
+
+
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object
@@ -66,6 +77,14 @@ contextBridge.exposeInMainWorld(
         },
         openChangeLogPage: () => {
             ipcRenderer.send("openChangeLogPage");
+        },
+
+        subscribeToEvent: (sEvent, fnListener) => {
+            if (!config.EXPOSED_ELECTRON_EVENTS.includes(sEvent)) {
+                console.error(`Could not subscribe to not exposed event ${sEvent}`);
+                return;
+            }
+            oEventHandler.addListener(sEvent, fnListener);
         }
     }
 );

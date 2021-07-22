@@ -22,5 +22,10 @@ module.exports = {
     TRAY_ICON: `${DIRECTORY}/img/icon.png`,
     IN_APP_PURCHASE_IDS: [
         "Professional"
-    ]
+    ],
+    EXPOSED_ELECTRON_EVENTS: [
+        'enter-full-screen',
+        'leave-full-screen',
+        'maximize',
+    ],
 }

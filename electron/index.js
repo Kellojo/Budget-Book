@@ -49,6 +49,14 @@ function createWindow() {
 
     new IPC(mainWindow);
 
+    config.EXPOSED_ELECTRON_EVENTS.forEach(sEvent => {
+        mainWindow.on(sEvent, () => {
+            mainWindow.webContents.send(sEvent);
+        });
+    });
+
+
+
     // and load the index.html of the app.
     mainWindow.loadFile(config.INDEX_HTML);
 

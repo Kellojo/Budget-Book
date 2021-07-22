@@ -73,6 +73,14 @@ class IPC {
         ipcMain.on("openChangeLogPage", (event) => {
             shell.openExternal("https://github.com/Kellojo/Budget-Book/releases");
         });
+
+
+        mainWindow.on('enter-full-screen', () => {
+            mainWindow.webContents.send("enter-full-screen");
+        });
+        mainWindow.on('leave-full-screen', () => {
+            mainWindow.webContents.send("leave-full-screen");
+        });
     }
 }
 
